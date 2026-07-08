@@ -5,3 +5,6 @@ pytest-bdd
 pytest-xdist
 behave
 allure-pytest
+pandas
+openpyxl
+dotenv
