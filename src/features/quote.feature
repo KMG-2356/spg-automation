@@ -1,9 +1,8 @@
-Feature: User Login
-  In order to verify the site Login
-  As a demo
-  I want to Login user using the given credentials
+Feature: Premium verification againts excel rater 
+  In order to verify the generate a premium
+  in windhail LOB and compare it with the rater sheet premium
 
-  Scenario: TS-01-02 - Successful Login
-    Given the login page is open
-    When the user logs in with valid user
-    Then the login should be successfull
+  Scenario: TS-01 - Rater Premium and Excel Premium are equal for Windhail LOB
+    Given the home page is open
+    When the user generates a premium
+    Then the generated premium should be equal to excel rater premium
