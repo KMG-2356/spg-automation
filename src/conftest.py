@@ -22,16 +22,17 @@ def base_url():
 def test_data(request):
     test_case_id = None
     scenario_name = request.node.name
-    match = re.search(r'TS[-_]?(\d{2})[-_]?(\d{2})', scenario_name, re.IGNORECASE)
+    match = re.search(r'TS[-_]?(\d{3})', scenario_name, re.IGNORECASE)
+
 
     if not match:
         raise ValueError(
             f"Execution halted: The scenario '{scenario_name}' does not contain a valid 'TS-' ID in its name! "
-            "Please name your scenario like: 'Scenario: TS-01-01 - My test description'"
+            "Please name your scenario like: 'Scenario: TS-001 - My test description'"
         )
     
-    test_case_id = f"TS-{match.group(1)}-{match.group(2)}"
-            
+    test_case_id = f"TS-{match.group(1)}"
+
     if not test_case_id:
         raise ValueError(
             f"Execution halted: The scenario '{request.node.name}' is missing a matching 'TS-' data tag! "
