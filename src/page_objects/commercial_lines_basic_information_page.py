@@ -8,10 +8,8 @@ class CommercialLinesBasicInformationPage:
         self.agency_information_btn = self.page.get_by_role("button", name="Agency Information")
     
     def click_agency_information_button(self):
-        self.page.pause()
         expect(self.commercial_lines_basic_information_heading).to_be_visible()
         expect(self.agency_information_btn).to_be_visible()
         expect(self.agency_information_btn).to_be_enabled()
         self.agency_information_btn.click()
-python --versionp
 

@@ -3,16 +3,31 @@ import re
 import sys
 from utils.xlsx_loader import get_test_data
 from pytest_bdd import given, parsers
+import pytest
 
 sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
 
-import pytest
 
 pytest_plugins = ["pytest_playwright"]
 
 import allure
 import pathlib
 
+@pytest.fixture(scope="session")
+def browser_type_launch_args(browser_type_launch_args):
+    """Passes the start-maximized flag to the browser binary."""
+    return {
+        **browser_type_launch_args,
+        "args": ["--start-maximized"]
+    }
+
+@pytest.fixture(scope="session")
+def browser_context_args(browser_context_args):
+    """Disables Playwright's default fixed viewport size."""
+    return {
+        **browser_context_args,
+        "no_viewport": True
+    }
 
 @pytest.fixture(scope="session")
 def base_url():
@@ -22,16 +37,17 @@ def base_url():
 def test_data(request):
     test_case_id = None
     scenario_name = request.node.name
-    match = re.search(r'TS[-_]?(\d{2})[-_]?(\d{2})', scenario_name, re.IGNORECASE)
+    match = re.search(r'TS[-_]?(\d{3})', scenario_name, re.IGNORECASE)
+
 
     if not match:
         raise ValueError(
             f"Execution halted: The scenario '{scenario_name}' does not contain a valid 'TS-' ID in its name! "
-            "Please name your scenario like: 'Scenario: TS-01-01 - My test description'"
+            "Please name your scenario like: 'Scenario: TS-001 - My test description'"
         )
     
-    test_case_id = f"TS-{match.group(1)}-{match.group(2)}"
-            
+    test_case_id = f"TS-{match.group(1)}"
+
     if not test_case_id:
         raise ValueError(
             f"Execution halted: The scenario '{request.node.name}' is missing a matching 'TS-' data tag! "
