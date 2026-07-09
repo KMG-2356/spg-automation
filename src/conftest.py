@@ -3,16 +3,31 @@ import re
 import sys
 from utils.xlsx_loader import get_test_data
 from pytest_bdd import given, parsers
+import pytest
 
 sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
 
-import pytest
 
 pytest_plugins = ["pytest_playwright"]
 
 import allure
 import pathlib
 
+@pytest.fixture(scope="session")
+def browser_type_launch_args(browser_type_launch_args):
+    """Passes the start-maximized flag to the browser binary."""
+    return {
+        **browser_type_launch_args,
+        "args": ["--start-maximized"]
+    }
+
+@pytest.fixture(scope="session")
+def browser_context_args(browser_context_args):
+    """Disables Playwright's default fixed viewport size."""
+    return {
+        **browser_context_args,
+        "no_viewport": True
+    }
 
 @pytest.fixture(scope="session")
 def base_url():

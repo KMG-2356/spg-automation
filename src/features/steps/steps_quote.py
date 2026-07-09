@@ -23,15 +23,13 @@ def given_home_page_open(home_page, base_url, test_data):
 
 
 @when('the user generates a premium')
-def when_user_generates_premium(page, test_data):
+def when_user_generates_premium(home_page, page, test_data):
     program_selection_page = ProgramSelectionPage(page)
     commercial_lines_basic_information_page = CommercialLinesBasicInformationPage(page)
-
 
     home_page.click_new_quote_button()
     program_selection_page.select_monoline_wind_LOB()
     commercial_lines_basic_information_page.click_agency_information_button()
-
 
 
 @then('the generated premium should be equal to excel rater premium')
