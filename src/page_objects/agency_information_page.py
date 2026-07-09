@@ -20,15 +20,18 @@ class AgencyInformationPage:
         self.insured_information_btn = self.page.get_by_role("button", name="Insured Information")
 
 
-    def fill_agency_information_form(self):
+    def fill_agency_information_form(self, data):
         expect(self.agency_information_heading).to_be_visible()
-        # Fill in the form fields here
-        # Example:
-        # self.page.fill('input[name="agency_name"]', "Test Agency")
-        # self.page.fill('input[name="agency_address"]', "123 Test St")
-        # self.page.fill('input[name="agency_city"]', "Test City")
-        # self.page.fill('input[name="agency_state"]', "TS")
-        # self.page.fill('input[name="agency_zip"]', "12345")
-  
-
+        self.agency_name_input.fill(data["01_Policy_Info"][0]["Agency Name"])
+        self.agency_id_code_input.fill(data["01_Policy_Info"][0]["Agency ID Code"])
+        self.agency_full_name_input.fill(data["01_Policy_Info"][0]["Agent Full Name"])
+        self.email_input.fill(data["01_Policy_Info"][0]["Agent E-Mail"])
+        self.phone_number_input.fill(data["01_Policy_Info"][0]["Agent Phone"])
+        self.fax_number_input.fill(data["01_Policy_Info"][0]["Agent Fax"])
+        self.agent_commission_select.select_option(label=f"{data["01_Policy_Info"][0]["Agent's Commission %"]}%")
+        self.street_address1_input.fill(data["01_Policy_Info"][0]["Address - Street 1"])
+        self.street_address2_input.fill(data["01_Policy_Info"][0]["Address - Street 2"])
+        self.city_input.fill(data["01_Policy_Info"][0]["Address - City"])
+        self.state_select.select_option(label=data["01_Policy_Info"][0]["Address - State"])
+        self.zip_code_input.fill(str(data["01_Policy_Info"][0]["Address - Zip"]))
 
