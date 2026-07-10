@@ -9,6 +9,8 @@ from page_objects.commercial_lines_basic_information_page import CommercialLines
 from page_objects.agency_information_page import AgencyInformationPage
 from page_objects.location_page import LocationPage
 from page_objects.insured_information_page import InsuredInformationPage
+from page_objects.additional_questions_page import AdditionalQuestionPage
+
 
 FEATURE_PATH = os.path.join(os.path.dirname(__file__), "..", "quote.feature")
 
@@ -32,6 +34,7 @@ def when_user_generates_premium(home_page, page, test_data):
     agency_information_page = AgencyInformationPage(page)
     location_information_page = LocationPage(page)
     insured_information_page = InsuredInformationPage(page)
+    additional_comments_page = AdditionalQuestionPage(page)
 
     home_page.click_new_quote_button()
     program_selection_page.select_monoline_wind_LOB()
@@ -39,7 +42,7 @@ def when_user_generates_premium(home_page, page, test_data):
     agency_information_page.fill_agency_information_form(test_data)
     insured_information_page.fill_insured_information(test_data)
     location_information_page.fill_location_information_form(test_data)
-
+    additional_comments_page.fill_additional_comments(test_data)
 
 
 @then('the generated premium should be equal to excel rater premium')
