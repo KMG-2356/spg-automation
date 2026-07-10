@@ -35,5 +35,6 @@ class AgencyInformationPage:
         self.city_input.fill(data["01_Policy_Info"][0]["Address - City"])
         self.state_select.select_option(label=data["01_Policy_Info"][0]["Address - State"])
         self.zip_code_input.fill(str(data["01_Policy_Info"][0]["Address - Zip"]))
+        self.insured_information_btn.click()
         # self.pause()
 
