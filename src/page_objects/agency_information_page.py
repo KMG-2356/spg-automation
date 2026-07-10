@@ -1,5 +1,5 @@
-import re
 from playwright.sync_api import Page, expect
+from utils.helpers import to_float
 
 class AgencyInformationPage:
     def __init__(self, page: Page):
@@ -28,10 +28,12 @@ class AgencyInformationPage:
         self.email_input.fill(data["01_Policy_Info"][0]["Agent E-Mail"])
         self.phone_number_input.fill(data["01_Policy_Info"][0]["Agent Phone"])
         self.fax_number_input.fill(data["01_Policy_Info"][0]["Agent Fax"])
-        self.agent_commission_select.select_option(label=f"{data["01_Policy_Info"][0]["Agent's Commission %"]}%")
+        print(f"Agent's Commission %: {data['01_Policy_Info'][0]['Agent\'s Commission %']}")
+        self.agent_commission_select.select_option(to_float(data["01_Policy_Info"][0]["Agent's Commission %"]))
         self.street_address1_input.fill(data["01_Policy_Info"][0]["Address - Street 1"])
         self.street_address2_input.fill(data["01_Policy_Info"][0]["Address - Street 2"])
         self.city_input.fill(data["01_Policy_Info"][0]["Address - City"])
         self.state_select.select_option(label=data["01_Policy_Info"][0]["Address - State"])
         self.zip_code_input.fill(str(data["01_Policy_Info"][0]["Address - Zip"]))
+        # self.pause()
 
