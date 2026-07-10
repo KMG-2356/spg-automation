@@ -65,8 +65,10 @@ class LocationPage:
             self.construction_type_selection(i).select_option(data["02_WH_Locations"][i]["Construction Type"])
             self.is_building_residential_selection(i).select_option(data["02_WH_Locations"][i]["Is Building Residential?"])
             if data["02_WH_Locations"][i]["Is Building Residential?"]=="Yes":
+               self.page.wait_for_timeout(5000)
                self.distance_to_the_coast_selection2.select_option(data["02_WH_Locations"][i]["Distance To Coast"])
             if data["02_WH_Locations"][i]["Is Building Residential?"]=="No":
+               self.page.wait_for_timeout(5000)
                self.distance_to_the_coast_selection1.select_option(data["02_WH_Locations"][i]["Distance To Coast"].strip())
             if self.type_of_occupancy_selection(i).is_visible():
                self.type_of_occupancy_selection(i).select_option(data["02_WH_Locations"][i]["Type of Occupancy"])
