@@ -14,4 +14,6 @@ class HomePage:
         expect(self.new_quote_heading).to_be_visible()
         expect(self.new_quote_btn).to_be_visible()
         expect(self.new_quote_btn).to_be_enabled()
+        self.page.wait_for_timeout(3000)
         self.new_quote_btn.click()
+        self.page.wait_for_timeout(3000)
