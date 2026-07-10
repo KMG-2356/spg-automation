@@ -16,7 +16,8 @@ class LocationPage:
             self.business_interruption_limit_input = self.page.get_by_role("textbox", description="Business Interruption Limit?", exact=True)
             # self.construction_type_selection = self.page.locator("[id=\"wd.locations.0.construction\"]")
             # self.is_building_residential_selection = self.page.get_by_role("combobox").nth(3)
-            # self.distance_to_the_coast_selection = self.page.get_by_role("combobox").nth(4)
+            self.distance_to_the_coast_selection1 = self.page.get_by_role("combobox").nth(4)
+            self.distance_to_the_coast_selection2 = self.page.get_by_role("combobox").nth(5)
             # self.year_of_last_roof_update_input = self.page.locator("[id=\"wd.locations.0.roof_update\"]")
             # self.protection_class_selection = self.page.locator("[id=\"wd.locations.0.protection_class\"]")
             self.number_of_stories_input = self.page.get_by_role("spinbutton", description="Number of Stories?", exact=True)
@@ -41,8 +42,8 @@ class LocationPage:
         return self.page.locator(f'[id="wd.locations.{i}.protection_class"]')
     def any_prior_losses_selection(self, i):
         return self.page.locator(f'[id="wd.locations.{i}.losses"]')  
-    def distance_to_the_coast_selection(self, i):
-        return self.page.locator(f'[id="wd.locations.{i}.distance"]') 
+    # def distance_to_the_coast_selection(self, i):
+    #     return self.page.locator(f'[id="wd.locations.{i}.distance"]') 
     def type_of_occupancy_selection(self, i):
         return self.page.locator(f'[id=\"wd.locations.{i}.residential\"]')
     def is_building_residential_selection(self, i):
@@ -63,17 +64,19 @@ class LocationPage:
             self.business_interruption_limit_input.fill(str(data["02_WH_Locations"][i]["BI Limit ($) Max $100k"]))
             self.construction_type_selection(i).select_option(data["02_WH_Locations"][i]["Construction Type"])
             self.is_building_residential_selection(i).select_option(data["02_WH_Locations"][i]["Is Building Residential?"])
+            if data["02_WH_Locations"][i]["Is Building Residential?"]=="Yes":
+               self.distance_to_the_coast_selection2.select_option(data["02_WH_Locations"][i]["Distance To Coast"])
+            if data["02_WH_Locations"][i]["Is Building Residential?"]=="No":
+               self.distance_to_the_coast_selection1.select_option(data["02_WH_Locations"][i]["Distance To Coast"].strip())
             if self.type_of_occupancy_selection(i).is_visible():
-                self.type_of_occupancy_selection(i).select_option(data["02_WH_Locations"][i]["Type of Occupancy"])
+               self.type_of_occupancy_selection(i).select_option(data["02_WH_Locations"][i]["Type of Occupancy"])
+               
             # self.distance_to_the_coast_selection.select_option(data["02_WH_Locations"][i]["Distance To Coast"])
-            print(repr(data["02_WH_Locations"][i]["Distance To Coast"]))
-            self.distance_to_the_coast_selection(i).select_option(value=data["02_WH_Locations"][i]["Distance To Coast"].strip())
-            print(data["02_WH_Locations"][i]["Year of Last Roof Update"])
-            print(type(data["02_WH_Locations"][i]["Year of Last Roof Update"]))
+                        # self.distance_to_the_coast_selection(i).select_option(value=data["02_WH_Locations"][i]["Distance To Coast"].strip())
+         
             locator = self.year_of_last_roof_update_input(i)
             locator.click()
             self.year_of_last_roof_update_input(i).fill(str(data["02_WH_Locations"][i]["Year of Last Roof Update"]))
-            print(self.year_of_last_roof_update_input(i).input_value())
             self.protection_class_selection(i).select_option(str(data["02_WH_Locations"][i]["Protection Class"]))
             self.number_of_stories_input.fill(str(data["02_WH_Locations"][i]["Number of Stories"]))
             self.area_of_property_input.fill(str(data["02_WH_Locations"][i]["Area(sq ft)"]))
