@@ -19,7 +19,6 @@ def browser_type_launch_args(browser_type_launch_args):
     return {
         **browser_type_launch_args,
         "args": ["--start-maximized"],
-        "slow_mo": 1000
     }
 
 @pytest.fixture(scope="session")

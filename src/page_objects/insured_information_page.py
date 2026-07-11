@@ -15,6 +15,7 @@ class InsuredInformationPage:
         self.insured_zip_code_input = self.page.locator('div:has(> p:text("Zip")) input')
         self.location_information_btn = self.page.get_by_role("button", name="Monoline Wind Location")
         self.insured_information_heading = self.page.get_by_role("heading", name="    Insured")
+        self.loading_screen = self.page.locator(".jss44")
         
     def fill_insured_information(self,data):
         expect(self.insured_information_heading).to_be_visible()
@@ -27,8 +28,15 @@ class InsuredInformationPage:
         self.insured_city_input.fill(data["01_Policy_Info"][0]["Mailing City"])
         self.insured_state_selection.select_option(data["01_Policy_Info"][0]["Mailing State"])
         self.type_of_entity_selection.select_option(data["01_Policy_Info"][0]["Type of Entity"])
-        self.page.wait_for_timeout(2000)
+        self.check_loading()
         expect(self.location_information_btn).to_be_visible()
         expect(self.location_information_btn).to_be_enabled()
         self.location_information_btn.click()
+
+    def check_loading(self):
+        try:
+            self.loading_screen.wait_for(state="visible", timeout=500)
+        except TimeoutError:
+            pass
+        self.loading_screen.wait_for(state="hidden")
 

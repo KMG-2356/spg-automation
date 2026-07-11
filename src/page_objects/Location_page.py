@@ -1,5 +1,5 @@
 import re
-from playwright.sync_api import Page, expect
+from playwright.sync_api import Page, expect, TimeoutError
 
 class LocationPage:
     def __init__(self, page: Page):
@@ -20,6 +20,8 @@ class LocationPage:
             self.location_management_btn = self.page.get_by_role("button",name="Monoline Wind Location Management")
             self.add_location_button = self.page.get_by_role("button", name="Add Another Location")
             self.monoline_wind_location_heading = self.page.get_by_role("heading", name="    Monoline Wind")
+            self.loading_screen = self.page.locator(".jss44")
+
 
     def interest_in_property_selection(self, i):
         return self.page.locator(f'[id="wd.locations.{i}.interest"]')
@@ -45,34 +47,34 @@ class LocationPage:
         expect(self.monoline_wind_location_heading).to_be_visible()
         for i in range(len(data["02_WH_Locations"])):
             self.zip_input.fill(str(data["02_WH_Locations"][i]["ZIP"]))
-            self.page.wait_for_timeout(2000)
+            self.check_loading()
             self.street_address1_input.fill(data["02_WH_Locations"][i]["Street Address1"])
             self.street_address2_input.fill(data["02_WH_Locations"][i]["Street Address 2"])
             self.city_input.fill(data["02_WH_Locations"][i]["City"])
             self.state_selection.select_option(data["02_WH_Locations"][i]["St"])
-            self.page.wait_for_timeout(2000)
+            self.check_loading()
             self.interest_in_property_selection(i).select_option(data["02_WH_Locations"][i]["Interest in Property"])
-            self.page.wait_for_timeout(2000)
+            self.check_loading()
             self.value_of_the_property_input(i).fill(str(data["02_WH_Locations"][i]["Building Value ($)"]))
             self.content_limits_input(i).fill(str(data["02_WH_Locations"][i]["Contents Limit ($)"]))
             self.business_interruption_limit_input.fill(str(data["02_WH_Locations"][i]["BI Limit ($) Max $100k"]))
             self.construction_type_selection(i).select_option(data["02_WH_Locations"][i]["Construction Type"])
-            self.page.wait_for_timeout(2000)
+            self.check_loading()
             self.is_building_residential_selection(i).select_option(data["02_WH_Locations"][i]["Is Building Residential?"])
-            self.page.wait_for_timeout(2000)
+            self.check_loading()
             if data["02_WH_Locations"][i]["Is Building Residential?"]=="Yes":
                self.distance_to_the_coast_selection2.select_option(data["02_WH_Locations"][i]["Distance To Coast"])
-               self.page.wait_for_timeout(2000)
+               self.check_loading()
             if data["02_WH_Locations"][i]["Is Building Residential?"]=="No":
                self.distance_to_the_coast_selection1.select_option(data["02_WH_Locations"][i]["Distance To Coast"].strip())
-               self.page.wait_for_timeout(2000)
+               self.check_loading()
             if self.type_of_occupancy_selection(i).is_visible():
                self.type_of_occupancy_selection(i).select_option(data["02_WH_Locations"][i]["Type of Occupancy"])
-               self.page.wait_for_timeout(2000)
-               
+               self.check_loading()
+
             self.year_of_last_roof_update_input(i).fill(str(data["02_WH_Locations"][i]["Year of Last Roof Update"]))
             self.protection_class_selection(i).select_option(str(data["02_WH_Locations"][i]["Protection Class"]))
-            self.page.wait_for_timeout(2000)
+            self.check_loading()
             self.number_of_stories_input.fill(str(data["02_WH_Locations"][i]["Number of Stories"]))
             self.area_of_property_input.fill(str(data["02_WH_Locations"][i]["Area(sq ft)"]))
             self.year_built_input.fill(str(data["02_WH_Locations"][i]["Year Built"]))
@@ -80,10 +82,17 @@ class LocationPage:
             expect(self.location_management_btn).to_be_visible()
             expect(self.location_management_btn).to_be_enabled()
             self.location_management_btn.click()
-            self.page.wait_for_timeout(2000)
+            self.check_loading()
 
             if i < len(data["02_WH_Locations"]) - 1:
               expect(self.add_location_button).to_be_visible()
               expect(self.add_location_button).to_be_enabled()
               self.add_location_button.click()
+
+    def check_loading(self):
+        try:
+            self.loading_screen.wait_for(state="visible", timeout=500)
+        except TimeoutError:
+            pass
+        self.loading_screen.wait_for(state="hidden")
   
