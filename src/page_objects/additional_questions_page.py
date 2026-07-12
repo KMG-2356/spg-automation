@@ -18,4 +18,5 @@ class AdditionalQuestionPage:
         expect(self.print_your_documents_button).to_be_visible()
         expect(self.print_your_documents_button).to_be_enabled()
         self.print_your_documents_button.click()
+        self.page.pause()
 
