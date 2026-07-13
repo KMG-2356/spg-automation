@@ -28,17 +28,14 @@ def browser_context_args(browser_context_args):
         **browser_context_args,
         "no_viewport": True
     }
-
+    
 def pytest_generate_tests(metafunc):
-    """
-    Dynamically maps Excel rows to pytest-bdd scenarios at test collection time.
-    Surgically targets only files matching your step definition naming patterns.
-    """
-    # In Pytest 9+, metafunc.definition.path is a native pathlib.Path object
     file_name = metafunc.definition.path.name
     
-    # Mirror the python_files matching rules from your pytest.ini
     if file_name.startswith("steps_") or "_steps" in file_name:
+        if "test_data" not in metafunc.fixturenames:
+            metafunc.fixturenames.append("test_data")
+            
         try:
             wb = openpyxl.load_workbook(EXCEL_FILE_PATH, read_only=True)
             sheet_names = [s.title for s in wb.worksheets if s.sheet_state == "visible"]

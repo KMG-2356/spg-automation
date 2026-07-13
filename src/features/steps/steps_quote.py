@@ -1,7 +1,7 @@
 import os
 
 import pytest
-from pytest_bdd import scenario, given, when, then, parsers
+from pytest_bdd import scenarios, given, when, then, parsers
 from config import *
 from page_objects.home_page import HomePage
 from page_objects.program_selection_page import ProgramSelectionPage
@@ -14,12 +14,7 @@ from page_objects.additional_questions_page import AdditionalQuestionPage
 
 FEATURE_PATH = os.path.join(os.path.dirname(__file__), "..", "quote.feature")
 
-# scenarios(FEATURE_PATH)
-
-@scenario(FEATURE_PATH, "Rater Premium and Excel Premium are equal for Windhail LOB")
-def test_rater_premium_and_excel_premium_are_equal_for_windhail_lob(test_data):
-    """This function explicitly accepts 'test_data' so pytest can parameterize it."""
-    pass
+scenarios(FEATURE_PATH)
 
 @pytest.fixture
 def home_page(page, test_data):
