@@ -18,34 +18,31 @@ scenarios(FEATURE_PATH)
 
 @pytest.fixture
 def home_page(page, test_data):
-    pass
-    # return HomePage(page)
+    return HomePage(page)
 
 
 @given('the home page is open')
 def given_home_page_open(home_page, base_url, test_data):
-    pass
-    # home_page.navigate(base_url)
-    # return home_page
+    home_page.navigate(base_url)
+    return home_page
 
 
 @when('the user generates a premium')
 def when_user_generates_premium(home_page, page, test_data):
-    print(test_data)
-    # program_selection_page = ProgramSelectionPage(page)
-    # commercial_lines_basic_information_page = CommercialLinesBasicInformationPage(page)
-    # agency_information_page = AgencyInformationPage(page)
-    # location_information_page = LocationPage(page)
-    # insured_information_page = InsuredInformationPage(page)
-    # additional_comments_page = AdditionalQuestionPage(page)
+    program_selection_page = ProgramSelectionPage(page)
+    commercial_lines_basic_information_page = CommercialLinesBasicInformationPage(page)
+    agency_information_page = AgencyInformationPage(page)
+    location_information_page = LocationPage(page)
+    insured_information_page = InsuredInformationPage(page)
+    additional_comments_page = AdditionalQuestionPage(page)
 
-    # home_page.click_new_quote_button()
-    # program_selection_page.select_monoline_wind_LOB()
-    # commercial_lines_basic_information_page.click_agency_information_button()
-    # agency_information_page.fill_agency_information_form(test_data)
-    # insured_information_page.fill_insured_information(test_data)
-    # location_information_page.fill_location_information_form(test_data)
-    # additional_comments_page.fill_additional_comments(test_data)
+    home_page.click_new_quote_button()
+    program_selection_page.select_monoline_wind_LOB()
+    commercial_lines_basic_information_page.click_agency_information_button()
+    agency_information_page.fill_agency_information_form(test_data)
+    insured_information_page.fill_insured_information(test_data)
+    location_information_page.fill_location_information_form(test_data)
+    additional_comments_page.fill_additional_comments(test_data)
 
 
 @then('the generated premium should be equal to excel rater premium')
