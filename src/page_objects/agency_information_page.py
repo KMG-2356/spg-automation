@@ -1,0 +1,38 @@
+from playwright.sync_api import Page, expect
+from utils.helpers import to_float
+
+class AgencyInformationPage:
+    def __init__(self, page: Page):
+        self.page = page
+        self.agency_information_heading = self.page.get_by_role("heading", name="    Agency Information")
+        self.agency_name_input = self.page.get_by_role("textbox").first
+        self.agency_id_code_input = self.page.get_by_role("textbox").nth(1)
+        self.agency_full_name_input = self.page.get_by_role("textbox").nth(2)
+        self.email_input = self.page.get_by_role("textbox").nth(3)
+        self.phone_number_input = self.page.get_by_role("textbox").nth(4)
+        self.fax_number_input = self.page.get_by_role("textbox").nth(5)
+        self.agent_commission_select = self.page.get_by_role("combobox").nth(1)
+        self.street_address1_input = self.page.locator(".MuiInputBase-input.MuiInput-input").first
+        self.street_address2_input = self.page.locator("div:nth-child(2) > .MuiInputBase-root > .MuiInputBase-input")
+        self.city_input = self.page.locator(".MuiFormControl-root.MuiTextField-root.jss102 > .MuiInputBase-root > .MuiInputBase-input")
+        self.state_select = self.page.get_by_role("combobox").first
+        self.zip_code_input = self.page.locator(".MuiFormControl-root.MuiTextField-root.jss104 > .MuiInputBase-root > .MuiInputBase-input")
+        self.insured_information_btn = self.page.get_by_role("button", name="Insured Information")
+
+
+    def fill_agency_information_form(self, data):
+        expect(self.agency_information_heading).to_be_visible()
+        self.agency_name_input.fill(data["01_Policy_Info"][0]["Agency Name"])
+        self.agency_id_code_input.fill(data["01_Policy_Info"][0]["Agency ID Code"])
+        self.agency_full_name_input.fill(data["01_Policy_Info"][0]["Agent Full Name"])
+        self.email_input.fill(data["01_Policy_Info"][0]["Agent E-Mail"])
+        self.phone_number_input.fill(data["01_Policy_Info"][0]["Agent Phone"])
+        self.fax_number_input.fill(data["01_Policy_Info"][0]["Agent Fax"])
+        self.agent_commission_select.select_option(to_float(data["01_Policy_Info"][0]["Agent's Commission %"]))
+        self.street_address1_input.fill(data["01_Policy_Info"][0]["Address - Street 1"])
+        self.street_address2_input.fill(data["01_Policy_Info"][0]["Address - Street 2"])
+        self.city_input.fill(data["01_Policy_Info"][0]["Address - City"])
+        self.state_select.select_option(label=data["01_Policy_Info"][0]["Address - State"])
+        self.zip_code_input.fill(str(data["01_Policy_Info"][0]["Address - Zip"]))
+        self.insured_information_btn.click()
+
