@@ -4,5 +4,5 @@ load_dotenv()
 
 EXCEL_FILE_PATH = "src/data/TestData.xlsx"
 
-# USERNAME = os.getenv("USERNAME")
-# PASSWORD = os.getenv("PASSWORD")
+USERNAME = os.getenv("USERNAME")
+PASSWORD = os.getenv("PASSWORD")
