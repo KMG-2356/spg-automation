@@ -20,7 +20,7 @@ class LocationPage:
             self.location_management_btn = self.page.get_by_role("button",name="Monoline Wind Location Management")
             self.add_location_button = self.page.get_by_role("button", name="Add Another Location")
             self.monoline_wind_location_heading = self.page.get_by_role("heading", name="    Monoline Wind")
-            self.loading_screen = self.page.locator(".jss44")
+            self.loading_screen = self.page.locator(".jss53")
 
 
     def interest_in_property_selection(self, i):

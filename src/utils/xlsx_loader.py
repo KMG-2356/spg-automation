@@ -22,9 +22,8 @@ def get_test_data(file_path: str, test_case_id: str) -> Dict[str, List[Dict[str,
             if not sheet_names:
                 raise ValueError("The provided Excel file has no sheets.")
             
-            # Rule 1: Read master sheet to determine the Test Case ID column name dynamically
             master_sheet_name = sheet_names[0]
-            df_master = pd.read_excel(xls, sheet_name=master_sheet_name)
+            df_master = pd.read_excel(xls, sheet_name=master_sheet_name, dtype=str)
             
             if df_master.empty:
                 print(f"Warning: The master sheet '{master_sheet_name}' is empty.")
@@ -32,26 +31,22 @@ def get_test_data(file_path: str, test_case_id: str) -> Dict[str, List[Dict[str,
                 
             id_column_name = df_master.columns[0]
             
-            # Filter master data
             filtered_master = df_master[df_master[id_column_name] == test_case_id].copy()
             if filtered_master.empty:
                 print(f"Warning: '{test_case_id}' not found in master sheet '{master_sheet_name}'.")
                 return {}
                 return {}
             
-            # Clean NaNs and save master sheet dataset using its original sheet name
             filtered_master = filtered_master.fillna("")
             structured_data[master_sheet_name] = filtered_master.to_dict(orient='records')
             
-            # Rule 2: Loop through all relational subsequent sheets
             for sheet_name in sheet_names[1:]:
-                df_relational = pd.read_excel(xls, sheet_name=sheet_name)
+                df_relational = pd.read_excel(xls, sheet_name=sheet_name, dtype=str)
                 
                 if id_column_name in df_relational.columns:
                     filtered_relational = df_relational[df_relational[id_column_name] == test_case_id].copy()
                     
                     if not filtered_relational.empty:
-                        # Clean NaNs and map data rows under the current sheet name key
                         filtered_relational = filtered_relational.fillna("")
                         structured_data[sheet_name] = filtered_relational.to_dict(orient='records')
             

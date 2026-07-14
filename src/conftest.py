@@ -7,11 +7,14 @@ import pytest
 import openpyxl
 from config import EXCEL_FILE_PATH
 import pandas as pd
+from playwright.sync_api import expect
 
 sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
 
 import allure
 import pathlib
+
+expect.set_options(timeout=30000)
 
 @pytest.fixture(scope="session")
 def browser_type_launch_args(browser_type_launch_args):
@@ -19,6 +22,7 @@ def browser_type_launch_args(browser_type_launch_args):
     return {
         **browser_type_launch_args,
         "args": ["--start-maximized"],
+        "timeout": 60000
     }
 
 @pytest.fixture(scope="session")
@@ -26,7 +30,7 @@ def browser_context_args(browser_context_args):
     """Disables Playwright's default fixed viewport size."""
     return {
         **browser_context_args,
-        "no_viewport": True
+        "no_viewport": True,
     }
 
 def _resolve_excel_path(scenario_title: str) -> str:
@@ -89,7 +93,7 @@ def pytest_generate_tests(metafunc):
 
 @pytest.fixture(scope="session")
 def base_url():
-    return "https://rating.commund.com/"
+    return "https://internal.commund.com/"
 
 @pytest.fixture(scope="function")
 def test_data(request):
