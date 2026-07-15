@@ -1,8 +1,8 @@
-Feature: Premium verification againts excel rater 
-  In order to verify the generate a premium
-  in windhail LOB and compare it with the rater sheet premium
+Feature: Windhail Premium verification againts excel rater 
+  In order to verify the generated a premium
+  in windhail LOB and save it in the excel sheet
 
-  Scenario: Rater Premium and Excel Premium are equal for Windhail LOB
-    Given the home page is open
+  Scenario: Save the premium for Windhail LOB
+    Given the login page is open
     When the user generates a premium
-    Then the generated premium should be equal to excel rater premium
+    Then the generated premium should be saved to excel

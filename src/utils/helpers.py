@@ -5,7 +5,7 @@ from openpyxl import load_workbook
 def to_float(value: str) -> str:
     return f"{float(value):.2f}"
 
-def get_num(text: str) -> float: 
+def get_num(text: str) -> str: 
     match = re.search(r"[\d,]+(?:\.\d+)?", text)
     if match:
         return match.group().replace(",", "")

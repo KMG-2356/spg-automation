@@ -52,6 +52,48 @@ def _resolve_excel_path(scenario_title: str) -> str:
                     
     return ""
 
+def _normalize_feature_token(value: str) -> str:
+    return re.sub(r'[^a-z0-9]+', '', (value or '').lower())
+
+
+def _matches_feature_filter(item, feature_filters):
+    if not feature_filters:
+        return True
+
+    haystack_parts = [
+        getattr(item, "nodeid", ""),
+        getattr(item, "path", ""),
+        getattr(item, "fspath", ""),
+    ]
+    haystack = " ".join(str(part) for part in haystack_parts if str(part))
+    normalized_haystack = _normalize_feature_token(haystack)
+
+    for feature_filter in feature_filters:
+        normalized_filter = _normalize_feature_token(feature_filter)
+        if normalized_filter and normalized_filter in normalized_haystack:
+            return True
+
+    return False
+
+
+def pytest_collection_modifyitems(config, items):
+    feature_filters = []
+    for option_name in ("--feature-file",):
+        feature_filters.extend(config.getoption(option_name) or [])
+
+    if not feature_filters:
+        return
+
+    parsed_filters = []
+    for raw_filter in feature_filters:
+        parsed_filters.extend([value.strip() for value in raw_filter.split(",") if value.strip()])
+
+    if not parsed_filters:
+        return
+
+    items[:] = [item for item in items if _matches_feature_filter(item, parsed_filters)]
+
+
 def pytest_generate_tests(metafunc):
     if "test_data" not in metafunc.fixturenames:
         metafunc.fixturenames.append("test_data")
