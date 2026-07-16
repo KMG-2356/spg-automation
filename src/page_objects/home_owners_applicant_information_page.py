@@ -1,4 +1,4 @@
-from playwright.sync_api import Page, expect
+from playwright.sync_api import Page, expect, TimeoutError
 from models.home_owners_applicant_info_params import HomeOwnersApplicantInfoParams
 
 class HomeOwnerApplicantInformationPage:
@@ -35,31 +35,37 @@ class HomeOwnerApplicantInformationPage:
         self.previous_expiration_input = self.page.locator("[id=\"ho.applicant.previous_expiration\"]")
         self.prior_premium_input = self.page.locator("[id=\"ho.applicant.prior_premium\"]")
 
-        # --- Button Elements (Examples) ---
-        # Added these based on your convention request for when you need action buttons
-        self.submit_btn = self.page.locator("button[type=\"submit\"]")
-        self.add_loss_payee_btn = self.page.locator("button:has-text(\"Add Loss Payee\")")
+        self.home_owners_loss_history_btn = self.page.get_by_role("button", name="Homeowners Loss History")
+        self.loading_screen = self.page.locator(".jss53")
 
 
     def fill_applicant_info(self, params: HomeOwnersApplicantInfoParams):
 
         self.credit_history_select.select_option(params.credit_history)
+        self.check_loading()
         self.arson_and_fraud_conviction_select.select_option(params.arson_and_fraud)
+        self.check_loading()
         self.bankruptcy_select.select_option(params.bankruptcy)
+        self.check_loading()
         self.foreclosure_select.select_option(params.foreclosure)
+        self.check_loading()
         self.child_support_select.select_option(params.child_support)
+        self.check_loading()
         self.repossessions_select.select_option(params.repossessions)
         
+        self.check_loading()
         self.new_purchase_select.select_option(params.new_purchase)
         self.year_purchased_input.fill(str(params.year_purchased))
         
-        self.prior_foreclosure_select.select_option(params.prior_foreclosure)
+        self.prior_foreclosure_select.select_option("No" if params.prior_foreclosure == "" else params.prior_foreclosure)
         
-        self.purchase_price_input.click()
-        self.purchase_price_input.fill(str(params.purchase_price))
+        self.check_loading()
+        self.purchase_price_input.fill("10" if str(params.purchase_price) == "" else str(params.purchase_price))
         
         self.prior_insurance_select.select_option(params.prior_insurance)
+        self.check_loading()
         self.prior_commonwealth_select.select_option(params.prior_commonwealth)
+        self.check_loading()
         
         self.prior_carrier_input.fill(params.prior_carrier)
         
@@ -68,10 +74,25 @@ class HomeOwnerApplicantInformationPage:
         self.prior_premium_input.fill(str(params.prior_premium))
         
         self.new_agency_select.select_option(params.new_agency)
+        self.check_loading()
         self.lapse_of_coverage_select.select_option(params.lapse_of_coverage)
+        self.check_loading()
         self.termination_at_companies_request_select.select_option(params.termination_at_companies_request)
+        self.check_loading()
         self.reason_for_termination_select.select_option(params.reason_for_termination)
+        self.check_loading()
         self.previous_wind_hail_select.select_option(params.previous_wind_hail)
 
-        self.page.pause()
+        self.check_loading()
+        expect(self.home_owners_loss_history_btn).to_be_visible()
+        expect(self.home_owners_loss_history_btn).to_be_enabled()
+        self.home_owners_loss_history_btn.click()
+
+
+    def check_loading(self):
+        try:
+            self.loading_screen.wait_for(state="visible", timeout=500)
+        except TimeoutError:
+            pass
+        self.loading_screen.wait_for(state="hidden")
         

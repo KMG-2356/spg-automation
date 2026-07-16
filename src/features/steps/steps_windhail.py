@@ -71,4 +71,4 @@ def when_user_generates_premium(page, test_data):
 @then('the generated premium should be saved to excel')
 def then_generated_premium_should_be_equal(page, test_data):
     print_your_quote_page = PrintYourQuotePage(page)
-    print_your_quote_page.save_premium(test_data)
+    print_your_quote_page.save_premium(test_data, "wh_output")

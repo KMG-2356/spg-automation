@@ -15,10 +15,16 @@ from page_objects.finance_quote_page import FinanceQuotePage
 from page_objects.print_your_quote_page import PrintYourQuotePage
 from page_objects.home_owners_dwelling_information_page import HomeOwnersDwellingInformationPage
 from page_objects.home_owners_applicant_information_page import HomeOwnerApplicantInformationPage
+from page_objects.home_owners_loss_history_page import HomeOwnersLossHistoryPage
+from page_objects.home_owner_coverages_page import HomeOwnersCoveragesPage
+from page_objects.home_owners_additional_questions_page import HomeOwnersAdditionalQuestionsPage
 from models.agency_info_params import AgencyInfoParams
 from models.insured_info_params import InsuredInfoParams
 from models.home_owners_dwelling_info_params import HomeOwnersDwellingInfoParams
 from models.home_owners_applicant_info_params import HomeOwnersApplicantInfoParams
+from models.home_owners_loss_history_params import HomeOwnersLossHistoryParams
+from models.home_owners_coverages_params import HomeOwnersCoveragesParams
+from models.home_owners_additional_question_params import HomeOwnersAdditionalQuestionsParams
 
 
 FEATURE_PATH = os.path.join(os.path.dirname(__file__), "..", "home_owners.feature")
@@ -48,6 +54,9 @@ def when_user_generates_premium(page, test_data):
     finance_quote_page = FinanceQuotePage(page)
     home_owners_dwelling_information_page = HomeOwnersDwellingInformationPage(page)
     home_owner_applicant_information_page = HomeOwnerApplicantInformationPage(page)
+    home_owner_loss_history_page = HomeOwnersLossHistoryPage(page)
+    home_owner_coverage_page = HomeOwnersCoveragesPage(page)
+    home_owner_additional_questions_page = HomeOwnersAdditionalQuestionsPage(page)
 
     agency_info = AgencyInfoParams(
         agency_name=test_data["Policy_Info"][0]["Agency Name"],
@@ -163,16 +172,6 @@ def when_user_generates_premium(page, test_data):
     )
 
     applicant_info = HomeOwnersApplicantInfoParams(
-        # --- Dwelling Info (Not present in the list, defaulted to empty strings) ---
-        protection_class="",
-        adequate_water="",
-        response_time="",
-        accessible_property="",
-        single_family="",
-        owner_occupied="",
-        dwelling_type="",
-        manufactured_home="",
-
         # --- Applicant Info ---
         credit_history=test_data["HO_Policy"][0]["Insured Credit History"],
         arson_and_fraud=test_data["HO_Policy"][0]["Any Arson / Fraud Convictions?"],
@@ -202,6 +201,43 @@ def when_user_generates_premium(page, test_data):
         previous_wind_hail=test_data["HO_Policy"][0]["Previous Wind / Hail Deductible"]
     )
 
+    loss_history_info = HomeOwnersLossHistoryParams(
+        open_claims=test_data["HO_LossHistory"][0]["Any Open Claims?"],
+        has_loss=test_data["HO_LossHistory"][0]["Any Losses in Past 5 Years?"],
+        unrepaired=test_data["HO_LossHistory"][0]["Unrepaired Damage from Prior Losses?"],
+        losses=test_data["HO_LossHistory"]
+    )
+
+    coverages_info = HomeOwnersCoveragesParams(
+        dwelling_value=str(test_data["HO_Coverages"][0]["Coverage A — Replacement Cost ($)"]),
+        
+        cov_b=str(test_data["HO_Coverages"][0]["Coverage B — Other Structures (% of Cov A)"]),
+        cov_c=str(test_data["HO_Coverages"][0]["Coverage C — Personal Property (% of Cov A)"]),
+        cov_d=str(test_data["HO_Coverages"][0]["Coverage D — Loss of Use (% of Cov A)"]),
+        
+        limit_of_liability=str(test_data["HO_Coverages"][0]["Coverage E — Limit of Liability"]),
+        med_pay=str(test_data["HO_Coverages"][0]["Coverage F — Increased Medical Payments"]),
+        
+        home_systems_protection=test_data["HO_Coverages"][0]["Home Systems Protection?"],
+        service_line=test_data["HO_Coverages"][0]["Service Line Coverage?"],
+        identity_theft=test_data["HO_Coverages"][0]["Identity Theft Recovery?"],
+        water_backup=str(test_data["HO_Coverages"][0]["Water Backup Coverage Limit"]),
+        replacement_cost_pp=test_data["HO_Coverages"][0]["Replacement Cost on Personal Property?"],
+        extended_repl_cost_dwell=test_data["HO_Coverages"][0]["Extended Replacement Cost — Dwelling?"],
+        special_comp_coverage=test_data["HO_Coverages"][0]["Special Computer Coverage?"]
+    )
+
+    additional_questions_info = HomeOwnersAdditionalQuestionsParams(
+        deadbolts=test_data["HO_Coverages"][0]["Deadbolts / Smoke Alarms / Fire Extinguishers?"],
+        central_fire=test_data["HO_Coverages"][0]["Central Station Fire & Smoke Alarms?"],
+        central_burglar=test_data["HO_Coverages"][0]["Central Station Burglar Alarms?"],
+        
+        deductible=str(test_data["HO_Coverages"][0]["Higher Deductible (AOP)"]),
+        roof_valuation_endt=test_data["HO_Coverages"][0]["Roof Valuation Endorsement"],
+        
+        additional_comments=test_data["HO_Coverages"][0]["Additional Comments"]
+    )
+
     home_page.click_new_quote_button()
     program_selection_page.select_personal_lines_LOB()
     personal_lines_basic_information_page.fill_personal_line_basic_information_form(test_data)
@@ -209,12 +245,13 @@ def when_user_generates_premium(page, test_data):
     insured_information_page.fill_insured_information_form_for_ho(insured_info)
     home_owners_dwelling_information_page.fill_home_owners_dwelling_information_form(dwelling_info, test_data)
     home_owner_applicant_information_page.fill_applicant_info(applicant_info)
-    # location_information_page.fill_location_information_form(test_data)
-    # additional_comments_page.fill_additional_comments(test_data)
-    # finance_quote_page.fill_finance_quote_form()
+    home_owner_loss_history_page.fill_loss_history(loss_history_info)
+    home_owner_coverage_page.fill_coverages_info(coverages_info)
+    home_owner_additional_questions_page.fill_additional_info_and_submit(additional_questions_info)
+    finance_quote_page.fill_finance_quote_form()
 
 
 @then('the generated premium should be saved to excel')
 def then_generated_premium_should_be_equal(page, test_data):
     print_your_quote_page = PrintYourQuotePage(page)
-    print_your_quote_page.save_premium(test_data)
+    print_your_quote_page.save_premium(test_data, "ho_output")

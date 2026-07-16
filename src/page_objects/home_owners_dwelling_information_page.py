@@ -64,7 +64,6 @@ class HomeOwnersDwellingInformationPage:
 
         # loss payee
         self.add_another_loss_payee_btn = self.page.get_by_role("button", name="Add Another Loss Payee")
-
         self.home_owner_applicant_information_btn = self.page.get_by_role("button", name="Homeowners Applicant")
 
     
@@ -179,22 +178,21 @@ class HomeOwnersDwellingInformationPage:
         self.check_loading()
         self.business_pursuits_select.select_option(params.business_pursuits)
         self.check_loading()
-        self.has_loss_payees_select.select_option(params.has_loss_payees)
-        self.check_loading()
 
-        self.update_years_electricty_years_input.fill(params.update_years_electricty_years)
-        self.update_years_heating_ac_years_input.fill(params.update_years_heating_ac_years)
-        self.update_years_plumbing_years_input.fill(params.update_years_plumbing_years)
-        self.update_years_has_aluminium_wiring_select.select_option(params.update_years_has_aluminium_wiring)
-        self.check_loading()
-        self.update_years_has_fuse_box_select.select_option(params.update_years_has_fuse_box)
-        self.check_loading()
-        self.update_years_has_knob_tube_select.select_option(params.update_years_has_knob_tube)
-        self.check_loading()
-        self.update_years_has_lead_plumbing_select.select_option(params.update_years_has_lead_plumbing)
-        self.check_loading()
-        self.update_years_updated_electrical_select.select_option(params.update_years_updated_electrical)
-        self.check_loading()
+        if self.update_years_electricty_years_input.is_visible():
+            self.update_years_electricty_years_input.fill(params.update_years_electricty_years)
+            self.update_years_heating_ac_years_input.fill(params.update_years_heating_ac_years)
+            self.update_years_plumbing_years_input.fill(params.update_years_plumbing_years)
+            self.update_years_has_aluminium_wiring_select.select_option(params.update_years_has_aluminium_wiring)
+            self.check_loading()
+            self.update_years_has_fuse_box_select.select_option(params.update_years_has_fuse_box)
+            self.check_loading()
+            self.update_years_has_knob_tube_select.select_option(params.update_years_has_knob_tube)
+            self.check_loading()
+            self.update_years_has_lead_plumbing_select.select_option(params.update_years_has_lead_plumbing)
+            self.check_loading()
+            self.update_years_updated_electrical_select.select_option(params.update_years_updated_electrical)
+            self.check_loading()
 
         self.has_loss_payees_select.select_option("Yes")
         self.check_loading()
@@ -211,7 +209,8 @@ class HomeOwnersDwellingInformationPage:
                 self.loss_payee_loan_number_input(i).fill(data["HO_LossPayees"][i]["Loan Number"])
                 self.loss_payee_are_mortgage_payments_current_select(i).select_option(data["HO_LossPayees"][i]["Mortgage Current?"])
             else:
-                pass
+                self.loss_payee_relationship_to_property_input(i).fill("N/A")
+                self.loss_payee_is_there_financial_interest_select(i).select_option("No")
             expect(self.add_another_loss_payee_btn).to_be_visible
             expect(self.add_another_loss_payee_btn).to_be_enabled
             if i+1 < params.loss_payees:
