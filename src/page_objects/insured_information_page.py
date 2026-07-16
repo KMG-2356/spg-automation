@@ -1,5 +1,5 @@
 import re
-from playwright.sync_api import Page, expect
+from playwright.sync_api import Page, expect, TimeoutError
 from models.insured_info_params import InsuredInfoParams
 
 class InsuredInformationPage:
@@ -8,12 +8,13 @@ class InsuredInformationPage:
         self.insured_name_input = self.page.locator("[id=\"insured.name\"]")
         self.insured_email_input = self.page.locator("[id=\"insured.email\"]")
         self.insured_phone_input = self.page.locator("[id=\"insured.phone\"]")
-        self.insured_street_address1_input = self.page.get_by_role("textbox").nth(3)
-        self.insured_street_address2_input = self.page.get_by_role("textbox").nth(4)
+        self.insured_dob_input = self.page.locator("[id=\"insured.owner_dob\"]")
+        self.insured_street_address1_input = self.page.locator(".MuiInputBase-input.MuiInput-input").first
+        self.insured_street_address2_input = self.page.locator("div:nth-child(2) > .MuiInputBase-root > .MuiInputBase-input")
         self.insured_city_input = self.page.get_by_role("textbox").nth(5)
         self.insured_state_selection = self.page.get_by_role("combobox").nth(1)
         self.insured_occupation_input = self.page.locator("[id=\"insured.occupation\"]")
-        self.insured_employer_input = self.page.locator("[id=\"insured.occupation\"]")
+        self.insured_employer_input = self.page.locator("[id=\"insured.employer\"]")
         self.type_of_entity_selection = self.page.locator("[id=\"insured.entity\"]")
         self.insured_zip_code_input = self.page.locator('div:has(> p:text("Zip")) input')
         self.location_information_btn = self.page.get_by_role("button", name="Monoline Wind Location")
@@ -63,17 +64,17 @@ class InsuredInformationPage:
 
 
     def fill_insured_information_form_for_ho(self, data: InsuredInfoParams):  
+        self.type_of_entity_selection.select_option(data.type_of_entity)
+        self.check_loading()
         self.insured_name_input.fill(data.insured_full_name)
-        self.insured_email_input.fill(data.insured_email)
-        self.insured_phone_input.fill(data.insured_phone)
-        self.insured_street_address1_input.fill(data.mailing_street1)
-        self.insured_street_address2_input.fill(data.mailing_street2)
-        self.insured_zip_code_input.fill(data.mailing_zip)
-        self.insured_city_input.fill(data.mailing_city)
-        self.insured_state_selection.select_option(data.mailing_state)
         self.insured_occupation_input.fill(data.insured_occupation)
         self.insured_employer_input.fill(data.insured_employer)
-        self.type_of_entity_selection.select_option(data.type_of_entity)
+        self.insured_email_input.fill(data.insured_email)
+        self.insured_phone_input.fill(data.insured_phone)
+        self.insured_dob_input.fill(data.insured_dob)
+        self.insured_street_address1_input.fill(data.insured_street1)
+        self.insured_street_address2_input.fill(data.insured_street2)
+        self.insured_zip_code_input.fill(data.insured_address_zip)       
         self.check_loading()
 
 
@@ -95,6 +96,7 @@ class InsuredInformationPage:
             self.mailing_street_address2_input.fill(data.diff_mailing_street2)
             self.mailing_city_input.fill(data.diff_mailing_city)
             self.mailing_state_select.select_option(data.diff_mailing_state)
+            self.check_loading()
         
         if self.trustee_full_name.is_visible():
             self.trustee_full_name.fill(data.trustee_full_name)
@@ -102,9 +104,9 @@ class InsuredInformationPage:
             self.trustee_street_address2.fill(data.trustee_street_address2)
             self.trustee_street_zip.fill(data.trustee_street_zip)
             self.trustee_state.select_option(data.trustee_state)
+            self.check_loading()
             self.trustee_city.fill(data.trustee_city)
 
-        self.page.pause()
         
         expect(self.home_owners_dwelling_information_btn).to_be_visible()
         expect(self.home_owners_dwelling_information_btn).to_be_enabled()

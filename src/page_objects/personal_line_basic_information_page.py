@@ -19,7 +19,7 @@ class PersonalLinesBasicInformationPage:
         self.assistant_select.select_option("120") # Ashley O Neal
         self.is_this_a_renewal_select.select_option("no")
         self.generate_new_application_select.select_option("yes")
-        self.effective_date_input.fill(str(data["01_Policy_Info"][0]["Effective Date"]))
+        self.effective_date_input.fill(str(data["Policy_Info"][0]["Effective Date"]))
         self.homeowners_lob_radio.click()
         expect(self.agency_information_btn).to_be_visible()
         expect(self.agency_information_btn).to_be_enabled()
