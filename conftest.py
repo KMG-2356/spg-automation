@@ -15,3 +15,9 @@ def pytest_addoption(parser):
         type=int, 
         help="Limit the total execution to the first N test cases found in Excel"
     )
+    parser.addoption(
+        "--feature-file",
+        action="append",
+        default=[],
+        help="Run only scenarios whose feature file name or path contains the given text. Repeat or use comma-separated values."
+    )
