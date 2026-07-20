@@ -9,3 +9,4 @@ pandas
 openpyxl
 dotenv
 pytest-rerunfailures
+filelock

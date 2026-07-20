@@ -83,6 +83,8 @@ def when_user_generates_premium(page, test_data):
         insured_street1=test_data["Policy_Info"][0]["Insured Address Street 1"],
         insured_street2=test_data["Policy_Info"][0]["Insured Address Street 2"],
         insured_address_zip=test_data["Policy_Info"][0]["Insured Address ZIP"],
+        insured_city=test_data["Policy_Info"][0]["Insured Address City"],
+        insured_state=test_data["Policy_Info"][0]["Insured Address State"],
         mailing_street1=test_data["Policy_Info"][0]["Mailing Street 1"],
         mailing_street2=test_data["Policy_Info"][0]["Mailing Street 2"],
         mailing_zip=str(test_data["Policy_Info"][0]["Mailing ZIP"]),
@@ -125,6 +127,10 @@ def when_user_generates_premium(page, test_data):
         renovation_or_construction=test_data["HO_Dwelling"][0]["Is Dwelling Undergoing Renovation?"],
         type_of_construction=test_data["HO_Dwelling"][0]["Type of Siding Material"],
         type_of_foundation=test_data["HO_Dwelling"][0]["Type of Foundation"],
+        is_dwelling_lot_owned_select=test_data["HO_Dwelling"][0],
+        is_dwelling_single_wide_select=test_data["HO_Dwelling"][0],
+        is_dwelling_trailer_park_select=test_data["HO_Dwelling"][0],
+        is_dwelling_rented=test_data["HO_Dwelling"][0]["Is Dwelling Rented to Others?"],
         
         # Utilities & Plumbing
         central_heating=test_data["HO_Dwelling"][0]["Central Heating by Licensed Professional?"],
@@ -254,4 +260,4 @@ def when_user_generates_premium(page, test_data):
 @then('the generated premium should be saved to excel')
 def then_generated_premium_should_be_equal(page, test_data):
     print_your_quote_page = PrintYourQuotePage(page)
-    print_your_quote_page.save_premium(test_data, "ho_output")
+    print_your_quote_page.save_premium(test_data, "ho_output", "Policy_Info")

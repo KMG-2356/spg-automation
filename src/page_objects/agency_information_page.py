@@ -1,4 +1,4 @@
-from playwright.sync_api import Page, expect
+from playwright.sync_api import Page, expect, TimeoutError
 from utils.helpers import to_float, get_num
 from models.agency_info_params import AgencyInfoParams
 
@@ -19,6 +19,7 @@ class AgencyInformationPage:
         self.state_select = self.page.get_by_role("combobox").first
         self.zip_code_input = self.page.locator(".MuiFormControl-root.MuiTextField-root.jss104 > .MuiInputBase-root > .MuiInputBase-input")
         self.insured_information_btn = self.page.get_by_role("button", name="Insured Information")
+        self.loading_screen = self.page.locator(".jss53")
 
 
     # def fill_agency_information_form(self, data):
@@ -46,10 +47,18 @@ class AgencyInformationPage:
         self.phone_number_input.fill(params.agent_phone)
         self.fax_number_input.fill(params.agent_fax)
         self.agent_commission_select.select_option(to_float(get_num(params.agent_commission)))
+        self.zip_code_input.fill(params.zip_code)
+        self.check_loading()
         self.street_address1_input.fill(params.address_street1)
         self.street_address2_input.fill(params.address_street2)
         self.city_input.fill(params.city)
         self.state_select.select_option(params.state)
-        self.zip_code_input.fill(params.zip_code)
         self.insured_information_btn.click()
+
+    def check_loading(self):
+        try:
+            self.loading_screen.wait_for(state="visible", timeout=500)
+        except TimeoutError:
+            pass
+        self.loading_screen.wait_for(state="hidden")
     

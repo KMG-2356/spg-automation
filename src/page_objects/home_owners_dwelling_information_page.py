@@ -1,6 +1,7 @@
 import random
 from playwright.sync_api import Page, expect, TimeoutError
 from models.home_owners_dwelling_info_params import HomeOwnersDwellingInfoParams
+from utils.helpers import write_excel_cell
 
 class HomeOwnersDwellingInformationPage:
     def __init__(self, page: Page):
@@ -15,6 +16,7 @@ class HomeOwnersDwellingInformationPage:
         self.owner_occupied_select = self.page.locator("[id=\"ho.dwelling.owner_occupied\"]")
         self.dwelling_type_select = self.page.locator("[id=\"ho.dwelling.dwelling_type\"]")
         self.manufactured_home_select = self.page.locator("[id=\"ho.dwelling.manufactured_home\"]")
+        self.is_dwelling_rented_select = self.page.locator("[id=\"ho.dwelling.dwelling_rented\"]")
         
         # Numeric Inputs & Details
         self.stories_input = self.page.locator("[id=\"ho.dwelling.stories\"]")
@@ -26,7 +28,12 @@ class HomeOwnersDwellingInformationPage:
         self.existing_damage_select = self.page.locator("[id=\"ho.dwelling.existing_damage\"]")
         self.renovation_or_construction_select = self.page.locator("[id=\"ho.dwelling.renovation_or_construction\"]")
         self.type_of_construction_select = self.page.locator("[id=\"ho.dwelling.type_of_construction\"]")
+        self.type_of_construction_mo_select = self.page.locator("[id=\"ho.dwelling.mobile_type_of_construction\"]")
         self.type_of_foundation_select = self.page.locator("[id=\"ho.dwelling.type_of_foundation\"]")
+        self.is_dwelling_single_wide_select = self.page.locator("[id=\"ho.dwelling.single_wide\"]")
+        self.is_dwelling_trailer_park_select = self.page.locator("[id=\"ho.dwelling.trailer_park\"]")
+        self.is_dwelling_lot_owned_select = self.page.locator("[id=\"ho.dwelling.owned_lot\"]")
+        self.is_dwelling_visible_to_neighbours_select = self.page.locator("[id=\"ho.dwelling.visible\"]")
         
         # Utilities & Plumbing
         self.central_heating_select = self.page.locator("[id=\"ho.dwelling.central_heating\"]")
@@ -124,6 +131,9 @@ class HomeOwnersDwellingInformationPage:
         self.manufactured_home_select.select_option(params.manufactured_home)
         self.check_loading()
 
+        if self.is_dwelling_visible_to_neighbours_select.is_visible():
+            self.is_dwelling_visible_to_neighbours_select.select_option("yes")
+
         self.stories_input.fill(params.stories)
         self.year_built_input.fill(params.year_built)
 
@@ -133,10 +143,25 @@ class HomeOwnersDwellingInformationPage:
         self.check_loading()
         self.renovation_or_construction_select.select_option(params.renovation_or_construction)
         self.check_loading()
-        self.type_of_construction_select.select_option(HomeOwnersDwellingInformationPage.get_construction_type(params.manufactured_home))
+        if self.type_of_construction_select.is_visible():
+            self.type_of_construction_select.select_option(HomeOwnersDwellingInformationPage.get_construction_type(params.manufactured_home))
+        if self.type_of_construction_mo_select.is_visible():
+            self.type_of_construction_mo_select.select_option(HomeOwnersDwellingInformationPage.get_construction_type(params.manufactured_home))
+        # write_excel_cell("src/data/output/ho_output.xlsx", "Output", row_value=data["Policy_Info"][0]["Test ID"], column_name="Temporary Field 1", data=f"type of construction: {HomeOwnersDwellingInformationPage.get_construction_type(params.manufactured_home)}")
         self.check_loading()
         self.type_of_foundation_select.select_option(HomeOwnersDwellingInformationPage.get_masonry_type(params.type_of_foundation))
+        # write_excel_cell("src/data/output/ho_output.xlsx", "Output", row_value=data["Policy_Info"][0]["Test ID"], column_name="Temporary Field 2", data=f"type of construction: {HomeOwnersDwellingInformationPage.get_masonry_type(params.type_of_foundation)}")
         self.check_loading()
+
+        if self.is_dwelling_rented_select.is_visible():
+            self.is_dwelling_rented_select.select_option(params.is_dwelling_rented)
+
+        if self.is_dwelling_single_wide_select.is_visible():
+            self.is_dwelling_single_wide_select.select_option("Yes")
+        if self.is_dwelling_lot_owned_select.is_visible():
+            self.is_dwelling_lot_owned_select.select_option("Yes")
+        if self.is_dwelling_trailer_park_select.is_visible():
+            self.is_dwelling_trailer_park_select.select_option("Yes")
 
         self.dwelling_area_input.fill(params.dwelling_area)
 
@@ -203,6 +228,8 @@ class HomeOwnersDwellingInformationPage:
             self.loss_payee_street_address1_input(i).fill(data["HO_LossPayees"][i]["Street 1"])
             self.loss_payee_street_address2_input(i).fill(data["HO_LossPayees"][i]["Street 2"])
             self.loss_payee_zip_input(i).fill(data["HO_LossPayees"][i]["ZIP"])
+            self.loss_payee_city_input(i).fill(data["HO_LossPayees"][i]["City"])
+            self.loss_payee_state_select(i).select_option(data["HO_LossPayees"][i]["State"])
             self.check_loading()
             self.loss_payee_mortgagee_select(i).select_option(data["HO_LossPayees"][i]["Is Mortgagee?"])
             if data["HO_LossPayees"][i]["Is Mortgagee?"] == "Yes":
