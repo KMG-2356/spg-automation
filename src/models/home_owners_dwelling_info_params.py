@@ -20,6 +20,10 @@ class HomeOwnersDwellingInfoParams:
     renovation_or_construction: str = ""
     type_of_construction: str = ""
     type_of_foundation: str = ""
+    is_dwelling_single_wide_select: str = ""
+    is_dwelling_lot_owned_select: str = ""
+    is_dwelling_trailer_park_select: str = ""
+    is_dwelling_rented: str = ""
     
     central_heating: str = ""
     wood_burning_stove: str = ""

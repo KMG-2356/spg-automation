@@ -11,6 +11,8 @@ class InsuredInfoParams:
     insured_street1: str = ""
     insured_street2: str = ""
     insured_address_zip: str = ""
+    insured_city: str = ""
+    insured_state: str = ""
     mailing_street1: str = ""
     mailing_street2: str = ""
     mailing_zip: str = ""

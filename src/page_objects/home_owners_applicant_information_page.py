@@ -64,26 +64,22 @@ class HomeOwnerApplicantInformationPage:
         
         self.prior_insurance_select.select_option(params.prior_insurance)
         self.check_loading()
-        self.prior_commonwealth_select.select_option(params.prior_commonwealth)
-        self.check_loading()
-        
-        self.prior_carrier_input.fill(params.prior_carrier)
-        
-        self.previous_expiration_input.fill(params.previous_expiration)
-        
-        self.prior_premium_input.fill(str(params.prior_premium))
-        
-        self.new_agency_select.select_option(params.new_agency)
-        self.check_loading()
-        self.lapse_of_coverage_select.select_option(params.lapse_of_coverage)
-        self.check_loading()
-        self.termination_at_companies_request_select.select_option(params.termination_at_companies_request)
-        self.check_loading()
-        self.reason_for_termination_select.select_option(params.reason_for_termination)
-        self.check_loading()
-        self.previous_wind_hail_select.select_option(params.previous_wind_hail)
-
-        self.check_loading()
+        if self.prior_commonwealth_select.is_visible():
+            self.prior_commonwealth_select.select_option(params.prior_commonwealth)
+            self.check_loading()
+            self.prior_carrier_input.fill(params.prior_carrier)
+            self.previous_expiration_input.fill(params.previous_expiration)
+            self.prior_premium_input.fill(str(params.prior_premium))
+            self.new_agency_select.select_option(params.new_agency)
+            self.check_loading()
+            self.lapse_of_coverage_select.select_option(params.lapse_of_coverage)
+            self.check_loading()
+            self.termination_at_companies_request_select.select_option(params.termination_at_companies_request)
+            self.check_loading()
+            self.reason_for_termination_select.select_option(params.reason_for_termination)
+            self.check_loading()
+            self.previous_wind_hail_select.select_option(params.previous_wind_hail)
+            self.check_loading()
         expect(self.home_owners_loss_history_btn).to_be_visible()
         expect(self.home_owners_loss_history_btn).to_be_enabled()
         self.home_owners_loss_history_btn.click()

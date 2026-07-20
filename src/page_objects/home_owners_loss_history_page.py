@@ -16,13 +16,13 @@ class HomeOwnersLossHistoryPage:
         return self.page.locator(f"[id=\"ho.loss_history.losses.{i}.loss_date\"]")
 
     def loss_type_select(self, i: int):
-        return self.page.locator(f"div:has(input[id*=\"losses.{i}\"])").get_by_role("combobox")
+        return self.page.locator(f"[id=\"ho.loss_history.losses.{i}.type\"]")
 
     def loss_details_input(self, i: int):
-        return self.page.locator(f"div:has(input[id*=\"losses.{i}\"])").get_by_role("textbox", name="Details *Required", exact=True)
+        return self.page.locator(f"[id=\"ho.loss_history.losses.{i}.details\"]")
 
     def loss_amount_input(self, i: int):
-        return self.page.locator(f"div:has(input[id*=\"losses.{i}\"])").get_by_role("textbox", name="Amount *Required", exact=True)
+        return self.page.locator(f"[id=\"ho.loss_history.losses.{i}.amount\"]")
 
     def fill_loss_history(self, params: HomeOwnersLossHistoryParams):
 
@@ -30,17 +30,20 @@ class HomeOwnersLossHistoryPage:
         self.check_loading()
         self.has_loss_select.select_option(params.has_loss)
         self.check_loading()
-        self.unrepaired_select.select_option(params.unrepaired)
-        self.check_loading()
+        if self.unrepaired_select.is_visible():
+            self.unrepaired_select.select_option(params.unrepaired)
+            self.check_loading()
 
-        for i, loss in enumerate(params.losses):
-            if i > 0:
-                self.add_another_loss_btn.click()
+        if params.has_loss == "Yes":
+            for i, loss in enumerate(params.losses):
+                print(f"Loss Object: {loss}")
+                if i > 0:
+                    self.add_another_loss_btn.click()
 
-            self.loss_date_input(i).fill(loss.loss_date)
-            self.loss_type_select(i).select_option(loss.loss_type)
-            self.loss_details_input(i).fill(loss.loss_details)
-            self.loss_amount_input(i).fill(loss.loss_amount)
+                self.loss_date_input(i).fill(loss["Loss Date"])
+                self.loss_type_select(i).select_option(loss["Type of Loss"])
+                self.loss_details_input(i).fill(loss["Details"])
+                self.loss_amount_input(i).fill(loss["Amount ($)"])
 
         expect(self.home_owners_coverages_btn).to_be_visible()
         expect(self.home_owners_coverages_btn).to_be_enabled()
