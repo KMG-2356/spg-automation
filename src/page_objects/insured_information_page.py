@@ -15,6 +15,11 @@ class InsuredInformationPage:
         self.insured_state_selection = self.page.locator("div").filter(has_text="State").locator("select").nth(1)
         self.insured_occupation_input = self.page.locator("[id=\"insured.occupation\"]")
         self.insured_employer_input = self.page.locator("[id=\"insured.employer\"]")
+        self.coverage_street_address1_input = self.page.locator("div", has_text="Coverage Address").locator(".MuiFormControl-root", has_text="Street Address 1").locator("input").nth(1)
+        self.coverage_street_address2_input = self.page.locator("div", has_text="Coverage Address").locator(".MuiFormControl-root", has_text="Street Address 2").locator("input").nth(1)
+        self.coverage_city_input = self.page.locator("div", has_text="Coverage Address").locator(".MuiFormControl-root", has_text="city").locator("input").nth(1)
+        self.coverage_zip_input = self.page.locator("div", has_text="Coverage Address").locator(".MuiFormControl-root", has_text="zip").locator("input").nth(1)
+        self.coverage_state_select = self.page.locator("div", has_text="Coverage Address").locator(".MuiFormControl-root", has_text="state").locator("select").nth(2)
         self.type_of_entity_selection = self.page.locator("[id=\"insured.entity\"]")
         self.estate_manager_name_input = self.page.locator("[id=\"insured.estate_name\"]")
         self.estate_manager_dob_input = self.page.locator("[id=\"insured.estate_dob\"]")
@@ -38,7 +43,11 @@ class InsuredInformationPage:
         self.mailing_city_input = self.page.locator("div", has_text="Mailing Address").locator(".MuiFormControl-root", has_text="City").locator("input").nth(1)
         self.mailing_state_select = self.page.get_by_role("combobox").nth(3)
         self.mailing_zip_input = self.page.locator("div", has_text="Street Address of Residence to be insured").locator(".MuiFormControl-root", has_text="Zip").locator("input").nth(1)
+        self.IM_mailing_zip_input = self.page.locator("div", has_text="Mailing Address").locator(".MuiFormControl-root", has_text="Zip").locator("input").nth(0)
+        self.IM_mailing_state_input = self.page.locator("div", has_text="Mailing Address").locator(".MuiFormControl-root", has_text="State").locator("select").nth(1)
+        self.IM_mailing_street_address1_input = self.page.locator("div", has_text="Mailing Address").locator(".MuiFormControl-root", has_text="Street Address 1").locator("input").nth(0)
         self.home_owners_dwelling_information_btn = self.page.get_by_role("button", name="Homeowners Dwelling")
+        self.inland_marine_btn = self.page.get_by_role("button", name="Inland Marine")
         self.loading_screen = self.page.locator(".jss53")
         
     def fill_insured_information_form(self,data):
@@ -124,6 +133,44 @@ class InsuredInformationPage:
         self.home_owners_dwelling_information_btn.click()
 
 
+    def fill_insured_information_form_for_IM(self, data: InsuredInfoParams):
+        self.type_of_entity_selection.select_option(data.type_of_entity)
+        self.check_loading()
+        self.insured_name_input.fill(data.insured_full_name)
+        self.insured_email_input.fill(data.insured_email)
+        self.insured_phone_input.fill(data.insured_phone)
+
+        if data.mailing_address_different == "No":
+            self.IM_mailing_zip_input.fill(data.coverage_zip) 
+            self.check_loading 
+            self.IM_mailing_street_address1_input.fill(data.coverage_street_address1)
+            self.check_loading()
+        else:
+            self.IM_mailing_zip_input.fill(data.mailing_zip) 
+            self.check_loading 
+            self.IM_mailing_street_address1_input.fill(data.mailing_street1)
+            self.check_loading()
+
+        self.coverage_street_address1_input.fill(data.coverage_street_address1)
+        self.coverage_street_address2_input.fill(data.coverage_street_address2)
+        self.coverage_zip_input.fill(data.coverage_zip)
+        self.check_loading()
+        self.coverage_city_input.fill(data.coverage_city)
+        self.coverage_state_select.select_option(data.coverage_state)
+        self.check_loading()
+
+        if self.trustee_full_name.is_visible():
+            self.trustee_full_name.fill(data.trustee_full_name)
+            self.trustee_street_address1.fill(data.trustee_street_address1)
+            self.trustee_street_address2.fill(data.trustee_street_address2)
+            self.trustee_street_zip.fill(data.trustee_street_zip)
+            # self.trustee_state.select_option(data.trustee_state)
+            self.check_loading()
+            # self.trustee_city.fill(data.trustee_city)
+
+        expect(self.inland_marine_btn).to_be_visible()
+        expect(self.inland_marine_btn).to_be_enabled()
+        self.inland_marine_btn.click()
 
     def check_loading(self):
         try:

@@ -18,6 +18,11 @@ class InsuredInfoParams:
     mailing_zip: str = ""
     mailing_city: str = ""
     mailing_state: str = ""
+    coverage_street_address1: str = ""
+    coverage_street_address2: str = ""
+    coverage_city: str = ""
+    coverage_zip: str = ""
+    coverage_state: str = ""
     type_of_entity: str = ""
     
     additional_resident_or_spouse: str = ""
