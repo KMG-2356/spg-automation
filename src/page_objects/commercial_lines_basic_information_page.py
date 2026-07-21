@@ -7,6 +7,13 @@ class CommercialLinesBasicInformationPage:
         self.commercial_lines_basic_information_heading = self.page.get_by_role("heading", name="    Commercial Lines")
         self.underwriter_select = self.page.locator("[id=\"basics.assignments.underwriter\"]")
         self.assistant_select = self.page.locator("[id=\"basics.assignments.assistant\"]")
+        self.property_coverage_lob_btn = self.page.get_by_text("Property Coverage")
+        self.general_liability_coverage_lob_btn = self.page.get_by_text("General Liability Coverage")
+        self.cargo_coverage_lob_btn = self.page.get_by_text("Cargo Coverage")
+        self.physical_damage_coverage_lob_btn = self.page.get_by_text("Physical Damage Coverage")
+        self.inland_marine_coverage_lob_btn = self.page.get_by_text("Inland Marine Coverage")
+        self.terrorism_coverage_lob_btn = self.page.get_by_text("Terrorism Coverage")
+        self.home_health_care_agencies_instant_quote_general_liability_and_professional_liability_package_lob_btn = self.page.get_by_text("Home Health Care Agencies")
         self.is_this_a_renewal_select = self.page.locator("[id=\"basics.renewal.is_renewal\"]")
         self.generate_new_application_select = self.page.locator("[id=\"basics.renewal.app_required\"]")
         self.agency_information_btn = self.page.get_by_role("button", name="Agency Information")
@@ -17,6 +24,17 @@ class CommercialLinesBasicInformationPage:
         self.assistant_select.select_option("120") # Ashley O Neal
         self.is_this_a_renewal_select.select_option("no")
         self.generate_new_application_select.select_option("yes")
+        expect(self.agency_information_btn).to_be_visible()
+        expect(self.agency_information_btn).to_be_enabled()
+        self.agency_information_btn.click()
+
+    def fill_commercial_line_basic_information_IM_form(self):
+        expect(self.commercial_lines_basic_information_heading).to_be_visible()
+        self.underwriter_select.select_option("49") # Amy Nelson
+        self.assistant_select.select_option("120") # Ashley O Neal
+        self.is_this_a_renewal_select.select_option("no")
+        self.generate_new_application_select.select_option("yes")
+        self.inland_marine_coverage_lob_btn.click()
         expect(self.agency_information_btn).to_be_visible()
         expect(self.agency_information_btn).to_be_enabled()
         self.agency_information_btn.click()
