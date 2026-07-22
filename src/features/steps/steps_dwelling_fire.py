@@ -109,7 +109,7 @@ def when_user_generates_premium(page, test_data):
         any_open_claims=test_data["DF_LossHistory"][0]["Any Open Claims?"],
         has_loss=test_data["DF_LossHistory"][0]["Any Losses in Past 5 Years?"],
         unrepairedDamage=test_data["DF_LossHistory"][0]["Unrepaired Damage from Prior Losses?"],
-        losses=test_data["HO_LossHistory"]
+        losses=test_data["DF_LossHistory"]
     )
 
     applicant_info = DFapplicantInfoParams(
@@ -154,11 +154,11 @@ def when_user_generates_premium(page, test_data):
 
     home_page.click_new_quote_button()
     program_selection_page.select_personal_lines_LOB()
-    personal_lines_basic_information_page.fill_personal_line_basic_information_form(test_data)
+    personal_lines_basic_information_page.fill_personal_line_basic_information_form_df(test_data)
     agency_information_page.fill_agency_information_form(agency_info)
     insured_information_page.fill_DF_insured_info(insured_info)
-    location_information_page.fill_df_location_information(location_info)
-    df_loss_payee_page.fill_df_loss_payee_information(loss_payee_info)
+    location_information_page.fill_df_location_information(location_info, loss_payee_info)
+    # df_loss_payee_page.fill_df_loss_payee_information(loss_payee_info)
     df_applicant_info_page.fill_applicant_info(applicant_info)
     df_loss_history_page.fill_loss_history(loss_history_info)
     df_coverage_page.fill_DFcoverages_info(coverages_info)
@@ -169,4 +169,4 @@ def when_user_generates_premium(page, test_data):
 @then('the generated premium should be saved to excel')
 def then_generated_premium_should_be_equal(page, test_data):
     print_your_quote_page = PrintYourQuotePage(page)
-    print_your_quote_page.save_premium(test_data, "ho_output")
+    print_your_quote_page.save_premium(test_data, "df_output", "Policy_Info")
