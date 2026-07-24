@@ -8,7 +8,7 @@ class PrintYourQuotePage:
         self.total_fee_text = self.page.get_by_text("Total Fees: $")
         self.grand_total_text = self.page.get_by_text("Grand Total: $")
         self.total_tax_text = self.page.get_by_text("Total Tax: $")
-        self.quote_number_text = self.page.get_by_text("#")
+        self.quote_number_text = self.page.locator("span.jss44")
 
     def save_premium(self, data, output_filename, sheet_name: str):
         grand_total = get_num(self.grand_total_text.inner_text())

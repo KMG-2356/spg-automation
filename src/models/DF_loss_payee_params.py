@@ -13,4 +13,4 @@ class DFlossPayeeParams:
     loan_number: str = ""
     is_mortgage_current: str = ""
    
-    loss_payee:Any = None
+    loss_payee: Any = None

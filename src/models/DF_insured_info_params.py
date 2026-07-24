@@ -19,3 +19,13 @@ class DFinsuredInfoParams:
     insured_address_city: str = ""
     insured_address_state: str = ""
     insured_address_zip: str = ""
+
+    trustee_full_name: str = "Megan Carter"
+    trustee_street_address1: str = "1200 W Broad St"
+    trustee_street_address2: str = "Suite 410"
+    trustee_street_zip: str = "85004"
+    trustee_state: str = "AZ"
+    trustee_city: str = "Phoenix"
+
+    estate_manager_name: str = "Monica Reyes"
+    estate_manager_dob: str = "12/30/1985"

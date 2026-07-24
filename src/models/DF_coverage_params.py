@@ -9,3 +9,12 @@ class DFcoverageParams:
     Home_Systems_Protection: str = ""
     Service_Line_Coverage: str = ""
     Identity_Theft_Coverage: str = ""
+
+    def __post_init__(self):
+        for field in self.__dataclass_fields__:
+            value = getattr(self, field)
+            
+            if isinstance(value, str) and not value.strip():
+                setattr(self, field, "N/A")
+            elif value is None:
+                setattr(self, field, "N/A")

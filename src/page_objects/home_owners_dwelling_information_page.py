@@ -222,7 +222,6 @@ class HomeOwnersDwellingInformationPage:
         self.has_loss_payees_select.select_option("Yes")
         self.check_loading()
 
-        print(f"Payess: {params.loss_payees}: Len: {params.loss_payees}")
         for i in range(0, params.loss_payees):
             self.loss_payee_full_name_input(i).fill(data["HO_LossPayees"][i]["Full Name"])
             self.loss_payee_street_address1_input(i).fill(data["HO_LossPayees"][i]["Street 1"])
