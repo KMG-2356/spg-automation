@@ -15,7 +15,12 @@ class ProgramSelectionPage:
         expect(self.program_selection_heading).to_be_visible()
         self.monoline_wind_LOB_btn.click()
         self.commercial_lines_basic_information_btn.click()
-
+    def select_commercial_lines_LOB(self):
+        expect(self.program_selection_heading).to_be_visible()
+        self.commercial_lines_LOB_btn.click()
+        expect(self.commercial_lines_basic_information_btn).to_be_visible()
+        expect(self.commercial_lines_basic_information_btn).to_be_enabled()
+        self.commercial_lines_basic_information_btn.click()
     def select_personal_lines_LOB(self):
         expect(self.program_selection_heading).to_be_visible()
         self.personal_lines_LOB_btn.click()
