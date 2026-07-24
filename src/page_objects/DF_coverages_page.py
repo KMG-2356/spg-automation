@@ -28,7 +28,7 @@ class DFCoveragesPage:
         self.LossofRentsCoverageD_select.select_option(params.Loss_of_Rents_CoverageD)
         self.check_loading()
         self.OwnersContentsCoverageC_select.select_option(params.Owners_Contents_CoverageC)
-        self.check_loading()         
+        self.check_loading()
         self.OwnersContentsBurglaryCoverage_select.select_option(params.Owners_Contents_Burglary_Coverage)
         self.check_loading()
         self.HomeSystemsProtection_select.select_option(params.Home_Systems_Protection)
@@ -46,7 +46,7 @@ class DFCoveragesPage:
         # self.RoofValuationEndorsement_select.select_option(params.RoofValuationEndorsement)
         # self.check_loading()
         # self.additional_comments_input.select_option(params.AdditionalComments)
-        self.check_loading()
+        # self.check_loading()
 
         expect(self.DF_addition_questions_btn).to_be_visible()
         expect(self.DF_addition_questions_btn).to_be_enabled()

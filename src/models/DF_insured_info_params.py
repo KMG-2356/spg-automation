@@ -26,3 +26,6 @@ class DFinsuredInfoParams:
     trustee_street_zip: str = "85004"
     trustee_state: str = "AZ"
     trustee_city: str = "Phoenix"
+
+    estate_manager_name: str = "Monica Reyes"
+    estate_manager_dob: str = "12/30/1985"

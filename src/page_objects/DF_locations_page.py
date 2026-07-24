@@ -99,11 +99,11 @@ class DFLocationPage:
         return self.page.locator(f"[id=\"df.locations.{i}.df_purchase_price\"]")
     def square_footage_input(self, i):
         return self.page.locator(f"[id=\"df.locations.{i}.df_area\"]")
-    def single_wide_home(self, i):
-        return self.page.locator(f"[id=\"df.locations.{i}.df_type_of_construction\"]")
-    def located_in_mobile_park(self, i):
+    def single_wide_home_select(self, i):
+        return self.page.locator(f"[id=\"df.locations.{i}.df_single_wide\"]")
+    def located_in_mobile_park_select(self, i):
         return self.page.locator(f"[id=\"df.locations.{i}.df_trailer_park\"]")
-    def lot_owned(self, i):
+    def lot_owned_select(self, i):
         return self.page.locator(f"[id=\"df.locations.{i}.df_owned_lot\"]")
     def electricity_year_input(self, i):
         return self.page.locator(f"[id=\"df.locations.{i}.df_electricity_year\"]")
@@ -206,6 +206,10 @@ class DFLocationPage:
             self.check_loading()
             self.central_heating_selection(i).select_option(params.locations[i]["Central Heating by Licensed Professional?"])
             self.check_loading()
+            if self.single_wide_home_select(i).is_visible():
+                self.single_wide_home_select(i).select_option(params.single_wide_home)
+                self.located_in_mobile_park_select(i).select_option(params.located_in_mobile_park)
+                self.lot_owned_select(i).select_option(params.lot_owned)
             if self.is_wood_burning_stove_selection(i).is_visible():
                 self.is_wood_burning_stove_selection(i).select_option(params.locations[i]["Wood Burning Stove?"]) 
             self.check_loading()
@@ -281,9 +285,9 @@ class DFLocationPage:
                 self.is_loss_payee_mortgage_selection(i, j).select_option(loss_p["Is Mortgagee?"])
                 self.check_loading()
                 if self.loss_payee_loan_number_input(i, j).is_visible():
-                    self.loss_payee_loan_number_input(i,j).fill(loss_p["Loan Number"])
+                    self.loss_payee_loan_number_input(i,j).fill("N/A" if loss_p["Loan Number"] == "" else loss_p["Loan Number"])
                 if self.loss_payee_is_mortgage_current_selection(i,j).is_visible():
-                    self.loss_payee_is_mortgage_current_selection(i,j).select_option(loss_p["Mortgage Current?"])
+                    self.loss_payee_is_mortgage_current_selection(i,j).select_option("No" if loss_p["Mortgage Current?"] == "" else loss_p["Mortgage Current?"])
                 if self.loss_payee_relationship_to_property_input(i,j).is_visible():
                     self.loss_payee_relationship_to_property_input(i,j).fill("N/A")
                 if self.loss_payee_financial_interest_select(i,j).is_visible():

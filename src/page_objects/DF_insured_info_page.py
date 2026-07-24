@@ -21,12 +21,14 @@ class DFInsuredInformationPage:
         self.insured_city_input = self.page.locator(".MuiFormControl-root.MuiTextField-root.jss170 > .MuiInputBase-root > .MuiInputBase-input")
         self.insured_state_select = self.page.get_by_role("combobox").nth(1)
         self.insured_zip_input = self.page.locator(".MuiFormControl-root.MuiTextField-root.jss172 > .MuiInputBase-root > .MuiInputBase-input")
+        self.estate_manager_name_input = self.page.locator("[id=\"insured.estate_name\"]")
+        self.estate_manager_dob_input = self.page.locator("[id=\"insured.estate_dob\"]")
         self.trustee_full_name = self.page.locator("[id=\"insured.trustee.name\"]")
         self.trustee_street_address1 = self.page.locator("div:nth-child(2) > .jss94 > .jss97 > div > .MuiInputBase-root > .MuiInputBase-input").first
         self.trustee_street_address2 = self.page.locator("div:nth-child(2) > .jss94 > .jss97 > div:nth-child(2) > .MuiInputBase-root > .MuiInputBase-input")
         self.trustee_street_zip = self.page.locator("div:nth-child(2) > .jss94 > .jss97 > .MuiFormControl-root.MuiTextField-root.jss104 > .MuiInputBase-root > .MuiInputBase-input")
         self.trustee_city = self.page.locator("div:nth-child(2) > .jss94 > .jss97 > .MuiFormControl-root.MuiTextField-root.jss102 > .MuiInputBase-root > .MuiInputBase-input")
-        self.trustee_state = self.page.get_by_role("combobox").nth(2)
+        self.trustee_state = self.page.locator(".jss97").nth(1).locator("select")
         self.mailing_street_address1_input = self.page.locator("div", has_text="Mailing Address").locator(".MuiFormControl-root", has_text="Street Address 1").locator("input").nth(0)
         self.mailing_street_address2_input = self.page.locator("div", has_text="Mailing Address").locator(".MuiFormControl-root", has_text="Street Address 2").locator("input").nth(0)
         self.mailing_city_input = self.page.locator("div", has_text="Mailing Address").locator(".MuiFormControl-root", has_text="City").locator("input").nth(0)
@@ -48,7 +50,7 @@ class DFInsuredInformationPage:
         self.check_loading()
         self.insured_occupation_input.fill(params.insured_occupation)
         self.check_loading()            
-        self.insured_employer_input.fill(params.insured_employer)
+        self.insured_employer_input.fill("N/A" if params.insured_employer in ["None", ""] else params.insured_employer)
         self.check_loading()
         self.insured_owner_dob_input.fill(params.insured_dob)
         self.check_loading()
@@ -61,8 +63,13 @@ class DFInsuredInformationPage:
             self.check_loading()
             self.insured_additional_occupation_input.fill(params.additional_resident_occupation)
             self.check_loading()
-            self.insured_additional_employer_input.fill(params.addition_resident_employer)
+            print(params.addition_resident_employer)
+            self.insured_additional_employer_input.fill("N/A" if params.addition_resident_employer in ["None", ""] else params.addition_resident_employer)
             self.check_loading()
+
+        if self.estate_manager_name_input.is_visible():
+            self.estate_manager_name_input.fill(params.estate_manager_name)
+            self.estate_manager_dob_input.fill(params.estate_manager_dob)
 
         if self.trustee_full_name.is_visible():
             self.trustee_full_name.fill(params.trustee_full_name)

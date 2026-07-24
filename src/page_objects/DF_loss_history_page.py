@@ -14,15 +14,15 @@ class DFLossHistoryPage:
 
     def loss_date_input(self, i: int):
         return self.page.locator(f"[id=\"df.loss_history.losses.{i}.df_loss_date\"]")
-    
+
     def loss_type_select(self, i: int):
-        return self.page.locator(f"div:has(input[id*=\"losses.{i}\"])").get_by_role("combobox")
+        return self.page.locator(f"[id=\"df.loss_history.losses.{i}.df_type\"]")
 
     def loss_details_input(self, i: int):
-        return self.page.locator(f"div:has(input[id*=\"losses.{i}\"])").get_by_role("textbox", name="Details *Required", exact=True)
+        return self.page.locator(f"[id=\"df.loss_history.losses.{i}.df_details\"]")
 
     def loss_amount_input(self, i: int):
-        return self.page.locator(f"div:has(input[id*=\"losses.{i}\"])").get_by_role("textbox", name="Amount *Required", exact=True)
+        return self.page.locator(f"[id=\"df.loss_history.losses.{i}.df_amount\"]")
 
     def fill_loss_history(self, params: DFLossHistoryParams):
 
@@ -37,6 +37,8 @@ class DFLossHistoryPage:
             for i, loss in enumerate(params.losses):
                 if i > 0:
                     self.add_another_loss_btn.click()
+                    self.check_loading()
+
                 if self.loss_date_input(i).is_visible():
                     self.loss_date_input(i).fill(loss["Loss Date"])
                     self.loss_type_select(i).select_option(loss["Type of Loss"])
