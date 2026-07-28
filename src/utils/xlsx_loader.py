@@ -35,7 +35,6 @@ def get_test_data(file_path: str, test_case_id: str) -> Dict[str, List[Dict[str,
             if filtered_master.empty:
                 print(f"Warning: '{test_case_id}' not found in master sheet '{master_sheet_name}'.")
                 return {}
-                return {}
             
             filtered_master = filtered_master.fillna("")
             structured_data[master_sheet_name] = filtered_master.to_dict(orient='records')

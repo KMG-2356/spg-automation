@@ -14,8 +14,11 @@ from page_objects.finance_quote_page import FinanceQuotePage
 from page_objects.print_your_quote_page import PrintYourQuotePage
 from page_objects.inland_marine_page import InlandMarinePage
 from page_objects.inland_marine_loss_history_page import InlandMarineLossHistoryPage
+from page_objects.apd_additional_insured_info_page import APDAdditionalInsuredInformationPage
+from page_objects.apd_risk_information_page import APDRiskInformationPage
 from models.agency_info_params import AgencyInfoParams
-
+from models.apd_additional_insured_info_params import APDAdditionalInsuredInformationParams
+from models.apd_risk_info_params import RiskInfoParams
 
 FEATURE_PATH = os.path.join(os.path.dirname(__file__), "..", "auto_physical_damage.feature")
 
@@ -39,8 +42,10 @@ def when_user_generates_premium(page, test_data):
     agency_information_page = AgencyInformationPage(page)
     apd_insured_information_page = APDInsuredInformationPage(page)
     commercial_lines_basic_info_page = CommercialLinesBasicInformationPage(page)
+    apd_additional_insured_info_page = APDAdditionalInsuredInformationPage(page)
     finance_quote_page = FinanceQuotePage(page)
     inland_marine_page = InlandMarinePage(page)
+    risk_info_page = APDRiskInformationPage(page)
     inland_marine_loss_history_page = InlandMarineLossHistoryPage(page)
 
 
@@ -120,12 +125,51 @@ def when_user_generates_premium(page, test_data):
         ),
     )
 
+    apd_additional_insured_info = APDAdditionalInsuredInformationParams(
+        has_applicant_ever_operated_under_different_name=test_data["Cargo_APD_Insured_UW_Info"][0]["Has applicant ever operated under a different name?"],
+        does_applicant_have_other_carrier_operations=test_data["Cargo_APD_Insured_UW_Info"][0]["Does applicant have other carrier operations?"],
+        describe_other_operations=test_data["Cargo_APD_Insured_UW_Info"][0]["Describe other operations"],
+        is_the_owner_also_listed_as_driver=test_data["Cargo_APD_Insured_UW_Info"][0]["Is the owner also listed as a driver?"],
+        has_insured_had_coverage_in_the_last_3years=test_data["Cargo_APD_Insured_UW_Info"][0]["Has insured had coverage in the last 3 years?"],
+        insurance_placed_through_commonwealth_underwriters=test_data["Cargo_APD_Insured_UW_Info"][0]["Insurance placed through Commonwealth Underwriters?"],
+        any_insurer_canceled_non_renewed_in_last_3years=test_data["Cargo_APD_Insured_UW_Info"][0]["Any insurer canceled / non-renewed in last 3 years?"],
+        prior_carrier_information_known=test_data["Cargo_APD_Insured_UW_Info"][0]["Prior carrier information known?"],
+        prior_carrier_name=test_data["Cargo_APD_Insured_UW_Info"][0]["Prior carrier name"],
+        prior_perils_form=test_data["Cargo_APD_Insured_UW_Info"][0]["Prior perils form"],
+        prior_policy_premium=test_data["Cargo_APD_Insured_UW_Info"][0]["Prior policy premium ($)"],
+        prior_policy_deductible=test_data["Cargo_APD_Insured_UW_Info"][0]["Prior policy deductible ($)"],
+        prior_policy_limit=test_data["Cargo_APD_Insured_UW_Info"][0]["Prior policy limit ($)"],
+        prior_policy_expiration_date=test_data["Cargo_APD_Insured_UW_Info"][0]["Prior policy expiration date"],
+        was_a_renewal_offer_made=test_data["Cargo_APD_Insured_UW_Info"][0]["Was a renewal offer made?"],
+        consecutive_coverage_greater_than_ot_equal_to_12months=test_data["Cargo_APD_Insured_UW_Info"][0]["Consecutive coverage >= 12 months?"],
+    )
+
+    risk_info = RiskInfoParams(
+        hiring_process=test_data["Cargo_APD_Drivers"][0]["Steps taken in employing new drivers"],
+        firing_process=test_data["Cargo_APD_Drivers"][0]["Grounds for firing a driver?"],
+        rented_equipment=test_data["Cargo_APD_Insured_UW_Info"][0]["Does insured lease / loan / rent equipment to others?"],
+        rented_each_job=test_data["Cargo_APD_Insured_UW_Info"][0]["Vehicles rented for each job?"],
+        titled_vehicles=test_data["Cargo_APD_Insured_UW_Info"][0]["All vehicles titled under named insured?"],
+        secure_vehicle=test_data["Cargo_APD_Insured_UW_Info"][0]["Steps taken to secure vehicles"],
+        owner_driven=test_data["Cargo_APD_Insured_UW_Info"][0]["Any vehicles driven by an owner? (PhysDam Only)"],
+        inspected_vehicles=test_data["Cargo_APD_Insured_UW_Info"][0]["Equipment regularly inspected and serviced? (PhysDam Only)"],
+        exemption_reason=test_data["Cargo_APD_Insured_UW_Info"][0]["     -> Reasons for not requesting Insurance (PhysDam Only)"],
+        has_extra_equipment=test_data["Cargo_APD_Insured_UW_Info"][0]["Owns equipment other than vehicles listed?"],
+        inspection_interval=test_data["Cargo_APD_Insured_UW_Info"][0]["     -> Interval (PhysDam Only)"],
+        gvw=test_data["Cargo_APD_Insured_UW_Info"][0]["Gross Vehicle Weight of any Unit greater than 26,000 lbs?"],
+        driver_experience=test_data["Cargo_APD_Insured_UW_Info"][0][" -> Any drivers have less than 2 years with a Commercial Driver's License Class A (CDL-A)?"],
+        drivers=test_data["Cargo_APD_Drivers"],
+        vehicles=test_data["Cargo_APD_Vehicles"],
+        trailers=test_data["Cargo_APD_Trailers"],
+    )
 
     home_page.click_new_quote_button()
     program_selection_page.select_commercial_lines_LOB()
     commercial_lines_basic_info_page.fill_commercial_line_basic_information_PD_form()
     agency_information_page.fill_agency_information_form(agency_info)
     apd_insured_information_page.fill_apd_insured_information_form(insured_info)
+    apd_additional_insured_info_page.fill_additional_insured_info(apd_additional_insured_info)
+    risk_info_page.fill_risk_information(risk_info)
     # finance_quote_page.fill_finance_quote_form()
 
 
