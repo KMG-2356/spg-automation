@@ -125,11 +125,11 @@ def when_user_generates_premium(page, test_data):
         good_condition=test_data["HO_Dwelling"][0]["Is Dwelling in Good Condition?"],
         existing_damage=test_data["HO_Dwelling"][0]["Does Dwelling Have Existing Damage?"],
         renovation_or_construction=test_data["HO_Dwelling"][0]["Is Dwelling Undergoing Renovation?"],
-        type_of_construction=test_data["HO_Dwelling"][0]["Type of Siding Material"],
+        type_of_construction=test_data["HO_Dwelling"][0]["Construction Type"],
         type_of_foundation=test_data["HO_Dwelling"][0]["Type of Foundation"],
-        is_dwelling_lot_owned_select=test_data["HO_Dwelling"][0],
-        is_dwelling_single_wide_select=test_data["HO_Dwelling"][0],
-        is_dwelling_trailer_park_select=test_data["HO_Dwelling"][0],
+        is_dwelling_lot_owned_select=test_data["HO_Dwelling"][0]["Is Dwelling located on a lot owned by insured?"],
+        is_dwelling_single_wide_select=test_data["HO_Dwelling"][0]["Is Dwelling a single wide home?"],
+        is_dwelling_trailer_park_select=test_data["HO_Dwelling"][0]["Is Dwelling located in mobile home park?"],
         is_dwelling_rented=test_data["HO_Dwelling"][0]["Is Dwelling Rented to Others?"],
         
         # Utilities & Plumbing

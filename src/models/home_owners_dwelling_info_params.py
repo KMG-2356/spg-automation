@@ -65,3 +65,12 @@ class HomeOwnersDwellingInfoParams:
     loss_payee_loan_number: str = ""
 
     loss_payees: int = 0
+
+    def __post_init__(self):
+        for field in self.__dataclass_fields__:
+            value = getattr(self, field)
+            
+            if isinstance(value, str) and not value.strip():
+                setattr(self, field, "No")
+            elif value is None:
+                setattr(self, field, "No")

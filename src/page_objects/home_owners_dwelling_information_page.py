@@ -144,24 +144,22 @@ class HomeOwnersDwellingInformationPage:
         self.renovation_or_construction_select.select_option(params.renovation_or_construction)
         self.check_loading()
         if self.type_of_construction_select.is_visible():
-            self.type_of_construction_select.select_option(HomeOwnersDwellingInformationPage.get_construction_type(params.manufactured_home))
+            self.type_of_construction_select.select_option(params.type_of_construction)
         if self.type_of_construction_mo_select.is_visible():
-            self.type_of_construction_mo_select.select_option(HomeOwnersDwellingInformationPage.get_construction_type(params.manufactured_home))
-        # write_excel_cell("src/data/output/ho_output.xlsx", "Output", row_value=data["Policy_Info"][0]["Test ID"], column_name="Temporary Field 1", data=f"type of construction: {HomeOwnersDwellingInformationPage.get_construction_type(params.manufactured_home)}")
+            self.type_of_construction_mo_select.select_option(params.type_of_construction)
         self.check_loading()
         self.type_of_foundation_select.select_option(HomeOwnersDwellingInformationPage.get_masonry_type(params.type_of_foundation))
-        # write_excel_cell("src/data/output/ho_output.xlsx", "Output", row_value=data["Policy_Info"][0]["Test ID"], column_name="Temporary Field 2", data=f"type of construction: {HomeOwnersDwellingInformationPage.get_masonry_type(params.type_of_foundation)}")
         self.check_loading()
 
         if self.is_dwelling_rented_select.is_visible():
             self.is_dwelling_rented_select.select_option(params.is_dwelling_rented)
 
         if self.is_dwelling_single_wide_select.is_visible():
-            self.is_dwelling_single_wide_select.select_option("Yes")
+            self.is_dwelling_single_wide_select.select_option(params.is_dwelling_single_wide_select)
         if self.is_dwelling_lot_owned_select.is_visible():
-            self.is_dwelling_lot_owned_select.select_option("Yes")
+            self.is_dwelling_lot_owned_select.select_option(params.is_dwelling_lot_owned_select)
         if self.is_dwelling_trailer_park_select.is_visible():
-            self.is_dwelling_trailer_park_select.select_option("Yes")
+            self.is_dwelling_trailer_park_select.select_option(params.is_dwelling_trailer_park_select)
 
         self.dwelling_area_input.fill(params.dwelling_area)
 
