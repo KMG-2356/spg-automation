@@ -23,8 +23,7 @@ def get_test_data(file_path: str, test_case_id: str) -> Dict[str, List[Dict[str,
                 raise ValueError("The provided Excel file has no sheets.")
             
             master_sheet_name = sheet_names[0]
-            df_master = pd.read_excel(xls, sheet_name=master_sheet_name, dtype=str,keep_default_na=False)
- 
+            df_master = pd.read_excel(xls, sheet_name=master_sheet_name, dtype=str, keep_default_na=False)
             
             if df_master.empty:
                 print(f"Warning: The master sheet '{master_sheet_name}' is empty.")

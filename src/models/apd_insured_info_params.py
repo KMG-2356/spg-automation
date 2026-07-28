@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import Any
 
 
 @dataclass
@@ -31,6 +32,9 @@ class APDInsuredInfoParams:
     primary_garaging_city: str = ""
     primary_garaging_state: str = ""
     primary_garaging_zip: str = ""
+
+    has_secondary_garage: str = ""
+    secondary_garages: Any = None
 
     # Trustee Information
     trustee_name: str = ""

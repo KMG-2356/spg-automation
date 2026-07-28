@@ -87,7 +87,7 @@ def when_user_generates_premium(page, test_data):
             "Is Insured's physical address same as the mailing address?"
         ],
         carrier_details=test_data["Policy_Info"][0][
-            "Describe Carrier Details "
+            "Describe Carrier Details"
         ],
         primary_garaging_street1=test_data["Policy_Info"][0][
             "Garaging Address Street 1"
@@ -104,6 +104,8 @@ def when_user_generates_premium(page, test_data):
         primary_garaging_zip=str(
             test_data["Policy_Info"][0]["Garaging Address Zip"]
         ),
+        has_secondary_garage = test_data["Policy_Info"][0]["Secondary garaging address?"],
+        secondary_garages=[test_data["Policy_Info"][0][f"Garage Address#{i}"] for i in range(1, 6)],
         trustee_name=test_data["Policy_Info"][0]["Full Name"],
         trustee_street1=test_data["Policy_Info"][0][
             "Trustee Address -  Street 1"
