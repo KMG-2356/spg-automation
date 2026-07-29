@@ -46,7 +46,6 @@ class AgencyInformationPage:
         self.email_input.fill(params.agent_email)
         self.phone_number_input.fill(params.agent_phone)
         self.fax_number_input.fill(params.agent_fax)
-        print(to_float(get_num(params.agent_commission)))
         self.agent_commission_select.select_option(to_float(get_num(params.agent_commission)))
         self.zip_code_input.fill(params.zip_code)
         self.check_loading()

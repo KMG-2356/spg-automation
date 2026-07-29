@@ -28,7 +28,6 @@ class CommercialLinesBasicInformationPage:
         self.generate_new_application_select.select_option("yes")
         # self.effective_date_input.fill(str(data["Policy_Info"][0]["Effective Date"]))
         self.cargo_coverage_lob_radio.click()
-<<<<<<< Updated upstream
         expect(self.agency_information_btn).to_be_visible()
         expect(self.agency_information_btn).to_be_enabled()
         self.agency_information_btn.click()
@@ -40,8 +39,6 @@ class CommercialLinesBasicInformationPage:
         self.is_this_a_renewal_select.select_option("no")
         self.generate_new_application_select.select_option("yes")
         self.inland_marine_coverage_lob_btn.click()
-=======
->>>>>>> Stashed changes
         expect(self.agency_information_btn).to_be_visible()
         expect(self.agency_information_btn).to_be_enabled()
         self.agency_information_btn.click()
