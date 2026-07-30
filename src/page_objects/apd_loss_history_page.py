@@ -27,29 +27,34 @@ class LossHistoryPage:
 
     def fill_loss_history2_info(self, params: APDLossHistoryParams):
         self.any_losses_in_the_past_3Years_selection.select_option(params.any_losses_in_the_past3_years)
-        self.check_loading()
-        self.any_unreapired_damage_from_prior_loss_selection.select_option(params.any_unrepaired_damage_from_prior_losses)
-        self.check_loading()
+        self.check_loading()        
         self.add_extra_subs_selection.select_option(params.add_extra_subjectivities)
         self.check_loading()
         self.additional_notes_input.fill(params.notes_about_the_insured)
         self.check_loading()
-        for i, loss in enumerate(params.losses2):
-            if i > 0:
-                self.add_loss_btn.click()
-                self.check_loading()       
-            self.loss_date_input(i).fill(loss.loss_date)
-            self.loss_amount_input(i).fill(loss.amount)
-            self.loss_type_select(i).select_option("Fire")
+        if params.any_losses_in_the_past3_years == "Yes":
+            self.any_unreapired_damage_from_prior_loss_selection.select_option(params.any_unrepaired_damage_from_prior_losses)
             self.check_loading()
-            if self.loss_details_input(i).is_visible():
+            for i, loss in enumerate(params.losses2):
+                if i > 0:
+                    self.add_loss_btn.click()
+                    self.check_loading()       
+                self.loss_date_input(i).fill(loss.loss_date)
+                self.check_loading()
+                self.loss_amount_input(i).fill(loss.amount)
+                self.check_loading()
+                self.loss_type_select(i).select_option("Fire")
+                self.check_loading()
                 self.loss_details_input(i).fill(loss.details)
-            if params.add_extra_subjectivities=="Yes":
-                for i, subjective in enumerate(params.subjectivity):
-                    if i > 0:
-                        self.add_subjectivity_btn.click()
-                        self.check_loading()       
-                    self.loss_subjectivity_text_input(i).fill(subjective.subjectivity_text)
+                self.check_loading()
+
+        if params.add_extra_subjectivities=="Yes":
+            for i, subjective in enumerate(params.subjectivity):
+                if i > 0:
+                    self.add_subjectivity_btn.click()
+                    self.check_loading()       
+                self.loss_subjectivity_text_input(i).fill(subjective.subjectivity_text)
+                self.check_loading()
 
         expect(self.finance_quote_btn).to_be_visible()
         expect(self.finance_quote_btn).to_be_enabled()

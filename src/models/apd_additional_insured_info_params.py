@@ -7,6 +7,8 @@ class APDAdditionalInsuredInformationParams:
     describe_other_operations: str = ""
     does_insured_subcontract_to_other_parties: str =""
     Subcontracting_basis: str =""
+    work_experience: str = ""
+    non_renewal_details: str = ""
     subcontractors_responsible_for_cargo_loss: str =""
     maintains_copies_of_subcontractor_insurance: str =""
     is_the_owner_also_listed_as_driver: str =""

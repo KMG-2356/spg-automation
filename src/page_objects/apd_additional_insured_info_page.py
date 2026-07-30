@@ -12,7 +12,8 @@ class APDAdditionalInsuredInformationPage:
         self.maintains_copies_of_subcontractor_insurance_select = self.page.locator("[id=\"cargo.insured.subcon_forms\"]")
         self.is_the_owner_also_listed_as_driver_select = self.page.locator("[id=\"cargo.insured.owner_driver\"]")
         self.has_insured_had_coverage_in_the_last_3years_select = self.page.locator("[id=\"cargo.insured.has_prior_carrier\"]")
-        self.prior_carrier_information_known_select = self.page.locator("[id=\"cargo.insured.pc_unknown\"]")
+        self.prior_carrier_information_unknown_select = self.page.locator("[id=\"cargo.insured.pc_unknown\"]")
+        self.prior_carrier_information_known_select = self.page.locator("[id=\"cargo.insured.prior_employment_known\"]")
         self.any_insurer_canceled_non_renewed_in_last_3years_select = self.page.locator("[id=\"cargo.insured.non_renew\"]")
         self.insurance_placed_through_commonwealth_underwriters_select = self.page.locator("[id=\"cargo.insured.previous_customer\"]")
         self.prior_perils_form_select = self.page.locator("[id=\"cargo.insured.pc_form\"]")
@@ -25,6 +26,7 @@ class APDAdditionalInsuredInformationPage:
         self.prior_policy_deductible_input = self.page.locator("[id=\"cargo.insured.pc_deductible\"]")
         self.prior_policy_limit_input = self.page.locator("[id=\"cargo.insured.pc_limit\"]")
         self.prior_policy_expiration_date_input = self.page.locator("[id=\"cargo.insured.pc_exp_date\"]")
+        self.work_experience_input = self.page.locator("[id=\"cargo.insured.work_experience\"]")
         self.risk_info_btn = self.page.get_by_role("button", name="Risk Information")
         self.loading_screen = self.page.locator(".jss53")
 
@@ -42,9 +44,20 @@ class APDAdditionalInsuredInformationPage:
         self.insurance_placed_through_commonwealth_underwriters_select.select_option(params.insurance_placed_through_commonwealth_underwriters)
         self.check_loading()
         self.any_insurer_canceled_non_renewed_in_last_3years_select.select_option(params.any_insurer_canceled_non_renewed_in_last_3years)
-        self.check_loading()      
-        self.prior_carrier_information_known_select.select_option(params.prior_carrier_information_known)
         self.check_loading()
+
+        if self.non_renew_details_input.is_visible():
+            self.non_renew_details_input.fill(params.non_renewal_details)
+
+        if self.prior_carrier_information_unknown_select.is_visible():
+            self.prior_carrier_information_unknown_select.select_option(params.prior_carrier_information_known)
+            self.check_loading()
+        if self.prior_carrier_information_known_select.is_visible():
+            self.prior_carrier_information_known_select.select_option(params.prior_carrier_information_known)
+            self.check_loading()
+
+        if self.work_experience_input.is_visible():
+            self.work_experience_input.fill(params.work_experience)
         if params.prior_carrier_information_known == "Yes":       
             self.prior_carrier_name_input.fill(params.prior_carrier_name)
             self.prior_perils_form_select.select_option(params.prior_perils_form)
@@ -55,8 +68,9 @@ class APDAdditionalInsuredInformationPage:
             self.prior_policy_expiration_date_input.fill(params.prior_policy_expiration_date)
             self.was_a_renewal_offer_made_select.select_option(params.was_a_renewal_offer_made)
             self.check_loading()
-        self.consecutive_coverage_greater_than_ot_equal_to_12months_select.select_option(params.consecutive_coverage_greater_than_ot_equal_to_12months)
-        self.check_loading()
+        if self.consecutive_coverage_greater_than_ot_equal_to_12months_select.is_visible():
+            self.consecutive_coverage_greater_than_ot_equal_to_12months_select.select_option(params.consecutive_coverage_greater_than_ot_equal_to_12months)
+            self.check_loading()
         expect(self.risk_info_btn).to_be_visible()
         expect(self.risk_info_btn).to_be_enabled()
         self.risk_info_btn.click()

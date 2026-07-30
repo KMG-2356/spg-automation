@@ -149,6 +149,8 @@ def when_user_generates_premium(page, test_data):
         insurance_placed_through_commonwealth_underwriters=test_data["Cargo_APD_Insured_UW_Info"][0]["Insurance placed through Commonwealth Underwriters?"],
         any_insurer_canceled_non_renewed_in_last_3years=test_data["Cargo_APD_Insured_UW_Info"][0]["Any insurer canceled / non-renewed in last 3 years?"],
         prior_carrier_information_known=test_data["Cargo_APD_Insured_UW_Info"][0]["Prior carrier information known?"],
+        work_experience=test_data["Cargo_APD_Insured_UW_Info"][0]["Years of experience in same type of work"],
+        non_renewal_details=test_data["Cargo_APD_Insured_UW_Info"][0][" -> Details for reasons of non-renewal"],
         prior_carrier_name=test_data["Cargo_APD_Insured_UW_Info"][0]["Prior carrier name"],
         prior_perils_form=test_data["Cargo_APD_Insured_UW_Info"][0]["Prior perils form"],
         prior_policy_premium=test_data["Cargo_APD_Insured_UW_Info"][0]["Prior policy premium ($)"],
@@ -225,7 +227,9 @@ def when_user_generates_premium(page, test_data):
     )
 
     apd_addition_info = APDAdditionalInformationParams(
-        estimated_gross_revenue_for_coming_year=test_data["Cargo_APD_Add_Info"][0]["Estimated Gross Revenue for Coming Year ($)"]
+        estimated_gross_revenue_for_coming_year=test_data["Cargo_APD_Add_Info"][0]["Estimated Gross Revenue for Coming Year ($)"],
+        subcontracted_total=test_data["Cargo_APD_Add_Info"][0]["Subcontracted Total ($)"],
+        own_haul_total=test_data["Cargo_APD_Add_Info"][0]["Own Haul Total ($)"],
     )
 
     apd_loss_info = APDLossHistoryParams(
@@ -267,4 +271,4 @@ def when_user_generates_premium(page, test_data):
 @then('the generated premium should be saved to excel')
 def then_generated_premium_should_be_equal(page, test_data):
     print_your_quote_page = PrintYourQuotePage(page)
-    print_your_quote_page.save_premium(test_data, "apd_output", "01_Policy_Info")
+    print_your_quote_page.save_premium(test_data, "apd_output", "Policy_Info")

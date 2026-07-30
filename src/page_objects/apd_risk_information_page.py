@@ -162,11 +162,12 @@ class APDRiskInformationPage:
                 if self.trailer_make_input(i).is_visible():
                     self.trailer_make_input(i).fill(trailer["Trailer Make (If Owned)"])
                 self.trailer_cost_input(i).fill(trailer["Trailer Cost ($)"])
+
+                if self.trailer_vin_known_select(i).is_visible():
+                    self.trailer_vin_known_select(i).select_option(trailer["VIN Known?"])
+                    self.check_loading()
                 
-                self.trailer_vin_known_select(i).select_option(trailer["VIN Known?"])
-                self.check_loading()
-                
-                if self.trailer_vin_input(i).is_visible:
+                if self.trailer_vin_input(i).is_visible():
                     self.trailer_vin_input(i).fill(trailer["VIN Number"])
         else:
             self.has_trailers_select.select_option("No")

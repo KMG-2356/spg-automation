@@ -33,6 +33,7 @@ class LossPayeeInformationPage:
     def fill_apd_loss_payee_info_form(self, params):
         expect(self.loss_payee_info_heading).to_be_visible()
         self.has_loss_payee_select.select_option(params.has_loss_payee)
+        self.check_loading()
 
         if params.has_loss_payee == "Yes":
             for i, loss_payee in enumerate(params.loss_payees):
@@ -54,7 +55,8 @@ class LossPayeeInformationPage:
                     if len(units["Vehicle"]) > 0:
                         for choice in units["Vehicle"]:
                             self.check_loading()
-                            self.vehicle_choice(choice).click()
+                            if self.vehicle_choice(choice).is_visible():
+                                self.vehicle_choice(choice).click()
                         self.check_loading()
                         if self.vehicle_move_right_btn.is_enabled():
                             self.vehicle_move_right_btn.click()
@@ -63,7 +65,8 @@ class LossPayeeInformationPage:
                     if len(units["Trailer"]) > 0:
                         for choice in units["Trailer"]:
                             self.check_loading()
-                            self.trailer_choice(choice).click()
+                            if self.trailer_choice(choice).is_visible():
+                                self.trailer_choice(choice).click()
                         self.check_loading()
                         if self.trailer_move_right_btn.is_enabled():
                             self.trailer_move_right_btn.click()
