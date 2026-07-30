@@ -32,7 +32,7 @@ class CargoCommoditiesPage:
                 self.check_loading()       
             self.commodity_selection(i).select_option(commodity.commodity)
             self.check_loading()
-            self.percent_of_cargo_input(i).fill("100")
+            self.percent_of_cargo_input(i).fill(commodity.percent_of_cargo)
             self.check_loading()
             self.page.wait_for_timeout(10000)
             self.average_value_per_load_input(i).fill(commodity.average_value_per_load)

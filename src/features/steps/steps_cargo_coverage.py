@@ -142,6 +142,7 @@ def when_user_generates_premium(page, test_data):
         describe_other_operations=test_data["Cargo_APD_Insured_UW_Info"][0]["Describe other operations"],
         does_insured_subcontract_to_other_parties=test_data["Cargo_APD_Insured_UW_Info"][0]["Does insured subcontract to other parties?"],
         Subcontracting_basis=test_data["Cargo_APD_Insured_UW_Info"][0]["Subcontracting basis"],
+        describe_subcontracting_lease_basis=test_data["Cargo_APD_Insured_UW_Info"][0]["Describe other subcontracting basis"],
         subcontractors_responsible_for_cargo_loss=test_data["Cargo_APD_Insured_UW_Info"][0]["Subcontractors responsible for cargo loss?"],
         maintains_copies_of_subcontractor_insurance=test_data["Cargo_APD_Insured_UW_Info"][0]["Maintains copies of subcontractor insurance?"],
         is_the_owner_also_listed_as_driver=test_data["Cargo_APD_Insured_UW_Info"][0]["Is the owner also listed as a driver?"],
@@ -243,6 +244,8 @@ def when_user_generates_premium(page, test_data):
     )
 
     cargo_add_info = CargoAdditionalInformationParams(
+        own_haul_total=test_data["Cargo_APD_Add_Info"][0]["Own Haul Total ($)"],
+        subcontracted_total=test_data["Cargo_APD_Add_Info"][0]["Subcontracted Total ($)"],
         estimated_gross_revenue_for_coming_year=test_data["Cargo_APD_Add_Info"][0]["Estimated Gross Revenue for Coming Year ($)"]
     )
 

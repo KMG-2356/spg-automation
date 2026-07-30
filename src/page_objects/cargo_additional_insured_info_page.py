@@ -27,7 +27,7 @@ class CargoAdditionalInsuredInformationPage:
         self.prior_policy_expiration_date_input = self.page.locator("[id=\"cargo.insured.pc_exp_date\"]")
         self.insure_work_exp_input = self.page.locator("[id=\"cargo.insured.work_experience\"]")
         self.is_prior_empoyement_known_selection = self.page.locator("[id=\"cargo.insured.prior_employment_known\"]")
-
+        self.desc_subcontracting_lease_basis_input = self.page.locator("[id=\"cargo.insured.subcon_other\"]")
 
         self.add_another_empoyer_btn = self.page.get_by_role("button", name="Add Another Employer")
         self.risk_info_btn = self.page.get_by_role("button", name="Risk Information")
@@ -76,6 +76,8 @@ class CargoAdditionalInsuredInformationPage:
             self.check_loading()
             self.subcontractors_responsible_for_cargo_loss_select.select_option(params.subcontractors_responsible_for_cargo_loss)
             self.check_loading()
+            if self.desc_subcontracting_lease_basis_input.is_visible():
+                self.desc_subcontracting_lease_basis_input.fill(params.describe_subcontracting_lease_basis)
             self.maintains_copies_of_subcontractor_insurance_select.select_option(params.subcontractors_responsible_for_cargo_loss)
             self.check_loading()      
         self.is_the_owner_also_listed_as_driver_select.select_option(params.is_the_owner_also_listed_as_driver)

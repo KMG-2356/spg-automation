@@ -8,6 +8,7 @@ class CargoAdditionalInsuredInformationParams:
     describe_other_operations: str = ""
     does_insured_subcontract_to_other_parties: str =""
     Subcontracting_basis: str =""
+    describe_subcontracting_lease_basis: str =""
     subcontractors_responsible_for_cargo_loss: str =""
     maintains_copies_of_subcontractor_insurance: str =""
     is_the_owner_also_listed_as_driver: str =""
@@ -25,7 +26,7 @@ class CargoAdditionalInsuredInformationParams:
     consecutive_coverage_greater_than_ot_equal_to_12months: str =""
     years_of_experience_same_type_of_work: str =""
     prior_employment_information_known: str =""
-    details_for_reasons_of_non_renewal: str=""
+    details_for_reasons_of_non_renewal: str =""
 
     employers: List[EmployerRecord] = field(default_factory=list)
 @dataclass
