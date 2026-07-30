@@ -34,12 +34,9 @@ class APDCommoditiesPage:
             self.commodity_selection(i).select_option(commodity.commodity)
             self.check_loading()
             self.percent_of_cargo_input(i).fill("100")
-            self.check_loading()
             self.page.wait_for_timeout(10000)
             self.average_value_per_load_input(i).fill(commodity.average_value_per_load)
-            self.check_loading()            
             self.maximum_value_per_load_input(i).fill(commodity.maximum_value_per_load)
-            self.check_loading()
 
         expect(self.loss_history_btn).to_be_visible()
         expect(self.loss_history_btn).to_be_enabled()

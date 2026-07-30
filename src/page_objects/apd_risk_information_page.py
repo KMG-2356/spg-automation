@@ -139,7 +139,6 @@ class APDRiskInformationPage:
             self.power_unit_vehicle_type_select(i).select_option(vehicle["Vehicle Type"])
             self.check_loading()
             self.power_unit_vehicle_cost_input(i).fill(vehicle["Vehicle Cost ($) (PhysDam only)"])
-            
             self.power_unit_vin_known_select(i).select_option(vehicle["VIN Known?"])
             self.check_loading()
             
@@ -158,8 +157,10 @@ class APDRiskInformationPage:
                 self.check_loading()
                 self.trailer_type_select(i).select_option(trailer["Trailer Type"])
                 self.check_loading()
-                self.trailer_year_input(i).fill(trailer["Year (If Owned)"])
-                self.trailer_make_input(i).fill(trailer["Trailer Make (If Owned)"])
+                if self.trailer_year_input(i).is_visible(): 
+                    self.trailer_year_input(i).fill(trailer["Year (If Owned)"])
+                if self.trailer_make_input(i).is_visible():
+                    self.trailer_make_input(i).fill(trailer["Trailer Make (If Owned)"])
                 self.trailer_cost_input(i).fill(trailer["Trailer Cost ($)"])
                 
                 self.trailer_vin_known_select(i).select_option(trailer["VIN Known?"])
