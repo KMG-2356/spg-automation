@@ -24,6 +24,7 @@ class APDRiskInformationPage:
         self.gvw_select = self.page.locator('[id="cargo.risk_info.gvw"]')
         self.driver_experience_select = self.page.locator('[id="cargo.risk_info.driver_experience"]')
         self.secure_vehicles_input = self.page.locator('[id="cargo.risk_info.secure_vehicles"]')
+        self.loss_payee_info_btn = self.page.get_by_role("button", name="Loss Payee Information")
         self.loading_screen = self.page.locator(".jss53")
 
     def driver_name_input(self, i):
@@ -145,9 +146,9 @@ class APDRiskInformationPage:
             if self.power_unit_vehicle_vin_input(i).is_visible():
                 self.power_unit_vehicle_vin_input(i).fill(vehicle["VIN Number"])
 
-            
-        self.has_trailers_select.select_option(params.has_trailers)
-        if params.has_trailers == "Yes":
+        if len(params.trailers) > 0:
+            self.has_trailers_select.select_option("Yes")
+            self.check_loading()
             for i, trailer in enumerate(params.trailers):
                 if i > 0:
                     self.add_another_trailer_btn.click()
@@ -166,11 +167,13 @@ class APDRiskInformationPage:
                 
                 if self.trailer_vin_input(i).is_visible:
                     self.trailer_vin_input(i).fill(trailer["VIN Number"])
+        else:
+            self.has_trailers_select.select_option("No")
 
         self.extra_equipment_select.select_option(params.has_extra_equipment)
         self.check_loading()
-        self.extra_equipment_input.fill(params.extra_equipment)
-        self.exemption_reasons_input.fill(params.exemption_reason)
+        if self.exemption_reasons_input.is_visible():
+            self.exemption_reasons_input.fill(params.exemption_reason)
         self.rented_each_job_select.select_option(params.rented_each_job)
         self.check_loading()
         self.rented_equipment_select.select_option(params.rented_equipment)
@@ -191,6 +194,9 @@ class APDRiskInformationPage:
             self.check_loading()
         self.secure_vehicles_input.fill(params.secure_vehicle)
 
+        expect(self.loss_payee_info_btn).to_be_visible()
+        expect(self.loss_payee_info_btn).to_be_enabled()
+        self.loss_payee_info_btn.click()
 
     def check_loading(self):
         try:

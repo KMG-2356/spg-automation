@@ -1,7 +1,6 @@
 from dataclasses import dataclass
 from typing import Any
 
-
 @dataclass
 class APDInsuredInfoParams:
     insured_name: str = ""

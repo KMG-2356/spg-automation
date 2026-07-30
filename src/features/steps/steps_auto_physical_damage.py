@@ -4,6 +4,8 @@ import pytest
 from pytest_bdd import scenarios, given, when, then
 from config import *
 from models.apd_insured_info_params import APDInsuredInfoParams
+from models.apd_loss_payee_info_params import APDLossPayeeInfoParams
+from page_objects import apd_additional_info_page
 from page_objects.login_page import LoginPage
 from page_objects.home_page import HomePage
 from page_objects.program_selection_page import ProgramSelectionPage
@@ -12,13 +14,22 @@ from page_objects.agency_information_page import AgencyInformationPage
 from page_objects.apd_insured_information_page import APDInsuredInformationPage
 from page_objects.finance_quote_page import FinanceQuotePage
 from page_objects.print_your_quote_page import PrintYourQuotePage
-from page_objects.inland_marine_page import InlandMarinePage
-from page_objects.inland_marine_loss_history_page import InlandMarineLossHistoryPage
 from page_objects.apd_additional_insured_info_page import APDAdditionalInsuredInformationPage
 from page_objects.apd_risk_information_page import APDRiskInformationPage
+from page_objects.apd_loss_payee_info_page import LossPayeeInformationPage
+from page_objects.apd_coverages_page import APDCoveragesPage
+from page_objects.apd_commodities_page import APDCommoditiesPage
+from page_objects.apd_loss_history_info_page import LossHistoryInformationPage
+from page_objects.apd_additional_info_page import APDAdditionalInformationPage
+from page_objects.apd_loss_history_page import LossHistoryPage
 from models.agency_info_params import AgencyInfoParams
 from models.apd_additional_insured_info_params import APDAdditionalInsuredInformationParams
 from models.apd_risk_info_params import RiskInfoParams
+from models.apd_coverages_info_params import APDCoveragesParams
+from models.apd_commodities_params import APDCommoditiesParams, CommodityRecord
+from models.apd_loss_history_info_params import LossHistoryInfoParams, LossHistoryRecord
+from models.apd_loss_history_params import APDLossHistoryParams, SubjectivityRecord, LossHistory2Record
+from models.apd_additional_info_params import APDAdditionalInformationParams
 
 FEATURE_PATH = os.path.join(os.path.dirname(__file__), "..", "auto_physical_damage.feature")
 
@@ -43,10 +54,14 @@ def when_user_generates_premium(page, test_data):
     apd_insured_information_page = APDInsuredInformationPage(page)
     commercial_lines_basic_info_page = CommercialLinesBasicInformationPage(page)
     apd_additional_insured_info_page = APDAdditionalInsuredInformationPage(page)
-    finance_quote_page = FinanceQuotePage(page)
-    inland_marine_page = InlandMarinePage(page)
+    apd_loss_payee_info_page = LossPayeeInformationPage(page)
     risk_info_page = APDRiskInformationPage(page)
-    inland_marine_loss_history_page = InlandMarineLossHistoryPage(page)
+    apd_coverages_page = APDCoveragesPage(page)
+    apd_commodities_page = APDCommoditiesPage(page)
+    apd_loss_history_info_page = LossHistoryInformationPage(page)
+    apd_additional_info_page = APDAdditionalInformationPage(page)
+    apd_loss_history_page = LossHistoryPage(page)
+    finance_quote_page = FinanceQuotePage(page)
 
 
     agency_info = AgencyInfoParams(
@@ -163,6 +178,76 @@ def when_user_generates_premium(page, test_data):
         trailers=test_data["Cargo_APD_Trailers"],
     )
 
+    apd_loss_payee_info = APDLossPayeeInfoParams(
+        has_loss_payee = test_data["Cargo_APD_LossPayees"][0]["Does Policy Have Loss Payees (PhysDam)?"],
+        loss_payees = test_data["Cargo_APD_LossPayees"],
+    )
+
+    apd_coverages_info = APDCoveragesParams(
+        refrigeration_breakdown=test_data["Cargo_APD_Coverages"][0]["Refrigeration breakdown coverage required?"],
+        trailer_age=test_data["Cargo_APD_Coverages"][0]["  -> Any reefer trailers older than 10 years?"],
+        reefer_trailer_serviced=test_data["Cargo_APD_Coverages"][0]["  -> Reefer trailer serviced at least every 30 days?"],
+        seafood=test_data["Cargo_APD_Coverages"][0]["  -> Hauls seafood or shellfish?"],
+        radius=test_data["Cargo_APD_Coverages"][0]["Radius of operations (applies to Cargo and APD)"],
+        phys_dam_deductible=test_data["Cargo_APD_Coverages"][0]["Physical Damage Deductible"],
+        ts_limit=test_data["Cargo_APD_Coverages"][0]["Towing and Storage Limit "],
+    )
+
+    apd_commodities_info = APDCommoditiesParams(
+        cargo_includes_liquor_manufactured_tobacco=test_data["Cargo_APD_Commodities"][0]["Does cargo include liquor or manufactured tobacco?"],
+        cargo_includes_oversized_overweight_commodities=test_data["Cargo_APD_Commodities"][0]["Does cargo include oversized / overweight commodities?"],
+        cargo_includes_excluded_commodities=test_data["Cargo_APD_Commodities"][0]["Does cargo include excluded commodities?"],
+        
+        commodities=[
+            CommodityRecord(
+            commodity=row["Commodity Name"],
+            percent_of_cargo=row["% of Cargo"],
+            average_value_per_load=row["Avg Value/Load ($)"],
+            maximum_value_per_load=row["Max Value/Load ($)"],
+            )
+            for row in test_data["Cargo_APD_Commodities"]
+        ]
+    )
+
+    apd_loss_history_info = LossHistoryInfoParams(
+        any_losses_in_the_past_3Years=test_data["Cargo_APD_LossHistory"][0]["Any Losses in the Past 3 Years?"],
+ 
+        losses=[LossHistoryRecord(
+                loss_year=row["Loss Year"],
+                type_of_loss=row["Type of Loss"],
+                premium_at_time_of_loss=row["Premium at Time of Loss ($)"],
+                amount_paid=row["Amount Paid ($)"],
+                amount_outstanding=row["Amount Outstanding ($)"],
+                other_describe=row["Loss Description (if Other)"],
+            )
+            for row in test_data["Cargo_APD_LossHistory"]
+        ]
+    )
+
+    apd_addition_info = APDAdditionalInformationParams(
+        estimated_gross_revenue_for_coming_year=test_data["Cargo_APD_Add_Info"][0]["Estimated Gross Revenue for Coming Year ($)"]
+    )
+
+    apd_loss_info = APDLossHistoryParams(
+            any_losses_in_the_past3_years=test_data["Cargo_APD_LossHistory"][0]["Any Losses in the Past 3 Years?"],
+            any_unrepaired_damage_from_prior_losses=test_data["Cargo_APD_LossHistory"][0]["Any Unrepaired Damage from Prior Losses?"],
+            add_extra_subjectivities=test_data["Cargo_APD_LossHistory"][0]["Add extra subjectivities?"],
+            notes_about_the_insured=test_data["Cargo_APD_LossHistory"][0]["Notes about the Insured"],
+            subjectivity=[SubjectivityRecord(
+                subjectivity_text=row["Subjectivity Text"]
+                )
+                for row in test_data["Cargo_APD_LossHistory"]],
+            losses2=[LossHistory2Record(
+                details=row["Notes"],
+                loss_date=row["Loss Date"],
+                amount=row["Premium at Time of Loss ($)"],
+                type_of_loss=row["Type of Loss"],
+                )                
+                
+                for row in test_data["Cargo_APD_LossHistory"]]
+
+    )
+
     home_page.click_new_quote_button()
     program_selection_page.select_commercial_lines_LOB()
     commercial_lines_basic_info_page.fill_commercial_line_basic_information_PD_form()
@@ -170,10 +255,16 @@ def when_user_generates_premium(page, test_data):
     apd_insured_information_page.fill_apd_insured_information_form(insured_info)
     apd_additional_insured_info_page.fill_additional_insured_info(apd_additional_insured_info)
     risk_info_page.fill_risk_information(risk_info)
-    # finance_quote_page.fill_finance_quote_form()
+    apd_loss_payee_info_page.fill_apd_loss_payee_info_form(apd_loss_payee_info)
+    apd_coverages_page.fill_cargo_coverages(apd_coverages_info)
+    apd_commodities_page.fill_commodities(apd_commodities_info)
+    apd_loss_history_info_page.fill_loss_history_info(apd_loss_history_info)
+    apd_additional_info_page.fill_additional_info(apd_addition_info)
+    apd_loss_history_page.fill_loss_history2_info(apd_loss_info)
+    finance_quote_page.fill_finance_quote_form()
 
 
 @then('the generated premium should be saved to excel')
 def then_generated_premium_should_be_equal(page, test_data):
     print_your_quote_page = PrintYourQuotePage(page)
-    print_your_quote_page.save_premium(test_data, "im_output", "01_Policy_Info")
+    print_your_quote_page.save_premium(test_data, "apd_output", "01_Policy_Info")
