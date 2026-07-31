@@ -1,0 +1,92 @@
+Test ID,Does Policy Have Loss Payees (PhysDam)?,#,Loss Payee Name,Address Street 1,Address Street 2,City,State,ZIP,Applies to All Units / Trailers?,Assigned Units / Trailers (if not all),Notes
+TS-001,Yes,1.0,First National Bank of Virginia,1200 Main St,Suite 300,Nashua,NH,3060.0,Yes,,Primary lienholder on all scheduled physical damage units.
+TS-001,Yes,1.0,Wells Fargo Equipment Finance,420 Montgomery St,Floor 5,Newark,NJ,7102.0,No,Vehicle 2; Trailer 1,Applies only to financed tractor and enclosed trailer.
+TS-001,Yes,3.0,Penske Truck Leasing Co. LP,2675 Morgantown Rd,,Santa Fe,NM,87501.0,No,Vehicle 3,Leased box truck requires lender named as loss payee.
+TS-001,Yes,4.0,Truist Bank Commercial Lending,214 N Tryon St,,Albany,NY,12207.0,Yes,,Bank requests blanket loss payee status for all collateral.
+TS-001,Yes,5.0,U.S. Bank Equipment Finance,1310 Main St,Suite 100,Charlotte,NC,28202.0,No,Trailer 2,Loss payee applies to financed utility trailer only.
+TS-001,Yes,6.0,Bank of America Leasing,100 N Tryon St,,Bismarck,ND,58501.0,No,Vehicle 1; Vehicle 4,Applies to two leased straight trucks under separate finance agreement.
+TS-001,Yes,7.0,Wells Fargo Equipment Finance,420 Montgomery St,Floor 5,Cincinnati,OH,45202.0,No,Vehicle 2; Trailer 1,Applies only to financed tractor and enclosed trailer.
+TS-001,Yes,8.0,Penske Truck Leasing Co. LP,2675 Morgantown Rd,,Oklahoma City,OK,73102.0,No,,Leased box truck requires lender named as loss payee.
+TS-001,Yes,9.0,Truist Bank Commercial Lending,214 N Tryon St,,Salem,OR,97301.0,Yes,Vehicle 3,Bank requests blanket loss payee status for all collateral.
+TS-001,Yes,10.0,U.S. Bank Equipment Finance,1310 Main St,Suite 100,Harrisburg,PA,17101.0,No,Trailer 2,Loss payee applies to financed utility trailer only.
+TS-002,Yes,1.0,Bank of America Leasing,100 N Tryon St,,Providence,RI,2903.0,No,Vehicle 1; Vehicle 4,Applies to two leased straight trucks under separate finance agreement.
+TS-002,Yes,2.0,Penske Truck Leasing Co. LP,2675 Morgantown Rd,,Oklahoma City,OK,73102.0,No,Vehicle 3,Leased box truck requires lender named as loss payee.
+TS-002,Yes,3.0,Penske Truck Leasing Co. LP,2675 Morgantown Rd,,Pierre,SD,57501.0,No,Vehicle 3,Leased box truck requires lender named as loss payee.
+TS-003,No,,,,,,,,,,
+TS-004,Yes,1.0,U.S. Bank Equipment Finance,1310 Main St,Suite 100,Dallas,TX,75201.0,No,Trailer 2,Loss payee applies to financed utility trailer only.
+TS-005,Yes,1.0,Bank of America Leasing,100 N Tryon St,,Ogden,UT,84401.0,No,Vehicle 1; Vehicle 4,Applies to two leased straight trucks under separate finance agreement.
+TS-006,No,,,,,,,,,,
+TS-007,No,,,,,,,,,,
+TS-008,Yes,1.0,"TD Bank USA, N.A.",1701 Route 70 E,,Tacoma,WA,98402.0,No,Vehicle 2,Loss payee limited to one financed service truck.
+TS-009,Yes,1.0,Arvest Equipment Finance,801 John Barrow Rd,Suite 200,Charleston,WV,25301.0,Yes,,Lender requires blanket loss payee for all currently scheduled units.
+TS-010,No,,,,,,,,,,
+TS-011,Yes,1.0,U.S. Bank Equipment Finance,1310 Main St,Suite 100,Laramie,WY,82070.0,No,Trailer 2,Loss payee applies to financed utility trailer only.
+TS-012,Yes,1.0,Bank of America Leasing,100 N Tryon St,,Birmingham,AL,35203.0,No,Vehicle 1; Vehicle 4,Applies to two leased straight trucks under separate finance agreement.
+TS-013,No,,,,,,,,,,
+TS-014,Yes,1.0,Sunbelt Finance LLC,500 W Madison St,Suite 1750,Mesa,AZ,85201.0,No,Trailer 1; Trailer 3,Finance company listed for both owned trailers financed under same note.
+TS-015,Yes,1.0,U.S. Bank Equipment Finance,1310 Main St,Suite 100,Little Rock,AR,72201.0,No,Trailer 2,Loss payee applies to financed utility trailer only.
+TS-016,Yes,1.0,Bank of America Leasing,100 N Tryon St,,San Diego,CA,92101.0,No,Vehicle 1; Vehicle 4,Applies to two leased straight trucks under separate finance agreement.
+TS-017,No,,,,,,,,,,
+TS-018,Yes,1.0,Bank of America Leasing,100 N Tryon St,,Hartford,CT,6103.0,No,Vehicle 1; Vehicle 4,Applies to two leased straight trucks under separate finance agreement.
+TS-019,Yes,1.0,Sunbelt Finance LLC,500 W Madison St,Suite 1750,Dover,DE,19901.0,No,Trailer 1; Trailer 3,Finance company listed for both owned trailers financed under same note.
+TS-020,Yes,1.0,"TD Bank USA, N.A.",1701 Route 70 E,,Tampa,FL,33602.0,No,Vehicle 2,Loss payee limited to one financed service truck.
+TS-021,Yes,1.0,Arvest Equipment Finance,801 John Barrow Rd,Suite 200,Atlanta,GA,30303.0,Yes,,Lender requires blanket loss payee for all currently scheduled units.
+TS-022,Yes,1.0,BMO Bank N.A.,111 W Monroe St,Floor 14,Hilo,HI,96720.0,No,Vehicle 5,Loss payee required on one purchased van pending final payoff.
+TS-023,No,,,,,,,,,,
+TS-024,Yes,1.0,Huntington National Bank,41 S High St,,Chicago,IL,60602.0,No,Trailer 2,One equipment trailer is financed and assigned to lender.
+TS-025,No,,,,,,,,,,
+TS-026,Yes,1.0,"TD Bank USA, N.A.",1701 Route 70 E,,Davenport,IA,52801.0,No,Vehicle 2,Loss payee limited to one financed service truck.
+TS-027,Yes,1.0,Sunbelt Finance LLC,500 W Madison St,Suite 1750,Wichita,KS,67202.0,No,Trailer 1; Trailer 3,Finance company listed for both owned trailers financed under same note.
+TS-028,Yes,1.0,Arvest Equipment Finance,801 John Barrow Rd,Suite 200,Lexington,KY,40507.0,Yes,,Lender requires blanket loss payee for all currently scheduled units.
+TS-029,No,,,,,,,,,,
+TS-030,Yes,1.0,Regions Bank,1900 5th Ave N,,Portland,ME,4101.0,Yes,,All physical damage units are collateralized under a revolving equipment line.
+TS-031,Yes,1.0,Huntington National Bank,41 S High St,,Annapolis,MD,21401.0,No,Trailer 2,One equipment trailer is financed and assigned to lender.
+TS-032,No,,,,,,,,,,
+TS-033,No,,,,,,,,,,
+TS-034,Yes,1.0,"TD Bank USA, N.A.",1701 Route 70 E,,Saint Paul,MN,55102.0,No,Vehicle 2,Loss payee limited to one financed service truck.
+TS-035,Yes,1.0,Regions Bank,1900 5th Ave N,,Biloxi,MS,39530.0,Yes,,All physical damage units are collateralized under a revolving equipment line.
+TS-036,Yes,1.0,Huntington National Bank,41 S High St,,Kansas City,MO,64106.0,No,Trailer 2,One equipment trailer is financed and assigned to lender.
+TS-037,No,,,,,,,,,,
+TS-038,Yes,1.0,Arvest Equipment Finance,801 John Barrow Rd,Suite 200,Grand Island,NE,68801.0,Yes,,Lender requires blanket loss payee for all currently scheduled units.
+TS-039,Yes,1.0,Huntington National Bank,41 S High St,,Las Vegas,NV,89101.0,No,Trailer 2,One equipment trailer is financed and assigned to lender.
+TS-040,Yes,1.0,KeyBank National Association,127 Public Sq,8th Floor,Concord,NH,3301.0,No,Vehicle 1; Vehicle 3; Vehicle 4,Multiple units under same commercial lending agreement.
+TS-041,No,,,,,,,,,,
+TS-042,Yes,1.0,BMO Bank N.A.,111 W Monroe St,Floor 14,Albuquerque,NM,87102.0,No,Vehicle 5,Loss payee required on one purchased van pending final payoff.
+TS-043,No,,,,,,,,,,
+TS-044,Yes,1.0,"Wells Fargo Equipment Finance, Inc.",800 Nicollet Mall,Suite 900,Greensboro,NC,27401.0,Yes,,Blanket loss payee applies to all scheduled physical damage units under equipment finance agreement.
+TS-045,Yes,1.0,Regions Bank,1900 5th Ave N,,Fargo,ND,58102.0,Yes,,All physical damage units are collateralized under a revolving equipment line.
+TS-046,Yes,1.0,"Wells Fargo Equipment Finance, Inc.",800 Nicollet Mall,Suite 900,Cleveland,OH,44113.0,Yes,,Blanket loss payee applies to all scheduled physical damage units under equipment finance agreement.
+TS-047,No,,,,,,,,,,
+TS-048,Yes,1.0,Huntington National Bank,41 S High St,,Portland,OR,97204.0,No,Trailer 2,One equipment trailer is financed and assigned to lender.
+TS-049,Yes,1.0,Regions Commercial Finance,1900 5th Ave N,,Pittsburgh,PA,15222.0,No,Vehicle 4,One straight truck is collateral for a term loan.
+TS-050,No,,,,,,,,,,
+TS-051,Yes,1.0,Truist Equipment Finance Corp.,214 N Tryon St,Suite 1700,Columbia,SC,29201.0,Yes,,Lender requested blanket loss payee on all scheduled vehicles and trailers.
+TS-052,Yes,1.0,KeyBank National Association,127 Public Sq,8th Floor,Rapid City,SD,57701.0,No,Vehicle 1; Vehicle 3; Vehicle 4,Multiple units under same commercial lending agreement.
+TS-053,Yes,1.0,M&T Bank,One M&T Plaza,12th Floor,Knoxville,TN,37902.0,No,Trailer 3,Single utility trailer financed through commercial installment contract.
+TS-054,Yes,1.0,Truist Equipment Finance Corp.,214 N Tryon St,Suite 1700,Houston,TX,77002.0,Yes,,Lender requested blanket loss payee on all scheduled vehicles and trailers.
+TS-055,Yes,1.0,"PNC Equipment Finance, LLC",249 Fifth Ave,Suite 200,Provo,UT,84601.0,Yes,,Blanket loss payee requested by lessor across all scheduled physical damage items.
+TS-056,Yes,1.0,Truist Equipment Finance Corp.,214 N Tryon St,Suite 1700,Rutland,VT,5701.0,Yes,,Lender requested blanket loss payee on all scheduled vehicles and trailers.
+TS-057,Yes,1.0,CIT Commercial Services,11 Madison Ave,9th Floor,Richmond,VA,23219.0,No,Vehicle 1; Vehicle 5,Two power units are leased through same finance source.
+TS-058,Yes,1.0,BMO Commercial Bank,111 W Monroe St,Suite 1500,Spokane,WA,99201.0,No,Trailer 2,One refrigerated trailer listed as collateral for bank financing.
+TS-059,Yes,1.0,Pinnacle Financial Partners,150 3rd Ave S,Suite 1700,Morgantown,WV,26505.0,Yes,,All physical damage items subject to blanket loss payable clause per loan agreement.
+TS-060,Yes,1.0,Santander Consumer USA Inc.,1601 Elm St,Suite 900,Milwaukee,WI,53202.0,No,Vehicle 3,One box truck financed under retail commercial loan.
+TS-061,Yes,1.0,"Wells Fargo Equipment Finance, Inc.",800 Nicollet Mall,Suite 900,Casper,WY,82601.0,Yes,,Blanket loss payee applies to all scheduled physical damage units under equipment finance agreement.
+TS-062,Yes,1.0,CIT Commercial Services,11 Madison Ave,9th Floor,Mobile,AL,36602.0,No,Vehicle 1; Vehicle 5,Two power units are leased through same finance source.
+TS-063,Yes,1.0,BMO Commercial Bank,111 W Monroe St,Suite 1500,Anchorage,AK,99501.0,No,Trailer 2,One refrigerated trailer listed as collateral for bank financing.
+TS-064,Yes,1.0,Pinnacle Financial Partners,150 3rd Ave S,Suite 1700,Tucson,AZ,85701.0,Yes,,All physical damage items subject to blanket loss payable clause per loan agreement.
+TS-065,Yes,1.0,Santander Consumer USA Inc.,1601 Elm St,Suite 900,Fort Smith,AR,72901.0,No,Vehicle 3,One box truck financed under retail commercial loan.
+TS-066,Yes,1.0,Chase Equipment Leasing LLC,1111 Polaris Pkwy,Floor 4,Los Angeles,CA,90012.0,No,Vehicle 2; Trailer 1,Financed tractor and enclosed trailer assigned to lessor.
+TS-067,Yes,1.0,BMO Commercial Bank,111 W Monroe St,Suite 1500,Colorado Springs,CO,80903.0,No,Trailer 2,One refrigerated trailer listed as collateral for bank financing.
+TS-068,Yes,1.0,Pinnacle Financial Partners,150 3rd Ave S,Suite 1700,Stamford,CT,6901.0,Yes,,All physical damage items subject to blanket loss payable clause per loan agreement.
+TS-069,Yes,1.0,Santander Consumer USA Inc.,1601 Elm St,Suite 900,Wilmington,DE,19801.0,No,Vehicle 3,One box truck financed under retail commercial loan.
+TS-070,Yes,1.0,Fifth Third Equipment Finance,38 Fountain Square Plaza,,Orlando,FL,32801.0,No,Vehicle 2; Trailer 4,Collateral includes one tractor and one equipment trailer.
+TS-071,Yes,1.0,U.S. Bank Equipment Finance,800 Nicollet Mall,Suite 1000,Augusta,GA,30901.0,Yes,,Lessor requires blanket protection across all scheduled items.
+TS-072,Yes,1.0,Regions Commercial Finance,1900 5th Ave N,,Honolulu,HI,96813.0,No,Vehicle 4,One straight truck is collateral for a term loan.
+TS-073,Yes,1.0,Pinnacle Financial Partners,150 3rd Ave S,Suite 1700,Idaho Falls,ID,83402.0,Yes,,All physical damage items subject to blanket loss payable clause per loan agreement.
+TS-074,Yes,1.0,Santander Consumer USA Inc.,1601 Elm St,Suite 900,Peoria,IL,61602.0,No,Vehicle 3,One box truck financed under retail commercial loan.
+TS-075,Yes,1.0,Fifth Third Equipment Finance,38 Fountain Square Plaza,,Indianapolis,IN,46204.0,No,Vehicle 2; Trailer 4,Collateral includes one tractor and one equipment trailer.
+TS-076,Yes,1.0,U.S. Bank Equipment Finance,800 Nicollet Mall,Suite 1000,Cedar Rapids,IA,52401.0,Yes,,Lessor requires blanket protection across all scheduled items.
+TS-077,Yes,1.0,First Citizens Bank,300 S Tryon St,Floor 7,Kansas City,KS,66101.0,No,Trailer 1; Trailer 5,Two cargo trailers are under a shared commercial equipment note.
+TS-078,Yes,1.0,Comerica Bank,1717 Main St,Mail Code 1070,Louisville,KY,40202.0,No,Vehicle 6,One service truck is subject to a purchase-money security interest.
+TS-079,Yes,1.0,"TD Bank, N.A.",6000 Atrium Way,Suite 100,Baton Rouge,LA,70801.0,Yes,,Blanket loss payee requested because all units are financed through one master agreement.
+TS-080,No,,,,,,,,,,

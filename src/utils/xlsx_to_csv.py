@@ -52,7 +52,7 @@ def excel_to_csv(excel_file: str, output_dir: str = None) -> list:
 # --- Example Usage ---
 if __name__ == "__main__":
     # Replace with your actual file path
-    source_excel = "src/data/TestData.xlsx"
-    target_folder = "src/data/csv_exports"
+    source_excel = "src/data/apd_cargo_combined_lob.xlsx"
+    target_folder = "src/data/apd_cargo_combined_lob"
 
     excel_to_csv(source_excel, target_folder)

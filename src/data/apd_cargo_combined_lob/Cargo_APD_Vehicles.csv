@@ -1,0 +1,96 @@
+Test ID,#,Vehicle Coverage (Cargo/PhysDam/Both),Vehicle Year,Vehicle Make,Vehicle Type,VIN Known?,VIN Number,Vehicle Cost ($),Notes
+TS-001,1,Both,2024,Ford,Car,Yes,1FTNE2CM3RKA10001,$38500,New unit added for local delivery operations; garaged at primary location.
+TS-001,2,Both,2018,Kenworth,Pickup Truck,Yes,1XKAD49X8JJ80083,$38500,New unit added for local delivery operations; garaged at primary location.
+TS-001,3,Both,2020,Chevrolet,Tractor,Yes,1GCWGAFP8LZ80084,$126000,Long-haul power unit with telematics and driver monitoring installed.
+TS-001,4,Both,2017,Peterbilt,Box Truck,Yes,1XP5DB9X7HN80085,$74500,Unit scheduled for titling; VIN not yet available at time of quote.
+TS-001,5,Both,2023,Ram,Flatbed Truck,Yes,3C7WRNER5PG80086,$68900,Used for regional freight runs; maintained under fleet service plan.
+TS-001,6,Both,2015,Mack,Reefer Truck,No,,$126000,Long-haul power unit with telematics and driver monitoring installed.
+TS-001,7,Both,2022,Hino,Tank Truck,Yes,JHMSH7BL1NX80088,$126000,Long-haul power unit with telematics and driver monitoring installed.
+TS-001,8,Both,2016,Ford,Bulk Truck,Yes,1FTER4FH8GL80089,$74500,Unit scheduled for titling; VIN not yet available at time of quote.
+TS-001,9,Both,2024,International,Dump Truck,Yes,1HTMMMML7RH80090,$68900,Used for regional freight runs; maintained under fleet service plan.
+TS-001,10,Both,2013,GMC,Car,No,,$46800,Light-duty support vehicle used by dispatch and service staff.
+TS-002,1,Both,2023,Freightliner,Pickup Truck,Yes,1FUJGLDR8PLB20002,$114200,Higher-value sleeper cab unit with backup camera and ELD integration.
+TS-003,1,Both,2022,Volvo,Tractor,No,,$52300,VIN pending from dealer; vehicle is currently in service.
+TS-004,1,Both,2021,International,Box Truck,Yes,1HTJHADR2MHC30003,$74500,Unit scheduled for titling; VIN not yet available at time of quote.
+TS-005,1,Both,2024,Kenworth,Flatbed Truck,Yes,1XKAD49X4RJX40004,$68900,Used for regional freight runs; maintained under fleet service plan.
+TS-006,1,Both,2020,Peterbilt,Reefer Truck,Yes,1XP5DB9X3LN500005,$46800,Light-duty support vehicle used by dispatch and service staff.
+TS-007,1,Both,2023,Hino,Tank Truck,No,,$114200,Higher-value sleeper cab unit with backup camera and ELD integration.
+TS-007,2,Both,2019,Chevrolet,Bulk Truck,No,,$52300,VIN pending from dealer; vehicle is currently in service.
+TS-007,3,Both,2022,Hino,Dump Truck,Yes,JHMDM6AH6NN270027,$81250,Refrigerated body unit used for grocery distribution routes.
+TS-007,4,Both,2023,Ford,Car,Yes,1FDUF5HT8PDA28028,$41200,Secondary delivery van assigned to overflow route coverage.
+TS-007,5,Both,2021,Peterbilt,Pickup Truck,Yes,1NP5DB9X3MN290029,$68900,Used for regional freight runs; maintained under fleet service plan.
+TS-007,6,Both,2024,Mercedes-Benz,Tractor,Yes,W1Y4NCHY3RT300030,$68900,Used for regional freight runs; maintained under fleet service plan.
+TS-008,1,Both,2019,Mack,Box Truck,Yes,1M1AN4GY0KM600006,$46800,Light-duty support vehicle used by dispatch and service staff.
+TS-009,1,Both,2024,Isuzu,Flatbed Truck,Yes,JALC4W16XR7A00007,$114200,Higher-value sleeper cab unit with backup camera and ELD integration.
+TS-010,1,Both,2022,Chevrolet,Reefer Truck,Yes,1GB4KXCG3NF800008,$52300,VIN pending from dealer; vehicle is currently in service.
+TS-011,1,Both,2021,Ford,Tank Truck,Yes,1FDUF4GT7MED900009,$81250,Refrigerated body unit used for grocery distribution routes.
+TS-012,1,Both,2020,Freightliner,Bulk Truck,No,,$41200,Secondary delivery van assigned to overflow route coverage.
+TS-013,1,Both,2024,Volvo,Dump Truck,Yes,4V4NC9EH6RN100010,$97800,Older tractor retained due to low mileage and strong maintenance records.
+TS-014,1,Both,2018,International,Car,Yes,1HTMMMML8JH110011,$35900,Service pickup with ladder rack and tool storage topper.
+TS-014,2,Both,2024,Chevrolet,Pickup Truck,Yes,1GCWGAFP9RZ140014,$46800,Light-duty support vehicle used by dispatch and service staff.
+TS-015,1,Both,2023,Kenworth,Tractor,Yes,1XKZD49X5PJ120012,$46800,Light-duty support vehicle used by dispatch and service staff.
+TS-016,1,Both,2022,Mack,Box Truck,No,,$114200,Higher-value sleeper cab unit with backup camera and ELD integration.
+TS-017,1,Both,2019,Isuzu,Flatbed Truck,Yes,JALC4W19XP8B000013,$52300,VIN pending from dealer; vehicle is currently in service.
+TS-018,1,Both,2024,Chevrolet,Reefer Truck,Yes,1GCWGAFP9RZ140014,$81250,Refrigerated body unit used for grocery distribution routes.
+TS-019,1,Both,2021,Peterbilt,Tank Truck,Yes,1NP5DB9X0MN150015,$41200,Secondary delivery van assigned to overflow route coverage.
+TS-020,1,Both,2020,Hino,Bulk Truck,Yes,JHMGDM1H7LS160016,$97800,Older tractor retained due to low mileage and strong maintenance records.
+TS-021,1,Both,2023,Ford,Dump Truck,Yes,1FTBR1C82PKA21021,$35900,Service pickup with ladder rack and tool storage topper.
+TS-022,1,Both,2022,Freightliner,Car,Yes,1FVACXDT5NDT22022,$114200,Higher-value sleeper cab unit with backup camera and ELD integration.
+TS-023,1,Both,2021,Isuzu,Pickup Truck,No,,$114200,Higher-value sleeper cab unit with backup camera and ELD integration.
+TS-024,1,Both,2024,Ram,Tractor,Yes,3C6LRVDG9RE240024,$52300,VIN pending from dealer; vehicle is currently in service.
+TS-025,1,Both,2020,Kenworth,Box Truck,Yes,1XKWD49X9LJ250025,$81250,Refrigerated body unit used for grocery distribution routes.
+TS-026,1,Both,2019,Chevrolet,Flatbed Truck,No,,$52300,VIN pending from dealer; vehicle is currently in service.
+TS-027,1,Both,2022,Hino,Reefer Truck,Yes,JHMDM6AH6NN270027,$81250,Refrigerated body unit used for grocery distribution routes.
+TS-028,1,Both,2023,Ford,Tank Truck,Yes,1FDUF5HT8PDA28028,$41200,Secondary delivery van assigned to overflow route coverage.
+TS-029,1,Both,2021,Peterbilt,Bulk Truck,Yes,1NP5DB9X3MN290029,$97800,Older tractor retained due to low mileage and strong maintenance records.
+TS-030,1,Both,2024,Mercedes-Benz,Dump Truck,Yes,W1Y4NCHY3RT300030,$35900,Service pickup with ladder rack and tool storage topper.
+TS-031,1,Both,2020,Isuzu,Car,Yes,54DB4H1K2LJ310031,$132500,VIN unavailable due to recent acquisition from auction.
+TS-032,1,Both,2023,Freightliner,Pickup Truck,No,,$71500,Local construction supply truck with reinforced body.
+TS-033,1,Both,2018,GMC,Tractor,Yes,1GTW7AFG8JZ330033,$39850,Recently leased van used for expedited parcel deliveries.
+TS-034,1,Both,2022,International,Box Truck,Yes,3HTMMAAL5NL340034,$81250,Refrigerated body unit used for grocery distribution routes.
+TS-035,1,Both,2024,RAM,Flatbed Truck,Yes,3C6LRVDG7RE350035,$81250,Refrigerated body unit used for grocery distribution routes.
+TS-036,1,Both,2021,Volvo,Reefer Truck,Yes,4V4NC9EH5MN360036,$41200,Secondary delivery van assigned to overflow route coverage.
+TS-037,1,Both,2019,Ford,Tank Truck,No,,$97800,Older tractor retained due to low mileage and strong maintenance records.
+TS-038,1,Both,2023,Mack,Bulk Truck,Yes,1M2AN4GY5PM380038,$35900,Service pickup with ladder rack and tool storage topper.
+TS-039,1,Both,2020,Chevrolet,Dump Truck,Yes,1GCWGAFP7LZ390039,$41200,Secondary delivery van assigned to overflow route coverage.
+TS-040,1,Both,2022,Kenworth,Car,Yes,1XKWD49X5NJ400040,$41200,Secondary delivery van assigned to overflow route coverage.
+TS-041,1,Both,2021,Freightliner,Pickup Truck,Yes,1FVACWDT0MH410041,$97800,Older tractor retained due to low mileage and strong maintenance records.
+TS-042,1,Both,2019,Ford,Tractor,No,,$35900,Service pickup with ladder rack and tool storage topper.
+TS-043,1,Both,2024,International,Box Truck,Yes,1HTKJPVK8RJ430043,$132500,VIN unavailable due to recent acquisition from auction.
+TS-044,1,Both,2018,Ram,Flatbed Truck,Yes,3C7WRMAL2JG440044,$71500,Local construction supply truck with reinforced body.
+TS-045,1,Both,2022,Volvo,Reefer Truck,Yes,4V4NC9EH1NN450045,$39850,Recently leased van used for expedited parcel deliveries.
+TS-046,1,Both,2023,Isuzu,Tank Truck,No,,$86500,Mileage-heavy unit but kept active for seasonal overflow.
+TS-047,1,Both,2020,Hino,Bulk Truck,Yes,JHHRY3H2XLM470047,$97800,Older tractor retained due to low mileage and strong maintenance records.
+TS-048,1,Both,2021,Peterbilt,Dump Truck,Yes,1XPBD49X7MD480048,$97800,Older tractor retained due to low mileage and strong maintenance records.
+TS-049,1,Both,2017,Chevrolet,Car,Yes,1GCWGAFP8H1049049,$35900,Service pickup with ladder rack and tool storage topper.
+TS-050,1,Both,2024,Mack,Pickup Truck,Yes,1M2AN4GY8RM500050,$132500,VIN unavailable due to recent acquisition from auction.
+TS-051,1,Both,2016,GMC,Tractor,No,,$71500,Local construction supply truck with reinforced body.
+TS-052,1,Both,2022,Kenworth,Box Truck,Yes,1XKYDP9X0NJ520052,$39850,Recently leased van used for expedited parcel deliveries.
+TS-053,1,Both,2019,Ford,Flatbed Truck,Yes,1FTWS3DY2KZ530053,$86500,Mileage-heavy unit but kept active for seasonal overflow.
+TS-054,1,Both,2023,International,Reefer Truck,Yes,1HTKJPVK9PJ540054,$35900,Service pickup with ladder rack and tool storage topper.
+TS-055,1,Both,2018,Volvo,Tank Truck,Yes,4V4NC9EH5JN550055,$35900,Service pickup with ladder rack and tool storage topper.
+TS-056,1,Both,2021,Ram,Bulk Truck,Yes,3C6LRVAG1ME560056,$132500,VIN unavailable due to recent acquisition from auction.
+TS-057,1,Both,2024,Freightliner,Dump Truck,Yes,1FVACWDT4RM570057,$71500,Local construction supply truck with reinforced body.
+TS-058,1,Both,2015,Hino,Car,No,,$39850,Recently leased van used for expedited parcel deliveries.
+TS-059,1,Both,2022,Peterbilt,Pickup Truck,Yes,1XPBD49X6MD590059,$86500,Mileage-heavy unit but kept active for seasonal overflow.
+TS-060,1,Both,2020,Isuzu,Tractor,Yes,JALC4B1K8L1060060,$44750,Crew cab pickup used for yard and trailer support duties.
+TS-061,1,Both,2021,Freightliner,Box Truck,Yes,1FUJGLDR0MPC10061,$132500,VIN unavailable due to recent acquisition from auction.
+TS-062,1,Both,2019,International,Flatbed Truck,Yes,1HTMMMML9KH206062,$71500,Local construction supply truck with reinforced body.
+TS-063,1,Both,2018,Ford,Reefer Truck,No,,$39850,Recently leased van used for expedited parcel deliveries.
+TS-064,1,Both,2024,Kenworth,Tank Truck,Yes,1XKYDP9X8RJ640064,$86500,Mileage-heavy unit but kept active for seasonal overflow.
+TS-065,1,Both,2016,Hino,Bulk Truck,Yes,JHMBH5BL8GX650065,$71500,Local construction supply truck with reinforced body.
+TS-066,1,Both,2022,Mack,Dump Truck,Yes,1M2AN4GY6NM660066,$71500,Local construction supply truck with reinforced body.
+TS-067,1,Both,2023,Ram,Car,Yes,3C6UR5FL7PG670067,$39850,Recently leased van used for expedited parcel deliveries.
+TS-068,1,Both,2020,Volvo,Pickup Truck,Yes,4V4NC9EH0LN680068,$86500,Mileage-heavy unit but kept active for seasonal overflow.
+TS-069,1,Both,2017,Chevrolet,Tractor,No,,$44750,Crew cab pickup used for yard and trailer support duties.
+TS-070,1,Both,2021,Peterbilt,Box Truck,Yes,1XPXD49X7MD700070,$78400,VIN pending; insured requested physical damage coverage on quote.
+TS-071,1,Both,2015,Isuzu,Flatbed Truck,Yes,JALC4B1K0F1071071,$39850,Recently leased van used for expedited parcel deliveries.
+TS-072,1,Both,2024,Freightliner,Reefer Truck,Yes,3ALACXFC5RD720072,$39850,Recently leased van used for expedited parcel deliveries.
+TS-073,1,Both,2019,Ford,Tank Truck,Yes,1FTYR2CM4KZ730073,$86500,Mileage-heavy unit but kept active for seasonal overflow.
+TS-074,1,Both,2018,Western Star,Bulk Truck,Yes,5KKACEDR0JP740074,$44750,Crew cab pickup used for yard and trailer support duties.
+TS-075,1,Both,2022,GMC,Dump Truck,Yes,1GT49REY0NF750075,$78400,VIN pending; insured requested physical damage coverage on quote.
+TS-076,1,Both,2020,Kenworth,Car,Yes,1XKWD49X8LJ760076,$42100,Van assigned to urban route with frequent stop-and-go usage.
+TS-077,1,Both,2016,International,Pickup Truck,No,,$109300,Sleeper cab with aftermarket safety package and dash camera.
+TS-078,1,Both,2023,Hino,Tractor,Yes,JHMBH5BL8PX780078,$65750,Final unit in fleet schedule; kept in a secured parking yard overnight.
+TS-079,1,Both,2014,Ram,Box Truck,Yes,3C6TRVCG8EG790079,$86500,Mileage-heavy unit but kept active for seasonal overflow.
+TS-080,1,Both,2022,Freightliner,Flatbed Truck,Yes,1FVACWDT8NHS80080,$86500,Mileage-heavy unit but kept active for seasonal overflow.

@@ -1,0 +1,133 @@
+Test ID,Cargo Includes Liquor / Manufactured Tobacco?,Cargo Includes Oversized / Overweight Commodities?,Cargo Includes Excluded Commodities?,#,Commodity (Select from list),Percent of Cargo (%),Average Value per Load ($),Maximum Value per Load ($)
+TS-001,No,No,No,1.0,Bulk Liquid Cargoes,100,$18000,$45000
+TS-002,No,No,No,1.0,Textiles and Carpet,15,$24000,$60000
+TS-002,,,,2.0,Office Products,20,$8500,$20000
+TS-002,,,,3.0,Beverages - Non Alcoholic,10,$30000,$75000
+TS-002,,,,4.0,Shellfish,10,$27000,$65000
+TS-002,,,,5.0,Hardware,15,$16000,$42000
+TS-002,,,,6.0,Poultry - Frozen,10,$22000,$55000
+TS-002,,,,7.0,Poultry - Frozen,5,$48000,$125000
+TS-002,,,,8.0,Stationary,5,$35000,$90000
+TS-002,,,,9.0,Sand in Bulk,5,$14000,$36000
+TS-002,,,,10.0,Shellfish,5,$27000,$65000
+TS-003,No,No,No,1.0,Office Products,100,$8500,$20000
+TS-004,No,No,No,1.0,Beverages - Non Alcoholic,100,$30000,$75000
+TS-005,No,No,No,1.0,Machinery - Light,25,$22000,$54000
+TS-005,,,,2.0,"Garbage, Trash and Refuse",20,$68500,$145000
+TS-005,,,,3.0,Appliances - Household,25,$15600,$39000
+TS-005,,,,4.0,Soap Products / Household Cleaners,30,$27500,$64000
+TS-006,No,No,No,1.0,Hardware,100,$16000,$42000
+TS-007,Yes,No,No,1.0,Poultry - Frozen,100,$22000,$55000
+TS-008,Yes,Yes,No,1.0,Poultry - Frozen,100,$48000,$125000
+TS-009,Yes,No,Yes,1.0,Stationary,100,$35000,$90000
+TS-010,Yes,No,No,1.0,Sand in Bulk,100,$14000,$36000
+TS-011,Yes,No,No,1.0,Fish / Seafood - Not Frozen,100,$26000,$70000
+TS-012,Yes,No,No,1.0,Furniture - New,100,$21000,$52000
+TS-013,Yes,No,No,1.0,Canned Goods,100,$13000,$33000
+TS-014,Yes,No,No,1.0,Lumber,100,$28000,$80000
+TS-015,Yes,Yes,No,1.0,Sand in Bulk,100,$41000,$110000
+TS-016,Yes,No,Yes,1.0,Frozen / Refrigerated Foods,100,$50000,$150000
+TS-017,Yes,No,No,1.0,Poultry - Frozen,100,$19000,$47000
+TS-018,Yes,No,No,1.0,Boats,100,$17000,$42000
+TS-019,Yes,No,No,1.0,Courier Services,100,$23000,$58000
+TS-020,Yes,No,No,1.0,Bottles - Glass,100,$25000,$68000
+TS-021,Yes,No,No,1.0,Hay,100,$18500,$46000
+TS-022,Yes,No,No,1.0,Machinery - Light,100,$22000,$54000
+TS-023,No,Yes,No,1.0,"Garbage, Trash and Refuse",100,$68500,$145000
+TS-024,No,No,No,1.0,Appliances - Household,100,$15600,$39000
+TS-025,No,No,No,1.0,Soap Products / Household Cleaners,100,$27500,$64000
+TS-026,No,No,No,1.0,Cheese,100,$19800,$51000
+TS-027,No,No,Yes,1.0,Beverages - Including Beer,100,$35000,$88000
+TS-028,No,No,No,1.0,Meat-Packaged - Frozen,100,$24000,$59000
+TS-029,No,Yes,No,1.0,Electronic Equipment,100,$76000,$160000
+TS-030,No,No,No,1.0,Wood Products - Other than Furniture,100,$21000,$48000
+TS-031,No,No,No,1.0,Shellfish,100,$32500,$78000
+TS-032,No,No,No,1.0,Paper and Paper Products,100,$28900,$67000
+TS-033,Yes,No,No,1.0,Farm Machinery,100,$18000,$42000
+TS-034,No,No,No,1.0,Clothing,100,$23200,$56000
+TS-035,No,No,No,1.0,Bulk Goods,100,$26500,$61000
+TS-036,No,Yes,No,1.0,Autoparts,100,$84000,$175000
+TS-037,No,No,No,1.0,Groceries - Incl. Pet Food,100,$17400,$43000
+TS-038,No,No,No,1.0,Beverages - Non Alcoholic,100,$20500,$49500
+TS-039,No,No,Yes,1.0,Paints and Thinners,100,$92000,$210000
+TS-040,No,No,No,1.0,Lawn and Garden Equipment,100,$19200,$47000
+TS-041,No,No,No,1.0,Meat-Packaged - Not Frozen,100,$27500,$61000
+TS-042,No,Yes,No,1.0,Frozen / Refrigerated Foods,100,$41800,$98500
+TS-043,Yes,Yes,No,1.0,Baked Goods,100,$35600,$80400
+TS-044,No,Yes,No,1.0,Containerized Freight,100,$24800,$55200
+TS-045,No,Yes,Yes,1.0,Wood Products - Other than Furniture,100,$182000,$325000
+TS-046,No,Yes,No,1.0,Rubber Products - Not Tires,100,$76400,$142000
+TS-047,No,Yes,No,1.0,Ready-Mix Concrete,100,$58900,$133500
+TS-048,No,Yes,No,1.0,"Plants, Shrubs and Trees",100,$90500,$176000
+TS-049,No,Yes,No,1.0,"Top Soil, Dirt and Fill",100,$33200,$71000
+TS-050,No,Yes,Yes,1.0,Sand and Gravel,100,$14600,$31800
+TS-051,No,Yes,No,1.0,Courier Services,100,$48600,$103000
+TS-052,Yes,Yes,No,1.0,Beverages - Including Beer,100,$67200,$141000
+TS-053,No,Yes,No,1.0,Rubber Products - Not Tires,100,$88200,$196000
+TS-054,No,Yes,No,1.0,"Plants, Shrubs and Trees",100,$21900,$48300
+TS-055,No,Yes,No,1.0,Electronic Equipment,100,$26400,$59400
+TS-056,No,Yes,Yes,1.0,Hay,100,$51200,$118000
+TS-057,No,Yes,No,1.0,Pipe / Steel,100,$61800,$129000
+TS-058,No,Yes,No,1.0,"Top Soil, Dirt and Fill",100,$96700,$210000
+TS-059,No,Yes,No,1.0,Clothing,100,$12500,$29000
+TS-060,No,Yes,No,1.0,Grain,100,$22900,$52400
+TS-061,No,Yes,No,1.0,"Gravel, Stone and Rock",100,$18400,$46200
+TS-062,Yes,Yes,No,1.0,Shellfish,100,$27650,$69100
+TS-063,No,Yes,No,1.0,Air Freight,100,$84200,$196500
+TS-064,No,No,Yes,1.0,Autos - New and Used,100,$56300,$129900
+TS-065,No,No,No,1.0,Construction Equipment,100,$39100,$88000
+TS-066,No,No,No,1.0,Dairy Products,100,$22800,$55750
+TS-067,No,Yes,No,1.0,Furniture - New,100,$115400,$265000
+TS-068,Yes,No,No,1.0,Lawn and Garden Equipment,100,$33200,$78500
+TS-069,No,No,No,1.0,Fertilizer,100,$27400,$64800
+TS-070,No,No,Yes,1.0,"Gravel, Stone and Rock",100,$15400,$41000
+TS-071,No,No,No,1.0,Pipe / Steel,100,$48750,$118300
+TS-072,No,Yes,No,1.0,Feed,100,$96800,$214000
+TS-073,No,No,No,1.0,Swinging Meat,100,$23800,$57200
+TS-074,Yes,No,Yes,1.0,Appliances - Household,100,$41700,$99000
+TS-075,No,No,No,1.0,"Garbage, Trash and Refuse",100,$20100,$48900
+TS-076,No,No,No,1.0,Textiles and Carpet,100,$36200,$84500
+TS-077,No,Yes,No,1.0,Bottles - Glass,100,$79100,$183600
+TS-078,No,No,No,1.0,Fertilizer,100,$44700,$108900
+TS-079,No,No,No,1.0,"Wood Chips, Mulch and Garden Ties",100,$51900,$126700
+TS-080,Yes,No,No,1.0,"Wood Chips, Mulch and Garden Ties",100,$46800,$112400
+,,,,,,100,,
+,,,,,,100,,
+,,,,,,100,,
+,,,,,,100,,
+,,,,,,100,,
+,,,,,,100,,
+,,,,,,100,,
+,,,,,,100,,
+,,,,,,100,,
+,,,,,,100,,
+,,,,,,100,,
+,,,,,,100,,
+,,,,,,100,,
+,,,,,,100,,
+,,,,,,100,,
+,,,,,,100,,
+,,,,,,100,,
+,,,,,,100,,
+,,,,,,100,,
+,,,,,,100,,
+,,,,,,100,,
+,,,,,,100,,
+,,,,,,100,,
+,,,,,,100,,
+,,,,,,100,,
+,,,,,,100,,
+,,,,,,100,,
+,,,,,,100,,
+,,,,,,100,,
+,,,,,,100,,
+,,,,,,100,,
+,,,,,,100,,
+,,,,,,100,,
+,,,,,,100,,
+,,,,,,100,,
+,,,,,,100,,
+,,,,,,100,,
+,,,,,,100,,
+,,,,,,100,,
+,,,,,,100,,

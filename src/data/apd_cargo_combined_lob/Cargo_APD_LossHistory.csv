@@ -1,0 +1,99 @@
+Test ID,Any Losses in the Past 3 Years?,Any Unrepaired Damage from Prior Losses?,Add extra subjectivities?,Subjectivity Text,Notes about the Insured,Loss #,Loss Year,Premium at Time of Loss ($),Type of Loss,Loss Description (if Other),Amount Paid ($),Amount Outstanding ($),Notes
+TS-001,Yes,No,Yes,Require updated driver list,No recent claims reported,1.0,2025.0,$18400,Theft,,$12500,$0,Claim closed with no further action required.
+TS-001,Yes,Yes,No,,Well maintained fleet,1.0,2024.0,$22950,Fire,,$18750,$2500,Minor loss reported and fully resolved.
+TS-001,Yes,No,No,,Annual safety training completed,3.0,2025.0,$19250,Other,Tree limb fell on parked unit causing roof and mirror damage,$8450,$0,Claim closed with no further action required.
+TS-001,Yes,Yes,Yes,Install GPS tracking,Experienced operators,4.0,2024.0,$21400,Fire,,$12600,$2200,Minor loss reported and fully resolved.
+TS-001,Yes,No,No,,Records reviewed and satisfactory,5.0,2025.0,$18400,Theft,,$12500,$0,Claim closed with no further action required.
+TS-001,Yes,Yes,No,,Risk profile acceptable,6.0,2023.0,$17650,Overturn,,$9800,$0,No outstanding payments remaining on claim.
+TS-001,Yes,No,Yes,Require updated driver list,No recent claims reported,7.0,2025.0,$23800,Collision,,$15000,$3500,Loss adjusted according to policy terms.
+TS-001,Yes,Yes,No,,Well maintained fleet,7.0,2024.0,$15900,Theft,,$6200,$0,Insured cooperated throughout investigation.
+TS-001,Yes,No,No,,Annual safety training completed,9.0,2025.0,$26750,Theft,,$11100,$500,Repair work completed successfully.
+TS-001,Yes,No,Yes,Install GPS tracking,Experienced operators,10.0,2025.0,$18400,Theft,,$12500,$0,Claim closed with no further action required.
+TS-002,No,,,,,,,,,,,,
+TS-002,Yes,No,No,,Risk profile acceptable,2.0,,,,,,,
+TS-003,Yes,Yes,Yes,Require updated driver list,No recent claims reported,1.0,2023.0,$31200,Theft,,$45500,$8000,No outstanding payments remaining on claim.
+TS-003,Yes,No,No,,Well maintained fleet,2.0,2024.0,$19875,Overturn,,$22000,$0,Loss adjusted according to policy terms.
+TS-003,Yes,No,No,,Annual safety training completed,3.0,2025.0,$11200,Overturn,,$7600,$0,Insured cooperated throughout investigation.
+TS-003,Yes,Yes,Yes,Install GPS tracking,Experienced operators,4.0,2024.0,$15900,Other,Tree limb fell on parked unit causing roof and mirror damage,$5600,$400,Claim handled within expected timeframe.
+TS-003,Yes,No,No,,Records reviewed and satisfactory,5.0,2023.0,$20500,Other,Tree limb fell on parked unit causing roof and mirror damage,$11250,$1500,Safety recommendations provided to insured.
+TS-004,Yes,No,No,,Risk profile acceptable,1.0,2025.0,$18100,Collision,,$7900,$0,Follow-up inspection confirmed repairs.
+TS-005,Yes,Yes,Yes,Require updated driver list,No recent claims reported,1.0,2025.0,$26750,Theft,,$11100,$500,Repair work completed successfully.
+TS-005,Yes,No,No,,Well maintained fleet,2.0,2025.0,$19250,Other,Tree limb fell on parked unit causing roof and mirror damage,$8450,$0,Claim closed with no further action required.
+TS-005,Yes,No,No,,Annual safety training completed,3.0,,,,,,,
+TS-005,Yes,Yes,Yes,Install GPS tracking,Experienced operators,4.0,2024.0,$24750,Overturn,,$16800,$1200,Settlement issued and accepted by claimant.
+TS-005,Yes,No,No,,Records reviewed and satisfactory,5.0,2023.0,$33100,Fire,,$29400,$5100,Claim file updated with final documentation.
+TS-006,Yes,No,No,,Risk profile acceptable,1.0,2025.0,$17650,Collision,,$9800,$0,No coverage disputes identified during review.
+TS-007,Yes,Yes,Yes,Require updated driver list,No recent claims reported,1.0,,,,,,,
+TS-008,Yes,No,No,,Well maintained fleet,1.0,2024.0,$21400,Theft,,$6400,$0,Loss reserve released after closure.
+TS-009,No,,,,,,,,,,,,
+TS-010,Yes,No,Yes,Install GPS tracking,Experienced operators,1.0,,,,,,,
+TS-011,Yes,Yes,No,,Records reviewed and satisfactory,1.0,2025.0,$19550,Overturn,,$14300,$3700,Incident reviewed by risk management team.
+TS-012,Yes,No,No,,Risk profile acceptable,1.0,2024.0,$26800,Other,Minor loss reported and fully resolved.,$22500,$0,No additional exposures identified.
+TS-013,Yes,No,Yes,Require updated driver list,No recent claims reported,1.0,,,,,,,
+TS-014,Yes,Yes,No,,Well maintained fleet,1.0,2023.0,$24100,Other,Minor loss reported and fully resolved.,$11800,$900,Safety recommendations provided to insured.
+TS-015,Yes,No,No,,Annual safety training completed,1.0,2025.0,$16450,Collision,,$7300,$0,Follow-up inspection confirmed repairs.
+TS-016,Yes,Yes,Yes,Install GPS tracking,Experienced operators,1.0,,,,,,,
+TS-017,Yes,No,No,,Records reviewed and satisfactory,1.0,2024.0,$22150,Theft,,$9800,$1200,Claim closed with no further action required.
+TS-018,Yes,No,No,,Risk profile acceptable,1.0,2023.0,$18900,Overturn,,$6400,$500,Minor loss reported and fully resolved.
+TS-019,Yes,No,Yes,Require updated driver list,No recent claims reported,1.0,,,,,,,
+TS-020,No,,,,,,,,,,,,
+TS-021,Yes,Yes,No,,Annual safety training completed,1.0,2024.0,$17300,Other,Minor loss reported and fully resolved.,$8150,$750,Loss adjusted according to policy terms.
+TS-022,Yes,Yes,Yes,Install GPS tracking,Experienced operators,1.0,2023.0,$20200,Fire,,$11300,$1800,Insured cooperated throughout investigation.
+TS-023,Yes,No,No,,Records reviewed and satisfactory,1.0,2025.0,$14600,Theft,,$9100,$0,Repair work completed successfully.
+TS-024,Yes,No,No,,Risk profile acceptable,1.0,,,,,,,
+TS-025,Yes,No,Yes,Require updated driver list,No recent claims reported,1.0,2024.0,$23600,Overturn,,$12950,$300,Claim file updated with final documentation.
+TS-026,Yes,Yes,No,,Well maintained fleet,1.0,2023.0,$21450,Overturn,,$9900,$2200,No coverage disputes identified during review.
+TS-027,Yes,No,No,,Annual safety training completed,1.0,2025.0,$16850,Fire,,$7600,$0,Damage assessment completed and verified.
+TS-028,Yes,Yes,Yes,Install GPS tracking,Experienced operators,1.0,,,,,,,
+TS-029,Yes,No,No,,Records reviewed and satisfactory,1.0,2024.0,$24800,Overturn,,$10100,$900,Third-party involvement determined to be minimal.
+TS-030,No,,,,,,,,,,,,
+TS-031,Yes,No,Yes,Require updated driver list,No recent claims reported,1.0,2025.0,$22750,Overturn,,$14400,$0,Incident reviewed by risk management team.
+TS-032,Yes,No,No,,Well maintained fleet,1.0,,,,,,,
+TS-033,Yes,Yes,No,,Annual safety training completed,1.0,2024.0,$15900,Other,Minor loss reported and fully resolved.,$5600,$400,Claim handled within expected timeframe.
+TS-034,Yes,No,Yes,Install GPS tracking,Experienced operators,1.0,2023.0,$20500,Other,Minor loss reported and fully resolved.,$11250,$1500,Safety recommendations provided to insured.
+TS-035,Yes,Yes,No,,Records reviewed and satisfactory,1.0,2025.0,$18100,Collision,,$7900,$0,Follow-up inspection confirmed repairs.
+TS-036,Yes,No,No,,Risk profile acceptable,1.0,,,,,,,
+TS-037,Yes,No,Yes,Require updated driver list,No recent claims reported,1.0,2025.0,$19250,Other,Minor loss reported and fully resolved.,$8450,$0,Claim closed with no further action required.
+TS-038,Yes,Yes,No,,Well maintained fleet,1.0,2024.0,$21400,Fire,,$12600,$2200,Minor loss reported and fully resolved.
+TS-039,Yes,Yes,No,,Annual safety training completed,1.0,,,,,,,
+TS-040,Yes,No,Yes,Install GPS tracking,Experienced operators,1.0,2023.0,$17650,Overturn,,$9800,$0,No outstanding payments remaining on claim.
+TS-041,Yes,Yes,No,,Records reviewed and satisfactory,1.0,2025.0,$23800,Collision,,$15000,$3500,Loss adjusted according to policy terms.
+TS-042,No,,,,,,,,,,,,
+TS-043,Yes,No,Yes,Require updated driver list,No recent claims reported,1.0,2025.0,$26750,Theft,,$11100,$500,Repair work completed successfully.
+TS-044,Yes,Yes,No,,Well maintained fleet,1.0,,,,,,,
+TS-045,Yes,No,No,,Annual safety training completed,1.0,2023.0,$18400,Theft,,$9200,$1800,Claim file updated with final documentation.
+TS-046,Yes,No,Yes,Install GPS tracking,Experienced operators,1.0,2024.0,$20350,Collision,,$10400,$0,No coverage disputes identified during review.
+TS-047,Yes,Yes,No,,Records reviewed and satisfactory,1.0,2025.0,$29100,Theft,,$17350,$2500,Damage assessment completed and verified.
+TS-048,Yes,No,No,,Risk profile acceptable,1.0,,,,,,,
+TS-049,Yes,Yes,Yes,Require updated driver list,No recent claims reported,1.0,2023.0,$22150,Other,Backed into loading dock causing rear door and step damage,$6700,$0,Third-party involvement determined to be minimal.
+TS-050,Yes,No,No,,Well maintained fleet,1.0,2024.0,$24600,Overturn,,$13900,$1200,Corrective measures implemented by insured.
+TS-051,Yes,No,No,,Annual safety training completed,1.0,2025.0,$18875,Other,"Windstorm damaged hood, roof panel, and cab glass",$8900,$0,Incident reviewed by risk management team.
+TS-052,Yes,Yes,Yes,Install GPS tracking,Experienced operators,1.0,,,,,,,
+TS-053,Yes,No,No,,Records reviewed and satisfactory,1.0,2024.0,$19820,Overturn,,$7300,$0,Claim handled within expected timeframe.
+TS-054,Yes,Yes,No,,Risk profile acceptable,1.0,2023.0,$23350,Fire,,$12100,$2600,Safety recommendations provided to insured.
+TS-055,No,,,,,,,,,,,,
+TS-056,Yes,No,No,,Well maintained fleet,1.0,,,,,,,
+TS-057,Yes,Yes,No,,Annual safety training completed,1.0,2024.0,$24600,Other,Backed into loading dock causing rear door and step damage,$18250,$0,Claim closed with no further action required.
+TS-058,Yes,No,Yes,Install GPS tracking,Experienced operators,1.0,,,,,,,
+TS-059,Yes,Yes,No,,Records reviewed and satisfactory,1.0,2023.0,$19800,Theft,,$14500,$3200,Supporting documents received and reviewed.
+TS-060,Yes,No,No,,Risk profile acceptable,1.0,2025.0,$27150,Collision,,$21900,$0,No outstanding payments remaining on claim.
+TS-061,Yes,Yes,Yes,Require updated driver list,No recent claims reported,1.0,2024.0,$15400,Fire,,$8600,$500,Loss adjusted according to policy terms.
+TS-062,Yes,No,No,,Well maintained fleet,1.0,2024.0,$30250,Collision,,$24100,$4100,Insured cooperated throughout investigation.
+TS-063,Yes,No,No,,Annual safety training completed,1.0,,,,,,,
+TS-064,Yes,Yes,Yes,Install GPS tracking,Experienced operators,1.0,2023.0,$22300,Collision,,$9700,$0,Settlement issued and accepted by claimant.
+TS-065,Yes,No,No,,Records reviewed and satisfactory,1.0,2025.0,$28750,Theft,,$17600,$2800,Claim file updated with final documentation.
+TS-066,Yes,Yes,No,,Risk profile acceptable,1.0,2024.0,$16500,Overturn,,$7400,$0,No coverage disputes identified during review.
+TS-067,Yes,No,Yes,Require updated driver list,No recent claims reported,1.0,,,,,,,
+TS-068,Yes,Yes,No,,Well maintained fleet,1.0,2023.0,$20950,Theft,,$13350,$2150,Loss reserve released after closure.
+TS-069,No,,,,,,,,,,,,
+TS-070,Yes,Yes,Yes,Install GPS tracking,Experienced operators,1.0,2023.0,$17450,Theft,,$9200,$600,Corrective measures implemented by insured.
+TS-071,Yes,Yes,No,,Records reviewed and satisfactory,1.0,2025.0,$26500,Overturn,,$19800,$3600,Incident reviewed by risk management team.
+TS-072,Yes,No,No,,Risk profile acceptable,1.0,2024.0,$15400,Fire,,$8600,$500,Loss adjusted according to policy terms.
+TS-073,Yes,No,Yes,Require updated driver list,No recent claims reported,1.0,2024.0,$30250,Collision,,$24100,$4100,Insured cooperated throughout investigation.
+TS-074,Yes,No,No,,Well maintained fleet,1.0,,,,,,,
+TS-075,Yes,No,No,,Annual safety training completed,1.0,2023.0,$22300,Collision,,$9700,$0,Settlement issued and accepted by claimant.
+TS-076,Yes,No,Yes,Install GPS tracking,Experienced operators,1.0,2025.0,$28750,Theft,,$17600,$2800,Claim file updated with final documentation.
+TS-077,Yes,Yes,No,,Records reviewed and satisfactory,1.0,2024.0,$16500,Overturn,,$7400,$0,No coverage disputes identified during review.
+TS-078,Yes,No,No,,Risk profile acceptable,1.0,2023.0,$22300,Collision,,$9700,$0,
+TS-079,Yes,No,Yes,Require updated driver list,No recent claims reported,1.0,2025.0,$28750,Theft,,$17600,$2800,Loss reserve released after closure.
+TS-080,Yes,Yes,No,,Well maintained fleet,1.0,2024.0,$16500,Overturn,,$7400,$0,

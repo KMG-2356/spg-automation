@@ -14,7 +14,7 @@ sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
 import allure
 import pathlib
 
-expect.set_options(timeout=60000)
+expect.set_options(timeout=30000)
 
 @pytest.fixture(scope="session")
 def browser_type_launch_args(browser_type_launch_args):

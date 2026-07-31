@@ -1,0 +1,119 @@
+Test ID,#,Owned by Insured?,Trailer Type,Year,Trailer Make,Trailer Cost ($),VIN Known?,VIN Number,Notes
+TS-001,1,Yes,Refrigerated,2022,Big Tex,$18500,Yes,47T1U2221N1001001,Single-axle utility trailer used for local deliveries and light equipment transport.
+TS-001,2,Yes,Flatbed,2022,Big Tex,$18500,Yes,47T1U2221N1001001-2,Single-axle utility trailer used for local deliveries and light equipment transport.
+TS-001,3,Yes,Tank,2021,PJ Trailers,$22750,Yes,4P5FB2021M1001002-3,Open flatbed trailer used for hauling pallets and landscaping materials.
+TS-002,1,Yes,Tank,2021,PJ Trailers,$22750,Yes,4P5FB2021M1001002,Open flatbed trailer used for hauling pallets and landscaping materials.
+TS-002,2,Yes,Bulk,2021,PJ Trailers,$22750,Yes,4P5FB2021M1001002-2,Open flatbed trailer used for hauling pallets and landscaping materials.
+TS-002,3,No,Enclosed,2019,Diamond C,$16400,No,,Trailer is leased through a finance agreement; VIN pending title records.
+TS-002,4,Yes,Enclosed,2020,Wabash,$31500,Yes,1JJV532D3L1001004-4,Enclosed dry van trailer used for regional freight moves.
+TS-002,5,Yes,Flatbed,2018,Trail King,$48200,Yes,1TKL5818J1001005-5,Heavy-haul lowboy trailer used for equipment relocation jobs.
+TS-002,6,Yes,Bulk,2023,Load Trail,$19850,Yes,4LTG2233P1001006-6,Gooseneck trailer used for agricultural and materials hauling.
+TS-002,7,No,Tank,2020,Great Dane,$35900,Yes,1GRR7200K1001007-7,Reefer trailer operated under long-term lease for produce deliveries.
+TS-003,1,No,Refrigerated,2019,Diamond C,$16400,No,,Trailer is leased through a finance agreement; VIN pending title records.
+TS-003,2,Yes,Bulk,2020,Wabash,$31500,Yes,1JJV532D3L1001004-2,Enclosed dry van trailer used for regional freight moves.
+TS-004,1,Yes,Bulk,2020,Wabash,$31500,Yes,1JJV532D3L1001004,Enclosed dry van trailer used for regional freight moves.
+TS-004,2,Yes,Enclosed,2020,Wabash,$31500,Yes,1JJV532D3L1001004-2,Enclosed dry van trailer used for regional freight moves.
+TS-004,3,Yes,Doubledecker,2018,Trail King,$48200,Yes,1TKL5818J1001005-3,Heavy-haul lowboy trailer used for equipment relocation jobs.
+TS-004,4,Yes,Flatbed,2023,Load Trail,$19850,Yes,4LTG2233P1001006-4,Gooseneck trailer used for agricultural and materials hauling.
+TS-004,5,No,Tank,2020,Great Dane,$35900,Yes,1GRR7200K1001007-5,Reefer trailer operated under long-term lease for produce deliveries.
+TS-005,1,Yes,Bulk,2018,Trail King,$48200,Yes,1TKL5818J1001005,Heavy-haul lowboy trailer used for equipment relocation jobs.
+TS-005,2,Yes,Refrigerated,2018,Trail King,$48200,Yes,1TKL5818J1001005-2,Heavy-haul lowboy trailer used for equipment relocation jobs.
+TS-005,3,Yes,Tank,2023,Load Trail,$19850,Yes,4LTG2233P1001006-3,Gooseneck trailer used for agricultural and materials hauling.
+TS-005,4,No,Doubledecker,2020,Great Dane,$35900,Yes,1GRR7200K1001007-4,Reefer trailer operated under long-term lease for produce deliveries.
+TS-005,5,Yes,Dump,2024,Kaufman,$24400,No,,New car hauler pending VIN assignment at time of submission.
+TS-005,6,Yes,Flatbed,2021,Homesteader,$17600,Yes,5HMD9211L1001009-6,Dump trailer used for construction debris and aggregate hauling.
+TS-005,7,Yes,Refrigerated,2017,Triton,$9600,Yes,4TUT3177H1001010-7,Older utility trailer used for occasional service calls and material pickups.
+TS-006,1,Yes,Dump,2023,Load Trail,$19850,Yes,4LTG2233P1001006,Gooseneck trailer used for agricultural and materials hauling.
+TS-006,2,Yes,Bulk,2023,Load Trail,$19850,Yes,4LTG2233P1001006-2,Gooseneck trailer used for agricultural and materials hauling.
+TS-007,1,No,Bulk,2020,Great Dane,$35900,Yes,1GRR7200K1001007,Reefer trailer operated under long-term lease for produce deliveries.
+TS-007,2,No,Refrigerated,2020,Great Dane,$35900,Yes,1GRR7200K1001007-2,Reefer trailer operated under long-term lease for produce deliveries.
+TS-007,3,Yes,Enclosed,2024,Kaufman,$24400,No,,New car hauler pending VIN assignment at time of submission.
+TS-008,1,Yes,Bulk,2024,Kaufman,$24400,No,,New car hauler pending VIN assignment at time of submission.
+TS-008,2,Yes,Flatbed,2021,Homesteader,$17600,Yes,5HMD9211L1001009-2,Dump trailer used for construction debris and aggregate hauling.
+TS-008,3,Yes,Dump,2017,Triton,$9600,Yes,4TUT3177H1001010-3,Older utility trailer used for occasional service calls and material pickups.
+TS-008,4,No,Doubledecker,2022,Sure-Trac,$21300,Yes,5STF6222N1001011-4,Flatbed trailer on lease; used for peak-season equipment moves.
+TS-008,5,Yes,Enclosed,2020,Iron Bull,$20500,Yes,2IBL3200K1001012-5,Equipment trailer used to transport compact machinery to job sites.
+TS-008,6,Yes,Dump,2019,Utility,$28900,Yes,1UYVS219J1001013-6,Dry van trailer used in regional distribution service.
+TS-008,7,Yes,Refrigerated,2021,Homesteader,$17600,Yes,5HMD9211L1001009,Dump trailer used for construction debris and aggregate hauling.
+TS-008,8,Yes,Bulk,2021,Homesteader,$17600,Yes,5HMD9211L1001009-2,Dump trailer used for construction debris and aggregate hauling.
+TS-008,9,Yes,Flatbed,2017,Triton,$9600,Yes,4TUT3177H1001010-3,Older utility trailer used for occasional service calls and material pickups.
+TS-008,10,No,Flatbed,2022,Sure-Trac,$21300,Yes,5STF6222N1001011-4,Flatbed trailer on lease; used for peak-season equipment moves.
+TS-009,1,Yes,Bulk,2020,Iron Bull,$20500,Yes,2IBL3200K1001012-5,Equipment trailer used to transport compact machinery to job sites.
+TS-009,2,Yes,Dump,2019,Utility,$28900,Yes,1UYVS219J1001013-6,Dry van trailer used in regional distribution service.
+TS-009,3,No,Flatbed,2023,Cimarron,$27450,Yes,3CNG4233P1001014-7,Gooseneck trailer financed through dealer and titled to lessor.
+TS-010,1,Yes,Tank,2017,Triton,$9600,Yes,4TUT3177H1001010,Older utility trailer used for occasional service calls and material pickups.
+TS-010,2,Yes,Doubledecker,2017,Triton,$9600,Yes,4TUT3177H1001010-2,Older utility trailer used for occasional service calls and material pickups.
+TS-010,3,No,Dump,2022,Sure-Trac,$21300,Yes,5STF6222N1001011-3,Flatbed trailer on lease; used for peak-season equipment moves.
+TS-010,4,Yes,Dump,2020,Iron Bull,$20500,Yes,2IBL3200K1001012-4,Equipment trailer used to transport compact machinery to job sites.
+TS-010,5,Yes,Doubledecker,2019,Utility,$28900,Yes,1UYVS219J1001013-5,Dry van trailer used in regional distribution service.
+TS-010,6,No,Tank,2023,Cimarron,$27450,Yes,3CNG4233P1001014-6,Gooseneck trailer financed through dealer and titled to lessor.
+TS-011,1,No,Flatbed,2022,Sure-Trac,$21300,Yes,5STF6222N1001011,Flatbed trailer on lease; used for peak-season equipment moves.
+TS-012,1,No,Tank,2022,Sure-Trac,$21300,Yes,5STF6222N1001011-2,Flatbed trailer on lease; used for peak-season equipment moves.
+TS-013,1,Yes,Refrigerated,2020,Iron Bull,$20500,Yes,2IBL3200K1001012-3,Equipment trailer used to transport compact machinery to job sites.
+TS-014,1,Yes,Flatbed,2019,Utility,$28900,Yes,1UYVS219J1001013-4,Dry van trailer used in regional distribution service.
+TS-015,1,No,Flatbed,2023,Cimarron,$27450,Yes,3CNG4233P1001014-5,Gooseneck trailer financed through dealer and titled to lessor.
+TS-016,1,Yes,Enclosed,2024,Talbert,$55800,Yes,1TAL6244R1001015-6,Heavy lowboy trailer used for oversized construction equipment.
+TS-017,1,Yes,Dump,2021,Carrier,$40250,No,,Reefer trailer awaiting VIN verification from title paperwork.
+TS-018,1,Yes,Enclosed,2018,Stehl Tow,$13200,Yes,6STH8188K1001017-8,Car hauler used for dealer transfers and auction pickups.
+TS-019,1,Yes,Tank,2020,Iron Bull,$20500,Yes,2IBL3200K1001012,Equipment trailer used to transport compact machinery to job sites.
+TS-020,1,Yes,Tank,2020,Iron Bull,$20500,Yes,2IBL3200K1001012-2,Equipment trailer used to transport compact machinery to job sites.
+TS-021,1,Yes,Dump,2019,Utility,$28900,Yes,1UYVS219J1001013-3,Dry van trailer used in regional distribution service.
+TS-022,1,No,Tank,2023,Cimarron,$27450,Yes,3CNG4233P1001014-4,Gooseneck trailer financed through dealer and titled to lessor.
+TS-023,1,Yes,Enclosed,2019,Utility,$28900,Yes,1UYVS219J1001013,Dry van trailer used in regional distribution service.
+TS-024,1,Yes,Doubledecker,2019,Utility,$28900,Yes,1UYVS219J1001013-2,Dry van trailer used in regional distribution service.
+TS-025,1,No,Refrigerated,2023,Cimarron,$27450,Yes,3CNG4233P1001014-3,Gooseneck trailer financed through dealer and titled to lessor.
+TS-026,1,Yes,Dump,2024,Talbert,$55800,Yes,1TAL6244R1001015-4,Heavy lowboy trailer used for oversized construction equipment.
+TS-027,1,Yes,Flatbed,2021,Carrier,$40250,No,,Reefer trailer awaiting VIN verification from title paperwork.
+TS-028,1,Yes,Doubledecker,2018,Stehl Tow,$13200,Yes,6STH8188K1001017-6,Car hauler used for dealer transfers and auction pickups.
+TS-029,1,No,Tank,2022,Bwise,$14950,Yes,4BWD8222N1001018-7,Dump trailer rented seasonally from a local equipment lessor.
+TS-030,1,No,Bulk,2023,Cimarron,$27450,Yes,3CNG4233P1001014,Gooseneck trailer financed through dealer and titled to lessor.
+TS-031,1,No,Bulk,2023,Cimarron,$27450,Yes,3CNG4233P1001014-2,Gooseneck trailer financed through dealer and titled to lessor.
+TS-032,1,Yes,Dump,2024,Talbert,$55800,Yes,1TAL6244R1001015,Heavy lowboy trailer used for oversized construction equipment.
+TS-033,1,Yes,Doubledecker,2024,Talbert,$55800,Yes,1TAL6244R1001015-2,Heavy lowboy trailer used for oversized construction equipment.
+TS-034,1,Yes,Doubledecker,2021,Carrier,$40250,No,,Reefer trailer awaiting VIN verification from title paperwork.
+TS-035,1,Yes,Enclosed,2018,Stehl Tow,$13200,Yes,6STH8188K1001017-2,Car hauler used for dealer transfers and auction pickups.
+TS-036,1,No,Dump,2022,Bwise,$14950,Yes,4BWD8222N1001018-3,Dump trailer rented seasonally from a local equipment lessor.
+TS-037,1,Yes,Enclosed,2020,Haulmark,$8700,Yes,5HUL9200L1001019-4,Light utility trailer used for maintenance supplies and small tools.
+TS-038,1,Yes,Refrigerated,2018,Stehl Tow,$13200,Yes,6STH8188K1001017,Car hauler used for dealer transfers and auction pickups.
+TS-039,1,Yes,Tank,2018,Stehl Tow,$13200,Yes,6STH8188K1001017-2,Car hauler used for dealer transfers and auction pickups.
+TS-040,1,No,Refrigerated,2022,Bwise,$14950,Yes,4BWD8222N1001018-3,Dump trailer rented seasonally from a local equipment lessor.
+TS-041,1,No,Bulk,2022,Bwise,$14950,Yes,4BWD8222N1001018,Dump trailer rented seasonally from a local equipment lessor.
+TS-042,1,No,Doubledecker,2022,Bwise,$14950,Yes,4BWD8222N1001018-2,Dump trailer rented seasonally from a local equipment lessor.
+TS-043,1,Yes,Dump,2020,Haulmark,$8700,Yes,5HUL9200L1001019-3,Light utility trailer used for maintenance supplies and small tools.
+TS-044,1,Yes,Tank,2016,Cam Superline,$17800,Yes,1CAS2166H1001020-4,Older flatbed trailer used as backup unit for overflow loads.
+TS-045,1,Yes,Enclosed,2020,Haulmark,$8700,Yes,5HUL9200L1001019,Light utility trailer used for maintenance supplies and small tools.
+TS-046,1,Yes,Doubledecker,2020,Haulmark,$8700,Yes,5HUL9200L1001019-2,Light utility trailer used for maintenance supplies and small tools.
+TS-047,1,Yes,Enclosed,2016,Cam Superline,$17800,Yes,1CAS2166H1001020-3,Older flatbed trailer used as backup unit for overflow loads.
+TS-048,1,Yes,Tank,2023,Big Tex,$18400,Yes,BTXE2321J1001021-4,Owned equipment trailer used to move skid steers and attachments between job sites.
+TS-049,1,No,Enclosed,2021,Load Trail,$22750,Yes,LTRL2219K1001022-5,Leased car hauler used intermittently for dealer delivery work.
+TS-050,1,Yes,Tank,2020,Wabash,$34800,Yes,WBSR2030L1001023-6,Reefer trailer used for produce distribution routes.
+TS-051,1,Yes,Refrigerated,2019,Fontaine,$25900,No,,Flatbed trailer recently acquired; VIN pending title transfer.
+TS-052,1,Yes,Doubledecker,2016,Cam Superline,$17800,Yes,1CAS2166H1001020,Older flatbed trailer used as backup unit for overflow loads.
+TS-053,1,Yes,Doubledecker,2016,Cam Superline,$17800,Yes,1CAS2166H1001020-2,Older flatbed trailer used as backup unit for overflow loads.
+TS-054,1,Yes,Flatbed,2023,Big Tex,$18400,Yes,BTXE2321J1001021-3,Owned equipment trailer used to move skid steers and attachments between job sites.
+TS-055,1,No,Refrigerated,2021,Load Trail,$22750,Yes,LTRL2219K1001022-4,Leased car hauler used intermittently for dealer delivery work.
+TS-056,1,Yes,Doubledecker,2020,Wabash,$34800,Yes,WBSR2030L1001023-5,Reefer trailer used for produce distribution routes.
+TS-057,1,Yes,Tank,2019,Fontaine,$25900,No,,Flatbed trailer recently acquired; VIN pending title transfer.
+TS-058,1,No,Flatbed,2018,Talbert,$41200,Yes,TBLL1857M1001025-7,Lowboy leased for occasional heavy-haul projects.
+TS-059,1,Yes,Bulk,2024,Bwise,$16950,Yes,BWSD2441N1001026-8,New dump trailer used for landscaping debris removal.
+TS-060,1,Yes,Refrigerated,2023,Big Tex,$18400,Yes,BTXE2321J1001021,Owned equipment trailer used to move skid steers and attachments between job sites.
+TS-061,1,Yes,Tank,2023,Big Tex,$18400,Yes,BTXE2321J1001021-2,Owned equipment trailer used to move skid steers and attachments between job sites.
+TS-062,1,No,Enclosed,2021,Load Trail,$22750,Yes,LTRL2219K1001022-3,Leased car hauler used intermittently for dealer delivery work.
+TS-063,1,No,Dump,2021,Load Trail,$22750,Yes,LTRL2219K1001022,Leased car hauler used intermittently for dealer delivery work.
+TS-064,1,No,Tank,2021,Load Trail,$22750,Yes,LTRL2219K1001022-2,Leased car hauler used intermittently for dealer delivery work.
+TS-065,1,Yes,Doubledecker,2020,Wabash,$34800,Yes,WBSR2030L1001023-3,Reefer trailer used for produce distribution routes.
+TS-066,1,Yes,Bulk,2019,Fontaine,$25900,No,,Flatbed trailer recently acquired; VIN pending title transfer.
+TS-067,1,No,Tank,2018,Talbert,$41200,Yes,TBLL1857M1001025-5,Lowboy leased for occasional heavy-haul projects.
+TS-068,1,Yes,Refrigerated,2024,Bwise,$16950,Yes,BWSD2441N1001026-6,New dump trailer used for landscaping debris removal.
+TS-069,1,Yes,Bulk,2017,Haulmark,$7900,Yes,HLMU1773P1001027-7,Small utility trailer used by maintenance crews for supplies.
+TS-070,1,No,Flatbed,2022,PJ Trailers,$27850,Yes,PJTG2288R1001028-8,Gooseneck trailer leased for construction materials delivery.
+TS-071,1,Yes,Bulk,2020,Wabash,$34800,Yes,WBSR2030L1001023,Reefer trailer used for produce distribution routes.
+TS-072,1,Yes,Doubledecker,2020,Wabash,$34800,Yes,WBSR2030L1001023-2,Reefer trailer used for produce distribution routes.
+TS-073,1,Yes,Bulk,2019,Fontaine,$25900,No,,Flatbed trailer recently acquired; VIN pending title transfer.
+TS-074,1,No,Dump,2018,Talbert,$41200,Yes,TBLL1857M1001025-4,Lowboy leased for occasional heavy-haul projects.
+TS-075,1,Yes,Dump,2024,Bwise,$16950,Yes,BWSD2441N1001026-5,New dump trailer used for landscaping debris removal.
+TS-076,1,Yes,Bulk,2017,Haulmark,$7900,Yes,HLMU1773P1001027-6,Small utility trailer used by maintenance crews for supplies.
+TS-077,1,No,Enclosed,2022,PJ Trailers,$27850,Yes,PJTG2288R1001028-7,Gooseneck trailer leased for construction materials delivery.
+TS-078,1,Yes,Refrigerated,2016,Custom Built,$31500,No,,Specialty concession trailer used for seasonal events and fairs.
+TS-079,1,Yes,Enclosed,2019,Fontaine,$25900,No,,Flatbed trailer recently acquired; VIN pending title transfer.
+TS-080,1,No,Enclosed,2018,Talbert,$41200,Yes,TBLL1857M1001025-2,Lowboy leased for occasional heavy-haul projects.
