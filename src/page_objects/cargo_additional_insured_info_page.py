@@ -104,6 +104,9 @@ class CargoAdditionalInsuredInformationPage:
             self.check_loading()
             self.was_a_renewal_offer_made_select.select_option(params.was_a_renewal_offer_made)
             self.check_loading()
+        if self.any_insurer_canceled_non_renewed_in_last_3years_select.is_visible():
+                self.any_insurer_canceled_non_renewed_in_last_3years_select.select_option(params.any_insurer_canceled_non_renewed_in_last_3years)
+            
         if self.non_renew_details_input.is_visible():
             self.non_renew_details_input.fill(params.details_for_reasons_of_non_renewal)
         if self.consecutive_coverage_greater_than_ot_equal_to_12months_select.is_visible():
@@ -134,18 +137,17 @@ class CargoAdditionalInsuredInformationPage:
                 self.check_loading()
                 self.employer_street1_input(i).fill(employer.street1)
                 self.check_loading()
+                self.employer_zip_input(i).fill(employer.zip_code)
                 # self.employer_street2_input(i).fill(employer.street2)
-                # self.check_loading()
+                self.check_loading()
                 self.employer_city_input(i).fill(employer.city)
                 self.check_loading()
                 self.employer_state_selection(i).select_option(employer.state)
-                self.check_loading()
-                self.employer_zip_input(i).fill(employer.zip_code)
+                # self.check_loading()
+                
             self.check_loading()
         if self.insure_work_exp_input.is_visible():
             self.insure_work_exp_input.fill(params.years_of_experience_same_type_of_work)
-        if self.any_insurer_canceled_non_renewed_in_last_3years_select.is_visible():
-            self.any_insurer_canceled_non_renewed_in_last_3years_select.select_option(params.any_insurer_canceled_non_renewed_in_last_3years)
         expect(self.risk_info_btn).to_be_visible()
         expect(self.risk_info_btn).to_be_enabled()
         self.risk_info_btn.click()

@@ -25,21 +25,26 @@ class LossHistoryInformationPage:
     def fill_loss_history_info(self, params: LossHistoryParams):
         self.any_losses_in_the_past_3Years_selection.select_option(params.any_losses_in_the_past_3Years)
         self.check_loading()
-        if self.any_losses_in_the_past_3Years_selection == "Yes":
-            for i, loss in enumerate(params.losses):
-                if i > 0:
-                    self.add_loss_btn.click()
-                    self.check_loading()       
+        # if self.any_losses_in_the_past_3Years_selection == "Yes":
+        for i, loss in enumerate(params.losses):
+            if i > 0:
+                self.add_loss_btn.click()
+                self.check_loading()      
+            if self.loss_year_input(i).is_visible(): 
                 self.loss_year_input(i).fill(loss.loss_year)
                 self.check_loading()
+            if self.loss_premium_input(i).is_visible():
                 self.loss_premium_input(i).fill(loss.premium_at_time_of_loss)
                 self.check_loading()
+            if self.loss_type_select(i).is_visible():
                 self.loss_type_select(i).select_option(loss.type_of_loss)
                 self.check_loading()
-                if self.loss_description_input(i).is_visible():
-                   self.loss_description_input(i).fill("Other")
+            if self.loss_description_input(i).is_visible():
+                self.loss_description_input(i).fill("Other")
+            if self.loss_paid_input(i).is_visible():
                 self.loss_paid_input(i).fill(loss.amount_paid)
                 self.check_loading()
+            if self.loss_outstanding_input(i).is_visible():
                 self.loss_outstanding_input(i).fill(loss.amount_outstanding)
                 self.check_loading()
 

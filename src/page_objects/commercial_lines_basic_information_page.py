@@ -32,6 +32,19 @@ class CommercialLinesBasicInformationPage:
         expect(self.agency_information_btn).to_be_enabled()
         self.agency_information_btn.click()
 
+    def fill_commercial_line_basic_information_Cargo_plus_TRIA_form(self,data):
+            expect(self.commercial_lines_basic_information_heading).to_be_visible()
+            self.underwriter_select.select_option("49") # Amy Nelson
+            self.assistant_select.select_option("120") # Ashley O Neal
+            self.is_this_a_renewal_select.select_option("no")
+            self.generate_new_application_select.select_option("yes")
+            # self.effective_date_input.fill(str(data["Policy_Info"][0]["Effective Date"]))
+            self.cargo_coverage_lob_radio.click()
+            self.terrorism_coverage_lob_btn.click()
+            expect(self.agency_information_btn).to_be_visible()
+            expect(self.agency_information_btn).to_be_enabled()
+            self.agency_information_btn.click()
+
     def fill_commercial_line_basic_information_IM_form(self):
         expect(self.commercial_lines_basic_information_heading).to_be_visible()
         self.underwriter_select.select_option("49") # Amy Nelson
