@@ -86,6 +86,8 @@ class CargoAdditionalInsuredInformationPage:
         self.check_loading()   
         self.insurance_placed_through_commonwealth_underwriters_select.select_option(params.insurance_placed_through_commonwealth_underwriters)
         self.check_loading()   
+        if self.consecutive_coverage_greater_than_ot_equal_to_12months_select.is_visible():
+            self.consecutive_coverage_greater_than_ot_equal_to_12months_select.select_option(params.consecutive_coverage_greater_than_ot_equal_to_12months)
         if self.prior_carrier_information_known_select.is_visible():
           self.prior_carrier_information_known_select.select_option(params.prior_carrier_information_known)
           self.check_loading()
@@ -105,13 +107,11 @@ class CargoAdditionalInsuredInformationPage:
             self.was_a_renewal_offer_made_select.select_option(params.was_a_renewal_offer_made)
             self.check_loading()
         if self.any_insurer_canceled_non_renewed_in_last_3years_select.is_visible():
-                self.any_insurer_canceled_non_renewed_in_last_3years_select.select_option(params.any_insurer_canceled_non_renewed_in_last_3years)
-            
+            self.any_insurer_canceled_non_renewed_in_last_3years_select.select_option(params.any_insurer_canceled_non_renewed_in_last_3years)
+        self.page.wait_for_timeout(15000)         
         if self.non_renew_details_input.is_visible():
-            self.non_renew_details_input.fill(params.details_for_reasons_of_non_renewal)
-        if self.consecutive_coverage_greater_than_ot_equal_to_12months_select.is_visible():
-            self.consecutive_coverage_greater_than_ot_equal_to_12months_select.select_option(params.consecutive_coverage_greater_than_ot_equal_to_12months)
-            self.check_loading()
+           self.non_renew_details_input.fill(params.details_for_reasons_of_non_renewal)
+        
         if self.is_prior_empoyement_known_selection.is_visible():
            self.is_prior_empoyement_known_selection.select_option(params.prior_employment_information_known)
            if params.prior_employment_information_known == "Yes":            
@@ -145,9 +145,13 @@ class CargoAdditionalInsuredInformationPage:
                 self.employer_state_selection(i).select_option(employer.state)
                 # self.check_loading()
                 
-            self.check_loading()
+            
+        if self.consecutive_coverage_greater_than_ot_equal_to_12months_select.is_visible():
+            self.consecutive_coverage_greater_than_ot_equal_to_12months_select.select_option(params.consecutive_coverage_greater_than_ot_equal_to_12months)
+            self.page.wait_for_timeout(1000)
         if self.insure_work_exp_input.is_visible():
             self.insure_work_exp_input.fill(params.years_of_experience_same_type_of_work)
+            self.page.wait_for_timeout(1000)
         expect(self.risk_info_btn).to_be_visible()
         expect(self.risk_info_btn).to_be_enabled()
         self.risk_info_btn.click()
