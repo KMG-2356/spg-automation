@@ -22,7 +22,7 @@ def browser_type_launch_args(browser_type_launch_args):
     return {
         **browser_type_launch_args,
         "args": ["--start-maximized"],
-        "timeout": 60000
+        "timeout": 20000
     }
 
 @pytest.fixture(scope="session")

@@ -18,8 +18,6 @@ class LossHistoryInformation2Page:
     # page.get_by_role("textbox", description="Details", exact=True).click()
     # page.get_by_role("textbox", description="Amount", exact=True).click()
 
-    def loss_date_input(self, i: int):
-        return self.page.locator(f"[id=\"history.losses.0.loss_date\"]")
     def loss_details_input(self, i: int):
         return self.page.locator(f"[id=\"history.losses.{i}.details\"]")
     def loss_type_select(self, i: int):

@@ -28,6 +28,7 @@ class APDAdditionalInsuredInformationPage:
         self.prior_policy_expiration_date_input = self.page.locator("[id=\"cargo.insured.pc_exp_date\"]")
         self.work_experience_input = self.page.locator("[id=\"cargo.insured.work_experience\"]")
         self.risk_info_btn = self.page.get_by_role("button", name="Risk Information")
+        self.desc_subcontracting_lease_basis_input = self.page.locator("[id=\"cargo.insured.subcon_other\"]")
         self.loading_screen = self.page.locator(".jss53")
 
     def fill_additional_insured_info(self, params: APDAdditionalInsuredInformationParams):
@@ -37,6 +38,18 @@ class APDAdditionalInsuredInformationPage:
         self.check_loading()
         if params.does_applicant_have_other_carrier_operations == "Yes":
             self.describe_other_operations_input.fill(params.describe_other_operations)
+        if self.does_applicant_have_other_carrier_operations_select.is_visible():
+            self.does_insured_subcontract_to_other_parties_select.select_option(params.does_insured_subcontract_to_other_parties)
+            self.check_loading()
+        if params.does_insured_subcontract_to_other_parties == "Yes":
+            self.Subcontracting_basis_select.select_option(params.Subcontracting_basis)
+            self.check_loading()
+            self.subcontractors_responsible_for_cargo_loss_select.select_option(params.subcontractors_responsible_for_cargo_loss)
+            self.check_loading()
+            if self.desc_subcontracting_lease_basis_input.is_visible():
+                self.desc_subcontracting_lease_basis_input.fill(params.describe_subcontracting_lease_basis)
+            self.maintains_copies_of_subcontractor_insurance_select.select_option(params.subcontractors_responsible_for_cargo_loss)
+            self.check_loading()  
         self.is_the_owner_also_listed_as_driver_select.select_option(params.is_the_owner_also_listed_as_driver)
         self.check_loading()
         self.has_insured_had_coverage_in_the_last_3years_select.select_option(params.has_insured_had_coverage_in_the_last_3years)

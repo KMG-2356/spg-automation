@@ -21,23 +21,6 @@ class AgencyInformationPage:
         self.insured_information_btn = self.page.get_by_role("button", name="Insured Information")
         self.loading_screen = self.page.locator(".jss53")
 
-
-    # def fill_agency_information_form(self, data):
-    #     expect(self.agency_information_heading).to_be_visible()
-    #     self.agency_name_input.fill(data["01_Policy_Info"][0]["Agency Name"])
-    #     self.agency_id_code_input.fill(data["01_Policy_Info"][0]["Agency ID Code"])
-    #     self.agency_full_name_input.fill(data["01_Policy_Info"][0]["Agent Full Name"])
-    #     self.email_input.fill(data["01_Policy_Info"][0]["Agent E-Mail"])
-    #     self.phone_number_input.fill(data["01_Policy_Info"][0]["Agent Phone"])
-    #     self.fax_number_input.fill(data["01_Policy_Info"][0]["Agent Fax"])
-    #     self.agent_commission_select.select_option(to_float(get_num(str(data["01_Policy_Info"][0]["Agent's Commission %"]))))
-    #     self.street_address1_input.fill(data["01_Policy_Info"][0]["Address - Street 1"])
-    #     self.street_address2_input.fill(data["01_Policy_Info"][0]["Address - Street 2"])
-    #     self.city_input.fill(data["01_Policy_Info"][0]["Address - City"])
-    #     self.state_select.select_option(label=data["01_Policy_Info"][0]["Address - State"])
-    #     self.zip_code_input.fill(str(data["01_Policy_Info"][0]["Address - Zip"]))
-    #     self.insured_information_btn.click()
-
     def fill_agency_information_form(self, params: AgencyInfoParams):
         expect(self.agency_information_heading).to_be_visible()
         self.agency_name_input.fill(params.agency_name)
@@ -46,6 +29,7 @@ class AgencyInformationPage:
         self.email_input.fill(params.agent_email)
         self.phone_number_input.fill(params.agent_phone)
         self.fax_number_input.fill(params.agent_fax)
+        print(f"commission: {to_float(get_num(params.agent_commission))}")
         self.agent_commission_select.select_option(to_float(get_num(params.agent_commission)))
         self.zip_code_input.fill(params.zip_code)
         self.check_loading()

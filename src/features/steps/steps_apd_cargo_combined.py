@@ -21,6 +21,8 @@ from page_objects.apd_commodities_page import APDCommoditiesPage
 from page_objects.apd_loss_history_info_page import LossHistoryInformationPage
 from page_objects.apd_additional_info_page import APDAdditionalInformationPage
 from page_objects.apd_loss_history_page import LossHistoryPage
+from page_objects.cargo_additional_insured_info_page import CargoAdditionalInsuredInformationPage
+from page_objects.cargo_coverage_info_page import CargoCoveragesInformationPage
 from models.agency_info_params import AgencyInfoParams
 from models.apd_additional_insured_info_params import APDAdditionalInsuredInformationParams
 from models.apd_risk_info_params import RiskInfoParams
@@ -29,6 +31,8 @@ from models.apd_commodities_params import APDCommoditiesParams, CommodityRecord
 from models.apd_loss_history_info_params import LossHistoryInfoParams, LossHistoryRecord
 from models.apd_loss_history_params import APDLossHistoryParams, SubjectivityRecord, LossHistory2Record
 from models.apd_additional_info_params import APDAdditionalInformationParams
+from models.cargo_additional_insured_info_params import CargoAdditionalInsuredInformationParams, EmployerRecord
+from models.cargo_coverage_params import CargoCoverageParams
 
 FEATURE_PATH = os.path.join(os.path.dirname(__file__), "..", "apd_cargo_combined.feature")
 
@@ -53,10 +57,10 @@ def when_user_generates_premium(page, test_data):
     agency_information_page = AgencyInformationPage(page)
     apd_insured_information_page = APDInsuredInformationPage(page)
     commercial_lines_basic_info_page = CommercialLinesBasicInformationPage(page)
-    apd_additional_insured_info_page = APDAdditionalInsuredInformationPage(page)
+    cargo_additional_insured_info_page = CargoAdditionalInsuredInformationPage(page)
     apd_loss_payee_info_page = LossPayeeInformationPage(page)
     risk_info_page = APDRiskInformationPage(page)
-    apd_coverages_page = APDCoveragesPage(page)
+    cargo_coverages_page = CargoCoveragesInformationPage(page)
     apd_commodities_page = APDCommoditiesPage(page)
     apd_loss_history_info_page = LossHistoryInformationPage(page)
     apd_additional_info_page = APDAdditionalInformationPage(page)
@@ -120,17 +124,24 @@ def when_user_generates_premium(page, test_data):
         trustee_zip=str(policy_row["Trustee Address  -  Zip"]),
     )
 
-    apd_additional_insured_info = APDAdditionalInsuredInformationParams(
+    cargo_additional_insured_info = CargoAdditionalInsuredInformationParams(
         has_applicant_ever_operated_under_different_name=insured_uw_row["Has applicant ever operated under a different name?"],
         does_applicant_have_other_carrier_operations=insured_uw_row["Does applicant have other carrier operations?"],
+        does_insured_subcontract_to_other_parties=insured_uw_row["Does insured subcontract to other parties?"],
         describe_other_operations=insured_uw_row["Describe other operations"],
+        describe_subcontracting_lease_basis = insured_uw_row["Subcontracting basis"],
+        descirbe_other_subcontrating_lease_basis = insured_uw_row["Describe other subcontracting basis"],
+        years_of_experience_same_type_of_work=insured_uw_row["Years of experience in same type of work"],
+        prior_employment_information_known=insured_uw_row["Prior employment information known?"],
+        subcontractors_responsible_for_cargo_loss = insured_uw_row["Subcontractors responsible for cargo loss?"],
+        maintains_copies_of_subcontractor_insurance=insured_uw_row["Maintains copies of subcontractor insurance?"],
         is_the_owner_also_listed_as_driver=insured_uw_row["Is the owner also listed as a driver?"],
         has_insured_had_coverage_in_the_last_3years=insured_uw_row["Has insured had coverage in the last 3 years?"],
         insurance_placed_through_commonwealth_underwriters=insured_uw_row["Insurance placed through Commonwealth Underwriters?"],
         any_insurer_canceled_non_renewed_in_last_3years=insured_uw_row["Any insurer canceled / non-renewed in last 3 years?"],
         prior_carrier_information_known=insured_uw_row["Prior carrier information known?"],
-        work_experience=insured_uw_row["Years of experience in same type of work"],
-        non_renewal_details=insured_uw_row["Details for reasons of non-renewal"],
+        # work_experience=insured_uw_row["Years of experience in same type of work"],
+        # non_renewal_details=insured_uw_row["Details for reasons of non-renewal"],
         prior_carrier_name=insured_uw_row["Prior carrier name"],
         prior_perils_form=insured_uw_row["Prior perils form"],
         prior_policy_premium=insured_uw_row["Prior policy premium ($)"],
@@ -139,6 +150,21 @@ def when_user_generates_premium(page, test_data):
         prior_policy_expiration_date=insured_uw_row["Prior policy expiration date"],
         was_a_renewal_offer_made=insured_uw_row["Was a renewal offer made?"],
         consecutive_coverage_greater_than_ot_equal_to_12months=insured_uw_row["Consecutive coverage >= 12 months?"],
+        employers = [EmployerRecord(
+                employer_name=row["Employer Name"],
+                phone=row["Phone"],
+                street1=cargo_additional_insured_info_page.parse_us_address(row["Address"])["street_address"],
+                city=cargo_additional_insured_info_page.parse_us_address(row["Address"])["city"],
+                state=cargo_additional_insured_info_page.parse_us_address(row["Address"])["state"],
+                zip_code=cargo_additional_insured_info_page.parse_us_address(row["Address"])["zip_code"],
+                start_date=row["Start Date"],
+                end_date=row["End Date"],
+                unit_type_operated=row["Unit Type Operated"],
+                commodities_hauled=row["Commodities Hauled"],
+                radius=row["Radius"],
+                object_to_verification=row["Object to Verification?"],
+        )
+        for row in test_data["Cargo_APD_Insured_UW_Info"]]
     )
 
     risk_info = RiskInfoParams(
@@ -158,6 +184,7 @@ def when_user_generates_premium(page, test_data):
         drivers=test_data["Cargo_APD_Drivers"],
         vehicles=test_data["Cargo_APD_Vehicles"],
         trailers=test_data["Cargo_APD_Trailers"],
+        owners=test_data["Cargo_APD_Drivers"],
     )
 
     apd_loss_payee_info = APDLossPayeeInfoParams(
@@ -165,14 +192,22 @@ def when_user_generates_premium(page, test_data):
         loss_payees=test_data["Cargo_APD_LossPayees"],
     )
 
-    apd_coverages_info = APDCoveragesParams(
-        refrigeration_breakdown=coverage_row["Refrigeration breakdown coverage required?"],
-        trailer_age=coverage_row["Any reefer trailers older than 10 years?"],
-        reefer_trailer_serviced=coverage_row["Reefer trailer serviced at least every 30 days?"],
-        seafood=coverage_row["Hauls seafood or shellfish?"],
-        radius=coverage_row["Radius of operations (applies to Cargo and APD)"],
-        phys_dam_deductible=coverage_row["Physical Damage deductible (PhysDam only)"],
-        ts_limit=coverage_row["T&S limit (PhysDam only)"],
+    cargo_coverages_info = CargoCoverageParams(
+        terminal_coverage_required=test_data["Cargo_APD_Coverages"][0]["Terminal coverage required?"],
+        trailer_interchange_coverage_required=test_data["Cargo_APD_Coverages"][0]["Trailer Interchange (TI) coverage required?"],
+        TI_limit=test_data["Cargo_APD_Coverages"][0]["TI Limit ($)"],	
+        written_TI_agreement_in_place=test_data["Cargo_APD_Coverages"][0]["Written TI agreement in place?"],
+        refrigeration_breakdown_coverage_required=test_data["Cargo_APD_Coverages"][0]["Refrigeration breakdown coverage required?"],
+        any_refer_trailers_older_than_10years=test_data["Cargo_APD_Coverages"][0]["Any reefer trailers older than 10 years?"],
+        refer_trailer_serviced_at_least_every_30days=test_data["Cargo_APD_Coverages"][0]["Reefer trailer serviced at least every 30 days?"],
+        hauls_seafood_or_shellfish=test_data["Cargo_APD_Coverages"][0]["Hauls seafood or shellfish?"],
+        cargo_limit_per_unit=test_data["Cargo_APD_Coverages"][0]["Cargo limit per unit ($)"],	
+        average_exposure_per_unit=test_data["Cargo_APD_Coverages"][0]["Average exposure per unit ($)"],
+        maximum_exposure_per_unit=test_data["Cargo_APD_Coverages"][0]["Maximum exposure per unit ($)"],
+        loads_ever_exceed_cargo_insurance_limit=test_data["Cargo_APD_Coverages"][0]["Loads ever exceed cargo insurance limit?"],
+        cargo_deductible=test_data["Cargo_APD_Coverages"][0]["Cargo deductible"],
+        radius_of_operations=test_data["Cargo_APD_Coverages"][0]["Radius of operations (applies to Cargo and APD)"],
+        physical_damage_deductible=coverage_row["Physical Damage deductible (PhysDam only)"]
     )
 
     apd_commodities_info = APDCommoditiesParams(
@@ -223,7 +258,7 @@ def when_user_generates_premium(page, test_data):
         losses2=[
             LossHistory2Record(
                 details=row["Notes"],
-                loss_date=row["Loss Year"],
+                loss_date=row["Loss Date"],
                 amount=row["Premium at Time of Loss ($)"],
                 type_of_loss=row["Type of Loss"],
             )
@@ -236,10 +271,10 @@ def when_user_generates_premium(page, test_data):
     commercial_lines_basic_info_page.fill_commercial_line_basic_information_cargo_pd_combined_form()
     agency_information_page.fill_agency_information_form(agency_info)
     apd_insured_information_page.fill_apd_insured_information_form(insured_info)
-    apd_additional_insured_info_page.fill_additional_insured_info(apd_additional_insured_info)
+    cargo_additional_insured_info_page.fill_cargo_additional_insured_info(cargo_additional_insured_info)
     risk_info_page.fill_risk_information(risk_info)
     apd_loss_payee_info_page.fill_apd_loss_payee_info_form(apd_loss_payee_info)
-    apd_coverages_page.fill_cargo_coverages(apd_coverages_info)
+    cargo_coverages_page.fill_cargo_coverages_info_for_combined_apd(cargo_coverages_info)
     apd_commodities_page.fill_commodities(apd_commodities_info)
     apd_loss_history_info_page.fill_loss_history_info(apd_loss_history_info)
     apd_additional_info_page.fill_additional_info(apd_addition_info)
@@ -250,4 +285,4 @@ def when_user_generates_premium(page, test_data):
 @then('the generated premium should be saved to excel')
 def then_generated_premium_should_be_equal(page, test_data):
     print_your_quote_page = PrintYourQuotePage(page)
-    print_your_quote_page.save_premium(test_data, "apd_tria_combined_output", "Policy_Info")
+    print_your_quote_page.save_premium(test_data, "apd_cargo_combined_output", "Policy_Info")

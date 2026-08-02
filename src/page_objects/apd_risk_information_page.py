@@ -25,7 +25,11 @@ class APDRiskInformationPage:
         self.driver_experience_select = self.page.locator('[id="cargo.risk_info.driver_experience"]')
         self.secure_vehicles_input = self.page.locator('[id="cargo.risk_info.secure_vehicles"]')
         self.loss_payee_info_btn = self.page.get_by_role("button", name="Loss Payee Information")
+        self.add_owner_btn = self.page.get_by_role("button", name="Add Another Owner")
         self.loading_screen = self.page.locator(".jss53")
+
+    def owners_name_input(self,i):
+        return self.page.locator(f"[id=\"cargo.risk_info.owners.{i}.owner_name\"]")
 
     def driver_name_input(self, i):
         return self.page.locator(f"[id=\"cargo.risk_info.drivers.{i}.driver_name\"]")
@@ -109,6 +113,19 @@ class APDRiskInformationPage:
         self.hiring_process_input.fill(params.hiring_process)
         self.firing_process_input.fill(params.firing_process)
 
+        seen_owners = set()
+        owner_index = 0
+        for owner in params.owners:
+            owner_name = owner["Owner Name (Cargo Only)"].strip()
+            if owner_name in seen_owners:
+                continue
+            seen_owners.add(owner_name)
+            if owner_index > 0:
+                self.add_owner_btn.click()
+                self.check_loading()
+            self.owners_name_input(owner_index).fill(owner_name)
+            owner_index += 1
+
         for i, driver in enumerate(params.drivers):
             if i > 0:
                 self.add_another_driver_btn.click()
@@ -118,16 +135,16 @@ class APDRiskInformationPage:
             self.driver_license__number_input(i).fill(driver["License Number"])
             self.driver_license_state_select(i).select_option(driver["License State"])
             self.check_loading()
-            self.driver_yoe_input(i).fill(driver["Years Experience"])
+            self.driver_yoe_input(i).fill(driver["Years of Experience"])
             self.driver_date_of_hire_input(i).fill(driver["Date of Hire"])
             self.driver_relationship_select(i).select_option(driver["Relationship"])
             self.check_loading()
             self.driver_violation_history_select(i).select_option(driver["Violation History Known?"])
             self.check_loading()
             if self.driver_minor_violations_input(i).is_visible():
-                self.driver_minor_violations_input(i).fill(driver["MinorViolationsCount"])
-                self.driver_major_viloation_input(i).fill(driver["MajorViolationsCount"])
-                self.driver_accidents_input(i).fill(driver["At-FaultAccidentsCount"])
+                self.driver_minor_violations_input(i).fill(driver["Minor Violations Count"])
+                self.driver_major_viloation_input(i).fill(driver["Major Violations Count"])
+                self.driver_accidents_input(i).fill(driver["At-Fault Accidents Count"])
 
         for i, vehicle in enumerate(params.vehicles):
             if i > 0:
@@ -138,7 +155,7 @@ class APDRiskInformationPage:
             self.power_unit_vehicle_make_input(i).fill(vehicle["Vehicle Make"])
             self.power_unit_vehicle_type_select(i).select_option(vehicle["Vehicle Type"])
             self.check_loading()
-            self.power_unit_vehicle_cost_input(i).fill(vehicle["Vehicle Cost ($) (PhysDam only)"])
+            self.power_unit_vehicle_cost_input(i).fill(vehicle["Vehicle Cost ($)"])
             self.power_unit_vin_known_select(i).select_option(vehicle["VIN Known?"])
             self.check_loading()
             
@@ -158,9 +175,9 @@ class APDRiskInformationPage:
                 self.trailer_type_select(i).select_option(trailer["Trailer Type"])
                 self.check_loading()
                 if self.trailer_year_input(i).is_visible(): 
-                    self.trailer_year_input(i).fill(trailer["Year (If Owned)"])
+                    self.trailer_year_input(i).fill(trailer["Year"])
                 if self.trailer_make_input(i).is_visible():
-                    self.trailer_make_input(i).fill(trailer["Trailer Make (If Owned)"])
+                    self.trailer_make_input(i).fill(trailer["Trailer Make"])
                 self.trailer_cost_input(i).fill(trailer["Trailer Cost ($)"])
 
                 if self.trailer_vin_known_select(i).is_visible():
