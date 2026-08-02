@@ -111,7 +111,7 @@ class CargoAdditionalInsuredInformationPage:
             self.check_loading()
         if self.any_insurer_canceled_non_renewed_in_last_3years_select.is_visible():
             self.any_insurer_canceled_non_renewed_in_last_3years_select.select_option(params.any_insurer_canceled_non_renewed_in_last_3years)
-        self.page.wait_for_timeout(15000)         
+        self.page.wait_for_timeout(15000)
         if self.non_renew_details_input.is_visible():
            self.non_renew_details_input.fill(params.details_for_reasons_of_non_renewal)
 

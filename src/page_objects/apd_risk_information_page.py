@@ -22,7 +22,7 @@ class APDRiskInformationPage:
         self.inspected_vehicles_select = self.page.locator('[id="cargo.risk_info.inspected_vehicles"]')
         self.inspection_interval_select = self.page.locator('[id="cargo.risk_info.inspection_interval"]')
         self.gvw_select = self.page.locator('[id="cargo.risk_info.gvw"]')
-        self.driver_experience_select = self.page.locator('[id="cargo.risk_info.driver_experience"]')
+        self.driver_experience_select = self.page.locator("[id=\"cargo.risk_info.driver_experience\"]")
         self.secure_vehicles_input = self.page.locator('[id="cargo.risk_info.secure_vehicles"]')
         self.loss_payee_info_btn = self.page.get_by_role("button", name="Loss Payee Information")
         self.add_owner_btn = self.page.get_by_role("button", name="Add Another Owner")
