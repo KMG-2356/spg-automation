@@ -1,0 +1,28 @@
+from dataclasses import dataclass
+
+@dataclass
+class InsuredInfoParams:
+    insured_full_name: str = ""
+    insured_email: str = ""
+    insured_phone: str = ""
+    insured_occupation: str = ""
+    insured_employer: str = ""
+    insured_dob: str = ""
+    insured_street1: str = ""
+    insured_street2: str = ""
+    insured_address_zip: str = ""
+    insured_city: str = ""
+    insured_state: str = ""
+    type_of_entity: str=""
+    physical_street1: str = ""
+    physical_street2: str = ""
+    physical_zip: str = ""
+    physical_city: str = ""
+    physical_state: str = ""  
+    trustee_full_name: str = ""
+    trustee_street_address1: str = ""
+    trustee_street_address2: str = ""
+    trustee_street_zip: str = ""
+    trustee_state: str = ""
+    trustee_city: str = ""
+    mailing_address_different:str=""
