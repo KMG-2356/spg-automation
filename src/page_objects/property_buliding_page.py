@@ -51,40 +51,117 @@ class AdditionalQuestionsPage:
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.updates.plumbing\"]")
     def HVAC_updated_year_input(self, i):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.updates.heating_ac\"]")
+    #AWNING COVERAGE
     def awning_coverage_selection(self,i):
-        return self.page.locator("div").filter(has_text=re.compile(r"^Add Awning coverage\?$")).nth(0)
+        return self.page.get_by_text("Add Awning coverage?")
     def awning_limit_input(self,i):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.awning.limit\"]")
     def awning_valuation_iselection(self,i):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.awning.valuation\"]")
     def awning_coinsurance_selection(self,i):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.awning.coinsurance\"]")
+    #ADD BUSINESS INTERRUPTION
     def add_business_interruption_coverage_selection(self,i):
-        return self.page.locator("div").filter(has_text=re.compile(r"^Add Business Interruption coverage\?$")).nth(0)
+        return self.page.get_by_text("Add Business Interruption coverage?")
     def business_limit_input(self,i):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.bintr.limit\"]")
     def business_valuation_selection(self,i):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.bintr.limit\"]")
-    def business_valuation_selection(self,i):
-            return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.bintr.limit\"]")
-    
-    
-    #LOSS PAYEE
+    #ADD LOSS OF RENTS
+    def add_loss_of_rents_coverage_selection(self,i):
+        return self.page.get_by_text("Add Loss of Rents coverage?")
+    def loss_of_rents_limit_input(self,i):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.lor.limit\"]")
+    def loss_of_rents_valuation_selection(self,i):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.lor.valuation\"]")
+    #ADD BUSINESS PERSONAL PROPERTY COVERAGE
+    def BPP_coverage_selection(self,i):
+        return self.page.get_by_text("Add Business Personal Property coverage?")
+    def BPP_limit_input(self,i):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.bpp.limit\"]")
+    def BPP_valuation_selection(self,i):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.bpp.valuation\"]")
+    def BPP_coinsurance_selection(self,i):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.bpp.coinsurance\"]")
+    #ADD PUMPS AND CANOPY COVERAGE
+    def canopy_coverage_selection(self,i):
+        return self.page.get_by_text("Add Pumps and Canopy coverage?")
+    def canopy_limit_input(self,i):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.canopy.limit\"]")
+    def canopy_valuation_selection(self,i):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.canopy.valuation\"]")
+    def canopy_coinsurance_selection(self,i):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.canopy.coinsurance\"]")
+    #ADD RENOVATION COVERAGE
+    def rennovation_coverage_selection(self,i):
+        return self.page.get_by_text("Add Renovation coverage?")
+    def rennovation_limit_input(self,i):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.reno.limit\"]")
+    def rennovation_valuation_selection(self,i):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.reno.valuation\"]")
+    def rennovation_coinsurance_selection(self,i):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.reno.coinsurance\"]")
+    def rennovation_will_building_be_demolished_selection(self,i):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.reno.demolished\"]")
+    def rennovation_plan_of_building_input(self,i):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.reno.plans\"]")
+    def rennovation_expect_start_date_input(self,i):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.reno.start_date\"]")
+    def rennovation_expect_end_date_input(self,i):
+            return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.reno.end_date\"]")
+    #ADD SIGN COVERAGE
+    def sign_coverage_selection(self,i):
+        return self.page.get_by_text("Add Sign coverage?")
+    def sign_limit_input(self,i):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.sign.limit\"]")
+    def sign_valuation_selection(self,i):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.sign.valuation\"]")
+    def sign_coinsurance_selection(self,i):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.sign.coinsurance\"]")
+   #ADD SPOILAGE COVERAGE
+    def spoilage_coverage_selection(self,i):
+        return self.page.get_by_text("Add Renovation coverage?")
+    def spoilage_limit_selection(self,i):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.spoilage.limit\"]")
+    def spoilage_deductible_input(self,i):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.spoilage.deductible\"]")
+    def spoilage_add_coverage_for_breakdown_selection(self,i):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.spoilage.contamination\"]")
+    def spoilage_add_coverages_for_outages_selection(self,i):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.spoilage.power_outage\"]")
+    def spoilage_is_there_refrigeration_maintainence_agreement_selection(self,i):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.spoilage.refrig_maint_agreement\"]")
 
+    #CONTRCTOR INFO
+    def who_is_doing_work_selection(self,i):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.contractor.contractor_type\"]")
+    def certificates_of_insurance_to_be_obtained_from_the_subcontractors_selection(self,i):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.contractor.ai_cert\"]")
+    def is_contractor_info_known_selection(self,i):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.contractor.info_known\"]")
+    def license_no_input(self,i):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.contractor.license_no\"]")
+    def no_of_years_in_business_input(self,i):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.contractor.years_operating\"]")
+    #LOSS PAYEE
+    def does_building_have_loss_payee_selection(self,i):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.has_loss_payees\"]")     
     def loss_payee_full_name_input(self, i):
-            return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.updates.heating_ac\"]")
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.loss_payees.{i}.name\"]")
     def loss_payee_street_address1_input(self, i):
-            return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.updates.heating_ac\"]")
-    def HVAC_updated_year_input(self, i):
-            return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.updates.heating_ac\"]")
-    def HVAC_updated_year_input(self, i):
-            return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.updates.heating_ac\"]")
-    def HVAC_updated_year_input(self, i):
-            return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.updates.heating_ac\"]")
-    def HVAC_updated_year_input(self, i):
-            return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.updates.heating_ac\"]")
-    def HVAC_updated_year_input(self, i):
-            return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.updates.heating_ac\"]")
+        return self.page.locator
+    def loss_payee_street_address2_input(self, i):
+        return self.page.locator
+    def loss_payee_city_input(self, i):
+        return self.page.locator
+    def loss_payee_state_selection(self, i):
+        return self.page.locator
+    def loss_payee_zip_input(self, i):
+        return self.page.locator
+    def is_loss_payee_mortgagee_slection(self, i):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.loss_payees.{i}.mortgagee\"]")
+    def loan_number_input(self, i):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{i}.loss_payees.{i}.loan_number\"]")
     
 
     
@@ -92,21 +169,21 @@ class AdditionalQuestionsPage:
     
        
 
-    def fill_building_information_form(self, params: BuildingInfoParams):  
-        for i, building in enumerate
-        self.street_address_input(i).fill(params.ZIP_code)
-        if params.same_as_insured == "No":
-            self.is_same_as_insured_selection.select_option(params.same_as_insured)
-            self.check_loading()
-            self.insured_full_name_input.fill(params.contact_full_name)
-            self.insured_contact_email_input.fill(params.contact_email)
-            self.insured_contact_phone_number_input.fill(params.contact_phone)        
-        if params.same_as_insured == "Yes":
-            self.insured_full_name_person_to_contact_input.fill(params.contact_full_name)           
+    # def fill_building_information_form(self, params: BuildingInfoParams):  
+
+    #     self.street_address_input(i).fill(params.ZIP_code)
+    #     if params.same_as_insured == "No":
+    #         self.is_same_as_insured_selection.select_option(params.same_as_insured)
+    #         self.check_loading()
+    #         self.insured_full_name_input.fill(params.contact_full_name)
+    #         self.insured_contact_email_input.fill(params.contact_email)
+    #         self.insured_contact_phone_number_input.fill(params.contact_phone)        
+    #     if params.same_as_insured == "Yes":
+    #         self.insured_full_name_person_to_contact_input.fill(params.contact_full_name)           
         
-        expect(self.loss_history_btn).to_be_visible()
-        expect(self.loss_history_btn).to_be_enabled()
-        self.loss_history_btn.click()
+    #     expect(self.loss_history_btn).to_be_visible()
+    #     expect(self.loss_history_btn).to_be_enabled()
+    #     self.loss_history_btn.click()
 
     def check_loading(self):
         try:
