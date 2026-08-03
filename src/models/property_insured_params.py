@@ -26,3 +26,7 @@ class InsuredInfoParams:
     trustee_state: str = ""
     trustee_city: str = ""
     mailing_address_different:str=""
+    same_as_insured:str=""
+    contact_full_name:str=""
+    contact_email:str=""
+    contact_phone:str=""

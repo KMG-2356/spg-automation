@@ -9,7 +9,7 @@ from page_objects.commercial_lines_basic_information_page import CommercialLines
 from page_objects.agency_information_page import AgencyInformationPage
 from page_objects.general_liability_info_page import GLInformationPage
 from page_objects.property_insured_page import InsuredInformationPage
-from page_objects.cargo_loss_history_page import LossHistoryInformationPage
+from page_objects.property_additional_questions_page import AdditionalQuestionsPage
 from page_objects.cargo_loss_history2_page import LossHistoryInformation2Page
 from page_objects.finance_quote_page import FinanceQuotePage
 from page_objects.print_your_quote_page import PrintYourQuotePage
@@ -35,7 +35,6 @@ def given_login_page_open(login_page, base_url):
     login_page.navigate(base_url)
     login_page.login(USERNAME, PASSWORD)
 
-
 @when('the user generates a premium')
 def when_user_generates_premium(page, test_data):
     home_page = HomePage(page)
@@ -44,7 +43,7 @@ def when_user_generates_premium(page, test_data):
     agency_information_page = AgencyInformationPage(page)
     general_information_page = GLInformationPage(page)
     insured_information_page = InsuredInformationPage(page)
-    cargo_loss_history_info_page = LossHistoryInformationPage(page)
+    property_additional_questions_page = AdditionalQuestionsPage(page)
     cargo_loss_histor2_page = LossHistoryInformation2Page(page)
     finance_quote_page = FinanceQuotePage(page)
 
@@ -85,10 +84,16 @@ def when_user_generates_premium(page, test_data):
         trustee_street_zip=test_data["Policy_Info"][0]["Trustee Address  -  Zip"],
         trustee_state=test_data["Policy_Info"][0]["Trustee Address  -  State"],
         trustee_city=test_data["Policy_Info"][0]["Trustee Address  -  City"],
-
         mailing_address_different=test_data["Policy_Info"][0]["Is Insured's physical address same as the mailing address?"]
     )
 
+    additional_questions_info = InsuredInfoParams(
+            same_as_insured=test_data["Policy_Info"][0]["Same as Insured?"],
+            contact_full_name=test_data["Policy_Info"][0]["Contact Full Name"],
+            contact_email=test_data["Policy_Info"][0]["Contact Email"],
+            contact_phone=test_data["Policy_Info"][0]["Contact Phone"],
+    )
+            
     general_liability_info = GeneralLiabilityParams(
         limit_option=test_data["GL_ClassCodes_Atrium"][0]["Limit Option"],
         years_in_business=test_data["GL_ClassCodes_Atrium"][0]["Years in Business"],
@@ -111,22 +116,6 @@ def when_user_generates_premium(page, test_data):
             for row in test_data["GL_AddlInsureds"]
             ]    
     )
-    # cargo_loss_history_info = LossHistoryParams(
-    #     any_losses_in_the_past_3Years=test_data["Cargo_APD_LossHistory"][0]["Any Losses in the Past 3 Years?"],
- 
-    #     losses=[LossHistoryRecord(
-    #         loss_year=row["Loss Year"],
-    #         type_of_loss=row["Type of Loss"],
-    #         premium_at_time_of_loss=row["Premium at Time of Loss ($)"],
-    #         amount_paid=row["Amount Paid ($)"],
-    #         amount_outstanding=row["Amount Outstanding ($)"],
-    #     )
-    #     for row in test_data["Cargo_APD_LossHistory"]
-    # ]
-
-    # )
-    
-
     
     cpgl_loss_history2_info = CargoLossHistory2Params(
             any_losses_in_the_past3_years=test_data["CP_GL_LossHistory"][0]["Any Losses in the Past 3 Years?"],
@@ -155,6 +144,7 @@ def when_user_generates_premium(page, test_data):
     agency_information_page.fill_agency_information_form(agency_info)
     insured_information_page.fill_insured_information_form(insured_info)
     general_information_page.fill_general_liability_info(general_liability_info)
+    property_additional_questions_page.fill_additional_question_information_form(additional_questions_info)
     cargo_loss_histor2_page.fill_loss_history2_info(cpgl_loss_history2_info)
     finance_quote_page.fill_finance_quote_form()
 
