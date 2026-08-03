@@ -16,3 +16,4 @@ class CargoCoverageParams:
     loads_ever_exceed_cargo_insurance_limit: str =""
     cargo_deductible: str =""
     radius_of_operations: str =""
+    physical_damage_deductible: str = ""

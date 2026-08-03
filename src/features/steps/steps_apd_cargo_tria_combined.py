@@ -34,7 +34,7 @@ from models.apd_additional_info_params import APDAdditionalInformationParams
 from models.cargo_additional_insured_info_params import CargoAdditionalInsuredInformationParams, EmployerRecord
 from models.cargo_coverage_params import CargoCoverageParams
 
-FEATURE_PATH = os.path.join(os.path.dirname(__file__), "..", "apd_cargo_combined.feature")
+FEATURE_PATH = os.path.join(os.path.dirname(__file__), "..", "apd_cargo_tria_combined.feature")
 
 scenarios(FEATURE_PATH)
 
@@ -141,7 +141,7 @@ def when_user_generates_premium(page, test_data):
         any_insurer_canceled_non_renewed_in_last_3years=insured_uw_row["Any insurer canceled / non-renewed in last 3 years?"],
         prior_carrier_information_known=insured_uw_row["Prior carrier information known?"],
         # work_experience=insured_uw_row["Years of experience in same type of work"],
-        details_for_reasons_of_non_renewal=insured_uw_row["Details for reasons of non-renewal"],
+        # non_renewal_details=insured_uw_row["Details for reasons of non-renewal"],
         prior_carrier_name=insured_uw_row["Prior carrier name"],
         prior_perils_form=insured_uw_row["Prior perils form"],
         prior_policy_premium=insured_uw_row["Prior policy premium ($)"],
@@ -268,7 +268,7 @@ def when_user_generates_premium(page, test_data):
 
     home_page.click_new_quote_button()
     program_selection_page.select_commercial_lines_LOB()
-    commercial_lines_basic_info_page.fill_commercial_line_basic_information_cargo_pd_combined_form()
+    commercial_lines_basic_info_page.fill_commercial_line_basic_information_cargo_pd_tria_combined_form()
     agency_information_page.fill_agency_information_form(agency_info)
     apd_insured_information_page.fill_apd_insured_information_form(insured_info)
     cargo_additional_insured_info_page.fill_cargo_additional_insured_info(cargo_additional_insured_info)
@@ -285,4 +285,4 @@ def when_user_generates_premium(page, test_data):
 @then('the generated premium should be saved to excel')
 def then_generated_premium_should_be_equal(page, test_data):
     print_your_quote_page = PrintYourQuotePage(page)
-    print_your_quote_page.save_premium(test_data, "apd_cargo_combined_output", "Policy_Info")
+    print_your_quote_page.save_premium(test_data, "apd_cargo_tria_combined_output", "Policy_Info")

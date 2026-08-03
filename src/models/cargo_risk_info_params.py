@@ -22,3 +22,4 @@ class RiskInfoParams:
     drivers: Any = None
     vehicles: Any = None
     owners: Any = None
+    trailers: Any = None

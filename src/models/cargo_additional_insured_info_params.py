@@ -4,10 +4,12 @@ from typing import List
 @dataclass
 class CargoAdditionalInsuredInformationParams:
     has_applicant_ever_operated_under_different_name: str = ""
+    descirbe_other_subcontrating_lease_basis: str = ""
     does_applicant_have_other_carrier_operations: str = ""
     describe_other_operations: str = ""
     does_insured_subcontract_to_other_parties: str =""
-    Subcontracting_basis: str =""
+    Subcontracting_basis: str = ""
+    non_renewal_details: str = ""
     describe_subcontracting_lease_basis: str =""
     subcontractors_responsible_for_cargo_loss: str =""
     maintains_copies_of_subcontractor_insurance: str =""

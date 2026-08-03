@@ -223,23 +223,23 @@ def when_user_generates_premium(page, test_data):
 
     )
     cargo_loss_history2_info = CargoLossHistory2Params(
-            any_losses_in_the_past3_years=test_data["Cargo_APD_LossHistory"][0]["Any Losses in the Past 3 Years?"],
-            any_unrepaired_damage_from_prior_losses=test_data["Cargo_APD_LossHistory"][0]["Any Unrepaired Damage from Prior Losses?"],
-            add_extra_subjectivities=test_data["Cargo_APD_LossHistory"][0]["Add extra subjectivities?"],
-            notes_about_the_insured=test_data["Cargo_APD_LossHistory"][0]["Notes about the Insured"],
-            subjectivity=[SubjectivityRecord(
-                subjectivity_text=row["Subjectivity Text"]
-                )
-                for row in test_data["Cargo_APD_LossHistory"]],
-            losses2=[LossHistory2Record(
-                details=row["Notes"],
-                loss_date=row["Loss Date"],
-                amount=row["Amount"],
-                type_of_loss=row["Type of Loss"],
-                
-                )                
-                
-                for row in test_data["Cargo_APD_LossHistory"]]
+        any_losses_in_the_past3_years=test_data["Cargo_APD_LossHistory"][0]["Any Losses in the Past 3 Years?"],
+        any_unrepaired_damage_from_prior_losses=test_data["Cargo_APD_LossHistory"][0]["Any Unrepaired Damage from Prior Losses?"],
+        add_extra_subjectivities=test_data["Cargo_APD_LossHistory"][0]["Add extra subjectivities?"],
+        notes_about_the_insured=test_data["Cargo_APD_LossHistory"][0]["Notes about the Insured"],
+        subjectivity=[SubjectivityRecord(
+            subjectivity_text=row["Subjectivity Text"]
+            )
+            for row in test_data["Cargo_APD_LossHistory"]],
+        losses2=[LossHistory2Record(
+            details=row["Notes"],
+            loss_date=row["Loss Date"],
+            amount=row["Amount"],
+            type_of_loss=row["Type of Loss"],
+            
+            )                
+            
+            for row in test_data["Cargo_APD_LossHistory"]]
         
     )
 

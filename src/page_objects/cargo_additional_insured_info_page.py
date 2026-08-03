@@ -1,3 +1,6 @@
+import re
+from typing import Dict
+
 from playwright.sync_api import Page, expect, TimeoutError
 from models.cargo_additional_insured_info_params import CargoAdditionalInsuredInformationParams
 
@@ -72,13 +75,13 @@ class CargoAdditionalInsuredInformationPage:
         self.does_insured_subcontract_to_other_parties_select.select_option(params.does_insured_subcontract_to_other_parties)
         self.check_loading()         
         if params.does_insured_subcontract_to_other_parties == "Yes":
-            self.Subcontracting_basis_select.select_option(params.Subcontracting_basis)
-            self.check_loading()
-            self.subcontractors_responsible_for_cargo_loss_select.select_option(params.subcontractors_responsible_for_cargo_loss)
+            self.Subcontracting_basis_select.select_option(params.describe_subcontracting_lease_basis)
             self.check_loading()
             if self.desc_subcontracting_lease_basis_input.is_visible():
-                self.desc_subcontracting_lease_basis_input.fill(params.describe_subcontracting_lease_basis)
-            self.maintains_copies_of_subcontractor_insurance_select.select_option(params.subcontractors_responsible_for_cargo_loss)
+                self.desc_subcontracting_lease_basis_input.fill(params.descirbe_other_subcontrating_lease_basis)
+            self.subcontractors_responsible_for_cargo_loss_select.select_option(params.subcontractors_responsible_for_cargo_loss)
+            self.check_loading()
+            self.maintains_copies_of_subcontractor_insurance_select.select_option(params.maintains_copies_of_subcontractor_insurance)
             self.check_loading()      
         self.is_the_owner_also_listed_as_driver_select.select_option(params.is_the_owner_also_listed_as_driver)
         self.check_loading()
@@ -108,50 +111,45 @@ class CargoAdditionalInsuredInformationPage:
             self.check_loading()
         if self.any_insurer_canceled_non_renewed_in_last_3years_select.is_visible():
             self.any_insurer_canceled_non_renewed_in_last_3years_select.select_option(params.any_insurer_canceled_non_renewed_in_last_3years)
-        self.page.wait_for_timeout(15000)         
+        self.page.wait_for_timeout(15000)
         if self.non_renew_details_input.is_visible():
            self.non_renew_details_input.fill(params.details_for_reasons_of_non_renewal)
-        
-        if self.is_prior_empoyement_known_selection.is_visible():
-           self.is_prior_empoyement_known_selection.select_option(params.prior_employment_information_known)
-           if params.prior_employment_information_known == "Yes":            
-            for i, employer in enumerate(params.employers):
-                if i > 0:
-                    self.add_another_empoyer_btn.click()
-                    self.check_loading()
-                self.employer_name_input(i).fill(employer.employer_name)
-                self.check_loading()
-                self.employer_phone_input(i).fill(employer.phone)
-                self.check_loading()
-                self.employer_start_date_input(i).fill(employer.start_date)
-                self.check_loading()
-                self.employer_end_date_input(i).fill(employer.end_date)
-                self.check_loading()
-                self.employer_unit_type_input(i).fill(employer.unit_type_operated)
-                self.check_loading()
-                self.employer_commodities_input(i).fill(employer.commodities_hauled)
-                self.check_loading()
-                self.employer_radius_selection(i).select_option(employer.radius)
-                self.check_loading()
-                self.is_employer_info_verified_selection(i).select_option(employer.object_to_verification)
-                self.check_loading()
-                self.employer_street1_input(i).fill(employer.street1)
-                self.check_loading()
-                self.employer_zip_input(i).fill(employer.zip_code)
-                # self.employer_street2_input(i).fill(employer.street2)
-                self.check_loading()
-                self.employer_city_input(i).fill(employer.city)
-                self.check_loading()
-                self.employer_state_selection(i).select_option(employer.state)
-                # self.check_loading()
-                
-            
+
         if self.consecutive_coverage_greater_than_ot_equal_to_12months_select.is_visible():
             self.consecutive_coverage_greater_than_ot_equal_to_12months_select.select_option(params.consecutive_coverage_greater_than_ot_equal_to_12months)
             self.page.wait_for_timeout(1000)
         if self.insure_work_exp_input.is_visible():
             self.insure_work_exp_input.fill(params.years_of_experience_same_type_of_work)
             self.page.wait_for_timeout(1000)
+        
+        if self.is_prior_empoyement_known_selection.is_visible():
+            self.is_prior_empoyement_known_selection.select_option(params.prior_employment_information_known)
+            self.check_loading()
+            if params.prior_employment_information_known == "Yes":
+                for i, employer in enumerate(params.employers):
+                    if i > 0:
+                        self.add_another_empoyer_btn.click()
+                        self.check_loading()
+                    self.employer_name_input(i).fill(employer.employer_name)
+                    self.employer_phone_input(i).fill(employer.phone)
+                    self.employer_start_date_input(i).fill(employer.start_date)
+                    self.employer_end_date_input(i).fill(employer.end_date)
+                    self.employer_unit_type_input(i).fill(employer.unit_type_operated)
+                    self.employer_commodities_input(i).fill(employer.commodities_hauled)
+                    self.employer_radius_selection(i).select_option(employer.radius)
+                    self.check_loading()
+                    self.is_employer_info_verified_selection(i).select_option(employer.object_to_verification)
+                    self.check_loading()
+                    self.employer_street1_input(i).fill(employer.street1)
+                    self.employer_zip_input(i).fill(employer.zip_code)
+                    # self.employer_street2_input(i).fill(employer.street2)
+                    self.check_loading()
+                    self.employer_city_input(i).fill(employer.city)
+                    self.employer_state_selection(i).select_option(employer.state)
+                        # self.check_loading()
+                
+            
+        
         expect(self.risk_info_btn).to_be_visible()
         expect(self.risk_info_btn).to_be_enabled()
         self.risk_info_btn.click()
@@ -162,6 +160,24 @@ class CargoAdditionalInsuredInformationPage:
         except TimeoutError:
             pass
         self.loading_screen.wait_for(state="hidden")
+
+
+    def parse_us_address(self, address_str: str) -> Dict[str, str]:
+        if not address_str or not isinstance(address_str, str):
+            raise ValueError("Invalid Address")
+        pattern = r"^(?P<street>.*?),\s*(?P<city>[^,]+),\s*(?P<state>[A-Za-z]{2})\s+(?P<zip>\d{5}(?:-\d{4})?)$"
+
+        match = re.match(pattern, address_str.strip())
+
+        if match:
+            data = match.groupdict()
+            return {
+                "street_address": data["street"].strip(),
+                "city": data["city"].strip(),
+                "state": data["state"].upper(),
+                "zip_code": data["zip"].strip(),
+            }
+        raise ValueError("Invalid Address")
 
     
    

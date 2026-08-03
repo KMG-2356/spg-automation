@@ -6,6 +6,8 @@ class APDAdditionalInsuredInformationParams:
     does_applicant_have_other_carrier_operations: str = ""
     describe_other_operations: str = ""
     does_insured_subcontract_to_other_parties: str =""
+    describe_subcontracting_lease_basis: str = ""
+    descirbe_other_subcontrating_lease_basis: str = ""
     Subcontracting_basis: str =""
     work_experience: str = ""
     non_renewal_details: str = ""
