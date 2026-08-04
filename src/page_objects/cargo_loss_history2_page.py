@@ -46,6 +46,7 @@ class LossHistoryInformation2Page:
                     self.check_loading()       
                 self.loss_date_input(i).fill(loss.loss_date)
                 self.check_loading()
+                print(loss.amount)
                 self.loss_amount_input(i).fill(loss.amount)
                 self.check_loading()
                 self.loss_type_select(i).select_option("Fire")

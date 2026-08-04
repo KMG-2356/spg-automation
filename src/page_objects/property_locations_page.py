@@ -7,7 +7,15 @@ from models.property_locations_params import PropertyLocationParams
 class PropertyLocationsPage:
     def __init__(self, page: Page):
         self.page = page
+        self.add_location_btn = self.page.get_by_role("button", name="Add Another Location")
+        self.add_building_btn = self.page.get_by_role("button", name="Add Another Building").nth(-1)
+        self.location_heading = self.page.get_by_role("heading", name="    Location")
+        self.packaging_quote_gl_btn = self.page.get_by_role("button", name="Package Quote GL Suggestions")
+        self.location_management_btn = self.page.get_by_role("button", name="Location Management")
         self.loading_screen = self.page.locator(".jss53")
+
+    def building_btn(self, i):
+        return self.page.get_by_role("button", name=f"Building {i+1}-")
 
     def city_input(self, i: int = 0) -> Locator:
         return self.page.locator(".MuiGrid-item").filter(has_text="City, state and zipcode of location").nth(4).locator("input").nth(0)
@@ -55,22 +63,23 @@ class PropertyLocationsPage:
     def fill_locations(self, locations: list[PropertyLocationParams]):
         for i, location in enumerate(locations):
             if i > 0:
-                print(f"new location added")
-                # self.fill_property_location_details(location)
-            print(f"location_zip_code: {location.zip_code}")
+                self.add_location_btn.click()
+                self.check_loading()
+
+            self.fill_property_location_details(location)
+            self.check_loading()
+            self.building_btn(i).click()
+            self.page.wait_for_timeout(5000)
             for j, building in enumerate(location.buildings):
-                if i > 0:
-                    print(f"new building added")
-                print(f"building zip_code: {building.ZIP_code}")
-                for k, loss_payee in enumerate(building.loss_payees):
-                    if i > 0:
-                        print(f"new loss payee added")
-                    print(f"loss_payee zip_code: {loss_payee.zip_code}")
-
-            
-
+                print(f"we have buildings: {building}")
+                if j > 0:
+                    self.add_building_btn.click()
+                self.check_loading()
+                self.location_management_btn.click() # replace with fill_building_info method
+        self.packaging_quote_gl_btn.click()
 
     def fill_property_location_details(self, params: PropertyLocationParams) -> None:
+        expect(self.location_heading).to_be_visible()
         idx = params.index
 
         self.city_input(idx).fill(params.city)
@@ -108,6 +117,8 @@ class PropertyLocationsPage:
         tiv_percent = self.wh_tiv_percent_select(idx)
         if tiv_percent.is_visible():
             tiv_percent.select_option(params.wh_tiv_percent)
+            self.check_loading()
+
 
     def check_loading(self):
         try:

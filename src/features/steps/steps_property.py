@@ -138,9 +138,7 @@ def when_user_generates_premium(page, test_data):
                 loss_date=row["Loss Date"],
                 amount=row["Amount"],
                 type_of_loss=row["Type of Loss"],
-                
                 )                
-                
                 for row in test_data["CP_GL_LossHistory"]]
         
     )

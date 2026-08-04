@@ -42,8 +42,8 @@ class GLInformationPage:
 
     def fill_general_liability_info(self, params: GeneralLiabilityParams):
         # self.page.get_by_role("button", name="Building 1-").click()
-        self.page.get_by_role("button", name="Location Management").click()
-        self.page.get_by_role("button", name="Package Quote GL Suggestions").click()
+        # self.page.get_by_role("button", name="Location Management").click()
+        # self.page.get_by_role("button", name="Package Quote GL Suggestions").click()
         self.page.get_by_role("button", name="General Liability").click()         
         self.limit_option_selection.select_option(params.limit_option)
         self.check_loading()
