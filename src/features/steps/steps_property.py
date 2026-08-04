@@ -2,6 +2,8 @@ import os
 import pytest
 from pytest_bdd import scenarios, given, when, then, parsers
 from config import *
+from models.property_locations_params import PropertyLocationParams
+from page_objects.cargo_loss_history_page import LossHistoryInformationPage
 from page_objects.login_page import LoginPage
 from page_objects.home_page import HomePage
 from page_objects.program_selection_page import ProgramSelectionPage
@@ -13,9 +15,12 @@ from page_objects.property_additional_questions_page import AdditionalQuestionsP
 from page_objects.cargo_loss_history2_page import LossHistoryInformation2Page
 from page_objects.finance_quote_page import FinanceQuotePage
 from page_objects.print_your_quote_page import PrintYourQuotePage
+from page_objects.property_locations_page import PropertyLocationsPage
 
 from models.agency_info_params import AgencyInfoParams
 from models.property_insured_params import InsuredInfoParams
+from models.property_building_params import BuildingInfoParams
+from models.property_loss_payee_params import PropertyLossPayeeParams
 from models.general_liability_info_params import GeneralLiabilityParams, GLRecord, AdditionalInsuredRecord
 from models.cargo_loss_history_info_params import LossHistoryParams,LossHistoryRecord
 from models.cargo_loss_history2_params import SubjectivityRecord, LossHistory2Record,CargoLossHistory2Params
@@ -44,6 +49,8 @@ def when_user_generates_premium(page, test_data):
     general_information_page = GLInformationPage(page)
     insured_information_page = InsuredInformationPage(page)
     property_additional_questions_page = AdditionalQuestionsPage(page)
+    property_location_page = PropertyLocationsPage(page)
+    cargo_loss_history_info_page = LossHistoryInformationPage(page)
     cargo_loss_histor2_page = LossHistoryInformation2Page(page)
     finance_quote_page = FinanceQuotePage(page)
 
@@ -138,11 +145,85 @@ def when_user_generates_premium(page, test_data):
         
     )
 
+    location_buildings = [
+        [
+            building_row
+            for building_row in test_data["CP_Buildings"]
+            if str(building_row["Loc #"]).strip() == str(location_index + 1)
+        ]
+        for location_index, _ in enumerate(test_data["CP_Locations"])
+    ]
+
+    locations_info = [
+        PropertyLocationParams(
+            index=i,
+            city=row["City"],
+            state=row["State"],
+            zip_code=str(row["ZIP"]),
+            coverage_form=row["Coverage Form"],
+            protection_class=str(row["Protection Class"]),
+            inspection_fee=row["Inspection Fee"],
+            is_coastal=row["Within 20mi of Coast?"],
+            distance_coast=row["Coastal Distance"],
+            nc_island=row["Barrier Island?"],
+            has_hazard=row["Hazardous Exposure?"],
+            hazard_desc=row["Hazard Description"],
+            theft_sublimit="10",
+            exc_wh_cov="No",
+            wh_tiv_percent="0%",
+            buildings=[
+                BuildingInfoParams(
+                    ZIP_code=str(building["ZIP Code"]),
+                    Suite_Unit_floor=str(building["Suite/Unit/Floor"]),
+                    stories_Sq_Ft=str(building["Stories"]),
+                    year_built=str(building["Year Built"]),
+                    construction=str(building["Construction"]),
+                    slate_Wood_shake_roof=str(building["Slate/Wood Shake Roof?"]),
+                    occupancy=str(building["Occupancy"]),
+                    building_value=str(building["Building Value ($)"]),
+                    good_condition=str(building["Good Condition?"]),
+                    valuation=str(building["Valuation"]),
+                    coinsurance_deductible=str(building["Coinsurance"]),
+                    hydrant_Dist=str(building["Hydrant Dist."]),
+                    dist_unit=str(building["Dist. Unit"]),
+                    fire_dept=str(building["Fire Dept"]),
+                    sprinkler=str(building["Sprinkler?"]),
+                    central_Alarm=str(building["Central Alarm?"]),
+                    roof_updated_year=str(building["Roof Updated Year"]),
+                    electrical_updated_year=str(building["Electrical Updated Year"]),
+                    plumbing_updated_year=str(building["Plumbing Updated Year"]),
+                    HVAC_updated_year=str(building["HVAC Updated Year"]),
+                    loss_payees=[
+                        PropertyLossPayeeParams(
+                            full_name=str(payee["Full Name"]),
+                            street1=str(payee["Street 1"]) if payee["Street 1"] is not None else "",
+                            street2=str(payee["Street 2"]) if payee["Street 2"] is not None else "",
+                            city=str(payee["City"]),
+                            state=str(payee["State"]),
+                            zip_code=str(payee["ZIP"]),
+                            mortgagee=str(payee["Mortgagee?"]),
+                            loan_number=str(payee["Loan Number"]) if payee["Loan Number"] is not None else "",
+                            relationship=str(payee["Relationship"]),
+                            financial_interest=str(payee["Financial Interest?"]),
+                            notes=str(payee["Notes"]) if payee["Notes"] is not None else "",
+                        )
+                        for payee in test_data["CP_LossPayees"]
+                        if (payee.get("Test ID") or "") == (row.get("Test ID") or "")
+                        and str(payee["Bldg #"]).strip() == str(building_number)
+                    ],
+                )
+                for building_number, building in enumerate(location_buildings[i], start=1)
+            ],
+        )
+        for i, row in enumerate(test_data["CP_Locations"])
+    ]
+
     home_page.click_new_quote_button()
     program_selection_page.select_commercial_lines_LOB()
     commercial_line_basic_info_page.fill_commercial_line_basic_information_Prop_plus_GL_form(test_data)
     agency_information_page.fill_agency_information_form(agency_info)
     insured_information_page.fill_insured_information_form(insured_info)
+    property_location_page.fill_locations(locations_info)
     general_information_page.fill_general_liability_info(general_liability_info)
     property_additional_questions_page.fill_additional_question_information_form(additional_questions_info)
     cargo_loss_histor2_page.fill_loss_history2_info(cpgl_loss_history2_info)

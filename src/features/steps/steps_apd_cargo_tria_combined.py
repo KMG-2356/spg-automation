@@ -142,6 +142,7 @@ def when_user_generates_premium(page, test_data):
         prior_carrier_information_known=insured_uw_row["Prior carrier information known?"],
         # work_experience=insured_uw_row["Years of experience in same type of work"],
         # non_renewal_details=insured_uw_row["Details for reasons of non-renewal"],
+        details_for_reasons_of_non_renewal = insured_uw_row["Details for reasons of non-renewal"],
         prior_carrier_name=insured_uw_row["Prior carrier name"],
         prior_perils_form=insured_uw_row["Prior perils form"],
         prior_policy_premium=insured_uw_row["Prior policy premium ($)"],

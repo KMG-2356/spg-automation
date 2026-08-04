@@ -1,8 +1,9 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+from models.property_loss_payee_params import PropertyLossPayeeParams
+
 
 @dataclass
 class BuildingInfoParams:
-   
         ZIP_code: str = ""
         Suite_Unit_floor: str = ""
         stories_Sq_Ft: str = ""
@@ -23,4 +24,5 @@ class BuildingInfoParams:
         electrical_updated_year: str = ""
         plumbing_updated_year: str = ""
         HVAC_updated_year: str = ""
+        loss_payees: list[PropertyLossPayeeParams] = field(default_factory=list)
 
