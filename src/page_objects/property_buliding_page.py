@@ -17,11 +17,7 @@ class BuildingInformationPage:
     def area_of_property_input(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.sqfeet\"]")
     def year_built_input(self, i, j):
-<<<<<<< HEAD
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.year_built\"]")
-=======
-        return self.page.locator(f"property_.locations.{i}.buildings.{j}.year_built\"]")
->>>>>>> bb4c995 (Building scripts updated)
     def type_of_construction_select(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.construction\"]")
     def occupancy_selection(self, i, j):
@@ -56,7 +52,6 @@ class BuildingInformationPage:
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.updates.plumbing\"]")
     def HVAC_updated_year_input(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.updates.heating_ac\"]")
-<<<<<<< HEAD
     def risk_uninsured_select(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.uninsured\"]")
     def risk_new_building(self, i, j):
@@ -65,11 +60,6 @@ class BuildingInformationPage:
     #AWNING COVERAGE
 
     def awning_coverage_checkbox(self):
-=======
-    #AWNING COVERAGE
-
-    def awning_coverage_selection(self):
->>>>>>> bb4c995 (Building scripts updated)
         return self.page.get_by_text("Add Awning coverage?")
     def awning_limit_input(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.awning.limit\"]")
@@ -77,16 +67,10 @@ class BuildingInformationPage:
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.awning.valuation\"]")
     def awning_coinsurance_selection(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.awning.coinsurance\"]")
-<<<<<<< HEAD
     
     #ADD BUSINESS INTERRUPTION
 
     def add_business_interruption_coverage_checkbox(self):
-=======
-    #ADD BUSINESS INTERRUPTION
-
-    def add_business_interruption_coverage_selection(self):
->>>>>>> bb4c995 (Building scripts updated)
         return self.page.get_by_text("Add Business Interruption coverage?")
     def business_limit_input(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.bintr.limit\"]")
@@ -94,11 +78,7 @@ class BuildingInformationPage:
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.bintr.limit\"]")
     #ADD LOSS OF RENTS
 
-<<<<<<< HEAD
     def add_loss_of_rents_coverage_checkbox(self):
-=======
-    def add_loss_of_rents_coverage_selection(self):
->>>>>>> bb4c995 (Building scripts updated)
         return self.page.get_by_text("Add Loss of Rents coverage?")
     def loss_of_rents_limit_input(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.lor.limit\"]")
@@ -106,11 +86,7 @@ class BuildingInformationPage:
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.lor.valuation\"]")
     #ADD BUSINESS PERSONAL PROPERTY COVERAGE
 
-<<<<<<< HEAD
     def BPP_coverage_checkbox(self):
-=======
-    def BPP_coverage_selection(self):
->>>>>>> bb4c995 (Building scripts updated)
         return self.page.get_by_text("Add Business Personal Property coverage?")
     def BPP_limit_input(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.bpp.limit\"]")
@@ -120,11 +96,7 @@ class BuildingInformationPage:
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.bpp.coinsurance\"]")
     #ADD PUMPS AND CANOPY COVERAGE
 
-<<<<<<< HEAD
     def canopy_coverage_checkbox(self):
-=======
-    def canopy_coverage_selection(self):
->>>>>>> bb4c995 (Building scripts updated)
         return self.page.get_by_text("Add Pumps and Canopy coverage?")
     def canopy_limit_input(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.canopy.limit\"]")
@@ -132,16 +104,10 @@ class BuildingInformationPage:
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.canopy.valuation\"]")
     def canopy_coinsurance_selection(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.canopy.coinsurance\"]")
-<<<<<<< HEAD
     
     #ADD RENOVATION COVERAGE
 
     def rennovation_coverage_checkbox(self):
-=======
-    #ADD RENOVATION COVERAGE
-
-    def rennovation_coverage_selection(self):
->>>>>>> bb4c995 (Building scripts updated)
         return self.page.get_by_text("Add Renovation coverage?")
     def rennovation_limit_input(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.reno.limit\"]")
@@ -157,16 +123,10 @@ class BuildingInformationPage:
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.reno.start_date\"]")
     def rennovation_expect_end_date_input(self, i, j):
             return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.reno.end_date\"]")
-<<<<<<< HEAD
     
     #ADD SIGN COVERAGE
 
     def sign_coverage_checkbox(self, i, j):
-=======
-    #ADD SIGN COVERAGE
-
-    def sign_coverage_selection(self, i, j):
->>>>>>> bb4c995 (Building scripts updated)
         return self.page.get_by_text("Add Sign coverage?")
     def sign_limit_input(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.sign.limit\"]")
@@ -174,16 +134,10 @@ class BuildingInformationPage:
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.sign.valuation\"]")
     def sign_coinsurance_selection(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.sign.coinsurance\"]")
-<<<<<<< HEAD
     
    #ADD SPOILAGE COVERAGE
 
     def spoilage_coverage_checkbox(self):
-=======
-   #ADD SPOILAGE COVERAGE
-
-    def spoilage_coverage_selection(self):
->>>>>>> bb4c995 (Building scripts updated)
         return self.page.get_by_text("Add Renovation coverage?")
     def spoilage_limit_selection(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.spoilage.limit\"]")
@@ -198,11 +152,7 @@ class BuildingInformationPage:
 
     #CONTRCTOR INFO
 
-<<<<<<< HEAD
     def who_is_doing_work_checkbox(self, i, j):
-=======
-    def who_is_doing_work_selection(self, i, j):
->>>>>>> bb4c995 (Building scripts updated)
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.contractor.contractor_type\"]")
     def certificates_of_insurance_to_be_obtained_from_the_subcontractors_selection(self,i,j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.contractor.ai_cert\"]")
@@ -212,7 +162,6 @@ class BuildingInformationPage:
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.contractor.license_no\"]")
     def no_of_years_in_business_input(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.contractor.years_operating\"]")
-<<<<<<< HEAD
     
     #LOSS PAYEE
 
@@ -235,29 +184,6 @@ class BuildingInformationPage:
     def loan_number_input(self,i,j,k):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.loss_payees.{k}.loan_number\"]")
     
-=======
-    #LOSS PAYEE
-
-    def does_building_have_loss_payee_selection(self,i,j):
-        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.has_loss_payees\"]")     
-    def loss_payee_full_name_input(self,i,j,k):
-        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.loss_payees.{k}.name\"]")
-    def loss_payee_street_address1_input(self):
-        return self.page.locator(".MuiGrid-container").filter(has=self.page.locator("div").filter(has_text="Loss Payee")).nth(-2).locator(".MuiGrid-item").filter(has_text="Mailing Address").locator("input").nth(0)
-    def loss_payee_street_address2_input(self):
-        return self.page.locator(".MuiGrid-container").filter(has=self.page.locator("div").filter(has_text="Loss Payee")).nth(-2).locator(".MuiGrid-item").filter(has_text="Mailing Address").locator("input").nth(1)
-    def loss_payee_city_input(self):
-        return self.page.locator(".MuiGrid-container").filter(has=self.page.locator("div").filter(has_text="Loss Payee")).nth(-2).locator(".MuiGrid-item").filter(has_text="Mailing Address").locator("input").nth(2)
-    def loss_payee_state_selection(self):
-        return self.page.locator(".MuiGrid-container").filter(has=self.page.locator("div").filter(has_text="Loss Payee")).nth(-2).locator(".MuiGrid-item").filter(has_text="Mailing Address").locator("select").nth(0)
-    def loss_payee_zip_input(self):
-        return self.page.locator(".MuiGrid-container").filter(has=self.page.locator("div").filter(has_text="Loss Payee")).nth(-2).locator(".MuiGrid-item").filter(has_text="Mailing Address").locator("input").nth(3)
-    def is_loss_payee_mortgagee_slection(self,i,j,k):
-        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.loss_payees.{k}.mortgagee\"]")
-    def loan_number_input(self,i,j,k):
-        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.loss_payees.{k}.loan_number\"]")
-    
->>>>>>> bb4c995 (Building scripts updated)
    #VACANT ADDITIONAL QUESTIONS
     def is_new_purchase_selection(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.vacant_quals.new_purchase\"]")
@@ -284,11 +210,7 @@ class BuildingInformationPage:
     def intended_disposition_selection(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.vacant_quals.heat\"]")
     def will_heat_be_maintained_selection(self, i, j):
-<<<<<<< HEAD
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.vacant_quals.heat\"]")
-=======
-        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.vacant_quals.plumbing\"]")
->>>>>>> bb4c995 (Building scripts updated)
     def is_plumbing_system_drained_selection(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.vacant_quals.plumbing\"]")
     def any_unfenced_pool_or_body_of_water_selection(self, i, j):

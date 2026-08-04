@@ -30,20 +30,6 @@ class BuildingInfoParams:
         electrical_updated_year: str = ""
         plumbing_updated_year: str = ""
         HVAC_updated_year: str = ""
-
-        #Optional Coverage
-        awning_limit: str = ""
-        sign_limit: str = ""
-        BI_limit: str = ""
-        BPP_limit: str = ""
-        canopy_limit: str = ""
-        LOR_limit: str = ""
-        renovation_limit: str = ""
-        spoilage_limit: str = ""
-        spoilage_contamination: str = ""
-        spoilage_power_outage: str = ""
-
-        
         loss_payees: list[PropertyLossPayeeParams] = field(default_factory=list)
         building_occupancy: BuildingOccupancyParams = field(default_factory=BuildingOccupancyParams)
 
