@@ -272,6 +272,7 @@ class BuildingInformationPage:
         # Protection & Safeguards
         if self.risk_new_building(i,j).is_visible():
             self.risk_new_building(i,j).select_option(params.risk_new_buidling)
+            self.check_loading()
         if self.risk_prior_carrier_input(i,j).is_visible():
             self.risk_prior_carrier_input(i,j).fill(params.risk_prior_carrier)
         if self.risk_prior_expiration_date_input(i,j).is_visible():

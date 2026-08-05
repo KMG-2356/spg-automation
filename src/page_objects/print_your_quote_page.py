@@ -5,9 +5,9 @@ class PrintYourQuotePage:
     def __init__(self, page: Page):
         self.page = page
         self.total_premium_text = self.page.get_by_text("Total Premium: $").first
-        self.total_fee_text = self.page.get_by_text("Total Fees: $")
-        self.grand_total_text = self.page.get_by_text("Grand Total: $")
-        self.total_tax_text = self.page.get_by_text("Total Tax: $")
+        self.total_fee_text = self.page.get_by_text("Total Fees: $").first
+        self.grand_total_text = self.page.get_by_text("Grand Total: $").first
+        self.total_tax_text = self.page.get_by_text("Total Tax: $").first
         self.quote_number_text = self.page.locator("span.jss44")
 
     def save_premium(self, data, output_filename, sheet_name: str):

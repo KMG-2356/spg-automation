@@ -24,9 +24,11 @@ class AdditionalQuestionsPage:
             self.check_loading()
             self.insured_full_name_input.fill(params.contact_full_name)
             self.insured_contact_email_input.fill(params.contact_email)
-            self.insured_contact_phone_number_input.fill(params.contact_phone)        
+            self.insured_contact_phone_number_input.fill(params.contact_phone) 
+            self.check_loading()
         if params.same_as_insured == "Yes":
-            self.insured_full_name_person_to_contact_input.fill(params.contact_full_name)           
+            self.insured_full_name_person_to_contact_input.fill(params.contact_full_name)      
+            self.check_loading()
         
         expect(self.loss_history_btn).to_be_visible()
         expect(self.loss_history_btn).to_be_enabled()
