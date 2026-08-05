@@ -11,9 +11,14 @@ class AdditionalQuestionsPage:
         self.insured_contact_email_input = self.page.locator("[id=\"prop_misc.insp_email\"]")
         self.insured_contact_phone_number_input = self.page.locator("[id=\"prop_misc.insp_phone\"]")         
         self.loss_history_btn = self.page.get_by_role("button", name="Loss History")
+        self.policy_term_select = self.page.locator("#term")
         self.loading_screen = self.page.locator(".jss53")       
 
     def fill_additional_question_information_form(self, params: InsuredInfoParams):  
+        self.check_loading()
+        if self.policy_term_select.is_visible():
+            self.policy_term_select.select_option(params.policy_term)
+            self.check_loading()
         if params.same_as_insured == "No":
             self.is_same_as_insured_selection.select_option(params.same_as_insured)
             self.check_loading()

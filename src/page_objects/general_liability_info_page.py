@@ -11,6 +11,7 @@ class GLInformationPage:
         self.is_building_completely_vacant_selection = self.page.locator("[id=\"gl.vacantbuilding.vacant\"]")
         self.will_building_be_scheduled_demolish_policy_term_selection = self.page.locator("[id=\"gl.vacantbuilding.demolished\"]")
         self.building_currently_damaged_selection = self.page.locator("[id=\"gl.vacantbuilding.damaged\"]")
+        self.reno_cost = self.page.locator("[id=\"gl.vacantbuilding.reno_cost\"]")
         self.any_additional_insureds_selection = self.page.locator("[id=\"gl.has_ais\"]")
         self.add_another_gl_classification_btn = self.page.get_by_role("button", name="Add Another GL Classification")       
         self.additional_questions_btn = self.page.get_by_role("button", name="Additional Questions")
@@ -37,7 +38,7 @@ class GLInformationPage:
     def insured_state_selection(self, i: int):
         return self.page.get_by_text("Street Address 1Street").locator("select").nth(i)
     def number_of_acres_input(self, i: int):
-        return self.page.locator(f"[id=\"gl.klasses.{0}.acres\"]")
+        return self.page.locator(f"[id=\"gl.klasses.{i}.acres\"]")
          
 
     def fill_general_liability_info(self, params: GeneralLiabilityParams):
@@ -63,12 +64,25 @@ class GLInformationPage:
             if self.sq_feet_of_building_input(i).is_visible():
                 self.sq_feet_of_building_input(i).fill(classcode.square_feet_of_building)
                 self.check_loading()
+
             if self.number_of_acres_input(i).is_visible():
-               self.number_of_acres_input(i).fill(classcode.no_of_acres)#not working  
-        self.is_building_secured_from_unauthorized_entry_selection.select_option(params.is_the_building_secured_from_unauthorized_entry)
-        self.is_building_completely_vacant_selection.select_option(params.is_the_building_completely_vacant)
-        self.will_building_be_scheduled_demolish_policy_term_selection.select_option(params.will_building_scheduled_to_be_demolished_during_our_policy_term)
-        self.building_currently_damaged_selection.select_option(params.is_the_building_currently_damaged)                      
+                self.number_of_acres_input(i).fill(classcode.no_of_acres)#not working    
+                self.check_loading()
+
+        if self.is_building_secured_from_unauthorized_entry_selection.is_visible():
+            self.is_building_secured_from_unauthorized_entry_selection.select_option(params.is_building_secured_from_unauthorized_entry)
+            self.check_loading()
+        if self.is_building_completely_vacant_selection.is_visible():
+            self.is_building_completely_vacant_selection.select_option(params.is_building_completely_vacant)
+            self.check_loading()
+        if self.will_building_be_scheduled_demolish_policy_term_selection.is_visible():
+            self.will_building_be_scheduled_demolish_policy_term_selection.select_option(params.will_building_be_scheduled_demolish_policy_term)
+        if self.building_currently_damaged_selection.is_visible():
+            self.building_currently_damaged_selection.select_option(params.building_currently_damaged)
+            self.check_loading()
+        if self.reno_cost.is_visible():
+            self.reno_cost.fill(params.reno_cost)
+
         self.any_additional_insureds_selection.select_option("yes")
 
         for i, insured in enumerate(params.additional_insureds):

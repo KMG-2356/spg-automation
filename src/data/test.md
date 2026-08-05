@@ -1,7 +1,71 @@
-Vacant Commercial — Is the building 100% vacant?	Vacant Commercial — How long has the building been vacant?	Vacant Commercial — What was the prior occupancy?	Vacant Commercial — Intended disposition:	Vacant Commercial — Is the building secured (locked doors and windows)?	Vacant Commercial — Is the building boarded up?	Vacant Commercial — Is the building fenced?	Vacant Commercial — Has the electricity been turned off?	Vacant Commercial — Has the gas been turned off?	Vacant Commercial — Has the water been turned off?	Vacant Commercial — Has the plumbing been drained?	Vacant Commercial — Are there any structural issues or damage?	Vacant Commercial — Is the building undergoing renovation or demolition?	Vacant Commercial — Was this a new purchase?	Vacant Commercial — (If Yes to Q14) Date of purchase:	Vacant Commercial — Is the building being actively shown / marketed?	Vacant Commercial — Are there hazardous materials remaining from prior use?	Vacant Commercial — Is there any active heating in the building?
+03/15/2024
+08/22/2023
+01/10/2025
+11/05/2024
+06/18/2023
+09/27/2024
+02/14/2023
+07/30/2025
+12/09/2024
+
+04/21/2024
+10/13/2023
+02/28/2025
+08/07/2024
+01/25/2023
+09/11/2025
+05/19/2024
+07/04/2023
+03/16/2025
+06/23/2025
+12/12/2025
+02/08/2024
+11/17/2023
+08/29/2025
 
 
 
 
-
-Vacant Residential — Is the building 100% vacant?	Vacant Residential — How long has the building been vacant?	Vacant Residential — What was the prior occupancy?	Vacant Residential — Intended disposition:	Vacant Residential — Is the building secured (locked doors and windows)?	Vacant Residential — Is the building boarded up?	Vacant Residential — Is the building fenced?	Vacant Residential — Has the electricity been turned off?	Vacant Residential — Has the gas been turned off?	Vacant Residential — Has the water been turned off?	Vacant Residential — Has the plumbing been drained?	Vacant Residential — Are there any structural issues or damage?	Vacant Residential — Is the building undergoing renovation or demolition?	Vacant Residential — Was this a new purchase?	Vacant Residential — (If Yes to Q14) Date of purchase:	Vacant Residential — Is the building being actively shown / marketed?	Vacant Residential — Is the property estate-owned or in probate?	Vacant Residential — Is there any active heating in the building?
+01/14/2025
+09/26/2023
+05/03/2024
+07/18/2025
+10/24/2025
+03/09/2024
+12/01/2023
+04/27/2025
+11/15/2024
+02/20/2023
+06/06/2024
+08/31/2023
+09/09/2025
+05/22/2025
+11/11/2025
+12/30/2025
+01/16/2024
+07/28/2023
+03/03/2023
+10/10/2024
+04/05/2024
+09/14/2024
+05/25/2023
+08/08/2022
+02/12/2024
+06/29/2023
+10/06/2023
+12/19/2022
+07/07/2024
+04/18/2023
+03/25/2024
+08/16/2024
+11/21/2024
+01/30/2023
+05/17/2024
+09/02/2022
+12/04/2024
+02/27/2023
+06/13/2024
+10/31/2023
+07/12/2023
+03/24/2022
+09/20/2024

@@ -7,6 +7,7 @@ class BuildingInformationPage:
     def __init__(self, page: Page):
         self.page = page
         self.loss_history_btn = self.page.get_by_role("button", name="Location Management")
+        self.add_another_loss_payee_btn = self.page.get_by_role("button", name="Add Another Loss Payee")
         self.loading_screen = self.page.locator(".jss53")
     def street_address_input(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.address\"]")
@@ -56,6 +57,12 @@ class BuildingInformationPage:
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.uninsured\"]")
     def risk_new_building(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.new_building\"]")
+    def risk_prior_carrier_input(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.prior_carrier\"]")
+    def risk_prior_expiration_date_input(self,i,j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.prior_expiration\"]")
+    def risk_days_wo_insurance_input(self,i,j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.days_wo_insurance\"]")
 
     #AWNING COVERAGE
 
@@ -75,7 +82,7 @@ class BuildingInformationPage:
     def business_limit_input(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.bintr.limit\"]")
     def business_valuation_selection(self, i, j):
-        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.bintr.limit\"]")
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.bintr.valuation\"]")
     #ADD LOSS OF RENTS
 
     def add_loss_of_rents_coverage_checkbox(self):
@@ -138,7 +145,7 @@ class BuildingInformationPage:
    #ADD SPOILAGE COVERAGE
 
     def spoilage_coverage_checkbox(self):
-        return self.page.get_by_text("Add Renovation coverage?")
+        return self.page.get_by_text("Add Spoilage coverage?")
     def spoilage_limit_selection(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.spoilage.limit\"]")
     def spoilage_deductible_input(self, i, j):
@@ -183,6 +190,10 @@ class BuildingInformationPage:
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.loss_payees.{k}.mortgagee\"]")
     def loan_number_input(self,i,j,k):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.loss_payees.{k}.loan_number\"]")
+    def loss_payee_relationship_input(self, i,j,k):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.loss_payees.{k}.relationship\"]")
+    def loss_payee_financial_interest_select(self,i,j,k):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.loss_payees.{k}.interest\"]")
     
    #VACANT ADDITIONAL QUESTIONS
     def is_new_purchase_selection(self, i, j):
@@ -208,7 +219,7 @@ class BuildingInformationPage:
     def is_water_still_active_selection(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.vacant_quals.water\"]")
     def intended_disposition_selection(self, i, j):
-        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.vacant_quals.heat\"]")
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.vacant_quals.intended_disposition\"]")
     def will_heat_be_maintained_selection(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.vacant_quals.heat\"]")
     def is_plumbing_system_drained_selection(self, i, j):
@@ -259,7 +270,14 @@ class BuildingInformationPage:
         self.check_loading()
 
         # Protection & Safeguards
-        self.risk_new_building(i,j).select_option(params.risk_new_buidling)
+        if self.risk_new_building(i,j).is_visible():
+            self.risk_new_building(i,j).select_option(params.risk_new_buidling)
+        if self.risk_prior_carrier_input(i,j).is_visible():
+            self.risk_prior_carrier_input(i,j).fill(params.risk_prior_carrier)
+        if self.risk_prior_expiration_date_input(i,j).is_visible():
+            self.risk_prior_expiration_date_input(i,j).fill(params.risk_prior_expiration_date)
+        if self.risk_days_wo_insurance_input(i,j).is_visible():
+            self.risk_days_wo_insurance_input(i,j).fill(params.risk_days_wo_insurance)
         self.check_loading()
         if params.hydrant_Dist:
             self.distance_to_hydrant_input(i, j).fill(params.hydrant_Dist)
@@ -290,89 +308,121 @@ class BuildingInformationPage:
         # 1. AWNING COVERAGE
         if params.awning_limit:
             self.awning_coverage_checkbox().click()
+            self.check_loading()
             self.awning_limit_input(i, j).fill(str(params.awning_limit))
             if params.awning_valuation:
                 self.awning_valuation_iselection(i, j).select_option(str(params.awning_valuation))
+                self.check_loading()
             if params.awning_coinsurance:
                 self.awning_coinsurance_selection(i, j).select_option(str(params.awning_coinsurance))
+                self.check_loading()
 
         # 2. BUSINESS INTERRUPTION
         if params.business_interruption_limit:
             self.add_business_interruption_coverage_checkbox().click()
+            self.check_loading()
             self.business_limit_input(i, j).fill(str(params.business_interruption_limit))
             if params.business_interruption_valuation:
-                self.business_valuation_selection(i, j).select_option(str(params.business_interruption_valuation))
+                self.business_valuation_selection(i, j).select_option(params.business_interruption_valuation)
+                self.check_loading()
+
 
         # 3. LOSS OF RENTS
         if params.loss_of_rents_limit:
             self.add_loss_of_rents_coverage_checkbox().click()
+            self.check_loading()
             self.loss_of_rents_limit_input(i, j).fill(str(params.loss_of_rents_limit))
             if params.loss_of_rents_valuation:
                 self.loss_of_rents_valuation_selection(i, j).select_option(str(params.loss_of_rents_valuation))
+                self.check_loading()
+
 
         # 4. BUSINESS PERSONAL PROPERTY (BPP)
         if params.business_personal_property_limit:
-            self.BPP_coverage_checkbox().check()
+            self.BPP_coverage_checkbox().click()
+            self.check_loading()
             self.BPP_limit_input(i, j).fill(str(params.business_personal_property_limit))
             if params.business_personal_property_valuation:
                 self.BPP_valuation_selection(i, j).select_option(str(params.business_personal_property_valuation))
+                self.check_loading()
             if params.business_personal_property_coinsurance:
                 self.BPP_coinsurance_selection(i, j).select_option(str(params.business_personal_property_coinsurance))
+                self.check_loading()
 
         # 5. PUMPS AND CANOPY
         if params.pump_and_canopy_limit:
             self.canopy_coverage_checkbox().click()
+            self.check_loading()
             self.canopy_limit_input(i, j).fill(str(params.pump_and_canopy_limit))
             if params.pump_and_canopy_valuation:
                 self.canopy_valuation_selection(i, j).select_option(str(params.pump_and_canopy_valuation))
+                self.check_loading()
             if params.pump_and_canopy_coinsurance:
                 self.canopy_coinsurance_selection(i, j).select_option(str(params.pump_and_canopy_coinsurance))
+                self.check_loading()
 
         # 6. RENOVATION COVERAGE
         if params.renovation_limit:
             self.rennovation_coverage_checkbox().click()
+            self.check_loading()
             self.rennovation_limit_input(i, j).fill(str(params.renovation_limit))
             if params.renovation_valuation:
                 self.rennovation_valuation_selection(i, j).select_option(str(params.renovation_valuation))
+                self.check_loading()
             if params.renovation_coinsurance:
                 self.rennovation_coinsurance_selection(i, j).select_option(str(params.renovation_coinsurance))
+                self.check_loading()
             if params.will_the_building_be_demolished:
                 self.rennovation_will_building_be_demolished_selection(i, j).select_option(str(params.will_the_building_be_demolished))
+                self.check_loading()
             if params.building_plans:
                 self.rennovation_plan_of_building_input(i, j).fill(str(params.building_plans))
+            print(f"start_date: {params.renovation_start_date}, end_date: {params.renovation_end_date}")
             if params.renovation_start_date:
-                self.rennovation_expect_start_date_input(i, j).fill(str(params.renovation_start_date))
+                self.rennovation_expect_start_date_input(i, j).fill(params.renovation_start_date)
             if params.renovation_end_date:
-                self.rennovation_expect_end_date_input(i, j).fill(str(params.renovation_end_date))
+                self.rennovation_expect_end_date_input(i, j).fill(params.renovation_end_date)
 
             # Fill Contractor details with dummy values since parameters aren't in dataclass
-            self.who_is_doing_work_checkbox(i, j).select_option("General Contractor")
-            self.certificates_of_insurance_to_be_obtained_from_the_subcontractors_selection(i, j).select_option("Yes")
-            self.is_contractor_info_known_selection(i, j).select_option("Yes")
-            self.license_no_input(i, j).fill("LIC123456")
-            self.no_of_years_in_business_input(i, j).fill("5")
+            self.who_is_doing_work_checkbox(i, j).select_option("Licensed General Contractor")
+            self.check_loading()
+            self.certificates_of_insurance_to_be_obtained_from_the_subcontractors_selection(i, j).select_option("No")
+            self.check_loading()
+            self.is_contractor_info_known_selection(i, j).select_option("No")
+            self.check_loading()
+            if self.license_no_input(i, j).is_visible(): 
+                self.license_no_input(i, j).fill("LIC123456")
+                self.no_of_years_in_business_input(i, j).fill("5")
 
         # 7. SIGN COVERAGE
         if params.sign_limit:
-            self.sign_coverage_checkbox(i, j).check()
+            self.sign_coverage_checkbox(i, j).click()
+            self.check_loading()
             self.sign_limit_input(i, j).fill(str(params.sign_limit))
             if params.sign_valuation:
                 self.sign_valuation_selection(i, j).select_option(str(params.sign_valuation))
+                self.check_loading()
             if params.sign_coinsurance:
                 self.sign_coinsurance_selection(i, j).select_option(str(params.sign_coinsurance))
+                self.check_loading()
 
         # 8. SPOILAGE COVERAGE
         if params.spoilage_limit:
-            self.spoilage_coverage_checkbox().check()
+            self.spoilage_coverage_checkbox().click()
+            self.check_loading()
             self.spoilage_limit_selection(i, j).select_option(str(params.spoilage_limit))
+            self.check_loading()
             if params.spoilage_deductible:
                 self.spoilage_deductible_input(i, j).fill(str(params.spoilage_deductible))
             if params.spoilage_contamination:
                 self.spoilage_add_coverage_for_breakdown_selection(i, j).select_option(str(params.spoilage_contamination))
+                self.check_loading()
             if params.spoilage_power_outage:
                 self.spoilage_add_coverages_for_outages_selection(i, j).select_option(str(params.spoilage_power_outage))
+                self.check_loading()
             if params.refrigeration_maintenance_agreement:
                 self.spoilage_is_there_refrigeration_maintainence_agreement_selection(i, j).select_option(str(params.refrigeration_maintenance_agreement))
+                self.check_loading()
 
         building_occupancy = params.building_occupancy
         print(building_occupancy)
@@ -395,24 +445,31 @@ class BuildingInformationPage:
         self.check_loading()
         self.intended_disposition_selection(i, j).select_option(str(building_occupancy.vacant_intended_disposition))
         self.check_loading()
-        self.will_heat_be_maintained_selection(i, j).select_option(str(building_occupancy.vacant_active_heating))
-        self.check_loading()
-        if self.is_gas_still_active_selection(i, j).is_visible(): 
-            self.is_gas_still_active_selection(i, j).select_option(str(building_occupancy.vacant_gas_turned_off))
+        if self.will_heat_be_maintained_selection(i,j).is_visible():
+            self.will_heat_be_maintained_selection(i, j).select_option(str(building_occupancy.vacant_active_heating))
             self.check_loading()
         self.is_plumbing_system_drained_selection(i, j).select_option(str(building_occupancy.vacant_plumbing_drained))
         self.check_loading()
+        if self.is_water_still_active_selection(i, j).is_visible():
+            self.is_water_still_active_selection(i, j).select_option(str(building_occupancy.vacant_water_turned_off))
+            self.check_loading()
         if self.any_unfenced_pool_or_body_of_water_selection(i,j).is_visible(): 
             self.any_unfenced_pool_or_body_of_water_selection(i,j).select_option(params.unfenced_pool)
             self.check_loading()
-        if self.is_water_still_active_selection(i, j).is_visible():
-            self.is_water_still_active_selection(i, j).select_option(str(building_occupancy.vacant_water_turned_off))
+        if self.is_gas_still_active_selection(i, j).is_visible(): 
+            self.is_gas_still_active_selection(i, j).select_option(str(building_occupancy.vacant_gas_turned_off))
+            self.check_loading()
+        if self.is_located_on_more_than_2acres_selection(i,j).is_visible():
+            self.is_located_on_more_than_2acres_selection(i,j).select_option("No")
             self.check_loading()
 
         # Loss Payees Flow
         if params.loss_payees:
             self.does_building_have_loss_payee_selection(i, j).select_option("yes")
             for k, payee in enumerate(params.loss_payees):
+                if k > 0:
+                    self.add_another_loss_payee_btn.click()
+                    self.check_loading()
                 self.loss_payee_full_name_input(i, j, k).fill(payee.full_name)
                 if payee.street1:
                     self.loss_payee_street_address1_input().fill(payee.street1)
@@ -422,12 +479,19 @@ class BuildingInformationPage:
                     self.loss_payee_city_input().fill(payee.city)
                 if payee.state:
                     self.loss_payee_state_selection().select_option(payee.state)
+                    self.check_loading()
                 if payee.zip_code:
                     self.loss_payee_zip_input().fill(payee.zip_code)
+                    self.check_loading()
                 if payee.mortgagee:
                     self.is_loss_payee_mortgagee_slection(i, j, k).select_option(payee.mortgagee)
+                    self.check_loading()
                 if payee.loan_number:
                     self.loan_number_input(i, j, k).fill(payee.loan_number)
+                if self.loss_payee_relationship_input(i,j,k).is_visible():
+                    self.loss_payee_relationship_input(i,j,k).fill(payee.relationship)
+                if self.loss_payee_financial_interest_select(i,j,k).is_visible():
+                    self.loss_payee_financial_interest_select(i,j,k).select_option(payee.financial_interest)
         else:
             if self.does_building_have_loss_payee_selection(i, j).is_visible():
                 self.does_building_have_loss_payee_selection(i, j).select_option("no")

@@ -10,7 +10,7 @@ class LossHistoryInformation2Page:
         self.additional_notes_input = self.page.locator("[id=\"history.notes\"]")
         self.loading_screen = self.page.locator(".jss53")
         self.add_loss_btn = self.page.get_by_role("button", name="Add Another Loss")
-        self.add_subjectivity_btn = self.page.get_by_role("button", name="Add Another Sujectivity")
+        self.add_subjectivity_btn = self.page.get_by_role("button", name="Add Another Subjectivity")
         self.finance_quote_btn = self.page.get_by_role("button", name="Finance Quote")
 
     # page.get_by_role("combobox").nth(2).click()

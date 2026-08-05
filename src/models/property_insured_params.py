@@ -30,3 +30,4 @@ class InsuredInfoParams:
     contact_full_name:str=""
     contact_email:str=""
     contact_phone:str=""
+    policy_term: str =""
