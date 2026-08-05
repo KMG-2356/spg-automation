@@ -1,5 +1,5 @@
 from playwright.sync_api import Page, expect, TimeoutError
-from models.general_liability_info_params import GeneralLiabilityParams
+from models.property_general_liability_info_params import GeneralLiabilityParams
 
 class GLInformationPage:
     def __init__(self, page: Page):
@@ -41,9 +41,6 @@ class GLInformationPage:
          
 
     def fill_general_liability_info(self, params: GeneralLiabilityParams):
-        # self.page.get_by_role("button", name="Building 1-").click()
-        # self.page.get_by_role("button", name="Location Management").click()
-        # self.page.get_by_role("button", name="Package Quote GL Suggestions").click()
         self.page.get_by_role("button", name="General Liability").click()         
         self.limit_option_selection.select_option(params.limit_option)
         self.check_loading()
@@ -67,7 +64,11 @@ class GLInformationPage:
                 self.sq_feet_of_building_input(i).fill(classcode.square_feet_of_building)
                 self.check_loading()
             if self.number_of_acres_input(i).is_visible():
-               self.number_of_acres_input(i).fill(classcode.no_of_acres)#not working                        
+               self.number_of_acres_input(i).fill(classcode.no_of_acres)#not working  
+        self.is_building_secured_from_unauthorized_entry_selection.select_option(params.is_the_building_secured_from_unauthorized_entry)
+        self.is_building_completely_vacant_selection.select_option(params.is_the_building_completely_vacant)
+        self.will_building_be_scheduled_demolish_policy_term_selection.select_option(params.will_building_scheduled_to_be_demolished_during_our_policy_term)
+        self.building_currently_damaged_selection.select_option(params.is_the_building_currently_damaged)                      
         self.any_additional_insureds_selection.select_option("yes")
 
         for i, insured in enumerate(params.additional_insureds):

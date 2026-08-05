@@ -30,6 +30,40 @@ class BuildingInfoParams:
         electrical_updated_year: str = ""
         plumbing_updated_year: str = ""
         HVAC_updated_year: str = ""
+
+        #Optional Coverages      
+
+        awning_limit: str = ""
+        awning_valuation: str = ""
+        awning_coinsurance: str = ""
+        sign_limit: str = ""
+        sign_valuation: str = ""
+        sign_coinsurance: str = ""
+        business_interruption_limit: str = ""
+        business_interruption_valuation: str = ""
+        business_personal_property_limit: str = ""
+        business_personal_property_valuation: str = ""
+        business_personal_property_coinsurance: str = ""
+        pump_and_canopy_limit: str = ""
+        pump_and_canopy_valuation: str = ""
+        pump_and_canopy_coinsurance: str = ""
+        loss_of_rents_limit: str = ""
+        loss_of_rents_valuation: str = ""
+        renovation_limit: str = ""
+        renovation_valuation: str = ""
+        renovation_coinsurance: str = ""
+        will_the_building_be_demolished: str = ""
+        building_plans: str = ""
+        renovation_start_date: str = ""
+        renovation_end_date: str = ""
+        spoilage_limit: str = ""
+        spoilage_deductible: str = ""
+        spoilage_contamination: str = ""
+        spoilage_power_outage: str = ""
+        refrigeration_maintenance_agreement: str = ""
+        notes: str = ""
+
+        
         loss_payees: list[PropertyLossPayeeParams] = field(default_factory=list)
         building_occupancy: BuildingOccupancyParams = field(default_factory=BuildingOccupancyParams)
 

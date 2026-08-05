@@ -22,7 +22,7 @@ from models.agency_info_params import AgencyInfoParams
 from models.property_insured_params import InsuredInfoParams
 from models.property_building_params import BuildingInfoParams, BuildingOccupancyParams
 from models.property_loss_payee_params import PropertyLossPayeeParams
-from models.general_liability_info_params import GeneralLiabilityParams, GLRecord, AdditionalInsuredRecord
+from models.property_general_liability_info_params import GeneralLiabilityParams, GLRecord, AdditionalInsuredRecord
 from models.cargo_loss_history_info_params import LossHistoryParams,LossHistoryRecord
 from models.cargo_loss_history2_params import SubjectivityRecord, LossHistory2Record,CargoLossHistory2Params
 
@@ -105,7 +105,12 @@ def when_user_generates_premium(page, test_data):
     general_liability_info = GeneralLiabilityParams(
         limit_option=test_data["GL_ClassCodes_Atrium"][0]["Limit Option"],
         years_in_business=test_data["GL_ClassCodes_Atrium"][0]["Years in Business"],
-        years_of_experience=test_data["GL_ClassCodes_Atrium"][0]["Years of Experience"],        
+        years_of_experience=test_data["GL_ClassCodes_Atrium"][0]["Years of Experience"],
+        is_the_building_secured_from_unauthorized_entry=test_data["GL_VacantBuildingQ"][0]["Is the building secured from unauthorized entry? "],
+        is_the_building_completely_vacant=test_data["GL_VacantBuildingQ"][0]["Is the building completely vacant? "],
+        will_building_scheduled_to_be_demolished_during_our_policy_term=test_data["GL_VacantBuildingQ"][0]["Will the building be scheduled to be demolished during our policy term? "],
+        is_the_building_currently_damaged=test_data["GL_VacantBuildingQ"][0]["Is the building currently damaged (fire or otherwise)? "],
+        total_cost_of_renovation=test_data["GL_VacantBuildingQ"][0]["What is the total cost of renovation? "],       
         classification_codes=[GLRecord(class_code=row["Class Code"],
             square_feet_of_building=row["Square feet of building"],
             no_of_acres=row["No.Of Acres"]
@@ -127,17 +132,17 @@ def when_user_generates_premium(page, test_data):
     
     cpgl_loss_history2_info = CargoLossHistory2Params(
             any_losses_in_the_past3_years=test_data["CP_GL_LossHistory"][0]["Any Losses in the Past 3 Years?"],
-            # any_unrepaired_damage_from_prior_losses=test_data["CP_GL_LossHistory"][0]["Any Unrepaired Damage from Prior Losses?"],
-            # add_extra_subjectivities=test_data["CP_GL_LossHistory"][0]["Add extra subjectivities?"],
-            # notes_about_the_insured=test_data["CP_GL_LossHistory"][0]["Notes about the Insured"],
-            # subjectivity=[SubjectivityRecord(
-            #     subjectivity_text=row["Subjectivity Text"]
-            #     )
-                # for row in test_data["CP_GL_LossHistory"]],
+            any_unrepaired_damage_from_prior_losses=test_data["CP_GL_LossHistory"][0]["Any unrepaired damage from prior losses?"],
+            add_extra_subjectivities=test_data["CP_GL_LossHistory"][0]["Would you like to add extra subjectivities to the application?"],
+            notes_about_the_insured=test_data["CP_GL_LossHistory"][0]["Notes about the Insured"],
+            subjectivity=[SubjectivityRecord(
+                subjectivity_text=row["Subjectivity Text"]
+                )
+                for row in test_data["CP_GL_LossHistory"]],
             losses2=[LossHistory2Record(
                 details=row["Description"],
                 loss_date=row["Loss Date"],
-                amount="10", # row["Amount"] needs to be added in the sheet
+                amount=row["Amount"], 
                 type_of_loss=row["Type of Loss"],
                 )                
                 for row in test_data["CP_GL_LossHistory"]]
