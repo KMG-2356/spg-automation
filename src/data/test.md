@@ -1,18 +1,7 @@
-TS-010
-TS-015
-TS-038
-TS-040
-TS-041
-TS-044
-TS-047
-TS-051
-TS-055
-TS-057
-TS-062
-TS-063
-TS-067
-TS-072
-TS-075
-TS-078
-TS-079
-TS-080
+Vacant Commercial — Is the building 100% vacant?	Vacant Commercial — How long has the building been vacant?	Vacant Commercial — What was the prior occupancy?	Vacant Commercial — Intended disposition:	Vacant Commercial — Is the building secured (locked doors and windows)?	Vacant Commercial — Is the building boarded up?	Vacant Commercial — Is the building fenced?	Vacant Commercial — Has the electricity been turned off?	Vacant Commercial — Has the gas been turned off?	Vacant Commercial — Has the water been turned off?	Vacant Commercial — Has the plumbing been drained?	Vacant Commercial — Are there any structural issues or damage?	Vacant Commercial — Is the building undergoing renovation or demolition?	Vacant Commercial — Was this a new purchase?	Vacant Commercial — (If Yes to Q14) Date of purchase:	Vacant Commercial — Is the building being actively shown / marketed?	Vacant Commercial — Are there hazardous materials remaining from prior use?	Vacant Commercial — Is there any active heating in the building?
+
+
+
+
+
+Vacant Residential — Is the building 100% vacant?	Vacant Residential — How long has the building been vacant?	Vacant Residential — What was the prior occupancy?	Vacant Residential — Intended disposition:	Vacant Residential — Is the building secured (locked doors and windows)?	Vacant Residential — Is the building boarded up?	Vacant Residential — Is the building fenced?	Vacant Residential — Has the electricity been turned off?	Vacant Residential — Has the gas been turned off?	Vacant Residential — Has the water been turned off?	Vacant Residential — Has the plumbing been drained?	Vacant Residential — Are there any structural issues or damage?	Vacant Residential — Is the building undergoing renovation or demolition?	Vacant Residential — Was this a new purchase?	Vacant Residential — (If Yes to Q14) Date of purchase:	Vacant Residential — Is the building being actively shown / marketed?	Vacant Residential — Is the property estate-owned or in probate?	Vacant Residential — Is there any active heating in the building?

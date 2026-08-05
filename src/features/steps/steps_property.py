@@ -16,10 +16,11 @@ from page_objects.cargo_loss_history2_page import LossHistoryInformation2Page
 from page_objects.finance_quote_page import FinanceQuotePage
 from page_objects.print_your_quote_page import PrintYourQuotePage
 from page_objects.property_locations_page import PropertyLocationsPage
+from page_objects.property_buliding_page import BuildingInformationPage
 
 from models.agency_info_params import AgencyInfoParams
 from models.property_insured_params import InsuredInfoParams
-from models.property_building_params import BuildingInfoParams
+from models.property_building_params import BuildingInfoParams, BuildingOccupancyParams
 from models.property_loss_payee_params import PropertyLossPayeeParams
 from models.general_liability_info_params import GeneralLiabilityParams, GLRecord, AdditionalInsuredRecord
 from models.cargo_loss_history_info_params import LossHistoryParams,LossHistoryRecord
@@ -136,7 +137,7 @@ def when_user_generates_premium(page, test_data):
             losses2=[LossHistory2Record(
                 details=row["Description"],
                 loss_date=row["Loss Date"],
-                amount=row["Amount"],
+                amount="10", # row["Amount"] needs to be added in the sheet
                 type_of_loss=row["Type of Loss"],
                 )                
                 for row in test_data["CP_GL_LossHistory"]]
@@ -166,11 +167,12 @@ def when_user_generates_premium(page, test_data):
             nc_island=row["Barrier Island?"],
             has_hazard=row["Hazardous Exposure?"],
             hazard_desc=row["Hazard Description"],
-            theft_sublimit="10",
-            exc_wh_cov="No",
-            wh_tiv_percent="0%",
+            theft_sublimit=row["Theft Sublimit"],
+            exc_wh_cov=row["Exclude Wind/Hail Coverage?"],
+            wh_tiv_percent=row["Percentage for TIV for Wind/Hail Deductible "],
             buildings=[
                 BuildingInfoParams(
+                    street=building["Street Address"],
                     ZIP_code=str(building["ZIP Code"]),
                     Suite_Unit_floor=str(building["Suite/Unit/Floor"]),
                     stories_Sq_Ft=str(building["Stories"]),
@@ -181,7 +183,11 @@ def when_user_generates_premium(page, test_data):
                     building_value=str(building["Building Value ($)"]),
                     good_condition=str(building["Good Condition?"]),
                     valuation=str(building["Valuation"]),
-                    coinsurance_deductible=str(building["Coinsurance"]),
+                    coinsurance=str(building["Coinsurance"]),
+                    deductible=str(building["Deductible"]),
+                    risk_uninsured=building["Is Risk Currently Uninsured?"],
+                    risk_new_buidling=building["Risk New Purchase?"],
+                    unfenced_pool="No",
                     hydrant_Dist=str(building["Hydrant Dist."]),
                     dist_unit=str(building["Dist. Unit"]),
                     fire_dept=str(building["Fire Dept"]),
@@ -191,6 +197,56 @@ def when_user_generates_premium(page, test_data):
                     electrical_updated_year=str(building["Electrical Updated Year"]),
                     plumbing_updated_year=str(building["Plumbing Updated Year"]),
                     HVAC_updated_year=str(building["HVAC Updated Year"]),
+                    awning_limit=str(test_data["CP_OptCoverages"][building_number - 1]["Awning Limit($)"]),
+                    awning_valuation=str(test_data["CP_OptCoverages"][building_number - 1]["Awning Valuation"]),
+                    awning_coinsurance=str(test_data["CP_OptCoverages"][building_number - 1]["Awning Coinsurance"]),
+                    sign_limit=str(test_data["CP_OptCoverages"][building_number - 1]["Sign Limit($)"]),
+                    sign_valuation=str(test_data["CP_OptCoverages"][building_number - 1]["Sign Valuation"]),
+                    sign_coinsurance=str(test_data["CP_OptCoverages"][building_number - 1]["Sign Coinsurance"]),
+                    business_interruption_limit=str(test_data["CP_OptCoverages"][building_number - 1]["BI Limit ($)"]),
+                    business_interruption_valuation=str(test_data["CP_OptCoverages"][building_number - 1]["BI Valuation"]),
+                    business_personal_property_limit=str(test_data["CP_OptCoverages"][building_number - 1]["BPP Limit ($)"]),
+                    business_personal_property_valuation=str(test_data["CP_OptCoverages"][building_number - 1]["BPP Valuation"]),
+                    business_personal_property_coinsurance=str(test_data["CP_OptCoverages"][building_number - 1]["BPP Coinsurance"]),
+                    pump_and_canopy_limit=str(test_data["CP_OptCoverages"][building_number - 1]["Pump and Canopy Limit($)"]),
+                    pump_and_canopy_valuation=str(test_data["CP_OptCoverages"][building_number - 1]["Pump and Canopy Valuation"]),
+                    pump_and_canopy_coinsurance=str(test_data["CP_OptCoverages"][building_number - 1]["Pump and Canopy Coinsurance"]),
+                    loss_of_rents_limit=str(test_data["CP_OptCoverages"][building_number - 1]["LOR Limit ($)"]),
+                    loss_of_rents_valuation=str(test_data["CP_OptCoverages"][building_number - 1]["LOR Valuation"]),
+                    renovation_limit=str(test_data["CP_OptCoverages"][building_number - 1]["Renovation Limit($)"]),
+                    renovation_valuation=str(test_data["CP_OptCoverages"][building_number - 1]["Renaovation Valuation"]),
+                    renovation_coinsurance=str(test_data["CP_OptCoverages"][building_number - 1]["Renovation Coinsurance"]),
+                    will_the_building_be_demolished=str(test_data["CP_OptCoverages"][building_number - 1]["Will the building demolished?"]),
+                    building_plans=str(test_data["CP_OptCoverages"][building_number - 1]["Building Plans"]),
+                    renovation_start_date=str(test_data["CP_OptCoverages"][building_number - 1]["Renovation Start Date"]),
+                    renovation_end_date=str(test_data["CP_OptCoverages"][building_number - 1]["Renovation End Date"]),
+                    spoilage_limit=str(test_data["CP_OptCoverages"][building_number - 1]["Spoilage Limit"]),
+                    spoilage_deductible=str(test_data["CP_OptCoverages"][building_number - 1]["Spoilage Deductible($)"]),
+                    spoilage_contamination=str(test_data["CP_OptCoverages"][building_number - 1]["Spoilage Contamination?"]),
+                    spoilage_power_outage=str(test_data["CP_OptCoverages"][building_number - 1]["Spoilage Power Outage?"]),
+                    refrigeration_maintenance_agreement=str(test_data["CP_OptCoverages"][building_number - 1]["Refrigiration Maintainance Agreement"]),
+                    notes=str(test_data["CP_OptCoverages"][building_number - 1]["Notes"]),
+                    building_occupancy=BuildingOccupancyParams(
+                        vacant_is_building_100_percent_vacant=str(test_data["CP_OccupancyQ"][0][f"{BuildingInformationPage.get_vacant_prefix(building["Occupancy"])}Is the building 100% vacant?"]),
+                        vacant_how_long_building_vacant=str(test_data["CP_OccupancyQ"][0][f"{BuildingInformationPage.get_vacant_prefix(building["Occupancy"])}How long has the building been vacant?"]),
+                        vacant_prior_occupancy=str(test_data["CP_OccupancyQ"][0][f"{BuildingInformationPage.get_vacant_prefix(building["Occupancy"])}What was the prior occupancy?"]),
+                        vacant_intended_disposition=str(test_data["CP_OccupancyQ"][0][f"{BuildingInformationPage.get_vacant_prefix(building["Occupancy"])}Intended disposition:"]),
+                        vacant_building_secured=str(test_data["CP_OccupancyQ"][0][f"{BuildingInformationPage.get_vacant_prefix(building["Occupancy"])}Is the building secured (locked doors and windows)?"]),
+                        vacant_building_boarded_up=str(test_data["CP_OccupancyQ"][0][f"{BuildingInformationPage.get_vacant_prefix(building["Occupancy"])}Is the building boarded up?"]),
+                        vacant_building_fenced=str(test_data["CP_OccupancyQ"][0][f"{BuildingInformationPage.get_vacant_prefix(building["Occupancy"])}Is the building fenced?"]),
+                        vacant_electricity_turned_off=str(test_data["CP_OccupancyQ"][0][f"{BuildingInformationPage.get_vacant_prefix(building["Occupancy"])}Has the electricity been turned off?"]),
+                        vacant_gas_turned_off=str(test_data["CP_OccupancyQ"][0][f"{BuildingInformationPage.get_vacant_prefix(building["Occupancy"])}Has the gas been turned off?"]),
+                        vacant_water_turned_off=str(test_data["CP_OccupancyQ"][0][f"{BuildingInformationPage.get_vacant_prefix(building["Occupancy"])}Has the water been turned off?"]),
+                        vacant_plumbing_drained=str(test_data["CP_OccupancyQ"][0][f"{BuildingInformationPage.get_vacant_prefix(building["Occupancy"])}Has the plumbing been drained?"]),
+                        vacant_structural_issues_or_damage=str(test_data["CP_OccupancyQ"][0][f"{BuildingInformationPage.get_vacant_prefix(building["Occupancy"])}Are there any structural issues or damage?"]),
+                        vacant_undergoing_renovation_or_demolition=str(test_data["CP_OccupancyQ"][0][f"{BuildingInformationPage.get_vacant_prefix(building["Occupancy"])}Is the building undergoing renovation or demolition?"]),
+                        vacant_new_purchase=str(test_data["CP_OccupancyQ"][0][f"{BuildingInformationPage.get_vacant_prefix(building["Occupancy"])}Was this a new purchase?"]),
+                        vacant_purchase_date=str(test_data["CP_OccupancyQ"][0][f"{BuildingInformationPage.get_vacant_prefix(building["Occupancy"])}(If Yes to Q14) Date of purchase:"]),
+                        vacant_actively_shown_or_marketed=str(test_data["CP_OccupancyQ"][0][f"{BuildingInformationPage.get_vacant_prefix(building["Occupancy"])}Is the building being actively shown / marketed?"]),
+                        vacant_hazardous_materials_remaining=str(test_data["CP_OccupancyQ"][0]["Vacant Commercial — Are there hazardous materials remaining from prior use?"]) if not "residential" in str(building["Occupancy"]).lower() else "",
+                        vacant_active_heating=str(test_data["CP_OccupancyQ"][0][f"{BuildingInformationPage.get_vacant_prefix(building["Occupancy"])}Is there any active heating in the building?"]),
+                        vacant_estate_owned_or_in_probate=str(test_data["CP_OccupancyQ"][0]["Vacant Residential — Is the property estate-owned or in probate?"]) if "residential" in str(building["Occupancy"]).lower() else "",
+                    ),
                     loss_payees=[
                         PropertyLossPayeeParams(
                             full_name=str(payee["Full Name"]),

@@ -2,11 +2,13 @@ import re
 from playwright.sync_api import Page, Locator, expect, TimeoutError
 
 from models.property_locations_params import PropertyLocationParams
+from page_objects.property_buliding_page import BuildingInformationPage
 
 
 class PropertyLocationsPage:
     def __init__(self, page: Page):
         self.page = page
+        self.building_page = BuildingInformationPage(self.page)
         self.add_location_btn = self.page.get_by_role("button", name="Add Another Location")
         self.add_building_btn = self.page.get_by_role("button", name="Add Another Building").nth(-1)
         self.location_heading = self.page.get_by_role("heading", name="    Location")
@@ -69,11 +71,11 @@ class PropertyLocationsPage:
             self.fill_property_location_details(location)
             self.check_loading()
             self.building_btn(i).click()
-            self.page.wait_for_timeout(5000)
+            self.check_loading()
             for j, building in enumerate(location.buildings):
-                print(f"we have buildings: {building}")
                 if j > 0:
                     self.add_building_btn.click()
+                self.building_page.fill_building_information_form(building, i, j)
                 self.check_loading()
                 self.location_management_btn.click() # replace with fill_building_info method
         self.packaging_quote_gl_btn.click()
@@ -84,31 +86,40 @@ class PropertyLocationsPage:
 
         self.city_input(idx).fill(params.city)
         self.state_select(idx).select_option(params.state)
+        self.check_loading()
         self.zip_input(idx).fill(params.zip_code)
 
         self.coverage_form_select(idx).select_option(params.coverage_form)
+        self.check_loading()
 
         theft_input = self.theft_sublimit_input(idx)
         if theft_input.is_visible():
             theft_input.fill(params.theft_sublimit)
 
         self.protection_class_select(idx).select_option(params.protection_class)
+        self.check_loading()
         self.inspection_fee_select(idx).select_option(params.inspection_fee)
-
+        self.check_loading()
         coastal_select = self.is_coastal_select(idx)
         if coastal_select.is_visible():
             coastal_select.select_option(params.is_coastal)
+            self.check_loading()
+
 
         dist_coast = self.distance_coast_select(idx)
         if dist_coast.is_visible():
             dist_coast.select_option(params.distance_coast)
+            self.check_loading()
 
         nc_island = self.nc_island_select(idx)
         if nc_island.is_visible():
             nc_island.select_option(params.nc_island)
+            self.check_loading()
 
         self.exc_wh_cov_select(idx).select_option(params.exc_wh_cov)
+        self.check_loading()
         self.has_hazard_select(idx).select_option(params.has_hazard)
+        self.check_loading()
 
         hazard_desc = self.hazard_desc_input(idx)
         if hazard_desc.is_visible():
