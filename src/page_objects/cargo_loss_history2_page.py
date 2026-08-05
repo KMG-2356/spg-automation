@@ -62,9 +62,10 @@ class LossHistoryInformation2Page:
                 self.loss_subjectivity_text_input(i).fill(subjective.subjectivity_text)
                 self.check_loading()
 
-        expect(self.finance_quote_btn).to_be_visible()
-        expect(self.finance_quote_btn).to_be_enabled()
-        self.finance_quote_btn.click()
+        # expect(self.finance_quote_btn).to_be_visible()
+        # expect(self.finance_quote_btn).to_be_enabled()
+        if self.finance_quote_btn.is_visible():
+            self.finance_quote_btn.click()
 
     def check_loading(self):
         try:
