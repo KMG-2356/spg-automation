@@ -100,7 +100,7 @@ def when_user_generates_premium(page, test_data):
             contact_full_name=test_data["Policy_Info"][0]["Contact Full Name"],
             contact_email=test_data["Policy_Info"][0]["Contact Email"],
             contact_phone=test_data["Policy_Info"][0]["Contact Phone"],
-            policy_term="1 Month"
+            policy_term="12 Month"
     )
             
     general_liability_info = GeneralLiabilityParams(

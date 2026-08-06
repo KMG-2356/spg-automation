@@ -28,7 +28,8 @@ class AdditionalQuestionsPage:
             self.insured_contact_phone_number_input.fill(params.contact_phone) 
             self.check_loading()
         if params.same_as_insured == "Yes":
-            self.insured_full_name_person_to_contact_input.fill(params.contact_full_name)      
+            self.is_same_as_insured_selection.fill(params.same_as_insured)
+            self.insured_full_name_person_to_contact_input.fill(params.contact_full_name)    
             self.check_loading()
         if self.propert_endorsement_ext_select.is_visible():
             self.propert_endorsement_ext_select.select_option("No")

@@ -46,7 +46,7 @@ class BuildingInformationPage:
     def does_building_contains_central_alarms_selection(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.safeguards.central_alarms\"]")
     def roof_input(self, i, j):
-        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.distance_to_hydrant\"]")
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.updates.roof\"]")
     def electrical_warning_input(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.updates.electricity\"]")
     def plumbing_input(self, i, j):
