@@ -73,12 +73,3 @@ class LossHistoryInformation2Page:
         except TimeoutError:
             pass
         self.loading_screen.wait_for(state="hidden")   
-
-
-
-
-
-
-
-
-
