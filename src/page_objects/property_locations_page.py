@@ -46,6 +46,9 @@ class PropertyLocationsPage:
     def distance_coast_select(self, i: int = 0) -> Locator:
         return self.page.locator(f'[id="property_.locations.{i}.distance_coast_other"]')
 
+    def distance_coast_nc_select(self, i: int = 0) -> Locator:
+        return self.page.locator(f'[id="property_.locations.{i}.distance_coast_nc"]')
+    
     def nc_island_select(self, i: int = 0) -> Locator:
         return self.page.locator(f'[id="property_.locations.{i}.nc_island"]')
 
@@ -109,6 +112,10 @@ class PropertyLocationsPage:
         dist_coast = self.distance_coast_select(idx)
         if dist_coast.is_visible():
             dist_coast.select_option(params.distance_coast)
+            self.check_loading()
+
+        if self.distance_coast_nc_select(idx).is_visible():
+            self.distance_coast_nc_select(idx).select_option(params.distance_coast)
             self.check_loading()
 
         nc_island = self.nc_island_select(idx)

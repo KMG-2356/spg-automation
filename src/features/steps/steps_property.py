@@ -96,11 +96,11 @@ def when_user_generates_premium(page, test_data):
     )
 
     additional_questions_info = InsuredInfoParams(
-            same_as_insured=test_data["Policy_Info"][0]["Same as Insured?"],
-            contact_full_name=test_data["Policy_Info"][0]["Contact Full Name"],
-            contact_email=test_data["Policy_Info"][0]["Contact Email"],
-            contact_phone=test_data["Policy_Info"][0]["Contact Phone"],
-            policy_term="12 Month"
+        same_as_insured=test_data["Policy_Info"][0]["Same as Insured?"],
+        contact_full_name=test_data["Policy_Info"][0]["Contact Full Name"],
+        contact_email=test_data["Policy_Info"][0]["Contact Email"],
+        contact_phone=test_data["Policy_Info"][0]["Contact Phone"],
+        policy_term="12 Months"
     )
             
     general_liability_info = GeneralLiabilityParams(
