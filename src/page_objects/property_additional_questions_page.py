@@ -11,6 +11,7 @@ class AdditionalQuestionsPage:
         self.insured_contact_email_input = self.page.locator("[id=\"prop_misc.insp_email\"]")
         self.insured_contact_phone_number_input = self.page.locator("[id=\"prop_misc.insp_phone\"]")         
         self.loss_history_btn = self.page.get_by_role("button", name="Loss History")
+        self.propert_endorsement_ext_select = self.page.locator("[id=\"prop_misc.ext_endst\"]")
         self.policy_term_select = self.page.locator("#term")
         self.loading_screen = self.page.locator(".jss53")       
 
@@ -28,6 +29,9 @@ class AdditionalQuestionsPage:
             self.check_loading()
         if params.same_as_insured == "Yes":
             self.insured_full_name_person_to_contact_input.fill(params.contact_full_name)      
+            self.check_loading()
+        if self.propert_endorsement_ext_select.is_visible():
+            self.propert_endorsement_ext_select.select_option("No")
             self.check_loading()
         
         expect(self.loss_history_btn).to_be_visible()

@@ -48,6 +48,7 @@ class InsuredInformationPage:
         self.check_loading()
         if params.mailing_address_different == "Yes":
            self.is_the_mailing_address_different_from_the_street_address_select.click()
+           self.check_loading()
         
         if params.mailing_address_different == "No":
             self.physical_zip_input.fill(params.physical_zip)
