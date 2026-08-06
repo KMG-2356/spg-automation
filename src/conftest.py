@@ -60,17 +60,40 @@ def _matches_feature_filter(item, feature_filters):
     if not feature_filters:
         return True
 
-    haystack_parts = [
-        getattr(item, "nodeid", ""),
-        getattr(item, "path", ""),
-        getattr(item, "fspath", ""),
-    ]
-    haystack = " ".join(str(part) for part in haystack_parts if str(part))
-    normalized_haystack = _normalize_feature_token(haystack)
+    scenario = None
+    if hasattr(item, "function"):
+        scenario = getattr(item.function, "__scenario__", None)
+    if scenario is None:
+        scenario = getattr(item, "__scenario__", None)
+    if scenario is None and hasattr(item, "obj"):
+        scenario = getattr(item.obj, "__scenario__", None)
+
+    feature_path = None
+    if scenario is not None:
+        feature_obj = getattr(scenario, "feature", None)
+        feature_path = None
+        if feature_obj is not None:
+            feature_path = getattr(feature_obj, "filename", None) or getattr(feature_obj, "rel_filename", None)
+        if feature_path is None:
+            feature_path = getattr(scenario, "filename", None)
+
+    if feature_path is None:
+        return False
+
+    feature_path = pathlib.Path(str(feature_path))
+    normalized_feature_values = {
+        _normalize_feature_token(str(feature_path)),
+        _normalize_feature_token(feature_path.name),
+        _normalize_feature_token(feature_path.stem),
+    }
+    try:
+        normalized_feature_values.add(_normalize_feature_token(str(feature_path.relative_to(os.getcwd()))))
+    except Exception:
+        pass
 
     for feature_filter in feature_filters:
         normalized_filter = _normalize_feature_token(feature_filter)
-        if normalized_filter and normalized_filter in normalized_haystack:
+        if normalized_filter and normalized_filter in normalized_feature_values:
             return True
 
     return False

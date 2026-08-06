@@ -19,5 +19,5 @@ def pytest_addoption(parser):
         "--feature-file",
         action="append",
         default=[],
-        help="Run only scenarios whose feature file name or path contains the given text. Repeat or use comma-separated values."
+        help="Run only scenarios whose feature file name exactly matches the given value. Repeat or use comma-separated values."
     )
