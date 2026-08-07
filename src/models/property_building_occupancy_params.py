@@ -23,3 +23,9 @@ class BuildingOccupancyParams:
     vacant_active_heating: str = ""
     vacant_estate_owned_or_in_probate: str = ""
 
+    # Manufacturer
+
+    manufacturer_desc_of_manufacturing_options: str = ""
+    manufacturer_does_manufacturer_do_any_woodwork: str = ""
+    manufacturer_does_manufacturer_do_any_welding: str = ""
+    manufacturer_does_manufacturer_use_any_flammable_chemicals: str = ""

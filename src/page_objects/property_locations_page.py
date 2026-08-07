@@ -13,6 +13,7 @@ class PropertyLocationsPage:
         self.add_building_btn = self.page.get_by_role("button", name="Add Another Building").nth(-1)
         self.location_heading = self.page.get_by_role("heading", name="    Location")
         self.packaging_quote_gl_btn = self.page.get_by_role("button", name="Package Quote GL Suggestions")
+        self.additional_questions_btn = self.page.get_by_role("button", name="Additional Questions")
         self.location_management_btn = self.page.get_by_role("button", name="Location Management")
         self.loading_screen = self.page.locator(".jss53")
 
@@ -82,6 +83,24 @@ class PropertyLocationsPage:
                 self.check_loading()
                 self.location_management_btn.click() # replace with fill_building_info method
         self.packaging_quote_gl_btn.click()
+
+    def fill_locations_property(self, locations: list[PropertyLocationParams]):
+        for i, location in enumerate(locations):
+            if i > 0:
+                self.add_location_btn.click()
+                self.check_loading()
+
+            self.fill_property_location_details(location)
+            self.check_loading()
+            self.building_btn(i).click()
+            self.check_loading()
+            for j, building in enumerate(location.buildings):
+                if j > 0:
+                    self.add_building_btn.click()
+                self.building_page.fill_building_information_form(building, i, j)
+                self.check_loading()
+                self.location_management_btn.click() # replace with fill_building_info method
+        self.additional_questions_btn.click()
 
     def fill_property_location_details(self, params: PropertyLocationParams) -> None:
         expect(self.location_heading).to_be_visible()

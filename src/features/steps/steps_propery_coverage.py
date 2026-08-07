@@ -96,45 +96,46 @@ def when_user_generates_premium(page, test_data):
     )
 
     additional_questions_info = InsuredInfoParams(
-            same_as_insured=test_data["Policy_Info"][0]["Same as Insured?"],
-            contact_full_name=test_data["Policy_Info"][0]["Contact Full Name"],
-            contact_email=test_data["Policy_Info"][0]["Contact Email"],
-            contact_phone=test_data["Policy_Info"][0]["Contact Phone"],
+        same_as_insured=test_data["Policy_Info"][0]["Same as Insured?"],
+        contact_full_name=test_data["Policy_Info"][0]["Contact Full Name"],
+        contact_email=test_data["Policy_Info"][0]["Contact Email"],
+        contact_phone=test_data["Policy_Info"][0]["Contact Phone"],
+        policy_term="12 Months"
     )
             
-    general_liability_info = GeneralLiabilityParams(
-        limit_option=test_data["GL_ClassCodes_Atrium"][0]["Limit Option"],
-        years_in_business=test_data["GL_ClassCodes_Atrium"][0]["Years in Business"],
-        years_of_experience=test_data["GL_ClassCodes_Atrium"][0]["Years of Experience"],
-        is_the_building_secured_from_unauthorized_entry=test_data["GL_VacantBuildingQ"][0]["Is the building secured from unauthorized entry? "],
-        is_the_building_completely_vacant=test_data["GL_VacantBuildingQ"][0]["Is the building completely vacant? "],
-        will_building_scheduled_to_be_demolished_during_our_policy_term=test_data["GL_VacantBuildingQ"][0]["Will the building be scheduled to be demolished during our policy term? "],
-        is_the_building_currently_damaged=test_data["GL_VacantBuildingQ"][0]["Is the building currently damaged (fire or otherwise)? "],
-        total_cost_of_renovation=test_data["GL_VacantBuildingQ"][0]["What is the total cost of renovation? "],       
-        classification_codes=[GLRecord(class_code=row["Class Code"],
-            square_feet_of_building=row["Square feet of building"],
-            no_of_acres=row["No.Of Acres"]
-            )
-            for row in test_data["GL_ClassCodes_Atrium"]
-            ],
-        additional_insureds=[AdditionalInsuredRecord(
-            AI_form=row["AI Form"],
-            AI_name=row["AI Name"],
-            Street1=row["Street 1"],
-            Street2=row["Street 2"],
-            City=row["City"],
-            State=row["State"],
-            ZIP=row["ZIP"],
-            )
-            for row in test_data["GL_AddlInsureds"]
-            ]    
-    )
+    # general_liability_info = GeneralLiabilityParams(
+    #     limit_option=test_data["GL_ClassCodes_Atrium"][0]["Limit Option"],
+    #     years_in_business=test_data["GL_ClassCodes_Atrium"][0]["Years in Business"],
+    #     years_of_experience=test_data["GL_ClassCodes_Atrium"][0]["Years of Experience"],  
+    #     reno_cost=test_data["GL_VacantBuildingQ"][0]["What is the total cost of renovation? "],
+    #     is_building_completely_vacant=test_data["GL_VacantBuildingQ"][0]["Is the building completely vacant? "],
+    #     is_building_secured_from_unauthorized_entry=test_data["GL_VacantBuildingQ"][0]["Is the building secured from unauthorized entry? "],
+    #     will_building_be_scheduled_demolish_policy_term=test_data["GL_VacantBuildingQ"][0]["Will the building be scheduled to be demolished during our policy term? "],
+    #     building_currently_damaged=test_data["GL_VacantBuildingQ"][0]["Is the building currently damaged (fire or otherwise)? "],
+    #     classification_codes=[GLRecord(class_code=row["Class Code"],
+    #         square_feet_of_building=row["Square feet of building"],
+    #         no_of_acres=row["No.Of Acres"]
+    #         )
+    #         for row in test_data["GL_ClassCodes_Atrium"]
+    #         ],
+    #     additional_insureds=[AdditionalInsuredRecord(
+    #         AI_form=row["AI Form"],
+    #         AI_name=row["AI Name"],
+    #         Street1=row["Street 1"],
+    #         Street2=row["Street 2"],
+    #         City=row["City"],
+    #         State=row["State"],
+    #         ZIP=row["ZIP"],
+    #         )
+    #         for row in test_data["GL_AddlInsureds"]
+    #         ]    
+    # )
     
     cpgl_loss_history2_info = CargoLossHistory2Params(
             any_losses_in_the_past3_years=test_data["CP_GL_LossHistory"][0]["Any Losses in the Past 3 Years?"],
             any_unrepaired_damage_from_prior_losses=test_data["CP_GL_LossHistory"][0]["Any unrepaired damage from prior losses?"],
             add_extra_subjectivities=test_data["CP_GL_LossHistory"][0]["Would you like to add extra subjectivities to the application?"],
-            notes_about_the_insured=test_data["CP_GL_LossHistory"][0]["Notes about the Insured"],
+            notes_about_the_insured=test_data["CP_GL_LossHistory"][0]["Notes"],
             subjectivity=[SubjectivityRecord(
                 subjectivity_text=row["Subjectivity Text"]
                 )
@@ -142,7 +143,7 @@ def when_user_generates_premium(page, test_data):
             losses2=[LossHistory2Record(
                 details=row["Description"],
                 loss_date=row["Loss Date"],
-                amount=row["Amount"], 
+                amount=row["Amount"],
                 type_of_loss=row["Type of Loss"],
                 )                
                 for row in test_data["CP_GL_LossHistory"]]
@@ -192,6 +193,9 @@ def when_user_generates_premium(page, test_data):
                     deductible=str(building["Deductible"]),
                     risk_uninsured=building["Is Risk Currently Uninsured?"],
                     risk_new_buidling=building["Risk New Purchase?"],
+                    risk_prior_carrier=building["Prior Carrier"],
+                    risk_prior_expiration_date=building["Prior Expiry Date"],
+                    risk_days_wo_insurance=building["No.of Days without Insurance"],
                     unfenced_pool="No",
                     hydrant_Dist=str(building["Hydrant Dist."]),
                     dist_unit=str(building["Dist. Unit"]),
@@ -209,7 +213,7 @@ def when_user_generates_premium(page, test_data):
                     sign_valuation=str(test_data["CP_OptCoverages"][building_number - 1]["Sign Valuation"]),
                     sign_coinsurance=str(test_data["CP_OptCoverages"][building_number - 1]["Sign Coinsurance"]),
                     business_interruption_limit=str(test_data["CP_OptCoverages"][building_number - 1]["BI Limit ($)"]),
-                    business_interruption_valuation=str(test_data["CP_OptCoverages"][building_number - 1]["BI Valuation"]),
+                    business_interruption_valuation="Actual Loss Sustained",
                     business_personal_property_limit=str(test_data["CP_OptCoverages"][building_number - 1]["BPP Limit ($)"]),
                     business_personal_property_valuation=str(test_data["CP_OptCoverages"][building_number - 1]["BPP Valuation"]),
                     business_personal_property_coinsurance=str(test_data["CP_OptCoverages"][building_number - 1]["BPP Coinsurance"]),
@@ -217,7 +221,7 @@ def when_user_generates_premium(page, test_data):
                     pump_and_canopy_valuation=str(test_data["CP_OptCoverages"][building_number - 1]["Pump and Canopy Valuation"]),
                     pump_and_canopy_coinsurance=str(test_data["CP_OptCoverages"][building_number - 1]["Pump and Canopy Coinsurance"]),
                     loss_of_rents_limit=str(test_data["CP_OptCoverages"][building_number - 1]["LOR Limit ($)"]),
-                    loss_of_rents_valuation=str(test_data["CP_OptCoverages"][building_number - 1]["LOR Valuation"]),
+                    loss_of_rents_valuation="Actual Loss Sustained",
                     renovation_limit=str(test_data["CP_OptCoverages"][building_number - 1]["Renovation Limit($)"]),
                     renovation_valuation=str(test_data["CP_OptCoverages"][building_number - 1]["Renaovation Valuation"]),
                     renovation_coinsurance=str(test_data["CP_OptCoverages"][building_number - 1]["Renovation Coinsurance"]),
@@ -251,6 +255,10 @@ def when_user_generates_premium(page, test_data):
                         vacant_hazardous_materials_remaining=str(test_data["CP_OccupancyQ"][0]["Vacant Commercial — Are there hazardous materials remaining from prior use?"]) if not "residential" in str(building["Occupancy"]).lower() else "",
                         vacant_active_heating=str(test_data["CP_OccupancyQ"][0][f"{BuildingInformationPage.get_vacant_prefix(building["Occupancy"])}Is there any active heating in the building?"]),
                         vacant_estate_owned_or_in_probate=str(test_data["CP_OccupancyQ"][0]["Vacant Residential — Is the property estate-owned or in probate?"]) if "residential" in str(building["Occupancy"]).lower() else "",
+                        manufacturer_desc_of_manufacturing_options=str(test_data["CP_OccupancyQ"][0]["Manufacturer — Describe the type of manufacturing:"]),
+                        manufacturer_does_manufacturer_do_any_welding="No",
+                        manufacturer_does_manufacturer_do_any_woodwork="No",
+                        manufacturer_does_manufacturer_use_any_flammable_chemicals=str(test_data["CP_OccupancyQ"][0]["Manufacturer — Are flammable or hazardous materials used in production?"]),
                     ),
                     loss_payees=[
                         PropertyLossPayeeParams(
@@ -282,7 +290,7 @@ def when_user_generates_premium(page, test_data):
     commercial_line_basic_info_page.fill_commercial_line_basic_information_Property_form(test_data)
     agency_information_page.fill_agency_information_form(agency_info)
     insured_information_page.fill_insured_information_form(insured_info)
-    property_location_page.fill_locations(locations_info)
+    property_location_page.fill_locations_property(locations_info)
     property_additional_questions_page.fill_additional_question_information_form(additional_questions_info)
     cargo_loss_histor2_page.fill_loss_history2_info(cpgl_loss_history2_info)
     finance_quote_page.fill_finance_quote_form()

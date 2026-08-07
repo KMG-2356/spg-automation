@@ -33,6 +33,7 @@ class BuildingInfoParams:
         electrical_updated_year: str = ""
         plumbing_updated_year: str = ""
         HVAC_updated_year: str = ""
+        type_of_manufacturing: str = ""
 
         #Optional Coverages      
 

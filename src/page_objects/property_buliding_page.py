@@ -196,6 +196,7 @@ class BuildingInformationPage:
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.loss_payees.{k}.interest\"]")
     
    #VACANT ADDITIONAL QUESTIONS
+
     def is_new_purchase_selection(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.vacant_quals.new_purchase\"]")
     def prior_occupancy_input(self, i, j):
@@ -255,16 +256,37 @@ class BuildingInformationPage:
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.apartment_quals.resident_manager\"]")
 
 #GARAGE ADDITIONAL QUESTIONS
+
+    def does_garage_only_engage_in_auto_glass_replacement_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.garage_quals.minor_repair\"]")
+    def does_garage_do_welding_torching_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.garage_quals.welding\"]")
+    def is_garage_an_auto_body_shop_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.garage_quals.body_shop\"]")
+    def is_garage_used_primarily_for_storage_of_tires_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.garage_quals.tire_storage\"]")
 #MANUFACTURER ADDITIONAL QUESTIONS
-#RESTAURANT ADDITIONAL QUESTIONS
-#HOTEL/MOTEL ADDITIONAL QUESTIONS
+
+    def type_of_manufacturing_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.occupancy_mfg\"]")
+    def desc_of_manufacturing_options_input(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.manufacturer_quals.description\"]")
+    def does_manufacturer_do_any_woodwork_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.manufacturer_quals.woodwork\"]")
+    def does_manufacturer_do_any_welding_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.manufacturer_quals.welding\"]")
+    def does_manufacturer_use_any_flammable_chemicals_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.manufacturer_quals.flammable_materials\"]")
+
 #RETAIL ADDITIONAL QUESTIONS
+
     def type_of_retail_selection(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.retail_quals.retail_select\"]")
     def describe_type_of_retail_input(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.retail_quals.description\"]")
-#WOODWORKING ADDITIONAL QUESTIONS
+
 #WAREHOUSE ADDITIONAL QUESTIONS
+
     def any_hazardous_material_storage_selection(self, i, j): 
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.warehouse_quals.hazardous_mats\"]")
     def describe_hazardous_material_input(self, i, j): 
@@ -276,20 +298,24 @@ class BuildingInformationPage:
     def any_firework_storage(self, i, j): 
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.warehouse_quals.fireworks_storage\"]")
 
-#DWELLING ADDITIONAL QUESTIONS
-
-#BUILDERS RISK ADDITIONAL QUESTIONS
-#GROCERY STORE ADDITIONAL QUESTIONS
 #SOCIAL CLUB ADDITIONAL QUESTIONS
+
     def do_employees_cook_food_selection(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.club_quals.cooking\"]")
+
+#OFFICE ADDITIONAL QUESTIONS
+
+    def describe_type_of_office_work_done_input(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.office_quals.description\"]")
 #CHURCH ADDITIONAL QUESTIONS
 #CONDOMINIUM ADDITIONAL QUESTIONS
 #HEALTH CARE FACILITY ADDITIONAL QUESTIONS
-#OFFICE ADDITIONAL QUESTIONS
-    def describe_type_of_office_work_done_input(self, i, j):
-        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.office_quals.description\"]")
-
+#WOODWORKING ADDITIONAL QUESTIONS
+#DWELLING ADDITIONAL QUESTIONS
+#RESTAURANT ADDITIONAL QUESTIONS
+#HOTEL/MOTEL ADDITIONAL QUESTIONS
+#BUILDERS RISK ADDITIONAL QUESTIONS
+#GROCERY STORE ADDITIONAL QUESTIONS
 
     def fill_building_information_form(self, params: BuildingInfoParams, location_idx: int = 0, building_idx: int = 0):
         i = location_idx
@@ -312,6 +338,11 @@ class BuildingInformationPage:
         if params.occupancy:
             self.occupancy_selection(i, j).select_option(params.occupancy)
             self.check_loading()
+            #newly added
+        if params.occupancy == "Manufacturer":
+            self.type_of_manufacturing_selection(i, j).select_option(params.type_of_manufacturing)
+            self.check_loading()
+
         if params.building_value:
             self.building_value_input(i, j).fill(params.building_value)
         if params.good_condition:
@@ -524,7 +555,32 @@ class BuildingInformationPage:
         if self.is_located_on_more_than_2acres_selection(i,j).is_visible():
             self.is_located_on_more_than_2acres_selection(i,j).select_option("No")
             self.check_loading()
+        if params.occupancy == "Manufacturer":
+            self.desc_of_manufacturing_options_input(i,j).fill(building_occupancy.manufacturer_desc_of_manufacturing_options)
+            self.does_manufacturer_do_any_woodwork_selection(i,j).select_option(building_occupancy.manufacturer_does_manufacturer_do_any_woodwork)
+            self.does_garage_do_welding_torching_selection(i,j).select_option(building_occupancy.manufacturer_does_manufacturer_do_any_welding)
+            self.does_manufacturer_use_any_flammable_chemicals_selection(i,j).select_option(building_occupancy.manufacturer_does_manufacturer_use_any_flammable_chemicals)
 
+        if params.occupancy == "Garage":
+            self.does_garage_only_engage_in_auto_glass_replacement_selection(i,j).select_option("No")
+            self.does_garage_do_welding_torching_selection(i,j).select_option("No")
+            self.is_garage_an_auto_body_shop_selection(i,j).select_option("No")
+            self.is_garage_used_primarily_for_storage_of_tires_selection(i,j).select_option("No")
+
+        if params.occupancy == "Apartment":
+            self.are_70_or_more_of_apartment_units_ocupied_selection(i,j).select_option("No")
+            self.no_of_apartment_units_input(i,j).fill("temp")
+            self.average_monthly_rent_input(i,j).fill("temp")
+            self.is_heating_maintained_in_all_units_during_winter_months_selection(i,j).select_option("No")
+            self.are_all_units_equipped_with_working_smoke_detectors_selection(i,j).select_option("No")
+            self.is_outdoor_property_scheduled_selection(i,j).select_option("No")
+            self.is_the_apartment_used_for_student_housing_selection(i,j).select_option("No")
+            self.is_housing_subsidized_selection(i,j).select_option("No")
+            self.insured_been_in_business_minimum_of_2years_OR_has_5years_of_management_experience_selection(i,j).select_option("No")
+            self.is_renters_insurance_required_selection(i,j).select_option("No")
+            self.is_there_a_resident_manager_selection(i,j).select_option("No")
+
+        
         # Loss Payees Flow
         if params.loss_payees:
             self.does_building_have_loss_payee_selection(i, j).select_option("yes")
