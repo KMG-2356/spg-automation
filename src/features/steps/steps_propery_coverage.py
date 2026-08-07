@@ -197,6 +197,9 @@ def when_user_generates_premium(page, test_data):
                     risk_prior_expiration_date=building["Prior Expiry Date"],
                     risk_days_wo_insurance=building["No.of Days without Insurance"],
                     unfenced_pool="No",
+                    type_of_manufacturing=building["Mfg Type (Manufacturer only)"],                          
+                    desc_other_occupancy=building["Describe Occupancy (Other only)"],
+                    renters_ins=building["Renters Ins?"],
                     hydrant_Dist=str(building["Hydrant Dist."]),
                     dist_unit=str(building["Dist. Unit"]),
                     fire_dept=str(building["Fire Dept"]),
@@ -235,6 +238,8 @@ def when_user_generates_premium(page, test_data):
                     spoilage_power_outage=str(test_data["CP_OptCoverages"][building_number - 1]["Spoilage Power Outage?"]),
                     refrigeration_maintenance_agreement=str(test_data["CP_OptCoverages"][building_number - 1]["Refrigiration Maintainance Agreement"]),
                     notes=str(test_data["CP_OptCoverages"][building_number - 1]["Notes"]),
+                    
+                    
                     building_occupancy=BuildingOccupancyParams(
                         vacant_is_building_100_percent_vacant=str(test_data["CP_OccupancyQ"][0][f"{BuildingInformationPage.get_vacant_prefix(building["Occupancy"])}Is the building 100% vacant?"]),
                         vacant_how_long_building_vacant=str(test_data["CP_OccupancyQ"][0][f"{BuildingInformationPage.get_vacant_prefix(building["Occupancy"])}How long has the building been vacant?"]),
@@ -290,6 +295,13 @@ def when_user_generates_premium(page, test_data):
                         grocery_flammable_desc=str(test_data["CP_OccupancyQ"][0]["Grocery Store — (If Independent) Annual gross receipts ($): "]),
                         grocery_denied_insurance=str(test_data["CP_OccupancyQ"][0]["Grocery Store — Is there a pharmacy within the store?   "]),
 
+                        apartment_how_many_units_in_building=str(test_data["CP_OccupancyQ"][0]["Apartment — How many units in the building?"]),
+                        warehouse_are_any_flammable_or_hazardous_materials_stored=str(test_data["CP_OccupancyQ"][0]["Warehouse — Are any flammable or hazardous materials stored?"]),
+                        does_this_warehouse_has_refrigerating_units=str(test_data["CP_OccupancyQ"][0]["Warehouse — Does the warehouse have refrigeration units?"]),
+                        office_describe_the_type_of_office_use=str(test_data["CP_OccupancyQ"][0]["Office — Describe the type of office use:"]),
+                        hotels_are_rooms_rented_on_a_longterm_basis=str(test_data["CP_OccupancyQ"][0]["Hotel — Are any units used as long-term rentals (30+ days)?"]),
+                        dwelling_number_of_families=str(test_data["CP_OccupancyQ"][0]["Dwelling — Number of families:"]),                  
+                        Condominium_How_many_units_in_the_building=str(test_data["CP_OccupancyQ"][0]["Condominium — How many units are currently rented?"])
                     ),
                     loss_payees=[
                         PropertyLossPayeeParams(

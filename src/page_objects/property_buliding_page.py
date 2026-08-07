@@ -286,7 +286,9 @@ class BuildingInformationPage:
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.retail_quals.description\"]")
 
 #WAREHOUSE ADDITIONAL QUESTIONS
-
+    
+    def does_this_warehouse_has_refrigerating_units_selection(self, i, j): 
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.warehouse_refrigeration\"]")
     def any_hazardous_material_storage_selection(self, i, j): 
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.warehouse_quals.hazardous_mats\"]")
     def describe_hazardous_material_input(self, i, j): 
@@ -295,12 +297,12 @@ class BuildingInformationPage:
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.warehouse_quals.chemical_storage\"]")
     def any_explosive_storage_selection(self, i, j): 
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.warehouse_quals.explosive_storage\"]")
-    def any_firework_storage(self, i, j): 
+    def any_firework_storage_selection(self, i, j): 
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.warehouse_quals.fireworks_storage\"]")
 
 #SOCIAL CLUB ADDITIONAL QUESTIONS
 
-    def do_employees_cook_food_selection(self, i, j):
+    def social_do_employees_cook_food_selection(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.club_quals.cooking\"]")
 
 #OFFICE ADDITIONAL QUESTIONS
@@ -320,11 +322,62 @@ class BuildingInformationPage:
         '''Optional'''
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.church_quals.auto_extinguish\"]")
     
+
 #CONDOMINIUM ADDITIONAL QUESTIONS
+
+    def condo_are_70_or_more_of_apartment_units_ocupied_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.condo_quals.min_occupancy_rate\"]")
+    def condo_are_units_rented_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.condo_quals.rented\"]")
+    def condo_no_of_units_input(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.condo_quals.num_units\"]")
+    def condo_is_heating_maintained_in_all_units_during_winter_months_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.condo_quals.winter_heating\"]")
+    def condo_are_all_units_equipped_with_working_smoke_detectors_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.condo_quals.smoke_detectors\"]")
+    def condo_is_outdoor_property_scheduled_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.condo_quals.sched_outdoor_prop\"]")
+    def condo_is_the_apartment_used_for_student_housing_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.condo_quals.student_housing\"]")
+    def condo_is_housing_subsidized_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.condo_quals.subsidized_housing\"]")
+    def condo_insured_been_in_business_minimum_of_2years_OR_has_5years_of_management_experience_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.condo_quals.insured_experience\"]")
+
 #HEALTH CARE FACILITY ADDITIONAL QUESTIONS
+    def health_no_of_beds_in_facility_input(self, i, j): 
+            return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.healthcare_quals.num_beds\"]")
+    def healthare_all_beds_equipped_with_smoke_detector_selection(self, i, j): 
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.healthcare_quals.smoke_co_detectors\"]")
+    def healthis_owner_or_employees_on_site_24_hours(self, i, j): 
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.healthcare_quals.on_site_24hr\"]")
+    def healthis_premises_smoke_free_selection(self, i, j): 
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.healthcare_quals.smoke_free\"]")
+    def healthis_cooking_allowed_in_rooms_selection(self, i, j): 
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.0{j}.healthcare_quals.cooking_in_rooms\"]")
+    def healthdo_employees_cook_food_selection(self, i, j): 
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.healthcare_quals.cooking\"]")
+
 #WOODWORKING ADDITIONAL QUESTIONS
-#DWELLING ADDITIONAL QUESTIONS
+
+    def are_all_wiping_cloths_selection(self, i, j): 
+            return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.healthcare_quals.smoke_free\"]")
+    def does_risk_have_dust_removal_system_selection(self, i, j): 
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.0{j}.healthcare_quals.cooking_in_rooms\"]")
+    def are_premises_well_kept_selection(self, i, j): 
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.healthcare_quals.cooking\"]")
+ 
 #RESTAURANT ADDITIONAL QUESTIONS
+
+    def does_owner_have_at_least_2years_of_prior_restaurant_ownership_selection(self, i, j): 
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}0.restaurant_quals.prior_experience\"]")
+    def does_restaurant_have_approved_ANSUL_selection(self, i, j): 
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.restaurant_quals.auto_extinguish\"]")
+    def are_foods_prepared_cold_selection(self, i, j): 
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.restaurant_quals.limited_cooking\"]")
+    def percentage_of_sales_that_are_liquor_input(self, i, j): 
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.restaurant_quals.liquor_sales\"]")
+
 #HOTEL/MOTEL ADDITIONAL QUESTIONS
 
     #BUILDERS RISK ADDITIONAL QUESTIONS
@@ -400,6 +453,44 @@ class BuildingInformationPage:
 
     def denied_insurance_selection(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.grocery_quals.denied_insurance\"]")
+    def no_of_hotel_units_input(self, i, j): 
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.hotel_quals.num_hotel_units\"]")
+    def hotels_are_all_hotels_equipped_with_smoke_detectors_selection(self, i, j): 
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.hotel_quals.smoke_detectors\"]")
+    def hotels_are_room_entrance_doors_equipped_with_a_deadbolt_and_peephole_selection(self, i, j): 
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.hotel_quals.deadbolt\"]")
+    def hotels_is_cooking_allowed_in_rooms_selection(self, i, j): 
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.hotel_quals.cooking\"]")
+    def hotels_insured_has_been_in_business_in_min_of_2years_selection(self, i, j): 
+        return self.page.locator(f"[id=\"property_.locations.{i}0.buildings.{j}.hotel_quals.prior_experience\"]")
+    def hotels_are_rooms_rented_in_long_term_basis_selection(self, i, j): 
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.0{j}.hotel_quals.long_rent\"]")
+    def hotels_is_there_restaurant_within_premises_selection(self, i, j): 
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.hotel_quals.restaurant\"]")
+
+#DWELLING ADDITIONAL QUESTIONS
+ 
+    def is_dwelling_occupied_selection(self, i, j): 
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.dwelling_quals.occupied\"]")
+    def no_of_families_residing_input(self, i, j): 
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.dwelling_quals.num_families\"]")
+    def is_dwelling_seasonal_risk_selection(self, i, j): 
+        return self.page.locator(f"[id=\"property_.locations.0{i}.buildings.{j}.dwelling_quals.seasonal_risk\"]")
+    def does_dwelling_contain_space_heater_selection(self, i, j): 
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.dwelling_quals.wood_burning_stove\"]")
+    def dwelling_are_all_units_equipped_with_smoke_heaters_selection(self, i, j): 
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.dwelling_quals.smoke_detectors\"]")
+    def dwelling_is_renters_insurance_reqd_selection(self, i, j): 
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.dwelling_quals.renters_insurance\"]")
+    def dwelling_is_housing_subsidized_selection(self, i, j): 
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.dwelling_quals.subsidized_housing\"]")
+#OTHER
+    def describe_other_occupancy_input(self, i, j): 
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.occupancy_otherg\"]")
+  
+#BUILDERS RISK ADDITIONAL QUESTIONS
+#GROCERY STORE ADDITIONAL QUESTIONS
+#CHURCH ADDITIONAL QUESTIONS
 
     def fill_building_information_form(self, params: BuildingInfoParams, location_idx: int = 0, building_idx: int = 0):
         i = location_idx
@@ -426,7 +517,7 @@ class BuildingInformationPage:
             #newly added
         if "Manufacturer" in params.occupancy:
             self.type_of_manufacturing_selection(i, j).select_option(params.type_of_manufacturing)
-            self.check_loading()
+            self.check_loading()          
 
         if "Church" in params.occupancy:
             # Required field (always fills)
@@ -729,26 +820,92 @@ class BuildingInformationPage:
             self.does_garage_do_welding_torching_selection(i,j).select_option(building_occupancy.manufacturer_does_manufacturer_do_any_welding)
             self.does_manufacturer_use_any_flammable_chemicals_selection(i,j).select_option(building_occupancy.manufacturer_does_manufacturer_use_any_flammable_chemicals)
 
-        if params.occupancy == "Garage":
+        if params.occupancy == "Garage (0931)":
             self.does_garage_only_engage_in_auto_glass_replacement_selection(i,j).select_option("No")
             self.does_garage_do_welding_torching_selection(i,j).select_option("No")
             self.is_garage_an_auto_body_shop_selection(i,j).select_option("No")
             self.is_garage_used_primarily_for_storage_of_tires_selection(i,j).select_option("No")
 
-        if params.occupancy == "Apartment":
+        if params.occupancy == "Apartment (0311 - 0313)":
             self.are_70_or_more_of_apartment_units_ocupied_selection(i,j).select_option("No")
-            self.no_of_apartment_units_input(i,j).fill("temp")
-            self.average_monthly_rent_input(i,j).fill("temp")
+            self.no_of_apartment_units_input(i,j).fill(building_occupancy.apartment_how_many_units_in_building)
+            self.average_monthly_rent_input(i,j).fill("100000")
             self.is_heating_maintained_in_all_units_during_winter_months_selection(i,j).select_option("No")
             self.are_all_units_equipped_with_working_smoke_detectors_selection(i,j).select_option("No")
             self.is_outdoor_property_scheduled_selection(i,j).select_option("No")
             self.is_the_apartment_used_for_student_housing_selection(i,j).select_option("No")
             self.is_housing_subsidized_selection(i,j).select_option("No")
             self.insured_been_in_business_minimum_of_2years_OR_has_5years_of_management_experience_selection(i,j).select_option("No")
-            self.is_renters_insurance_required_selection(i,j).select_option("No")
+            self.is_renters_insurance_required_selection(i,j).select_option(params.renters_ins)
             self.is_there_a_resident_manager_selection(i,j).select_option("No")
 
-        
+        if params.occupancy == "Retail (0567)":
+            self.type_of_retail_selection(i,j).select_option("Gift Shops")
+            self.describe_type_of_retail_input(i,j).fill("Gift Shops")
+
+        if params.occupancy == "Warehouse(1212)":
+            self.any_hazardous_material_storage_selection(i,j).select_option(building_occupancy.warehouse_are_any_flammable_or_hazardous_materials_stored)
+            self.any_chemical_substance_storage_selection(i,j).select_option("No")
+            self.any_explosive_storage_selection(i,j).select_option("No")
+            self.any_firework_storage_selection(i,j).select_option("No")
+            self.does_this_warehouse_has_refrigerating_units_selection(i,j).select_option(building_occupancy.does_this_warehouse_has_refrigerating_units)
+
+        if params.occupancy == "Woodworking (3959)":
+            self.are_all_wiping_cloths_selection(i,j).select_option("No")
+            self.does_risk_have_dust_removal_system_selection(i,j).select_option("No")
+            self.are_premises_well_kept_selection(i,j).select_option("Yes")
+
+        if params.occupancy == "Social Club (0755-0756)":
+            self.social_do_employees_cook_food_selection(i,j).select_option("No")
+
+        if params.occupancy == "Office (0702)":
+            self.describe_type_of_office_work_done_input(i,j).select_option(building_occupancy.office_describe_the_type_of_office_use)
+
+        if params.occupancy == "Restaurant (0532/0542/0545)":
+            self.does_owner_have_at_least_2years_of_prior_restaurant_ownership_selection(i,j).select_option("No")
+            self.does_restaurant_have_approved_ANSUL_selection(i,j).select_option("No")
+            self.are_foods_prepared_cold_selection(i,j).select_option("No")
+            self.percentage_of_sales_that_are_liquor_input(i,j).fill("45")
+
+        if params.occupancy == "Hotel/Motel (0742 - 0747)":
+            self.no_of_hotel_units_input(i,j).fill("50")
+            self.hotels_are_all_hotels_equipped_with_smoke_detectors_selection(i,j).select_option("No")
+            self.hotels_are_room_entrance_doors_equipped_with_a_deadbolt_and_peephole_selection(i,j).select_option("No")
+            self.hotels_are_rooms_rented_in_long_term_basis_selection(i,j).select_option(building_occupancy.hotels_are_rooms_rented_on_a_longterm_basis)
+            self.hotels_is_cooking_allowed_in_rooms_selection(i,j).select_option("No")
+            self.hotels_insured_has_been_in_business_in_min_of_2years_selection(i,j).select_option("No")
+            self.hotels_is_there_restaurant_within_premises_selection(i,j).select_option("No")
+
+        if params.occupancy == "Health Care Facility - Assisted Living or Group Home (0852)":
+            self.health_no_of_beds_in_facility_input(i,j).fill("250")
+            self.healthare_all_beds_equipped_with_smoke_detector_selection(i,j).select_option("Yes")
+            self.healthdo_employees_cook_food_selection(i,j).select_option("No")
+            self.healthis_cooking_allowed_in_rooms_selection(i,j).select_option("No")
+            self.healthis_owner_or_employees_on_site_24_hours(i,j).select_option("No")
+            self.healthis_premises_smoke_free_selection(i,j).select_option("No")
+
+        if params.occupancy == "Dwelling (1, 2, 3, or 4 Family) (0196 - 0198)":
+            self.is_dwelling_occupied_selection(i,j).select_option("No")
+            self.no_of_families_residing_input(i,j).select_option(building_occupancy.dwelling_number_of_families)
+            self.is_dwelling_seasonal_risk_selection(i,j).select_option("No")
+            self.does_dwelling_contain_space_heater_selection(i,j).select_option("No")
+            self.are_all_units_equipped_with_working_smoke_detectors_selection(i,j).select_option("No")
+            self.dwelling_is_renters_insurance_reqd_selection(i,j).select_option("No")
+            self.dwelling_is_housing_subsidized_selection(i,j).select_option("No")
+
+        if params.occupancy == "Condominium (0331 - 0333)":
+            self.condo_are_70_or_more_of_apartment_units_ocupied_selection(i,j).select_option("No")
+            self.condo_are_all_units_equipped_with_working_smoke_detectors_selection(i,j).select_option("No")
+            self.condo_no_of_units_input(i,j).fill(building_occupancy.Condominium_How_many_units_in_the_building)
+            self.condo_are_units_rented_selection(i,j).select_option("No")
+            self.condo_is_heating_maintained_in_all_units_during_winter_months_selection(i,j).select_option("No")
+            self.condo_are_all_units_equipped_with_working_smoke_detectors_selection(i,j).select_option("No")
+            self.condo_is_outdoor_property_scheduled_selection(i,j).select_option("No")
+            self.condo_is_the_apartment_used_for_student_housing_selection(i,j).select_option("No")
+            self.condo_is_housing_subsidized_selection(i,j).select_option("No")
+            self.condo_insured_been_in_business_minimum_of_2years_OR_has_5years_of_management_experience_selection(i,j).select_option("No")
+        if params.occupancy == "Other":
+            self.describe_other_occupancy_input.fill(params.desc_other_occupancy)
         # Loss Payees Flow
         if params.loss_payees:
             self.does_building_have_loss_payee_selection(i, j).select_option("yes")
