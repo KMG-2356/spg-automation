@@ -309,6 +309,19 @@ class BuildingInformationPage:
 
     def describe_type_of_office_work_done_input(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.office_quals.description\"]")
+    #CHURCH ADDITIONAL QUESTIONS
+
+    def church_cooking_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.church_quals.cooking\"]")
+
+    def church_grills_selection(self, i, j):
+        '''Optional'''
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.church_quals.grills\"]")
+
+    def church_auto_extinguish_selection(self, i, j):
+        '''Optional'''
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.church_quals.auto_extinguish\"]")
+    
 
 #CONDOMINIUM ADDITIONAL QUESTIONS
 
@@ -367,6 +380,79 @@ class BuildingInformationPage:
 
 #HOTEL/MOTEL ADDITIONAL QUESTIONS
 
+    #BUILDERS RISK ADDITIONAL QUESTIONS
+    def new_construction_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.brisk_quals.new_construction\"]")
+
+    def floors_above_input(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.brisk_quals.floors_above\"]")
+
+    def floors_below_input(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.brisk_quals.floors_below\"]")
+
+    def start_date_input(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.brisk_quals.start_date\"]")
+
+    def end_date_input(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.brisk_quals.end_date\"]")
+
+    def lift_tilt_proto_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.brisk_quals.lift_tilt_proto\"]")
+
+    def filled_land_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.brisk_quals.filled_land\"]")
+
+    def pilings_selection(self, i, j):
+        '''Optional'''
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.brisk_quals.pilings\"]")
+
+    def project_desc_input(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.brisk_quals.project_desc\"]")
+
+    def standpipe_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.brisk_quals.standpipe\"]")
+
+    def existing_structure_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.brisk_quals.existing_structure\"]")
+    
+    #GROCERY STORE ADDITIONAL QUESTIONS
+
+    def gas_station_selection(self, i, j):
+            return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.grocery_quals.gas_station\"]")
+
+    def cooking_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.grocery_quals.cooking\"]")
+
+    def limited_cooking_selection(self, i, j):
+        '''Optional'''
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.grocery_quals.limited_cooking\"]")
+
+    def grills_selection(self, i, j):
+        '''Optional'''
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.grocery_quals.grills\"]")
+
+    def liquor_sales_input(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.grocery_quals.liquor_sales\"]")
+
+    def auto_extinguish_selection(self, i, j):
+        '''Optional'''
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.grocery_quals.auto_extinguish\"]")
+
+    def operations_input(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.grocery_quals.operations\"]")
+
+    def pct_occupied_input(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.grocery_quals.pct_occupied\"]")
+
+    def flammable_materials_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.grocery_quals.flammable_materials\"]")
+
+    def flammable_desc_input(self, i, j):
+        '''Optional'''
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.grocery_quals.flammable_desc\"]")
+
+    def denied_insurance_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.grocery_quals.denied_insurance\"]")
     def no_of_hotel_units_input(self, i, j): 
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.hotel_quals.num_hotel_units\"]")
     def hotels_are_all_hotels_equipped_with_smoke_detectors_selection(self, i, j): 
@@ -427,10 +513,94 @@ class BuildingInformationPage:
         if params.occupancy:
             self.occupancy_selection(i, j).select_option(params.occupancy)
             self.check_loading()
+
             #newly added
-        if params.occupancy == "Manufacturer":
+        if "Manufacturer" in params.occupancy:
             self.type_of_manufacturing_selection(i, j).select_option(params.type_of_manufacturing)
             self.check_loading()          
+
+        if "Church" in params.occupancy:
+            # Required field (always fills)
+            self.church_cooking_selection(i, j).select_option(params.building_occupancy.church_cooking)
+            self.check_loading()
+
+            # Optional field with visibility check
+            if self.church_grills_selection(i, j).is_visible():
+                self.church_grills_selection(i, j).select_option(params.building_occupancy.church_grills)
+                self.check_loading()
+
+            # Optional field with visibility check
+            if self.church_auto_extinguish_selection(i, j).is_visible():
+                self.church_auto_extinguish_selection(i, j).select_option(params.building_occupancy.church_auto_extinguish)
+                self.check_loading()
+
+        # BUILDERS RISK ADDITIONAL QUESTIONS
+        if "Builders Risk" in params.occupancy:
+            self.new_construction_selection(i, j).select_option(params.building_occupancy.brisk_new_construction)
+            self.check_loading()
+
+            self.floors_above_input(i, j).fill(params.building_occupancy.brisk_floors_above)
+            self.floors_below_input(i, j).fill(params.building_occupancy.brisk_floors_below)
+
+            self.start_date_input(i, j).fill(params.building_occupancy.brisk_start_date)
+            self.end_date_input(i, j).fill(params.building_occupancy.brisk_end_date)
+
+            self.lift_tilt_proto_selection(i, j).select_option(params.building_occupancy.brisk_lift_tilt_proto)
+            self.check_loading()
+
+            self.filled_land_selection(i, j).select_option(params.building_occupancy.brisk_filled_land)
+            self.check_loading()
+
+            # Optional field with visibility check
+            if self.pilings_selection(i, j).is_visible():
+                self.pilings_selection(i, j).select_option(params.building_occupancy.brisk_pilings)
+                self.check_loading()
+
+            self.project_desc_input(i, j).fill(params.building_occupancy.brisk_project_desc)
+
+            self.standpipe_selection(i, j).select_option(params.building_occupancy.brisk_standpipe)
+            self.check_loading()
+
+            self.existing_structure_selection(i, j).select_option(params.building_occupancy.brisk_existing_structure)
+            self.check_loading()
+
+        # GROCERY STORE ADDITIONAL QUESTIONS
+        if "Grocery Store" in params.occupancy:
+            self.gas_station_selection(i, j).select_option(params.building_occupancy.grocery_gas_station)
+            self.check_loading()
+
+            self.cooking_selection(i, j).select_option(params.building_occupancy.grocery_cooking)
+            self.check_loading()
+
+            # Optional field with visibility check
+            if self.limited_cooking_selection(i, j).is_visible():
+                self.limited_cooking_selection(i, j).select_option(params.building_occupancy.grocery_limited_cooking)
+                self.check_loading()
+
+            # Optional field with visibility check
+            if self.grills_selection(i, j).is_visible():
+                self.grills_selection(i, j).select_option(params.building_occupancy.grocery_grills)
+                self.check_loading()
+
+            self.liquor_sales_input(i, j).fill(params.building_occupancy.grocery_liquor_sales)
+
+            # Optional field with visibility check
+            if self.auto_extinguish_selection(i, j).is_visible():
+                self.auto_extinguish_selection(i, j).select_option(params.building_occupancy.grocery_auto_extinguish)
+                self.check_loading()
+
+            self.operations_input(i, j).fill(params.building_occupancy.grocery_operations)
+            self.pct_occupied_input(i, j).fill(params.building_occupancy.grocery_pct_occupied)
+
+            self.flammable_materials_selection(i, j).select_option(params.building_occupancy.grocery_flammable_materials)
+            self.check_loading()
+
+            # Optional field with visibility check
+            if self.flammable_desc_input(i, j).is_visible():
+                self.flammable_desc_input(i, j).fill(params.building_occupancy.grocery_flammable_desc)
+
+            self.denied_insurance_selection(i, j).select_option(params.building_occupancy.grocery_denied_insurance)
+            self.check_loading()
 
         if params.building_value:
             self.building_value_input(i, j).fill(params.building_value)

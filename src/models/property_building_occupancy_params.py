@@ -29,6 +29,39 @@ class BuildingOccupancyParams:
     manufacturer_does_manufacturer_do_any_welding: str = ""
     manufacturer_does_manufacturer_use_any_flammable_chemicals: str = ""
 
+    # Church
+
+    church_cooking: str = ""
+    church_grills: str = ""
+    church_auto_extinguish: str = ""
+
+    # Builders Risk
+
+    brisk_new_construction: str = ""
+    brisk_floors_above: str = ""
+    brisk_floors_below: str = ""
+    brisk_start_date: str = ""
+    brisk_end_date: str = ""
+    brisk_lift_tilt_proto: str = ""
+    brisk_filled_land: str = ""
+    brisk_pilings: str = ""
+    brisk_project_desc: str = ""
+    brisk_standpipe: str = ""
+    brisk_existing_structure: str = ""
+
+    # Grocery Store
+
+    grocery_gas_station: str = ""
+    grocery_cooking: str = ""
+    grocery_limited_cooking: str = ""
+    grocery_grills: str = ""
+    grocery_liquor_sales: str = ""
+    grocery_auto_extinguish: str = ""
+    grocery_operations: str = ""
+    grocery_pct_occupied: str = ""
+    grocery_flammable_materials: str = ""
+    grocery_flammable_desc: str = ""
+    grocery_denied_insurance: str = ""
     #Apartment
     apartment_how_many_units_in_building: str = ""
 
