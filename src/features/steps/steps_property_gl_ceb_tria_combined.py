@@ -283,7 +283,7 @@ def when_user_generates_premium(page, test_data):
 
     home_page.click_new_quote_button()
     program_selection_page.select_commercial_lines_LOB()
-    program_selection_page.save_quote_number("cp_gl_output", "Policy_Info", test_data)
+    program_selection_page.save_quote_number("prop_gl_ceb_tria_output", "Policy_Info", test_data)
     commercial_line_basic_info_page.fill_commercial_line_basic_information_Prop_GL_ceb_tria_form(test_data)
     agency_information_page.fill_agency_information_form(agency_info)
     insured_information_page.fill_insured_information_form(insured_info)

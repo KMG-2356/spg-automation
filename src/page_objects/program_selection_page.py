@@ -33,7 +33,7 @@ class ProgramSelectionPage:
         self.personal_line_basic_information_btn.click()
     def save_quote_number(self, output_filename, sheet_name, data):
         quote_number = get_num(self.quote_number_text.inner_text())
-        write_excel_cell(f"src/data/output/{output_filename}.xlsx", "Output", row_value=data[sheet_name][0]["Test ID"], column_name="Quote Number", data=quote_number)
+        write_excel_cell(f"src/data/output/{output_filename}.xlsx", "Output", row_value=data[sheet_name][0]["Test ID"], column_name="Temporary Field 1", data=quote_number)
 
 
 

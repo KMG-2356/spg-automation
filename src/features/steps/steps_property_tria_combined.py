@@ -279,6 +279,7 @@ def when_user_generates_premium(page, test_data):
 
     home_page.click_new_quote_button()
     program_selection_page.select_commercial_lines_LOB()
+    program_selection_page.save_quote_number("prop_gl_tria_output", "Policy_Info", test_data)
     commercial_line_basic_info_page.fill_commercial_line_basic_information_Property_tria_combined_form(test_data)
     agency_information_page.fill_agency_information_form(agency_info)
     insured_information_page.fill_insured_information_form(insured_info)
@@ -292,4 +293,4 @@ def when_user_generates_premium(page, test_data):
 @then('the generated premium should be saved to excel')
 def then_generated_premium_should_be_equal(page, test_data):
     print_your_quote_page = PrintYourQuotePage(page)
-    print_your_quote_page.save_premium(test_data, "cargo_output","Policy_Info")
+    print_your_quote_page.save_premium(test_data, "prop_gl_tria_output","Policy_Info")
