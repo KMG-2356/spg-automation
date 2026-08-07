@@ -229,6 +229,67 @@ class BuildingInformationPage:
     def is_located_on_more_than_2acres_selection(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.vacant_quals.over_two_acres\"]")
        
+  #APPARTMENT ADDITIONAL QUESTIONS
+
+    def are_70_or_more_of_apartment_units_ocupied_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.apartment_quals.min_occupancy_rate\"]")
+    def no_of_apartment_units_input(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.apartment_quals.num_apt_units\"]")
+    def average_monthly_rent_input(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.apartment_quals.avg_rent\"]")
+    def is_heating_maintained_in_all_units_during_winter_months_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.apartment_quals.winter_heating\"]")
+    def are_all_units_equipped_with_working_smoke_detectors_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.apartment_quals.smoke_detectors\"]")
+    def is_outdoor_property_scheduled_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.apartment_quals.sched_outdoor_prop\"]")
+    def is_the_apartment_used_for_student_housing_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.apartment_quals.student_housing\"]")
+    def is_housing_subsidized_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.apartment_quals.subsidized_housing\"]")
+    def insured_been_in_business_minimum_of_2years_OR_has_5years_of_management_experience_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.apartment_quals.insured_experience\"]")
+    def is_renters_insurance_required_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.apartment_quals.renters_insurance\"]")
+    def is_there_a_resident_manager_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.apartment_quals.resident_manager\"]")
+
+#GARAGE ADDITIONAL QUESTIONS
+#MANUFACTURER ADDITIONAL QUESTIONS
+#RESTAURANT ADDITIONAL QUESTIONS
+#HOTEL/MOTEL ADDITIONAL QUESTIONS
+#RETAIL ADDITIONAL QUESTIONS
+    def type_of_retail_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.retail_quals.retail_select\"]")
+    def describe_type_of_retail_input(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.retail_quals.description\"]")
+#WOODWORKING ADDITIONAL QUESTIONS
+#WAREHOUSE ADDITIONAL QUESTIONS
+    def any_hazardous_material_storage_selection(self, i, j): 
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.warehouse_quals.hazardous_mats\"]")
+    def describe_hazardous_material_input(self, i, j): 
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.warehouse_quals.hazardous_mats_desc\"]")
+    def any_chemical_substance_storage_selection(self, i, j): 
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.warehouse_quals.chemical_storage\"]")
+    def any_explosive_storage_selection(self, i, j): 
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.warehouse_quals.explosive_storage\"]")
+    def any_firework_storage(self, i, j): 
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.warehouse_quals.fireworks_storage\"]")
+
+#DWELLING ADDITIONAL QUESTIONS
+
+#BUILDERS RISK ADDITIONAL QUESTIONS
+#GROCERY STORE ADDITIONAL QUESTIONS
+#SOCIAL CLUB ADDITIONAL QUESTIONS
+    def do_employees_cook_food_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.club_quals.cooking\"]")
+#CHURCH ADDITIONAL QUESTIONS
+#CONDOMINIUM ADDITIONAL QUESTIONS
+#HEALTH CARE FACILITY ADDITIONAL QUESTIONS
+#OFFICE ADDITIONAL QUESTIONS
+    def describe_type_of_office_work_done_input(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.office_quals.description\"]")
+
 
     def fill_building_information_form(self, params: BuildingInfoParams, location_idx: int = 0, building_idx: int = 0):
         i = location_idx

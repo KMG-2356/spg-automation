@@ -18,7 +18,7 @@ class AdditionalQuestionsPage:
     def fill_additional_question_information_form(self, params: InsuredInfoParams):  
         self.check_loading()
         if self.policy_term_select.is_visible():
-            self.policy_term_select.select_option(params.policy_term)
+            self.policy_term_select.select_option("12 Months")
             self.check_loading()
         if params.same_as_insured == "No":
             self.is_same_as_insured_selection.select_option(params.same_as_insured)

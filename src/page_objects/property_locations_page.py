@@ -87,10 +87,12 @@ class PropertyLocationsPage:
         expect(self.location_heading).to_be_visible()
         idx = params.index
 
+        self.zip_input(idx).fill(params.zip_code)
+        self.check_loading()
         self.city_input(idx).fill(params.city)
         self.state_select(idx).select_option(params.state)
         self.check_loading()
-        self.zip_input(idx).fill(params.zip_code)
+        
 
         self.coverage_form_select(idx).select_option(params.coverage_form)
         self.check_loading()
