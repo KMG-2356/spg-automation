@@ -418,6 +418,35 @@ class BuildingInformationPage:
 
     def existing_structure_selection(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.brisk_quals.existing_structure\"]")
+
+    # Builder's Risks Safeguards
+
+    # SAFEGUARDS / PROTECTIONS
+
+    def sprinkler_system_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.safeguards.sprinkler_system\"]")
+
+    def central_alarms_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.safeguards.central_alarms\"]")
+
+    def safeguard_fenced_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.safeguards.fenced\"]")
+
+    def lighting_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.safeguards.lighting\"]")
+
+    def detection_systems_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.safeguards.detection_systems\"]")
+
+    def video_surveillance_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.safeguards.video_surveillance\"]")
+
+    def safeguards_storage_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.safeguards.storage\"]")
+
+    def other_protections_input(self):
+        '''Optional'''
+        return self.page.get_by_role("textbox", name="If other protections are present, please specify them", exact=True)
     
     #GROCERY STORE ADDITIONAL QUESTIONS
 
@@ -570,6 +599,32 @@ class BuildingInformationPage:
 
             self.existing_structure_selection(i, j).select_option(params.building_occupancy.brisk_existing_structure)
             self.check_loading()
+
+            # SAFEGUARDS / PROTECTIONS
+            self.sprinkler_system_selection(i, j).select_option("No")
+            self.check_loading()
+
+            self.central_alarms_selection(i, j).select_option("No")
+            self.check_loading()
+
+            self.fenced_selection(i, j).select_option("No")
+            self.check_loading()
+
+            self.lighting_selection(i, j).select_option("No")
+            self.check_loading()
+
+            self.detection_systems_selection(i, j).select_option("No")
+            self.check_loading()
+
+            self.video_surveillance_selection(i, j).select_option("No")
+            self.check_loading()
+
+            self.safeguards_storage_selection(i, j).select_option("No")
+            self.check_loading()
+
+            # Optional input field with visibility check
+            if self.other_protections_input().is_visible():
+                self.other_protections_input().fill("N/A")
         
         # GROCERY STORE ADDITIONAL QUESTIONS
         if "Grocery Store" in params.occupancy:
