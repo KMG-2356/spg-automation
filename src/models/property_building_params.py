@@ -35,7 +35,10 @@ class BuildingInfoParams:
         HVAC_updated_year: str = ""
         type_of_manufacturing: str = ""
         renters_ins: str = ""
-        desc_other_occupancy:str = ""
+        desc_other_occupancy: str = ""
+        retail_antiques: str = ""
+        retail_refrigeration: str = ""
+
 
         #Optional Coverages      
 

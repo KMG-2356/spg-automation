@@ -114,22 +114,22 @@ class BuildingInformationPage:
     
     #ADD RENOVATION COVERAGE
 
-    def rennovation_coverage_checkbox(self):
-        return self.page.get_by_text("Add Renovation coverage?")
-    def rennovation_limit_input(self, i, j):
-        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.reno.limit\"]")
-    def rennovation_valuation_selection(self, i, j):
-        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.reno.valuation\"]")
-    def rennovation_coinsurance_selection(self, i, j):
-        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.reno.coinsurance\"]")
-    def rennovation_will_building_be_demolished_selection(self, i, j):
-        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.reno.demolished\"]")
-    def rennovation_plan_of_building_input(self, i, j):
-        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.reno.plans\"]")
-    def rennovation_expect_start_date_input(self, i, j):
-        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.reno.start_date\"]")
-    def rennovation_expect_end_date_input(self, i, j):
-            return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.reno.end_date\"]")
+    # def rennovation_coverage_checkbox(self):
+    #     return self.page.get_by_text("Add Renovation coverage?")
+    # def rennovation_limit_input(self, i, j):
+    #     return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.reno.limit\"]")
+    # def rennovation_valuation_selection(self, i, j):
+    #     return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.reno.valuation\"]")
+    # def rennovation_coinsurance_selection(self, i, j):
+    #     return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.reno.coinsurance\"]")
+    # def rennovation_will_building_be_demolished_selection(self, i, j):
+    #     return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.reno.demolished\"]")
+    # def rennovation_plan_of_building_input(self, i, j):
+    #     return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.reno.plans\"]")
+    # def rennovation_expect_start_date_input(self, i, j):
+    #     return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.reno.start_date\"]")
+    # def rennovation_expect_end_date_input(self, i, j):
+    #         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.reno.end_date\"]")
     
     #ADD SIGN COVERAGE
 
@@ -284,6 +284,10 @@ class BuildingInformationPage:
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.retail_quals.retail_select\"]")
     def describe_type_of_retail_input(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.retail_quals.description\"]")
+    def does_this_retail_establishment_sell_antiques_selections(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.antique_store\"]")
+    def does_this_retail_establishment_have_refrigeration_units_selections(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.retail_refrigeration\"]")
 
 #WAREHOUSE ADDITIONAL QUESTIONS
     
@@ -354,23 +358,23 @@ class BuildingInformationPage:
     def healthis_premises_smoke_free_selection(self, i, j): 
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.healthcare_quals.smoke_free\"]")
     def healthis_cooking_allowed_in_rooms_selection(self, i, j): 
-        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.0{j}.healthcare_quals.cooking_in_rooms\"]")
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.healthcare_quals.cooking_in_rooms\"]")
     def healthdo_employees_cook_food_selection(self, i, j): 
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.healthcare_quals.cooking\"]")
 
 #WOODWORKING ADDITIONAL QUESTIONS
 
     def are_all_wiping_cloths_selection(self, i, j): 
-            return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.healthcare_quals.smoke_free\"]")
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.woodworking_quals.proper_disposal\"]")
     def does_risk_have_dust_removal_system_selection(self, i, j): 
-        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.0{j}.healthcare_quals.cooking_in_rooms\"]")
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.woodworking_quals.dust_removal\"]")
     def are_premises_well_kept_selection(self, i, j): 
-        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.healthcare_quals.cooking\"]")
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.woodworking_quals.good_housekeeping\"]")
  
 #RESTAURANT ADDITIONAL QUESTIONS
 
     def does_owner_have_at_least_2years_of_prior_restaurant_ownership_selection(self, i, j): 
-        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}0.restaurant_quals.prior_experience\"]")
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.restaurant_quals.prior_experience\"]")
     def does_restaurant_have_approved_ANSUL_selection(self, i, j): 
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.restaurant_quals.auto_extinguish\"]")
     def are_foods_prepared_cold_selection(self, i, j): 
@@ -378,7 +382,7 @@ class BuildingInformationPage:
     def percentage_of_sales_that_are_liquor_input(self, i, j): 
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.restaurant_quals.liquor_sales\"]")
 
-#HOTEL/MOTEL ADDITIONAL QUESTIONS
+
 
     #BUILDERS RISK ADDITIONAL QUESTIONS
     def new_construction_selection(self, i, j):
@@ -423,13 +427,13 @@ class BuildingInformationPage:
     def cooking_selection(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.grocery_quals.cooking\"]")
 
-    def limited_cooking_selection(self, i, j):
-        '''Optional'''
-        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.grocery_quals.limited_cooking\"]")
+    # def limited_cooking_selection(self, i, j):
+    #     '''Optional'''
+    #     return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.grocery_quals.limited_cooking\"]")
 
-    def grills_selection(self, i, j):
-        '''Optional'''
-        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.grocery_quals.grills\"]")
+    # def grills_selection(self, i, j):
+    #     '''Optional'''
+    #     return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.grocery_quals.grills\"]")
 
     def liquor_sales_input(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.grocery_quals.liquor_sales\"]")
@@ -447,12 +451,14 @@ class BuildingInformationPage:
     def flammable_materials_selection(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.grocery_quals.flammable_materials\"]")
 
-    def flammable_desc_input(self, i, j):
-        '''Optional'''
-        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.grocery_quals.flammable_desc\"]")
+    # def flammable_desc_input(self, i, j):
+    #     '''Optional'''
+    #     return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.grocery_quals.flammable_desc\"]")
 
     def denied_insurance_selection(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.grocery_quals.denied_insurance\"]")
+#HOTEL/MOTEL ADDITIONAL QUESTIONS
+
     def no_of_hotel_units_input(self, i, j): 
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.hotel_quals.num_hotel_units\"]")
     def hotels_are_all_hotels_equipped_with_smoke_detectors_selection(self, i, j): 
@@ -462,9 +468,9 @@ class BuildingInformationPage:
     def hotels_is_cooking_allowed_in_rooms_selection(self, i, j): 
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.hotel_quals.cooking\"]")
     def hotels_insured_has_been_in_business_in_min_of_2years_selection(self, i, j): 
-        return self.page.locator(f"[id=\"property_.locations.{i}0.buildings.{j}.hotel_quals.prior_experience\"]")
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.hotel_quals.prior_experience\"]")
     def hotels_are_rooms_rented_in_long_term_basis_selection(self, i, j): 
-        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.0{j}.hotel_quals.long_rent\"]")
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.hotel_quals.long_rent\"]")
     def hotels_is_there_restaurant_within_premises_selection(self, i, j): 
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.hotel_quals.restaurant\"]")
 
@@ -472,10 +478,10 @@ class BuildingInformationPage:
  
     def is_dwelling_occupied_selection(self, i, j): 
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.dwelling_quals.occupied\"]")
-    def no_of_families_residing_input(self, i, j): 
+    def no_of_families_residing_selection(self, i, j): 
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.dwelling_quals.num_families\"]")
     def is_dwelling_seasonal_risk_selection(self, i, j): 
-        return self.page.locator(f"[id=\"property_.locations.0{i}.buildings.{j}.dwelling_quals.seasonal_risk\"]")
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.dwelling_quals.seasonal_risk\"]")
     def does_dwelling_contain_space_heater_selection(self, i, j): 
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.dwelling_quals.wood_burning_stove\"]")
     def dwelling_are_all_units_equipped_with_smoke_heaters_selection(self, i, j): 
@@ -510,6 +516,7 @@ class BuildingInformationPage:
         if params.slate_Wood_shake_roof:
             self.does_buildong_have_slate_selection(i, j).select_option(params.slate_Wood_shake_roof)
             self.check_loading()
+        print(params.occupancy)
         if params.occupancy:
             self.occupancy_selection(i, j).select_option(params.occupancy)
             self.check_loading()
@@ -563,7 +570,7 @@ class BuildingInformationPage:
 
             self.existing_structure_selection(i, j).select_option(params.building_occupancy.brisk_existing_structure)
             self.check_loading()
-
+        
         # GROCERY STORE ADDITIONAL QUESTIONS
         if "Grocery Store" in params.occupancy:
             self.gas_station_selection(i, j).select_option(params.building_occupancy.grocery_gas_station)
@@ -571,16 +578,17 @@ class BuildingInformationPage:
 
             self.cooking_selection(i, j).select_option(params.building_occupancy.grocery_cooking)
             self.check_loading()
+        
 
             # Optional field with visibility check
-            if self.limited_cooking_selection(i, j).is_visible():
-                self.limited_cooking_selection(i, j).select_option(params.building_occupancy.grocery_limited_cooking)
-                self.check_loading()
+            # if self.limited_cooking_selection(i, j).is_visible():
+            #     self.limited_cooking_selection(i, j).select_option(params.building_occupancy.grocery_limited_cooking)
+            #     self.check_loading()
 
             # Optional field with visibility check
-            if self.grills_selection(i, j).is_visible():
-                self.grills_selection(i, j).select_option(params.building_occupancy.grocery_grills)
-                self.check_loading()
+            # if self.grills_selection(i, j).is_visible():
+            #     self.grills_selection(i, j).select_option(params.building_occupancy.grocery_grills)
+            #     self.check_loading()
 
             self.liquor_sales_input(i, j).fill(params.building_occupancy.grocery_liquor_sales)
 
@@ -596,8 +604,8 @@ class BuildingInformationPage:
             self.check_loading()
 
             # Optional field with visibility check
-            if self.flammable_desc_input(i, j).is_visible():
-                self.flammable_desc_input(i, j).fill(params.building_occupancy.grocery_flammable_desc)
+            # if self.flammable_desc_input(i, j).is_visible():
+            #     self.flammable_desc_input(i, j).fill(params.building_occupancy.grocery_flammable_desc)
 
             self.denied_insurance_selection(i, j).select_option(params.building_occupancy.grocery_denied_insurance)
             self.check_loading()
@@ -688,7 +696,6 @@ class BuildingInformationPage:
                 self.loss_of_rents_valuation_selection(i, j).select_option(str(params.loss_of_rents_valuation))
                 self.check_loading()
 
-
         # 4. BUSINESS PERSONAL PROPERTY (BPP)
         if params.business_personal_property_limit:
             self.BPP_coverage_checkbox().click()
@@ -714,37 +721,39 @@ class BuildingInformationPage:
                 self.check_loading()
 
         # 6. RENOVATION COVERAGE
-        if params.renovation_limit:
-            self.rennovation_coverage_checkbox().click()
-            self.check_loading()
-            self.rennovation_limit_input(i, j).fill(str(params.renovation_limit))
-            if params.renovation_valuation:
-                self.rennovation_valuation_selection(i, j).select_option(str(params.renovation_valuation))
-                self.check_loading()
-            if params.renovation_coinsurance:
-                self.rennovation_coinsurance_selection(i, j).select_option(str(params.renovation_coinsurance))
-                self.check_loading()
-            if params.will_the_building_be_demolished:
-                self.rennovation_will_building_be_demolished_selection(i, j).select_option(str(params.will_the_building_be_demolished))
-                self.check_loading()
-            if params.building_plans:
-                self.rennovation_plan_of_building_input(i, j).fill(str(params.building_plans))
-            print(f"start_date: {params.renovation_start_date}, end_date: {params.renovation_end_date}")
-            if params.renovation_start_date:
-                self.rennovation_expect_start_date_input(i, j).fill(params.renovation_start_date)
-            if params.renovation_end_date:
-                self.rennovation_expect_end_date_input(i, j).fill(params.renovation_end_date)
+        # FOR CP
+        # if params.renovation_limit:
+        #     self.rennovation_coverage_checkbox().click()
+        #     self.check_loading()
+        #     self.rennovation_limit_input(i, j).fill(str(params.renovation_limit))
+        #     if params.renovation_valuation:
+        #         self.rennovation_valuation_selection(i, j).select_option(str(params.renovation_valuation))
+        #         self.check_loading()
+        #     if params.renovation_coinsurance:
+        #         self.rennovation_coinsurance_selection(i, j).select_option(str(params.renovation_coinsurance))
+        #         self.check_loading()
+        #     if params.will_the_building_be_demolished:
+        #         self.rennovation_will_building_be_demolished_selection(i, j).select_option(str(params.will_the_building_be_demolished))
+        #         self.check_loading()
+        #     if params.building_plans:
+        #         self.rennovation_plan_of_building_input(i, j).fill(str(params.building_plans))
+        #     print(f"start_date: {params.renovation_start_date}, end_date: {params.renovation_end_date}")
+        #     if params.renovation_start_date:
+        #         self.rennovation_expect_start_date_input(i, j).fill(params.renovation_start_date)
+        #     if params.renovation_end_date:
+        #         self.rennovation_expect_end_date_input(i, j).fill(params.renovation_end_date)
 
             # Fill Contractor details with dummy values since parameters aren't in dataclass
-            self.who_is_doing_work_checkbox(i, j).select_option("Licensed General Contractor")
-            self.check_loading()
-            self.certificates_of_insurance_to_be_obtained_from_the_subcontractors_selection(i, j).select_option("No")
-            self.check_loading()
-            self.is_contractor_info_known_selection(i, j).select_option("No")
-            self.check_loading()
-            if self.license_no_input(i, j).is_visible(): 
-                self.license_no_input(i, j).fill("LIC123456")
-                self.no_of_years_in_business_input(i, j).fill("5")
+            if self.who_is_doing_work_checkbox(i,j).is_visible():
+                self.who_is_doing_work_checkbox(i, j).select_option("Licensed General Contractor")
+                self.check_loading()
+                self.certificates_of_insurance_to_be_obtained_from_the_subcontractors_selection(i, j).select_option("No")
+                self.check_loading()
+                self.is_contractor_info_known_selection(i, j).select_option("No")
+                self.check_loading()
+                if self.license_no_input(i, j).is_visible(): 
+                    self.license_no_input(i, j).fill("LIC123456")
+                    self.no_of_years_in_business_input(i, j).fill("5")
 
         # 7. SIGN COVERAGE
         if params.sign_limit:
@@ -778,48 +787,49 @@ class BuildingInformationPage:
 
         building_occupancy = params.building_occupancy
         print(building_occupancy)
+        if "Vacant" in params.occupancy:
+            self.is_new_purchase_selection(i, j).select_option(str(building_occupancy.vacant_new_purchase))
+            self.check_loading()
+            self.prior_occupancy_input(i, j).fill(str(building_occupancy.vacant_prior_occupancy))
+            self.vacant_since_input(i, j).fill(str(building_occupancy.vacant_how_long_building_vacant))
+            self.is_building_100_percent_vacant_selection(i, j).select_option(str(building_occupancy.vacant_is_building_100_percent_vacant))
+            self.check_loading()
+            self.any_structural_work_being_done_selection(i, j).select_option(str(building_occupancy.vacant_undergoing_renovation_or_demolition))
+            self.check_loading()
+            self.boarded_selection(i, j).select_option(str(building_occupancy.vacant_building_boarded_up))
+            self.check_loading()
+            self.locked_selection(i, j).select_option(str(building_occupancy.vacant_building_secured))
+            self.check_loading()
+            self.fenced_selection(i, j).select_option(str(building_occupancy.vacant_building_fenced))
+            self.check_loading()
+            self.is_electricity_still_active_selection(i, j).select_option(str(building_occupancy.vacant_electricity_turned_off))
+            self.check_loading()
+            self.intended_disposition_selection(i, j).select_option(str(building_occupancy.vacant_intended_disposition))
+            self.check_loading()
+            if self.will_heat_be_maintained_selection(i,j).is_visible():
+                self.will_heat_be_maintained_selection(i, j).select_option(str(building_occupancy.vacant_active_heating))
+                self.check_loading()
+            self.is_plumbing_system_drained_selection(i, j).select_option(str(building_occupancy.vacant_plumbing_drained))
+            self.check_loading()
+            if self.is_water_still_active_selection(i, j).is_visible():
+                self.is_water_still_active_selection(i, j).select_option(str(building_occupancy.vacant_water_turned_off))
+                self.check_loading()
+            if self.any_unfenced_pool_or_body_of_water_selection(i,j).is_visible(): 
+                self.any_unfenced_pool_or_body_of_water_selection(i,j).select_option(params.unfenced_pool)
+                self.check_loading()
+            if self.is_gas_still_active_selection(i, j).is_visible(): 
+                self.is_gas_still_active_selection(i, j).select_option(str(building_occupancy.vacant_gas_turned_off))
+                self.check_loading()
+            if self.is_located_on_more_than_2acres_selection(i,j).is_visible():
+                self.is_located_on_more_than_2acres_selection(i,j).select_option("No")
+                self.check_loading()
 
-        self.is_new_purchase_selection(i, j).select_option(str(building_occupancy.vacant_new_purchase))
-        self.check_loading()
-        self.prior_occupancy_input(i, j).fill(str(building_occupancy.vacant_prior_occupancy))
-        self.vacant_since_input(i, j).fill(str(building_occupancy.vacant_how_long_building_vacant))
-        self.is_building_100_percent_vacant_selection(i, j).select_option(str(building_occupancy.vacant_is_building_100_percent_vacant))
-        self.check_loading()
-        self.any_structural_work_being_done_selection(i, j).select_option(str(building_occupancy.vacant_undergoing_renovation_or_demolition))
-        self.check_loading()
-        self.boarded_selection(i, j).select_option(str(building_occupancy.vacant_building_boarded_up))
-        self.check_loading()
-        self.locked_selection(i, j).select_option(str(building_occupancy.vacant_building_secured))
-        self.check_loading()
-        self.fenced_selection(i, j).select_option(str(building_occupancy.vacant_building_fenced))
-        self.check_loading()
-        self.is_electricity_still_active_selection(i, j).select_option(str(building_occupancy.vacant_electricity_turned_off))
-        self.check_loading()
-        self.intended_disposition_selection(i, j).select_option(str(building_occupancy.vacant_intended_disposition))
-        self.check_loading()
-        if self.will_heat_be_maintained_selection(i,j).is_visible():
-            self.will_heat_be_maintained_selection(i, j).select_option(str(building_occupancy.vacant_active_heating))
-            self.check_loading()
-        self.is_plumbing_system_drained_selection(i, j).select_option(str(building_occupancy.vacant_plumbing_drained))
-        self.check_loading()
-        if self.is_water_still_active_selection(i, j).is_visible():
-            self.is_water_still_active_selection(i, j).select_option(str(building_occupancy.vacant_water_turned_off))
-            self.check_loading()
-        if self.any_unfenced_pool_or_body_of_water_selection(i,j).is_visible(): 
-            self.any_unfenced_pool_or_body_of_water_selection(i,j).select_option(params.unfenced_pool)
-            self.check_loading()
-        if self.is_gas_still_active_selection(i, j).is_visible(): 
-            self.is_gas_still_active_selection(i, j).select_option(str(building_occupancy.vacant_gas_turned_off))
-            self.check_loading()
-        if self.is_located_on_more_than_2acres_selection(i,j).is_visible():
-            self.is_located_on_more_than_2acres_selection(i,j).select_option("No")
-            self.check_loading()
         if params.occupancy == "Manufacturer":
-            self.desc_of_manufacturing_options_input(i,j).fill(building_occupancy.manufacturer_desc_of_manufacturing_options)
-            self.does_manufacturer_do_any_woodwork_selection(i,j).select_option(building_occupancy.manufacturer_does_manufacturer_do_any_woodwork)
-            self.does_garage_do_welding_torching_selection(i,j).select_option(building_occupancy.manufacturer_does_manufacturer_do_any_welding)
-            self.does_manufacturer_use_any_flammable_chemicals_selection(i,j).select_option(building_occupancy.manufacturer_does_manufacturer_use_any_flammable_chemicals)
-
+                    self.desc_of_manufacturing_options_input(i,j).fill(params.building_occupancy.manufacturer_desc_of_manufacturing_options)
+                    self.does_manufacturer_do_any_woodwork_selection(i,j).select_option(params.building_occupancy.manufacturer_does_manufacturer_do_any_woodwork)
+                    self.does_manufacturer_do_any_welding_selection(i,j).select_option(params.building_occupancy.manufacturer_does_manufacturer_do_any_welding)
+                    self.does_manufacturer_use_any_flammable_chemicals_selection(i,j).select_option(params.building_occupancy.manufacturer_does_manufacturer_use_any_flammable_chemicals)
+        
         if params.occupancy == "Garage (0931)":
             self.does_garage_only_engage_in_auto_glass_replacement_selection(i,j).select_option("No")
             self.does_garage_do_welding_torching_selection(i,j).select_option("No")
@@ -828,7 +838,7 @@ class BuildingInformationPage:
 
         if params.occupancy == "Apartment (0311 - 0313)":
             self.are_70_or_more_of_apartment_units_ocupied_selection(i,j).select_option("No")
-            self.no_of_apartment_units_input(i,j).fill(building_occupancy.apartment_how_many_units_in_building)
+            self.no_of_apartment_units_input(i,j).fill(params.building_occupancy.apartment_how_many_units_in_building)
             self.average_monthly_rent_input(i,j).fill("100000")
             self.is_heating_maintained_in_all_units_during_winter_months_selection(i,j).select_option("No")
             self.are_all_units_equipped_with_working_smoke_detectors_selection(i,j).select_option("No")
@@ -842,13 +852,15 @@ class BuildingInformationPage:
         if params.occupancy == "Retail (0567)":
             self.type_of_retail_selection(i,j).select_option("Gift Shops")
             self.describe_type_of_retail_input(i,j).fill("Gift Shops")
+            self.does_this_retail_establishment_sell_antiques_selections(i, j).select_option(params.retail_antiques)
+            self.does_this_retail_establishment_have_refrigeration_units_selections(i, j).select_option(params.retail_refrigeration)
 
         if params.occupancy == "Warehouse(1212)":
-            self.any_hazardous_material_storage_selection(i,j).select_option(building_occupancy.warehouse_are_any_flammable_or_hazardous_materials_stored)
+            self.any_hazardous_material_storage_selection(i,j).select_option(params.building_occupancy.warehouse_are_any_flammable_or_hazardous_materials_stored)
             self.any_chemical_substance_storage_selection(i,j).select_option("No")
             self.any_explosive_storage_selection(i,j).select_option("No")
             self.any_firework_storage_selection(i,j).select_option("No")
-            self.does_this_warehouse_has_refrigerating_units_selection(i,j).select_option(building_occupancy.does_this_warehouse_has_refrigerating_units)
+            self.does_this_warehouse_has_refrigerating_units_selection(i,j).select_option(params.building_occupancy.does_this_warehouse_has_refrigerating_units)
 
         if params.occupancy == "Woodworking (3959)":
             self.are_all_wiping_cloths_selection(i,j).select_option("No")
@@ -859,7 +871,7 @@ class BuildingInformationPage:
             self.social_do_employees_cook_food_selection(i,j).select_option("No")
 
         if params.occupancy == "Office (0702)":
-            self.describe_type_of_office_work_done_input(i,j).select_option(building_occupancy.office_describe_the_type_of_office_use)
+            self.describe_type_of_office_work_done_input(i,j).fill(params.building_occupancy.office_describe_the_type_of_office_use)
 
         if params.occupancy == "Restaurant (0532/0542/0545)":
             self.does_owner_have_at_least_2years_of_prior_restaurant_ownership_selection(i,j).select_option("No")
@@ -871,7 +883,7 @@ class BuildingInformationPage:
             self.no_of_hotel_units_input(i,j).fill("50")
             self.hotels_are_all_hotels_equipped_with_smoke_detectors_selection(i,j).select_option("No")
             self.hotels_are_room_entrance_doors_equipped_with_a_deadbolt_and_peephole_selection(i,j).select_option("No")
-            self.hotels_are_rooms_rented_in_long_term_basis_selection(i,j).select_option(building_occupancy.hotels_are_rooms_rented_on_a_longterm_basis)
+            self.hotels_are_rooms_rented_in_long_term_basis_selection(i,j).select_option(params.building_occupancy.hotels_are_rooms_rented_on_a_longterm_basis)
             self.hotels_is_cooking_allowed_in_rooms_selection(i,j).select_option("No")
             self.hotels_insured_has_been_in_business_in_min_of_2years_selection(i,j).select_option("No")
             self.hotels_is_there_restaurant_within_premises_selection(i,j).select_option("No")
@@ -886,7 +898,7 @@ class BuildingInformationPage:
 
         if params.occupancy == "Dwelling (1, 2, 3, or 4 Family) (0196 - 0198)":
             self.is_dwelling_occupied_selection(i,j).select_option("No")
-            self.no_of_families_residing_input(i,j).select_option(building_occupancy.dwelling_number_of_families)
+            self.no_of_families_residing_selection(i,j).select_option("2")
             self.is_dwelling_seasonal_risk_selection(i,j).select_option("No")
             self.does_dwelling_contain_space_heater_selection(i,j).select_option("No")
             self.are_all_units_equipped_with_working_smoke_detectors_selection(i,j).select_option("No")
@@ -896,7 +908,7 @@ class BuildingInformationPage:
         if params.occupancy == "Condominium (0331 - 0333)":
             self.condo_are_70_or_more_of_apartment_units_ocupied_selection(i,j).select_option("No")
             self.condo_are_all_units_equipped_with_working_smoke_detectors_selection(i,j).select_option("No")
-            self.condo_no_of_units_input(i,j).fill(building_occupancy.Condominium_How_many_units_in_the_building)
+            self.condo_no_of_units_input(i,j).fill(params.building_occupancy.Condominium_How_many_units_in_the_building)
             self.condo_are_units_rented_selection(i,j).select_option("No")
             self.condo_is_heating_maintained_in_all_units_during_winter_months_selection(i,j).select_option("No")
             self.condo_are_all_units_equipped_with_working_smoke_detectors_selection(i,j).select_option("No")
@@ -904,8 +916,10 @@ class BuildingInformationPage:
             self.condo_is_the_apartment_used_for_student_housing_selection(i,j).select_option("No")
             self.condo_is_housing_subsidized_selection(i,j).select_option("No")
             self.condo_insured_been_in_business_minimum_of_2years_OR_has_5years_of_management_experience_selection(i,j).select_option("No")
+
         if params.occupancy == "Other":
-            self.describe_other_occupancy_input.fill(params.desc_other_occupancy)
+            print(params.desc_other_occupancy)
+            self.describe_other_occupancy_input(i,j).fill(params.desc_other_occupancy)
         # Loss Payees Flow
         if params.loss_payees:
             self.does_building_have_loss_payee_selection(i, j).select_option("yes")

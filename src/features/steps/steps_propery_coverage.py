@@ -197,6 +197,8 @@ def when_user_generates_premium(page, test_data):
                     risk_prior_expiration_date=building["Prior Expiry Date"],
                     risk_days_wo_insurance=building["No.of Days without Insurance"],
                     unfenced_pool="No",
+                    retail_antiques=building["Antiques? (Retail only)"],
+                    retail_refrigeration=building["Refrigeration? (Retail/Warehouse)"],
                     type_of_manufacturing=building["Mfg Type (Manufacturer only)"],                          
                     desc_other_occupancy=building["Describe Occupancy (Other only)"],
                     renters_ins=building["Renters Ins?"],
@@ -240,7 +242,9 @@ def when_user_generates_premium(page, test_data):
                     notes=str(test_data["CP_OptCoverages"][building_number - 1]["Notes"]),
                     
                     
+                    
                     building_occupancy=BuildingOccupancyParams(
+                        
                         vacant_is_building_100_percent_vacant=str(test_data["CP_OccupancyQ"][0][f"{BuildingInformationPage.get_vacant_prefix(building["Occupancy"])}Is the building 100% vacant?"]),
                         vacant_how_long_building_vacant=str(test_data["CP_OccupancyQ"][0][f"{BuildingInformationPage.get_vacant_prefix(building["Occupancy"])}How long has the building been vacant?"]),
                         vacant_prior_occupancy=str(test_data["CP_OccupancyQ"][0][f"{BuildingInformationPage.get_vacant_prefix(building["Occupancy"])}What was the prior occupancy?"]),
@@ -264,36 +268,38 @@ def when_user_generates_premium(page, test_data):
                         manufacturer_does_manufacturer_do_any_welding="No",
                         manufacturer_does_manufacturer_do_any_woodwork="No",
                         manufacturer_does_manufacturer_use_any_flammable_chemicals=str(test_data["CP_OccupancyQ"][0]["Manufacturer — Are flammable or hazardous materials used in production?"]),
+                        
                         # Church
-                        church_cooking=str(test_data["CP_OccupancyQ"][0]["Church — Does the church have a kitchen / cooking facilities?   "]),
-                        church_grills=str(test_data["CP_OccupancyQ"][0]["Church — Does the church host community events or rent space to outside groups? "]),
-                        church_auto_extinguish=str(test_data["CP_OccupancyQ"][0]["Church — (If Yes to Q4) Describe events/activities: "]),
+                        church_cooking=str(test_data["CP_OccupancyQ"][0]["Church — Does the church have a kitchen / cooking facilities?"]),
+                        church_grills="No",
+                        church_auto_extinguish="No",
+                        
 
                         # Builders Risk
-                        brisk_new_construction=str(test_data["CP_OccupancyQ"][0]["Builder's Risk — Is this new construction or renovation?    "]),
-                        brisk_floors_above=str(test_data["CP_OccupancyQ"][0]["Builder's Risk — Percentage of construction complete (%):   "]),
-                        brisk_floors_below=str(test_data["CP_OccupancyQ"][0]["Builder's Risk — Total project value / contract price ($):  "]),
+                        brisk_new_construction=str(test_data["CP_OccupancyQ"][0]["Builder's Risk — Is this new construction or renovation?"]),
+                        brisk_floors_above="4",
+                        brisk_floors_below="1",
                         brisk_start_date=str(test_data["CP_OccupancyQ"][0]["Builder's Risk — Estimated completion date:"]),
-                        brisk_end_date=str(test_data["CP_OccupancyQ"][0]["Builder's Risk — (If loan) Date of purchase:"]) if "Builder's Risk — (If loan) Date of purchase:" in test_data["CP_OccupancyQ"][0] else "",
-                        brisk_lift_tilt_proto=str(test_data["CP_OccupancyQ"][0]["Builder's Risk — Is framing complete?   "]),
+                        brisk_end_date=str(test_data["CP_OccupancyQ"][0]["Builder's Risk — Estimated completion date:"]),
+                        brisk_lift_tilt_proto="No",
                         brisk_filled_land=str(test_data["CP_OccupancyQ"][0]["Builder's Risk — Is the building enclosed (roof and walls)?"]),
-                        brisk_pilings=str(test_data["CP_OccupancyQ"][0]["Builder's Risk — Is the building occupied during construction?  "]),
-                        brisk_project_desc=str(test_data["CP_OccupancyQ"][0]["Builder's Risk — Name of general contractor:    "]),
-                        brisk_standpipe=str(test_data["CP_OccupancyQ"][0]["Builder's Risk — Is there a general contractor on site?"]),
-                        brisk_existing_structure=str(test_data["CP_OccupancyQ"][0]["Builder's Risk — Are subcontractors used?   "]),
+                        brisk_pilings=str(test_data["CP_OccupancyQ"][0]["Builder's Risk — Is the building occupied during construction?"]),
+                        brisk_project_desc=str(test_data["CP_OccupancyQ"][0]["Builder's Risk — Name of general contractor:"]),
+                        brisk_standpipe="No",
+                        brisk_existing_structure=str(test_data["CP_OccupancyQ"][0]["Builder's Risk — Are subcontractors used?"]),
 
                         # Grocery Store
                         grocery_gas_station=str(test_data["CP_OccupancyQ"][0]["Grocery Store — Is there an in-store deli / prepared foods section?"]),
-                        grocery_cooking=str(test_data["CP_OccupancyQ"][0]["Grocery Store — Is there cooking / heating equipment on premises?   "]),
-                        grocery_limited_cooking=str(test_data["CP_OccupancyQ"][0]["Grocery Store — (If Yes to Q8) Type of cooking equipment:   "]),
-                        grocery_grills=str(test_data["CP_OccupancyQ"][0]["Grocery Store — (If Yes to Q8) Is there a hood suppression system for cooking equipment?    "]),
-                        grocery_liquor_sales=str(test_data["CP_OccupancyQ"][0]["Grocery Store — Does the store sell alcohol?    "]),
-                        grocery_auto_extinguish=str(test_data["CP_OccupancyQ"][0]["Grocery Store — Is there an in-store bakery?    "]),
-                        grocery_operations=str(test_data["CP_OccupancyQ"][0]["Grocery Store — Is this a national/regional chain or independent?   "]),
-                        grocery_pct_occupied=str(test_data["CP_OccupancyQ"][0]["Grocery Store — Total square footage:   "]),
-                        grocery_flammable_materials=str(test_data["CP_OccupancyQ"][0]["Grocery Store — Does the store sell tobacco?    "]),
-                        grocery_flammable_desc=str(test_data["CP_OccupancyQ"][0]["Grocery Store — (If Independent) Annual gross receipts ($): "]),
-                        grocery_denied_insurance=str(test_data["CP_OccupancyQ"][0]["Grocery Store — Is there a pharmacy within the store?   "]),
+                        grocery_cooking="No",
+                        # grocery_limited_cooking=str(test_data["CP_OccupancyQ"][0]["No"]),
+                        # grocery_grills=str(test_data["CP_OccupancyQ"][0]["Grocery Store — (If Yes to Q8) Is there a hood suppression system for cooking equipment?"]),
+                        grocery_liquor_sales="55",
+                        grocery_auto_extinguish="No",
+                        grocery_operations=str(test_data["CP_OccupancyQ"][0]["Grocery Store — Is this a national/regional chain or independent?"]),
+                        grocery_pct_occupied="65",
+                        grocery_flammable_materials="No",
+                        # grocery_flammable_desc=str(test_data["CP_OccupancyQ"][0]["Grocery Store — (If Independent) Annual gross receipts ($):"]),
+                        grocery_denied_insurance="No",
 
                         apartment_how_many_units_in_building=str(test_data["CP_OccupancyQ"][0]["Apartment — How many units in the building?"]),
                         warehouse_are_any_flammable_or_hazardous_materials_stored=str(test_data["CP_OccupancyQ"][0]["Warehouse — Are any flammable or hazardous materials stored?"]),
@@ -343,4 +349,4 @@ def when_user_generates_premium(page, test_data):
 @then('the generated premium should be saved to excel')
 def then_generated_premium_should_be_equal(page, test_data):
     print_your_quote_page = PrintYourQuotePage(page)
-    print_your_quote_page.save_premium(test_data, "cargo_output","Policy_Info")
+    print_your_quote_page.save_premium(test_data, "cp_output","Policy_Info")
