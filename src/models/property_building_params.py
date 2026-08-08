@@ -106,3 +106,12 @@ class BuildingInfoParams:
         spoilage_power_outage: str = ""
         refrigeration_maintenance_agreement: str = ""
         notes: str = ""
+
+        safeguards_sprinkler_system: str = ""
+        safeguards_central_alarms: str = ""
+        safeguards_fenced: str = ""
+        safeguards_lighting: str = ""
+        safeguards_detection_systems: str = ""
+        safeguards_video_surveillance: str = ""
+        safeguards_storage: str = ""
+        safeguards_other_protections_desc: str = ""
