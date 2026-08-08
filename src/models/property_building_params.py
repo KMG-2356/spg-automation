@@ -38,6 +38,8 @@ class BuildingInfoParams:
         desc_other_occupancy: str = ""
         retail_antiques: str = ""
         retail_refrigeration: str = ""
+        rate_as_occupancy: str=""
+        warehouse_refrigeration: str = ""
 
 
         #Optional Coverages      

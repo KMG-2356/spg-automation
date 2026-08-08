@@ -521,7 +521,9 @@ class BuildingInformationPage:
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.dwelling_quals.subsidized_housing\"]")
 #OTHER
     def describe_other_occupancy_input(self, i, j): 
-        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.occupancy_otherg\"]")
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.occupancy_other\"]")
+    def rate_as_occupancy_selection(self, i, j): 
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.rate_as_occupancy\"]")
   
 #BUILDERS RISK ADDITIONAL QUESTIONS
 #GROCERY STORE ADDITIONAL QUESTIONS
@@ -915,7 +917,7 @@ class BuildingInformationPage:
             self.any_chemical_substance_storage_selection(i,j).select_option("No")
             self.any_explosive_storage_selection(i,j).select_option("No")
             self.any_firework_storage_selection(i,j).select_option("No")
-            self.does_this_warehouse_has_refrigerating_units_selection(i,j).select_option(params.building_occupancy.does_this_warehouse_has_refrigerating_units)
+            self.does_this_warehouse_has_refrigerating_units_selection(i,j).select_option(params.warehouse_refrigeration)
 
         if params.occupancy == "Woodworking (3959)":
             self.are_all_wiping_cloths_selection(i,j).select_option("No")
@@ -975,6 +977,8 @@ class BuildingInformationPage:
         if params.occupancy == "Other":
             print(params.desc_other_occupancy)
             self.describe_other_occupancy_input(i,j).fill(params.desc_other_occupancy)
+            self.rate_as_occupancy_selection(i,j).select_option(params.rate_as_occupancy)
+            self.describe_type_of_office_work_done_input(i,j).fill(params.building_occupancy.office_describe_the_type_of_office_use)
         # Loss Payees Flow
         if params.loss_payees:
             self.does_building_have_loss_payee_selection(i, j).select_option("yes")
@@ -1007,6 +1011,7 @@ class BuildingInformationPage:
         else:
             if self.does_building_have_loss_payee_selection(i, j).is_visible():
                 self.does_building_have_loss_payee_selection(i, j).select_option("no")
+                # self.loss_payee_relationship_input(i,j,k).fill(params)
 
 
     @staticmethod
