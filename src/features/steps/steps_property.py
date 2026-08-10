@@ -182,6 +182,7 @@ def when_user_generates_premium(page, test_data):
                     ZIP_code=str(building["ZIP Code"]),
                     Suite_Unit_floor=str(building["Suite/Unit/Floor"]),
                     stories_Sq_Ft=str(building["Stories"]),
+                    area_sq_ft=str(building["Sq Ft"]),
                     year_built=str(building["Year Built"]),
                     construction=str(building["Construction"]),
                     slate_Wood_shake_roof=str(building["Slate/Wood Shake Roof?"]),

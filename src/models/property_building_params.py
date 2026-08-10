@@ -9,6 +9,7 @@ class BuildingInfoParams:
         ZIP_code: str = ""
         Suite_Unit_floor: str = ""
         stories_Sq_Ft: str = ""
+        area_sq_ft: str = ""
         year_built: str = ""
         construction: str = ""
         slate_Wood_shake_roof: str = ""

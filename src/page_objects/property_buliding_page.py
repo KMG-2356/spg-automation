@@ -549,7 +549,7 @@ class BuildingInformationPage:
             self.suit_unit_floor_input(i, j).fill(params.Suite_Unit_floor)
         if params.stories_Sq_Ft:
             self.no_of_stories_input(i, j).fill(params.stories_Sq_Ft)
-            self.area_of_property_input(i, j).fill(params.stories_Sq_Ft)
+            self.area_of_property_input(i, j).fill(params.area_sq_ft)
         if params.year_built:
             self.year_built_input(i, j).fill(params.year_built)
         if params.construction:
