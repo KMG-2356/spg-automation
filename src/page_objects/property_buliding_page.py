@@ -303,7 +303,8 @@ class BuildingInformationPage:
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.warehouse_quals.explosive_storage\"]")
     def any_firework_storage_selection(self, i, j): 
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.warehouse_quals.fireworks_storage\"]")
-
+    def desc_hazardous_material_storage_input(self, i, j): 
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.warehouse_quals.hazardous_mats_desc\"]")
 #SOCIAL CLUB ADDITIONAL QUESTIONS
 
     def social_do_employees_cook_food_selection(self, i, j):
@@ -525,9 +526,19 @@ class BuildingInformationPage:
     def rate_as_occupancy_selection(self, i, j): 
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.rate_as_occupancy\"]")
   
-#BUILDERS RISK ADDITIONAL QUESTIONS
-#GROCERY STORE ADDITIONAL QUESTIONS
-#CHURCH ADDITIONAL QUESTIONS
+#BUILDERS RISK SAFEGUARDS QUESTIONS
+   
+    def is_building_surrounded_with_chain_link_fence_selection(self, i, j): 
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.safeguards.fenced\"]")
+    def is_building_provided_with_lighting_selection(self, i, j): 
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.safeguards.lighting\"]")
+    def does_building_contain_operable_burgular(self, i, j): 
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.safeguards.detection_systems\"]")
+    def is_building_equipped_with_video_equipment_selection(self, i, j): 
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.safeguards.video_surveillance\"]")
+    def is_building_equipped_with_effective_locked_storage_selection(self, i, j): 
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.safeguards.storage\"]")
+    
 
     def fill_building_information_form(self, params: BuildingInfoParams, location_idx: int = 0, building_idx: int = 0):
         i = location_idx
@@ -574,6 +585,11 @@ class BuildingInformationPage:
 
         # BUILDERS RISK ADDITIONAL QUESTIONS
         if "Builders Risk" in params.occupancy:
+            self.is_building_surrounded_with_chain_link_fence_selection(i,j).select_option("No")
+            self.is_building_provided_with_lighting_selection(i,j).select_option("No")
+            self.does_building_contain_operable_burgular(i,j).select_option("No")
+            self.is_building_equipped_with_video_equipment_selection(i,j).select_option("No")
+            self.is_building_equipped_with_effective_locked_storage_selection(i,j).select_option("No")
             self.new_construction_selection(i, j).select_option(params.building_occupancy.brisk_new_construction)
             self.check_loading()
 
@@ -882,11 +898,11 @@ class BuildingInformationPage:
                 self.check_loading()
 
         if params.occupancy == "Manufacturer":
-                    self.desc_of_manufacturing_options_input(i,j).fill(params.building_occupancy.manufacturer_desc_of_manufacturing_options)
-                    self.does_manufacturer_do_any_woodwork_selection(i,j).select_option(params.building_occupancy.manufacturer_does_manufacturer_do_any_woodwork)
-                    self.does_manufacturer_do_any_welding_selection(i,j).select_option(params.building_occupancy.manufacturer_does_manufacturer_do_any_welding)
-                    self.does_manufacturer_use_any_flammable_chemicals_selection(i,j).select_option(params.building_occupancy.manufacturer_does_manufacturer_use_any_flammable_chemicals)
-        
+            self.desc_of_manufacturing_options_input(i,j).fill(params.building_occupancy.manufacturer_desc_of_manufacturing_options)
+            self.does_manufacturer_do_any_woodwork_selection(i,j).select_option(params.building_occupancy.manufacturer_does_manufacturer_do_any_woodwork)
+            self.does_manufacturer_do_any_welding_selection(i,j).select_option(params.building_occupancy.manufacturer_does_manufacturer_do_any_welding)
+            self.does_manufacturer_use_any_flammable_chemicals_selection(i,j).select_option(params.building_occupancy.manufacturer_does_manufacturer_use_any_flammable_chemicals)
+
         if params.occupancy == "Garage (0931)":
             self.does_garage_only_engage_in_auto_glass_replacement_selection(i,j).select_option("No")
             self.does_garage_do_welding_torching_selection(i,j).select_option("No")
@@ -912,11 +928,14 @@ class BuildingInformationPage:
             self.does_this_retail_establishment_sell_antiques_selections(i, j).select_option(params.retail_antiques)
             self.does_this_retail_establishment_have_refrigeration_units_selections(i, j).select_option(params.retail_refrigeration)
 
-        if params.occupancy == "Warehouse(1212)":
+        if params.occupancy == "Warehouse (1212)":
             self.any_hazardous_material_storage_selection(i,j).select_option(params.building_occupancy.warehouse_are_any_flammable_or_hazardous_materials_stored)
+            self.check_loading()
             self.any_chemical_substance_storage_selection(i,j).select_option("No")
             self.any_explosive_storage_selection(i,j).select_option("No")
             self.any_firework_storage_selection(i,j).select_option("No")
+            if params.building_occupancy.warehouse_are_any_flammable_or_hazardous_materials_stored == "Yes":
+               self.desc_hazardous_material_storage_input(i,j).fill("Flammable liquids")
             self.does_this_warehouse_has_refrigerating_units_selection(i,j).select_option(params.warehouse_refrigeration)
 
         if params.occupancy == "Woodworking (3959)":
@@ -958,7 +977,7 @@ class BuildingInformationPage:
             self.no_of_families_residing_selection(i,j).select_option("2")
             self.is_dwelling_seasonal_risk_selection(i,j).select_option("No")
             self.does_dwelling_contain_space_heater_selection(i,j).select_option("No")
-            self.are_all_units_equipped_with_working_smoke_detectors_selection(i,j).select_option("No")
+            self.dwelling_are_all_units_equipped_with_smoke_heaters_selection(i,j).select_option("No")
             self.dwelling_is_renters_insurance_reqd_selection(i,j).select_option("No")
             self.dwelling_is_housing_subsidized_selection(i,j).select_option("No")
 
@@ -1003,7 +1022,8 @@ class BuildingInformationPage:
                     self.is_loss_payee_mortgagee_slection(i, j, k).select_option(payee.mortgagee)
                     self.check_loading()
                 if payee.loan_number:
-                    self.loan_number_input(i, j, k).fill(payee.loan_number)
+                    if self.loan_number_input(i,j,k).is_visible():
+                       self.loan_number_input(i, j, k).fill(payee.loan_number)
                 if self.loss_payee_relationship_input(i,j,k).is_visible():
                     self.loss_payee_relationship_input(i,j,k).fill(payee.relationship)
                 if self.loss_payee_financial_interest_select(i,j,k).is_visible():
