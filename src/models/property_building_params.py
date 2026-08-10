@@ -1,10 +1,12 @@
 from dataclasses import dataclass, field
 from models.property_building_occupancy_params import BuildingOccupancyParams
 from models.property_loss_payee_params import PropertyLossPayeeParams
+from typing import Any
 
 
 @dataclass
 class BuildingInfoParams:
+        index: Any = None
         street: str = ""
         ZIP_code: str = ""
         Suite_Unit_floor: str = ""

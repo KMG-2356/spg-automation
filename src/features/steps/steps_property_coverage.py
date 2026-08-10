@@ -178,6 +178,7 @@ def when_user_generates_premium(page, test_data):
             wh_tiv_percent=row["Percentage for TIV for Wind/Hail Deductible "],
             buildings=[
                 BuildingInfoParams(
+                    index = i,
                     street=building["Street Address"],
                     ZIP_code=str(building["ZIP Code"]),
                     Suite_Unit_floor=str(building["Suite/Unit/Floor"]),
@@ -336,6 +337,11 @@ def when_user_generates_premium(page, test_data):
         )
         for i, row in enumerate(test_data["CP_Locations"])
     ]
+
+    for location in locations_info:
+        for building in location.buildings:
+            print(building)
+    return
 
     home_page.click_new_quote_button()
     program_selection_page.select_commercial_lines_LOB()

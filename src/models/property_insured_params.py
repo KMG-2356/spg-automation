@@ -31,3 +31,13 @@ class InsuredInfoParams:
     contact_email:str=""
     contact_phone:str=""
     policy_term: str =""
+
+    # Carrier & Operations Info
+    new_venture: str = ""
+    insured_icc: str = ""
+    filings: str = ""
+    all_owned_units: str = ""
+    carrier_type: str = ""
+    own_goods: str = ""
+    garage_same: str = ""
+    carrier_details: str = ""

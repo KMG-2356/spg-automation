@@ -47,28 +47,28 @@ class CommercialLinesBasicInformationPage:
         self.agency_information_btn.click()
 
     def fill_commercial_line_basic_information_Prop_plus_GL_form(self,data):
-                expect(self.commercial_lines_basic_information_heading).to_be_visible()
-                self.underwriter_select.select_option("49") # Amy Nelson
-                self.assistant_select.select_option("120") # Ashley O Neal
-                self.is_this_a_renewal_select.select_option("no")
-                self.generate_new_application_select.select_option("yes")
-                # self.effective_date_input.fill(str(data["Policy_Info"][0]["Effective Date"]))
-                self.property_coverage_lob_btn.click()
-                self.general_liability_coverage_lob_btn.click()
-                expect(self.agency_information_btn).to_be_visible()
-                expect(self.agency_information_btn).to_be_enabled()
-                self.agency_information_btn.click()
+        expect(self.commercial_lines_basic_information_heading).to_be_visible()
+        self.underwriter_select.select_option("49") # Amy Nelson
+        self.assistant_select.select_option("120") # Ashley O Neal
+        self.is_this_a_renewal_select.select_option("no")
+        self.generate_new_application_select.select_option("yes")
+        # self.effective_date_input.fill(str(data["Policy_Info"][0]["Effective Date"]))
+        self.property_coverage_lob_btn.click()
+        self.general_liability_coverage_lob_btn.click()
+        expect(self.agency_information_btn).to_be_visible()
+        expect(self.agency_information_btn).to_be_enabled()
+        self.agency_information_btn.click()
 
     def fill_commercial_line_basic_information_Property_form(self,data):
-            expect(self.commercial_lines_basic_information_heading).to_be_visible()
-            self.underwriter_select.select_option("49") # Amy Nelson
-            self.assistant_select.select_option("120") # Ashley O Neal
-            self.is_this_a_renewal_select.select_option("no")
-            self.generate_new_application_select.select_option("yes")
-            self.property_coverage_lob_btn.click()
-            expect(self.agency_information_btn).to_be_visible()
-            expect(self.agency_information_btn).to_be_enabled()
-            self.agency_information_btn.click()
+        expect(self.commercial_lines_basic_information_heading).to_be_visible()
+        self.underwriter_select.select_option("49") # Amy Nelson
+        self.assistant_select.select_option("120") # Ashley O Neal
+        self.is_this_a_renewal_select.select_option("no")
+        self.generate_new_application_select.select_option("yes")
+        self.property_coverage_lob_btn.click()
+        expect(self.agency_information_btn).to_be_visible()
+        expect(self.agency_information_btn).to_be_enabled()
+        self.agency_information_btn.click()
 
     def fill_commercial_line_basic_information_Property_tria_combined_form(self,data):
         expect(self.commercial_lines_basic_information_heading).to_be_visible()
@@ -142,32 +142,32 @@ class CommercialLinesBasicInformationPage:
         self.agency_information_btn.click()
 
     def fill_commercial_line_basic_information_Prop_GL_tria_form(self,data):
-                    expect(self.commercial_lines_basic_information_heading).to_be_visible()
-                    self.underwriter_select.select_option("49") # Amy Nelson
-                    self.assistant_select.select_option("120") # Ashley O Neal
-                    self.is_this_a_renewal_select.select_option("no")
-                    self.generate_new_application_select.select_option("yes")
-                    # self.effective_date_input.fill(str(data["Policy_Info"][0]["Effective Date"]))
-                    self.property_coverage_lob_btn.click()
-                    self.general_liability_coverage_lob_btn.click()
-                    self.terrorism_coverage_lob_btn.click()
-                    expect(self.agency_information_btn).to_be_visible()
-                    expect(self.agency_information_btn).to_be_enabled()
-                    self.agency_information_btn.click()
+        expect(self.commercial_lines_basic_information_heading).to_be_visible()
+        self.underwriter_select.select_option("49") # Amy Nelson
+        self.assistant_select.select_option("120") # Ashley O Neal
+        self.is_this_a_renewal_select.select_option("no")
+        self.generate_new_application_select.select_option("yes")
+        # self.effective_date_input.fill(str(data["Policy_Info"][0]["Effective Date"]))
+        self.property_coverage_lob_btn.click()
+        self.general_liability_coverage_lob_btn.click()
+        self.terrorism_coverage_lob_btn.click()
+        expect(self.agency_information_btn).to_be_visible()
+        expect(self.agency_information_btn).to_be_enabled()
+        self.agency_information_btn.click()
 
     def fill_commercial_line_basic_information_Prop_GL_ceb_form(self,data):
-                expect(self.commercial_lines_basic_information_heading).to_be_visible()
-                self.underwriter_select.select_option("49") # Amy Nelson
-                self.assistant_select.select_option("120") # Ashley O Neal
-                self.is_this_a_renewal_select.select_option("no")
-                self.generate_new_application_select.select_option("yes")
-                # self.effective_date_input.fill(str(data["Policy_Info"][0]["Effective Date"]))
-                self.property_coverage_lob_btn.click()
-                self.commercial_equipment_breakdown_lob_btn.click()
-                self.general_liability_coverage_lob_btn.click()                
-                expect(self.agency_information_btn).to_be_visible()
-                expect(self.agency_information_btn).to_be_enabled()
-                self.agency_information_btn.click()
+        expect(self.commercial_lines_basic_information_heading).to_be_visible()
+        self.underwriter_select.select_option("49") # Amy Nelson
+        self.assistant_select.select_option("120") # Ashley O Neal
+        self.is_this_a_renewal_select.select_option("no")
+        self.generate_new_application_select.select_option("yes")
+        # self.effective_date_input.fill(str(data["Policy_Info"][0]["Effective Date"]))
+        self.property_coverage_lob_btn.click()
+        self.commercial_equipment_breakdown_lob_btn.click()
+        self.general_liability_coverage_lob_btn.click()                
+        expect(self.agency_information_btn).to_be_visible()
+        expect(self.agency_information_btn).to_be_enabled()
+        self.agency_information_btn.click()
 
     def fill_commercial_line_basic_information_Prop_GL_ceb_tria_form(self,data):
             expect(self.commercial_lines_basic_information_heading).to_be_visible()
@@ -183,6 +183,7 @@ class CommercialLinesBasicInformationPage:
             expect(self.agency_information_btn).to_be_visible()
             expect(self.agency_information_btn).to_be_enabled()
             self.agency_information_btn.click()
+            
     def fill_commercial_line_basic_information_Prop_ceb_form(self,data):
             expect(self.commercial_lines_basic_information_heading).to_be_visible()
             self.underwriter_select.select_option("49") # Amy Nelson
@@ -194,3 +195,17 @@ class CommercialLinesBasicInformationPage:
             expect(self.agency_information_btn).to_be_visible()
             expect(self.agency_information_btn).to_be_enabled()
             self.agency_information_btn.click()
+
+    def fill_commercial_line_basic_information_cpgl_cargo_apd_combined_form(self,data):
+        expect(self.commercial_lines_basic_information_heading).to_be_visible()
+        self.underwriter_select.select_option("49") # Amy Nelson
+        self.assistant_select.select_option("120") # Ashley O Neal
+        self.is_this_a_renewal_select.select_option("no")
+        self.generate_new_application_select.select_option("yes")
+        self.property_coverage_lob_btn.click()
+        self.general_liability_coverage_lob_btn.click()
+        self.cargo_coverage_lob_btn.click()
+        self.physical_damage_coverage_lob_btn.click()
+        expect(self.agency_information_btn).to_be_visible()
+        expect(self.agency_information_btn).to_be_enabled()
+        self.agency_information_btn.click()
