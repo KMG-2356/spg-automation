@@ -130,6 +130,12 @@ def when_user_generates_premium(page, test_data):
         own_goods=policy_row[" Insured also carry their own goods?"],
         garage_same=policy_row["Is Insured's physical address same as the mailing address?"],
         carrier_details=policy_row["Describe Carrier Details"],
+        has_secondary_garage=policy_row["Secondary garaging address?"],
+        secondary_garages=[policy_row[f"Garage Address#{i}"] for i in range(1, 6)],
+        trustee_name=policy_row["Full Name"],
+        trustee_street1=policy_row["Trustee Address -  Street 1"],
+        trustee_street2=policy_row["Trustee Address  -  Street 2"],
+        trustee_zip=str(policy_row["Trustee Address  -  Zip"]),
     )
 
     # insured_info = APDInsuredInfoParams(
@@ -253,6 +259,7 @@ def when_user_generates_premium(page, test_data):
                     ZIP_code=str(building["ZIP Code"]),
                     Suite_Unit_floor=str(building["Suite/Unit/Floor"]),
                     stories_Sq_Ft=str(building["Stories"]),
+                    area_sq_ft=str(building["Sq Ft"]),
                     year_built=str(building["Year Built"]),
                     construction=str(building["Construction"]),
                     slate_Wood_shake_roof=str(building["Slate/Wood Shake Roof?"]),
@@ -277,35 +284,35 @@ def when_user_generates_premium(page, test_data):
                     electrical_updated_year=str(building["Electrical Updated Year"]),
                     plumbing_updated_year=str(building["Plumbing Updated Year"]),
                     HVAC_updated_year=str(building["HVAC Updated Year"]),
-                    awning_limit=str(test_data["CP_OptCoverages"][building_number - 1]["Awning Limit($)"]),
-                    awning_valuation=str(test_data["CP_OptCoverages"][building_number - 1]["Awning Valuation"]),
-                    awning_coinsurance=str(test_data["CP_OptCoverages"][building_number - 1]["Awning Coinsurance"]),
-                    sign_limit=str(test_data["CP_OptCoverages"][building_number - 1]["Sign Limit($)"]),
-                    sign_valuation=str(test_data["CP_OptCoverages"][building_number - 1]["Sign Valuation"]),
-                    sign_coinsurance=str(test_data["CP_OptCoverages"][building_number - 1]["Sign Coinsurance"]),
-                    business_interruption_limit=str(test_data["CP_OptCoverages"][building_number - 1]["BI Limit ($)"]),
+                    awning_limit=str(test_data["CP_OptCoverages"][i]["Awning Limit($)"]),
+                    awning_valuation=str(test_data["CP_OptCoverages"][i]["Awning Valuation"]),
+                    awning_coinsurance=str(test_data["CP_OptCoverages"][i]["Awning Coinsurance"]),
+                    sign_limit=str(test_data["CP_OptCoverages"][i]["Sign Limit($)"]),
+                    sign_valuation=str(test_data["CP_OptCoverages"][i]["Sign Valuation"]),
+                    sign_coinsurance=str(test_data["CP_OptCoverages"][i]["Sign Coinsurance"]),
+                    business_interruption_limit=str(test_data["CP_OptCoverages"][i]["BI Limit ($)"]),
                     business_interruption_valuation="Actual Loss Sustained",
-                    business_personal_property_limit=str(test_data["CP_OptCoverages"][building_number - 1]["BPP Limit ($)"]),
-                    business_personal_property_valuation=str(test_data["CP_OptCoverages"][building_number - 1]["BPP Valuation"]),
-                    business_personal_property_coinsurance=str(test_data["CP_OptCoverages"][building_number - 1]["BPP Coinsurance"]),
-                    pump_and_canopy_limit=str(test_data["CP_OptCoverages"][building_number - 1]["Pump and Canopy Limit($)"]),
-                    pump_and_canopy_valuation=str(test_data["CP_OptCoverages"][building_number - 1]["Pump and Canopy Valuation"]),
-                    pump_and_canopy_coinsurance=str(test_data["CP_OptCoverages"][building_number - 1]["Pump and Canopy Coinsurance"]),
-                    loss_of_rents_limit=str(test_data["CP_OptCoverages"][building_number - 1]["LOR Limit ($)"]),
+                    business_personal_property_limit=str(test_data["CP_OptCoverages"][i]["BPP Limit ($)"]),
+                    business_personal_property_valuation=str(test_data["CP_OptCoverages"][i]["BPP Valuation"]),
+                    business_personal_property_coinsurance=str(test_data["CP_OptCoverages"][i]["BPP Coinsurance"]),
+                    pump_and_canopy_limit=str(test_data["CP_OptCoverages"][i]["Pump and Canopy Limit($)"]),
+                    pump_and_canopy_valuation=str(test_data["CP_OptCoverages"][i]["Pump and Canopy Valuation"]),
+                    pump_and_canopy_coinsurance=str(test_data["CP_OptCoverages"][i]["Pump and Canopy Coinsurance"]),
+                    loss_of_rents_limit=str(test_data["CP_OptCoverages"][i]["LOR Limit ($)"]),
                     loss_of_rents_valuation="Actual Loss Sustained",
-                    renovation_limit=str(test_data["CP_OptCoverages"][building_number - 1]["Renovation Limit($)"]),
-                    renovation_valuation=str(test_data["CP_OptCoverages"][building_number - 1]["Renaovation Valuation"]),
-                    renovation_coinsurance=str(test_data["CP_OptCoverages"][building_number - 1]["Renovation Coinsurance"]),
-                    will_the_building_be_demolished=str(test_data["CP_OptCoverages"][building_number - 1]["Will the building demolished?"]),
-                    building_plans=str(test_data["CP_OptCoverages"][building_number - 1]["Building Plans"]),
-                    renovation_start_date=str(test_data["CP_OptCoverages"][building_number - 1]["Renovation Start Date"]),
-                    renovation_end_date=str(test_data["CP_OptCoverages"][building_number - 1]["Renovation End Date"]),
-                    spoilage_limit=str(test_data["CP_OptCoverages"][building_number - 1]["Spoilage Limit"]),
-                    spoilage_deductible=str(test_data["CP_OptCoverages"][building_number - 1]["Spoilage Deductible($)"]),
-                    spoilage_contamination=str(test_data["CP_OptCoverages"][building_number - 1]["Spoilage Contamination?"]),
-                    spoilage_power_outage=str(test_data["CP_OptCoverages"][building_number - 1]["Spoilage Power Outage?"]),
-                    refrigeration_maintenance_agreement=str(test_data["CP_OptCoverages"][building_number - 1]["Refrigiration Maintainance Agreement"]),
-                    notes=str(test_data["CP_OptCoverages"][building_number - 1]["Notes"]),
+                    renovation_limit=str(test_data["CP_OptCoverages"][i]["Renovation Limit($)"]),
+                    renovation_valuation=str(test_data["CP_OptCoverages"][i]["Renaovation Valuation"]),
+                    renovation_coinsurance=str(test_data["CP_OptCoverages"][i]["Renovation Coinsurance"]),
+                    will_the_building_be_demolished=str(test_data["CP_OptCoverages"][i]["Will the building demolished?"]),
+                    building_plans=str(test_data["CP_OptCoverages"][i]["Building Plans"]),
+                    renovation_start_date=str(test_data["CP_OptCoverages"][i]["Renovation Start Date"]),
+                    renovation_end_date=str(test_data["CP_OptCoverages"][i]["Renovation End Date"]),
+                    spoilage_limit=str(test_data["CP_OptCoverages"][i]["Spoilage Limit"]),
+                    spoilage_deductible=str(test_data["CP_OptCoverages"][i]["Spoilage Deductible($)"]),
+                    spoilage_contamination=str(test_data["CP_OptCoverages"][i]["Spoilage Contamination?"]),
+                    spoilage_power_outage=str(test_data["CP_OptCoverages"][i]["Spoilage Power Outage?"]),
+                    refrigeration_maintenance_agreement=str(test_data["CP_OptCoverages"][i]["Refrigiration Maintainance Agreement"]),
+                    notes=str(test_data["CP_OptCoverages"][i]["Notes"]),
                     building_occupancy=BuildingOccupancyParams(
                         vacant_is_building_100_percent_vacant=str(test_data["CP_OccupancyQ"][0][f"{BuildingInformationPage.get_vacant_prefix(building["Occupancy"])}Is the building 100% vacant?"]),
                         vacant_how_long_building_vacant=str(test_data["CP_OccupancyQ"][0][f"{BuildingInformationPage.get_vacant_prefix(building["Occupancy"])}How long has the building been vacant?"]),
@@ -481,7 +488,7 @@ def when_user_generates_premium(page, test_data):
     program_selection_page.save_quote_number("cp_gl_output", "Policy_Info", test_data)
     commercial_line_basic_info_page.fill_commercial_line_basic_information_cpgl_cargo_apd_combined_form(test_data)
     agency_information_page.fill_agency_information_form(agency_info)
-    insured_information_page.fill_insured_information_form(insured_info)
+    insured_information_page.fill_insured_information_cargo_additional_form(insured_info)
     # apd_insured_information_page.fill_apd_insured_information_form(insured_info)
     cargo_additional_insured_info_page.fill_cargo_additional_insured_info(cargo_additional_insured_info)
     risk_info_page.fill_risk_information(risk_info)
@@ -489,7 +496,7 @@ def when_user_generates_premium(page, test_data):
     cargo_coverages_page.fill_cargo_coverages_info_for_combined_apd(cargo_coverages_info)
     apd_commodities_page.fill_commodities(apd_commodities_info)
     apd_loss_history_info_page.fill_loss_history_info(apd_loss_history_info)
-    apd_additional_info_page.fill_additional_info(apd_addition_info)
+    apd_additional_info_page.fill_additional_info_cpgl_cargo_apd_combined(apd_addition_info)
     property_location_page.fill_locations(locations_info)
     general_information_page.fill_general_liability_info(general_liability_info)
     property_additional_questions_page.fill_additional_question_information_form(additional_questions_info)
@@ -500,4 +507,4 @@ def when_user_generates_premium(page, test_data):
 @then('the generated premium should be saved to excel')
 def then_generated_premium_should_be_equal(page, test_data):
     print_your_quote_page = PrintYourQuotePage(page)
-    print_your_quote_page.save_premium(test_data, "cp_gl_output","Policy_Info")
+    print_your_quote_page.save_premium(test_data, "cpgl_cargo_apd_combined_output","Policy_Info")

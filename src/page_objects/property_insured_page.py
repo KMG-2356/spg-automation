@@ -1,4 +1,5 @@
 import re
+from typing import Dict
 from playwright.sync_api import Page, expect, TimeoutError
 from models.property_insured_params import InsuredInfoParams
 
@@ -29,6 +30,41 @@ class InsuredInformationPage:
         self.physical_city_input = self.page.get_by_text("Street Address 1Street").locator("input").nth(6)
         self.physical_zip_input = self.page.get_by_text("Street Address 1Street").locator("input").nth(7)    
         self.location_btn = self.page.get_by_role("button", name="Location")
+
+        self.new_venture_select = self.page.locator('[id="insured.new_venture"]')
+        self.insured_icc_input = self.page.locator('[id="insured.insured_icc"]')
+        self.filings_select = self.page.locator('[id="insured.filings"]')
+        self.all_owned_units_select = self.page.locator('[id="insured.all_owned_units"]')
+        self.carrier_type_select = self.page.locator('[id="insured.carrier_type"]')
+        self.own_goods_select = self.page.locator('[id="insured.own_goods"]')
+        self.garage_same_select = self.page.locator('[id="insured.garage_same"]')
+        self.carrier_details_input = self.page.locator('[id="insured.carrier_details"]')
+
+        self.primary_garaging_street1_input = self.page.locator(".MuiGrid-item").filter(has_text="Primary Garaging Address").nth(7).locator("input").nth(0)
+        self.primary_garaging_street2_input = self.page.locator(".MuiGrid-item").filter(has_text="Primary Garaging Address").nth(7).locator("input").nth(1)
+        self.primary_garaging_city_input = self.page.locator(".MuiGrid-item").filter(has_text="Primary Garaging Address").nth(7).locator("input").nth(2)
+        self.primary_garaging_state_select = self.page.locator(".MuiGrid-item").filter(has_text="Primary Garaging Address").nth(7).locator("select").nth(0)
+        self.primary_garaging_zip_input = self.page.locator(".MuiGrid-item").filter(has_text="Primary Garaging Address").nth(7).locator("input").nth(3)
+
+        self.has_secondary_garage_select = self.page.locator("[id=\"insured.secondary_garaging\"]")
+
+        self.secondary_garage_street1_input = self.page.locator(".MuiGrid-container").filter(has_text="Secondary Garaging Address").nth(-1).locator("input").nth(0)
+        self.secondary_garage_street2_input = self.page.locator(".MuiGrid-container").filter(has_text="Secondary Garaging Address").nth(-1).locator("input").nth(1)
+        self.secondary_garage_city_input = self.page.locator(".MuiGrid-container").filter(has_text="Secondary Garaging Address").nth(-1).locator("input").nth(2)
+        self.secondary_garage_zip_input = self.page.locator(".MuiGrid-container").filter(has_text="Secondary Garaging Address").nth(-1).locator("input").nth(3)
+        self.secondary_garage_state_select = self.page.locator(".MuiGrid-container").filter(has_text="Secondary Garaging Address").nth(-1).locator("select").nth(0)
+
+        self.add_another_garaging_address_btn = self.page.get_by_role("button", name="Add Another Garaging Address")
+
+        self.trustee_name_input = self.page.locator('[id="insured.trustee.name"]')
+        self.trustee_street1_input = self.page.locator(".MuiGrid-container").filter(has=self.page.locator("[id=\"insured.trustee.name\"]")).nth(5).locator("input").nth(1)
+        self.trustee_street2_input = self.page.locator(".MuiGrid-container").filter(has=self.page.locator("[id=\"insured.trustee.name\"]")).nth(5).locator("input").nth(2)
+        self.trustee_city_input = self.page.locator(".MuiGrid-container").filter(has=self.page.locator("[id=\"insured.trustee.name\"]")).nth(5).locator("input").nth(3)
+        self.trustee_state_select = self.page.locator(".MuiGrid-container").filter(has=self.page.locator("[id=\"insured.trustee.name\"]")).nth(5).locator("select").nth(0)
+        self.trustee_zip_input = self.page.locator(".MuiGrid-container").filter(has=self.page.locator("[id=\"insured.trustee.name\"]")).nth(5).locator("input").nth(4)
+
+        self.addition_insured_info_btn = self.page.get_by_role("button", name="Additional Insured Information")
+
         self.loading_screen = self.page.locator(".jss53")
     
 
@@ -181,4 +217,22 @@ class InsuredInformationPage:
         except TimeoutError:
             pass
         self.loading_screen.wait_for(state="hidden")
+
+
+    def parse_us_address(self, address_str: str) -> Dict[str, str]:
+        if not address_str or not isinstance(address_str, str):
+            raise ValueError("Invalid Address")
+        pattern = r"^(?P<street>.*?),\s*(?P<city>[^,]+),\s*(?P<state>[A-Za-z]{2})\s+(?P<zip>\d{5}(?:-\d{4})?)$"
+
+        match = re.match(pattern, address_str.strip())
+
+        if match:
+            data = match.groupdict()
+            return {
+                "street_address": data["street"].strip(),
+                "city": data["city"].strip(),
+                "state": data["state"].upper(),
+                "zip_code": data["zip"].strip(),
+            }
+        raise ValueError("Invalid Address")
 

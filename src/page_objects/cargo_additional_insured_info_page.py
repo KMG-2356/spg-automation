@@ -75,8 +75,9 @@ class CargoAdditionalInsuredInformationPage:
         self.does_insured_subcontract_to_other_parties_select.select_option(params.does_insured_subcontract_to_other_parties)
         self.check_loading()         
         if params.does_insured_subcontract_to_other_parties == "Yes":
-            self.Subcontracting_basis_select.select_option(params.describe_subcontracting_lease_basis)
-            self.check_loading()
+            if self.Subcontracting_basis_select.is_visible():
+                self.Subcontracting_basis_select.select_option(params.describe_subcontracting_lease_basis)
+                self.check_loading()
             if self.desc_subcontracting_lease_basis_input.is_visible():
                 self.desc_subcontracting_lease_basis_input.fill(params.descirbe_other_subcontrating_lease_basis)
             self.subcontractors_responsible_for_cargo_loss_select.select_option(params.subcontractors_responsible_for_cargo_loss)
