@@ -339,7 +339,7 @@ def when_user_generates_premium(page, test_data):
 
     home_page.click_new_quote_button()
     program_selection_page.select_commercial_lines_LOB()
-    commercial_line_basic_info_page.fill_commercial_line_basic_information_Prop_ceb_form(test_data)
+    commercial_line_basic_info_page.fill_commercial_line_basic_information_Property_form(test_data)
     agency_information_page.fill_agency_information_form(agency_info)
     insured_information_page.fill_insured_information_form(insured_info)
     property_location_page.fill_locations_property(locations_info)

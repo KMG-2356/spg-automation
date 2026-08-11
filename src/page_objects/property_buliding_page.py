@@ -424,28 +424,28 @@ class BuildingInformationPage:
 
     # SAFEGUARDS / PROTECTIONS
 
-    def sprinkler_system_selection(self, i, j):
+    def safegurad_sprinkler_system_selection(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.safeguards.sprinkler_system\"]")
 
-    def central_alarms_selection(self, i, j):
+    def safegurad_central_alarms_selection(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.safeguards.central_alarms\"]")
 
     def safeguard_fenced_selection(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.safeguards.fenced\"]")
 
-    def lighting_selection(self, i, j):
+    def safegurad_lighting_selection(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.safeguards.lighting\"]")
 
     def detection_systems_selection(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.safeguards.detection_systems\"]")
 
-    def video_surveillance_selection(self, i, j):
+    def safegurad_video_surveillance_selection(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.safeguards.video_surveillance\"]")
 
     def safeguards_storage_selection(self, i, j):
         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.safeguards.storage\"]")
 
-    def other_protections_input(self):
+    def safegurad_other_protections_input(self):
         '''Optional'''
         return self.page.get_by_role("textbox", name="If other protections are present, please specify them", exact=True)
     
@@ -619,30 +619,30 @@ class BuildingInformationPage:
             self.check_loading()
 
             # SAFEGUARDS / PROTECTIONS
-            self.sprinkler_system_selection(i, j).select_option("No")
+            self.safegurad_sprinkler_system_selection(i, j).select_option("No")
             self.check_loading()
 
-            self.central_alarms_selection(i, j).select_option("No")
+            self.safegurad_central_alarms_selection(i, j).select_option("No")
             self.check_loading()
 
-            self.fenced_selection(i, j).select_option("No")
+            self.safeguard_fenced_selection(i, j).select_option("No")
             self.check_loading()
 
-            self.lighting_selection(i, j).select_option("No")
+            self.safegurad_lighting_selection(i, j).select_option("No")
             self.check_loading()
 
             self.detection_systems_selection(i, j).select_option("No")
             self.check_loading()
 
-            self.video_surveillance_selection(i, j).select_option("No")
+            self.safegurad_video_surveillance_selection(i, j).select_option("No")
             self.check_loading()
 
             self.safeguards_storage_selection(i, j).select_option("No")
             self.check_loading()
 
-            # Optional input field with visibility check
-            if self.other_protections_input().is_visible():
-                self.other_protections_input().fill("N/A")
+            # # Optional input field with visibility check
+            # if self.other_protections_input().is_visible():
+            #     self.other_protections_input().fill("N/A")
         
         # GROCERY STORE ADDITIONAL QUESTIONS
         if "Grocery Store" in params.occupancy:
@@ -1008,6 +1008,9 @@ class BuildingInformationPage:
                 self.loss_payee_full_name_input(i, j, k).fill(payee.full_name)
                 if payee.street1:
                     self.loss_payee_street_address1_input().fill(payee.street1)
+                if payee.zip_code:
+                    self.loss_payee_zip_input().fill(payee.zip_code)
+                    self.check_loading()
                 if payee.street2:
                     self.loss_payee_street_address2_input().fill(payee.street2)
                 if payee.city:
@@ -1015,9 +1018,7 @@ class BuildingInformationPage:
                 if payee.state:
                     self.loss_payee_state_selection().select_option(payee.state)
                     self.check_loading()
-                if payee.zip_code:
-                    self.loss_payee_zip_input().fill(payee.zip_code)
-                    self.check_loading()
+                
                 if payee.mortgagee:
                     self.is_loss_payee_mortgagee_slection(i, j, k).select_option(payee.mortgagee)
                     self.check_loading()
