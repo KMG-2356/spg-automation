@@ -114,22 +114,22 @@ class BuildingInformationPage:
     
     #ADD RENOVATION COVERAGE
 
-    # def rennovation_coverage_checkbox(self):
-    #     return self.page.get_by_text("Add Renovation coverage?")
-    # def rennovation_limit_input(self, i, j):
-    #     return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.reno.limit\"]")
-    # def rennovation_valuation_selection(self, i, j):
-    #     return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.reno.valuation\"]")
-    # def rennovation_coinsurance_selection(self, i, j):
-    #     return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.reno.coinsurance\"]")
-    # def rennovation_will_building_be_demolished_selection(self, i, j):
-    #     return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.reno.demolished\"]")
-    # def rennovation_plan_of_building_input(self, i, j):
-    #     return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.reno.plans\"]")
-    # def rennovation_expect_start_date_input(self, i, j):
-    #     return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.reno.start_date\"]")
-    # def rennovation_expect_end_date_input(self, i, j):
-    #         return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.reno.end_date\"]")
+    def rennovation_coverage_checkbox(self):
+        return self.page.get_by_text("Add Renovation coverage?")
+    def rennovation_limit_input(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.reno.limit\"]")
+    def rennovation_valuation_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.reno.valuation\"]")
+    def rennovation_coinsurance_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.reno.coinsurance\"]")
+    def rennovation_will_building_be_demolished_selection(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.reno.demolished\"]")
+    def rennovation_plan_of_building_input(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.reno.plans\"]")
+    def rennovation_expect_start_date_input(self, i, j):
+        return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.reno.start_date\"]")
+    def rennovation_expect_end_date_input(self, i, j):
+            return self.page.locator(f"[id=\"property_.locations.{i}.buildings.{j}.reno.end_date\"]")
     
     #ADD SIGN COVERAGE
 
@@ -625,7 +625,7 @@ class BuildingInformationPage:
             self.central_alarms_selection(i, j).select_option("No")
             self.check_loading()
 
-            self.fenced_selection(i, j).select_option("No")
+            self.safeguard_fenced_selection(i, j).select_option("No")
             self.check_loading()
 
             self.lighting_selection(i, j).select_option("No")
@@ -795,26 +795,27 @@ class BuildingInformationPage:
 
         # 6. RENOVATION COVERAGE
         # FOR CP
-        # if params.renovation_limit:
-        #     self.rennovation_coverage_checkbox().click()
-        #     self.check_loading()
-        #     self.rennovation_limit_input(i, j).fill(str(params.renovation_limit))
-        #     if params.renovation_valuation:
-        #         self.rennovation_valuation_selection(i, j).select_option(str(params.renovation_valuation))
-        #         self.check_loading()
-        #     if params.renovation_coinsurance:
-        #         self.rennovation_coinsurance_selection(i, j).select_option(str(params.renovation_coinsurance))
-        #         self.check_loading()
-        #     if params.will_the_building_be_demolished:
-        #         self.rennovation_will_building_be_demolished_selection(i, j).select_option(str(params.will_the_building_be_demolished))
-        #         self.check_loading()
-        #     if params.building_plans:
-        #         self.rennovation_plan_of_building_input(i, j).fill(str(params.building_plans))
-        #     print(f"start_date: {params.renovation_start_date}, end_date: {params.renovation_end_date}")
-        #     if params.renovation_start_date:
-        #         self.rennovation_expect_start_date_input(i, j).fill(params.renovation_start_date)
-        #     if params.renovation_end_date:
-        #         self.rennovation_expect_end_date_input(i, j).fill(params.renovation_end_date)
+        if params.renovation_limit:
+            if self.rennovation_coverage_checkbox().is_visible():
+                self.rennovation_coverage_checkbox().click()
+                self.check_loading()
+                self.rennovation_limit_input(i, j).fill(str(params.renovation_limit))
+                if params.renovation_valuation:
+                    self.rennovation_valuation_selection(i, j).select_option(str(params.renovation_valuation))
+                    self.check_loading()
+                if params.renovation_coinsurance:
+                    self.rennovation_coinsurance_selection(i, j).select_option(str(params.renovation_coinsurance))
+                    self.check_loading()
+                if params.will_the_building_be_demolished:
+                    self.rennovation_will_building_be_demolished_selection(i, j).select_option(str(params.will_the_building_be_demolished))
+                    self.check_loading()
+                if params.building_plans:
+                    self.rennovation_plan_of_building_input(i, j).fill(str(params.building_plans))
+                print(f"start_date: {params.renovation_start_date}, end_date: {params.renovation_end_date}")
+                if params.renovation_start_date:
+                    self.rennovation_expect_start_date_input(i, j).fill(params.renovation_start_date)
+                if params.renovation_end_date:
+                    self.rennovation_expect_end_date_input(i, j).fill(params.renovation_end_date)
 
             # Fill Contractor details with dummy values since parameters aren't in dataclass
             if self.who_is_doing_work_checkbox(i,j).is_visible():
